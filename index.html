@@ -69,12 +69,17 @@
         .text-orange { color: var(--primary-orange); }
         .text-blue { color: var(--primary-blue); }
 
-        /* --- HEADER (Replicated Exactly) --- */
+       /* --- HEADER (FIXED / FROZEN) --- */
         header { 
             background-color: var(--primary-orange); 
-            padding: 25px 0; 
-            position: relative;
-            z-index: 100;
+            padding: 15px 0; 
+            /* FIXED POSITIONING TO FREEZE NAVBAR */
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* High z-index ensures it stays on top of hero image */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Subtle shadow for depth */
         }
         
         nav { 
@@ -87,153 +92,173 @@
             display: flex; 
             align-items: center; 
             gap: 12px; 
-            font-size: 1.6rem; 
+            font-size: 1.5rem; 
             font-weight: 700; 
             color: var(--white);
             letter-spacing: 0.5px;
         }
         
-        /* Logo Icon Styling */
         .logo-icon {
             display: flex;
             align-items: center;
             justify-content: center;
             background: white;
             color: var(--primary-orange);
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 8px;
             font-size: 1.2rem;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
+        
+        .logo-icon img { width: 100%; height: 100%; object-fit: contain; padding: 5px; }
 
         .nav-links { 
             display: flex; 
-            gap: 50px; 
+            gap: 40px; 
             align-items: center;
         }
 
         .nav-links a { 
             color: var(--white); 
-            font-weight: 400; 
-            font-size: 1.05rem; 
+            font-weight: 500; 
+            font-size: 1rem; 
             position: relative;
         }
         
         .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: white;
-            transition: width 0.3s;
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: white; transition: width 0.3s;
         }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+        .nav-links a:hover::after { width: 100%; }
 
-        /* --- HERO SECTION (EXACT REPLICA) --- */
+        /* --- HERO SECTION --- */
         .hero { 
             background-color: var(--primary-orange); 
             position: relative; 
-            padding-top: 40px; 
-            padding-bottom: 180px; /* Space for wave */
+            /* Top padding increased to 160px to clear the fixed header + breathing room */
+            padding-top: 160px; 
+            padding-bottom: 200px; /* Space for the bottom curve */
             color: var(--white); 
             overflow: hidden; 
+            min-height: 100vh; /* Ensures it covers full screen on load */
+            display: flex;
+            align-items: center; /* Vertically centers content */
         }
 
         .hero-content {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr; /* Text slightly wider */
+            /* 1fr 1fr splits screen 50/50. Text on Left, Image on Right */
+            grid-template-columns: 1fr 1fr; 
             align-items: center;
-            gap: 20px;
+            gap: 40px;
+            width: 100%;
         }
 
-        /* Left: Text Content */
+        /* Hero Text (Left Side) */
         .hero-text {
             animation: slideInLeft 1s ease-out forwards;
+            z-index: 2; /* Ensures text is above background elements */
         }
 
         .hero-text h1 {
             font-size: 3.5rem;
             line-height: 1.3;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 25px;
         }
 
-        /* Dark Blue for "Leader's" */
         .hero-text h1 span { color: var(--primary-blue); }
 
         .hero-text p {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             margin-bottom: 35px;
-            max-width: 85%;
+            max-width: 90%;
             font-weight: 400;
-            line-height: 1.6;
+            line-height: 1.7;
+            opacity: 0.95;
         }
 
-        /* Right: Image Blob */
+        /* Hero Image Container (Right Side) */
         .hero-image-container {
             position: relative;
             display: flex;
             justify-content: center;
-            animation: zoomIn 1s ease-out forwards; /* Entrance */
+            align-items: center;
+            z-index: 5; 
         }
 
+        /* The Organic Shape Mask */
         .blob-mask {
             width: 100%;
-            max-width: 550px;
-            height: 400px;
+            max-width: 600px; /* Controls max size of image */
+            aspect-ratio: 4/3; /* Keeps shape consistent */
+            
+            /* THIS IS THE ORGANIC SHAPE FROM THE IMAGE */
+            border-radius: 52% 48% 68% 32% / 45% 55% 45% 55%;
+            
             overflow: hidden;
-            /* The specific organic blob shape from your reference */
-            border-radius: 46% 54% 42% 58% / 54% 39% 61% 46%;
-            border: 5px solid rgba(255,255,255,0.1);
             position: relative;
-            /* Continuous Floating Animation */
-            animation: floatImage 4s ease-in-out infinite; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.15);
+            transform: rotate(-3deg); /* Slight tilt like the reference */
+            animation: floatImage 6s ease-in-out infinite;
+            background-color: #fff; 
         }
 
         .blob-mask img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center;
+            /* Adjust focus to faces if image gets cropped */
+            object-position: center top; 
+            transform: scale(1.1) rotate(3deg); /* Counter-rotate image so people are straight */
         }
 
-        /* White Wave Bottom */
-        .wave-bottom {
+        @keyframes floatImage {
+            0% { transform: rotate(-3deg) translateY(0px); }
+            50% { transform: rotate(-3deg) translateY(-15px); }
+            100% { transform: rotate(-3deg) translateY(0px); }
+        }
+        /* Curve Container */
+        .curve-bottom {
             position: absolute;
             bottom: -1px;
             left: 0;
             width: 100%;
             line-height: 0;
-        }
-        .wave-bottom svg {
-            display: block;
-            width: calc(100% + 1.3px);
-            height: 120px;
+            z-index: 1;
+            pointer-events: none; /* Allows clicks to pass through if needed */
         }
 
-        /* --- UNIFIED SOFTWARE SECTION --- */
+        /* Curve SVG */
+        .curve-bottom svg {
+            display: block;
+            width: 100%;
+            height: 180px; /* Increased height for a more dramatic curve */
+        }
+
+        .curve-bottom path {
+            fill: #ffffff;
+        }
+
+       /* --- STAY UPDATED / SOFTWARE SECTION --- */
+/* --- STAY UPDATED SECTION --- */
 .software-section {
-    padding: 80px 0 100px;
+    padding: 0px 0;
     text-align: center;
+    background-color: var(--white);
 }
 
 .soft-subtitle {
     color: var(--text-grey);
-    font-size: 1.1rem;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    font-weight: 600;
 }
 
 .soft-title {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     color: var(--primary-blue);
     font-weight: 700;
     margin-bottom: 25px;
@@ -242,10 +267,10 @@
 
 .soft-desc {
     color: var(--text-grey);
-    max-width: 700px;
-    margin: 0 auto 60px;
+    max-width: 600px;
+    margin: 0 auto 80px; /* Extra space for floating icons */
     line-height: 1.8;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
 }
 
 /* Cards Layout */
@@ -254,94 +279,134 @@
     justify-content: center;
     gap: 40px;
     flex-wrap: wrap;
-    margin-top: 50px;
+    align-items: flex-start;
 }
 
-/* Individual Card Styling */
+/* Individual Card Container */
 .info-card {
-    width: 340px; /* Specific width for vertical rectangular look */
-    padding: 50px 30px;
-    border-radius: 25px;
+    flex: 1;
+    min-width: 320px;
+    max-width: 380px;
+    height: 500px; /* Fixed height to force scrolling */
+    border-radius: 30px;
+    position: relative; /* For icon positioning */
+    padding: 60px 25px 30px; /* Top padding clears the icon */
     color: white;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    margin-top: 40px; /* Space for the icon popping out */
 }
-
-.info-card:hover { transform: translateY(-10px); }
 
 /* Card Background Colors */
 .card-purple { background-color: #5B72EE; }
 .card-orange { background-color: #F48C06; }
 .card-cyan { background-color: #29B9E7; }
 
-/* Icon Circle */
+/* Floating Icon - Vertical Oval */
 .card-icon-circle {
-    width: 70px; height: 70px;
-    background: white;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 20px;
+    width: 80px;   /* Narrow width */
+    height: 100px; /* Tall height creates the vertical oval */
+    border-radius: 50%; /* Creates the ellipse shape */
+    
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    position: absolute;
+    
+    /* Position needs to be half of the height to sit evenly on the line */
+    /* 140px height / 2 = 70px */
+    top: -50px; 
+    
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* Visual Styles */
+    border: 5px solid white; 
+    color: white; 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* Slightly stronger shadow for the tall shape */
+    z-index: 2;
 }
 
-/* Icon Colors (matching card bg) */
-.card-purple .card-icon-circle { color: #5B72EE; }
-.card-orange .card-icon-circle { color: #F48C06; }
-.card-cyan .card-icon-circle { color: #29B9E7; }
+/* Ensure icons remain readable */
+.card-icon-circle i { 
+    font-size: 2.2rem; 
+}
 
-.card-icon-circle i { font-size: 1.8rem; }
-
+/* Keep existing colors */
+.card-purple .card-icon-circle { background-color: #5B72EE; }
+.card-orange .card-icon-circle { background-color: #F48C06; }
+.card-cyan .card-icon-circle { background-color: #29B9E7; }
+/* Card Title */
 .info-card h3 {
     font-size: 1.5rem;
     font-weight: 600;
-    margin-bottom: 40px; /* Space between title and list */
+    margin-bottom: 25px;
+    text-align: center;
 }
 
-/* List Items inside Card */
+/* --- SCROLLABLE LIST AREA --- */
 .card-list {
     width: 100%;
+    flex-grow: 1; /* Fills remaining height */
+    overflow-y: auto; /* Enables Scrollbar */
+    padding-right: 5px; /* Space for scrollbar */
     text-align: left;
 }
 
-.card-list-item {
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.3); /* Faint divider line */
+/* Custom Scrollbar Styling */
+.card-list::-webkit-scrollbar {
+    width: 6px;
+}
+.card-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+.card-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+.card-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.8);
 }
 
-.card-list-item:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
+/* List Item Blocks (Cards inside Cards) */
+.card-list-item {
+    background: rgba(255, 255, 255, 0.9); /* Whitish block */
+    color: #252641; /* Dark text for readability */
+    padding: 15px 20px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
+
+.card-list-item:last-child { margin-bottom: 0; }
 
 .card-list-item h4 {
     font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 8px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #252641;
 }
 
 .card-list-item p {
     font-size: 0.85rem;
     line-height: 1.5;
-    opacity: 0.95;
+    color: #5F5F7E;
+    margin: 0;
 }
 
 /* Responsive */
 @media (max-width: 1100px) {
-    .cards-row { gap: 20px; }
-    .info-card { width: 100%; max-width: 350px; }
+    .cards-row { flex-direction: column; align-items: center; }
+    .info-card { width: 90%; max-width: 450px; margin-bottom: 50px; }
 }
 
         /* --- UNIFIED ABOUT SECTION --- */
 .about-section-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 100px 20px;
+    padding: 0px 20px;
 }
 
 /* 1. Header & Description */
@@ -365,24 +430,71 @@
     max-width: 850px;
     margin: 0 auto;
 }
+/* --- KEY ACHIEVEMENTS SECTION --- */
+.achievements-wrapper {
+    background: #F9FAFB;
+    padding: 60px 40px;
+    border-radius: 30px;
+    text-align: center;
+    margin-bottom: 80px; /* Spacing between stats and the choice cards */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
 
-/* 2. Choice Cards Grid */
+.section-title {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    font-weight: 700;
+}
+.section-title span { color: var(--primary-orange); }
+
+.stats-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px; /* Space between numbers */
+    margin-top: 40px;
+}
+
+.stat-item {
+    min-width: 150px;
+}
+
+.stat-item h3 {
+    font-size: 3rem;
+    color: var(--primary-orange);
+    font-weight: 800;
+    margin-bottom: 5px;
+    line-height: 1;
+}
+
+.stat-item p {
+    color: #696984;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* --- UPDATED CHOICE CARDS (Text at Bottom) --- */
 .choice-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
-    margin-bottom: 120px; /* Space before next feature */
+    margin-bottom: 120px;
 }
 
 .choice-card {
     position: relative;
-    height: 380px;
+    height: 400px; /* Increased height slightly for better proportions */
     border-radius: 25px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    
+    /* --- KEY CHANGE HERE --- */
+    justify-content: flex-end; /* Pushes content to the bottom */
+    align-items: center;       /* Centers content horizontally */
+    padding-bottom: 50px;      /* Adds space from the bottom edge */
+    /* --------------------- */
+    
     text-align: center;
     box-shadow: 0 25px 50px rgba(0,0,0,0.15);
 }
@@ -395,8 +507,31 @@
     z-index: 1;
     transition: transform 0.6s ease;
 }
+
 .choice-card:hover .choice-bg { transform: scale(1.1); }
 
+/* Updated Overlay to ensure text readability at the bottom */
+.choice-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    /* Gradient gets darker at the bottom */
+    background: linear-gradient(to bottom, rgba(37, 38, 65, 0), rgba(37, 38, 65, 0.9));
+    z-index: 2;
+}
+
+.choice-content {
+    position: relative;
+    z-index: 3;
+    color: white;
+    width: 90%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .stats-grid { gap: 40px; }
+    .choice-grid { grid-template-columns: 1fr; }
+}
 /* Gradient Overlay */
 .choice-overlay {
     position: absolute;
@@ -415,13 +550,13 @@
 .choice-content h3 {
     font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
 .btn-choice {
-    padding: 18px 40px;
+    padding: 5px 40px;
     border-radius: 50px;
     font-weight: 600;
     font-size: 1rem;
@@ -732,6 +867,36 @@
     }
     .feature-list-item { justify-content: center; text-align: left; }
     .feature-visual { margin-bottom: 40px; order: -1; }
+}
+
+/* --- SINGLE FEATURE IMAGE STYLING --- */
+.feature-single-image {
+    width: 85%; /* Matches the width of other feature visuals like the quiz card */
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15); /* Consistent shadow style */
+}
+
+.feature-single-image img {
+    width: 100%;
+    height: auto;
+    display: block; /* Removes bottom space/gap */
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Optional: Add a subtle hover effect */
+.feature-single-image:hover img {
+    transform: scale(1.03);
+}
+
+/* Responsive Adjustment */
+@media (max-width: 950px) {
+    .feature-single-image {
+        width: 95%; /* Wider on mobile */
+        margin: 0 auto;
+    }
 }
         /* --- MOCK UI ELEMENTS --- */
         .mock-ui-container { position: relative; display: flex; justify-content: center; align-items: center; }
@@ -1287,7 +1452,7 @@
     <section class="hero">
         <div class="container hero-content">
             <div class="hero-text">
-                <h1>Building <span>Leader's</span> <br>Of Tomorrow</h1>
+                <h1>Building <span>Leader's <br>Of Tomorrow</span></h1>
                 <p>Top CBSE School in Ballari | Equipping the Next Generation. Experience the best CBSE syllabus and world-class facilities in the heart of Bellary.</p>
                 <button class="btn btn-white">Get Your Admission Today</button>
             </div>
@@ -1299,9 +1464,9 @@
             </div>
         </div>
 
-        <div class="wave-bottom">
+        <div class="curve-bottom">
             <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
-                <path fill="#ffffff" fill-opacity="1" d="M0,160L80,176C160,192,320,224,480,224C640,224,800,192,960,192C1120,192,1280,224,1360,240L1440,256L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+                <path fill="#ffffff" fill-opacity="1" d="M0,320 L1440,320 L1440,0 Q720,200 0,0 Z"></path>
             </svg>
         </div>
     </section>
@@ -1334,6 +1499,14 @@
                     <h4>Winter Break</h4>
                     <p>School will remain closed for winter vacation from December 24th to January 2nd.</p>
                 </div>
+                <div class="card-list-item">
+                    <h4>Fee Submission Deadline</h4>
+                    <p>Please clear all outstanding dues for the second quarter by October 10th to avoid late fees.</p>
+                </div>
+                <div class="card-list-item">
+                    <h4>New Library Books</h4>
+                    <p>Over 500 new titles have been added to the library. Students are encouraged to visit.</p>
+                </div>
             </div>
         </div>
 
@@ -1356,6 +1529,14 @@
                     <h4>Cultural Fest Auditions</h4>
                     <p>Auditions for dance, music, and drama for the Annual Day will be held this week.</p>
                 </div>
+                <div class="card-list-item">
+                    <h4>Debate Competition</h4>
+                    <p>Inter-school debate competition on "AI in Education" will be hosted in the auditorium.</p>
+                </div>
+                <div class="card-list-item">
+                    <h4>Art Workshop</h4>
+                    <p>A special pottery and painting workshop is organized for primary students this Saturday.</p>
+                </div>
             </div>
         </div>
 
@@ -1377,6 +1558,14 @@
                 <div class="card-list-item">
                     <h4>Campus Entry</h4>
                     <p>Visitors and parents are requested to report to the reception desk upon entry for security clearance.</p>
+                </div>
+                <div class="card-list-item">
+                    <h4>Mobile Phone Policy</h4>
+                    <p>Mobile phones and electronic gadgets are strictly prohibited within the school premises.</p>
+                </div>
+                <div class="card-list-item">
+                    <h4>Leave Application</h4>
+                    <p>Leave applications must be submitted via the school app or diary at least 2 days in advance.</p>
                 </div>
             </div>
         </div>
@@ -1416,23 +1605,49 @@
         </p>
     </div>
 
-   <div class="choice-grid">
+    <div class="achievements-wrapper">
+        <h2 class="section-title">Key <span>Achievements</span></h2>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>15+</h3>
+                <p>Years of Excellence</p>
+            </div>
+            <div class="stat-item">
+                <h3>2k+</h3>
+                <p>Happy Students</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Board Results</p>
+            </div>
+            <div class="stat-item">
+                <h3>50+</h3>
+                <p>Awards Won</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="choice-grid">
         <div class="choice-card">
-            <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Expert Faculty" class="choice-bg">
+            <img src="images/CBSE-blog.jpg" alt="Expert Faculty" class="choice-bg">
             <div class="choice-overlay"></div>
             <div class="choice-content">
                 <h3>CBSE AFFILIATION</h3>
-                <p style="margin-bottom: 20px; opacity: 0.9; font-size: 0.9rem; max-width: 80%;">Government approved curriculum with standardized evaluation.</p>
+                <p style="margin-bottom: 25px; opacity: 0.9; font-size: 1rem; max-width: 80%; margin-left: auto; margin-right: auto;">
+                    Government approved curriculum with standardized evaluation.
+                </p>
                 <button class="btn-choice btn-instructor">Academics</button>
             </div>
         </div>
 
         <div class="choice-card">
-            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Student Activities" class="choice-bg">
+            <img src="images/Genius_School.png" alt="Student Activities" class="choice-bg">
             <div class="choice-overlay"></div>
             <div class="choice-content">
                 <h3>HOLISTIC DEVELOPMENT</h3>
-                <p style="margin-bottom: 20px; opacity: 0.9; font-size: 0.9rem; max-width: 80%;">Wide-ranging activities including athletics, arts, and music.</p>
+                <p style="margin-bottom: 25px; opacity: 0.9; font-size: 1rem; max-width: 80%; margin-left: auto; margin-right: auto;">
+                    Wide-ranging activities including athletics, arts, and music.
+                </p>
                 <button class="btn-choice btn-student">Co-Curriculars</button>
             </div>
         </div>
@@ -1519,29 +1734,15 @@
         </div>
 
         <div class="feature-row reverse">
-            <div class="feature-visual">
-                <div class="gb-card">
-                    <div class="gb-head">Performance Tracker</div>
-                    <div class="gb-list">
-                        <div class="gb-item">
-                            <img src="#" class="gb-img">
-                            <div class="gb-track"><div class="gb-fill" style="width: 95%; background: #4FB3F6;"></div><span class="gb-score">A+</span></div>
-                        </div>
-                        <div class="gb-item">
-                            <img src="#" class="gb-img">
-                            <div class="gb-track"><div class="gb-fill" style="width: 88%; background: #F48C06;"></div><span class="gb-score">A</span></div>
-                        </div>
-                        <div class="gb-item">
-                            <img src="#" class="gb-img">
-                            <div class="gb-track"><div class="gb-fill" style="width: 75%; background: #5B72EE;"></div><span class="gb-score">B+</span></div>
-                        </div>
+                <div class="feature-visual">
+                    <div class="feature-single-image">
+                        <img src="images/digital_classroom.png" alt="Academic Management Dashboard">
                     </div>
                 </div>
-            </div>
-            <div class="feature-content">
-                <h2><span>Academic Management</span> <br>& Progress Tracking</h2>
-                <p>Our comprehensive system monitors attendance, academic performance, and co-curricular participation, keeping parents informed and involved in their child's growth.</p>
-            </div>
+                <div class="feature-content">
+                    <h2><span>Academic Management</span> <br>& Progress Tracking</h2>
+                    <p>Our comprehensive system monitors attendance, academic performance, and co-curricular participation, keeping parents informed and involved in their child's growth.</p>
+                </div>
         </div>
 
         <div class="feature-row">
