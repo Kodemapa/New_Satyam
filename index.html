@@ -71,7 +71,7 @@
 
        /* --- HEADER (FIXED / FROZEN) --- */
         header { 
-            background-color: var(--primary-orange); 
+            background-color: white;
             padding: 15px 0; 
             /* FIXED POSITIONING TO FREEZE NAVBAR */
             position: fixed; 
@@ -99,16 +99,12 @@
         }
         
         .logo-icon {
-            display: flex;
+            display: relative;
             align-items: center;
             justify-content: center;
-            background: white;
-            color: var(--primary-orange);
-            width: 50px;
-            height: 50px;
-            border-radius: 8px;
+            width: 100px;
+            height: 100px;
             font-size: 1.2rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
         .logo-icon img { width: 100%; height: 100%; object-fit: contain; padding: 5px; }
@@ -120,14 +116,14 @@
         }
 
         .nav-links a { 
-            color: var(--white); 
+            color: var(--primary-orange); 
             font-weight: 500; 
             font-size: 1rem; 
             position: relative;
         }
         
         .nav-links a::after {
-            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: white; transition: width 0.3s;
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: rgb(251, 130, 0); transition: width 0.3s;
         }
         .nav-links a:hover::after { width: 100%; }
 
@@ -1434,13 +1430,12 @@
             <nav>
                 <div class="logo">
                     <div class="logo-icon">
-                        <img src="images/Satyam_Icon_1.png">
+                        <img src="images/satyam logo-2.png">
                     </div>
-                    Satyam International
                 </div>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Academics</a></li>
                     <li><a href="about-us.html">About Us</a></li>
                     <li><a href="#">Mandatory Disclosures</a></li>
                 </ul>
@@ -1661,7 +1656,7 @@
         </div>
         
         <div class="classroom-visual">
-            <img src="images/satyam-3.jpeg" alt="STEM Laboratory">
+            <img src="images/combo.png" alt="STEM Laboratory">
         </div>
     </div>
 </section>
@@ -1679,7 +1674,7 @@
             <div class="feature-visual">
                 <div class="classroom-mock">
                     <div class="mock-cam large">
-                        <img src="images/combo.png" alt="Teacher">
+                        <img src="images/satyam-3.jpeg" alt="Teacher">
                     </div>
                 </div>
             </div>
@@ -1720,11 +1715,8 @@
                         <span class="q-tag">Science Quiz</span>
                         <i class="fa-regular fa-circle-check" style="color:#2ECC71;"></i>
                     </div>
-                    <h3 style="color: #252641; font-size: 1.1rem; margin-bottom: 10px;">Which planet is known as the Red Planet?</h3>
+                    <h3 style="color: #252641; font-size: 1.1rem; margin-bottom: 10px;">Which component acts as the "brain" of a robot to process information?</h3>
                     <div class="q-img" style="background-image: url('images/Puzzles.png');"></div>
-                    <div class="q-toast">
-                        <i class="fa-solid fa-trophy"></i> Assessment Completed
-                    </div>
                 </div>
             </div>
             <div class="feature-content">
@@ -1736,7 +1728,7 @@
         <div class="feature-row reverse">
                 <div class="feature-visual">
                     <div class="feature-single-image">
-                        <img src="images/digital_classroom.png" alt="Academic Management Dashboard">
+                        <img src="images/digital_classroom-1.png" alt="Academic Management Dashboard">
                     </div>
                 </div>
                 <div class="feature-content">
@@ -1776,7 +1768,7 @@
             </p>
             
             <button class="btn-test">
-                Write your assessment <i class="fa-solid fa-arrow-right-long"></i>
+               Let us know more about us <i class="fa-solid fa-arrow-right-long"></i>
             </button>
         </div>
 
@@ -1788,7 +1780,7 @@
                     "The school has created a positive and engaging learning environment. Our child feels valued, supported, and excited to learn every day."
                 </p>
                 <div class="test-card-footer">
-                    <span class="test-author">Sudha Basuthkar</span>
+                    <span class="test-author">Anjali Sharma</span>
                     <div class="test-rating-box">
                         <div class="test-rating">
                             <i class="fa-solid fa-star star-icon"></i>
@@ -1871,22 +1863,16 @@
                 <img src="images/Satyam_Icon_1.png" alt="Satyam International Logo" style="width: 40px; height: 40px;">
                 <h2>Satyam International <span style="font-size: 0.9rem; display: block; font-weight: 400; opacity: 0.7; margin-top: 5px;">School for Holistic Development</span></h2>
             </div>
-            
-            <div class="newsletter">
-                <h3>Subscribe to get our Newsletter</h3>
-                <form class="sub-form">
-                    <input type="email" placeholder="Your Email">
-                    <button type="button">Subscribe</button>
-                </form>
-            </div>
 
             <div class="footer-links">
-                <a href="#">Careers</a>
+                <a href="index.html">Home</a>
+                <a href="about-us.html">About-us</a>
+                <a href="about-us.html">Academics</a>
+                <a href="about-us.html">Contact-us</a>
                 <a href="#">Privacy Policy</a>
-                <a href="#">Terms & Conditions</a>
             </div>
             
-            <p class="copyright">© 2025 All rights reserved.</p>
+            <p class="copyright">© 2025 All rights reserved by Kodemapa.</p>
         </div>
     </footer>
 
