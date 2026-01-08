@@ -45,25 +45,81 @@
         .section-title span { color: var(--primary-orange); }
         .text-desc { color: var(--text-grey); font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; }
 
-        /* --- HEADER --- */
-        header { background-color: white; padding: 25px 0; position: relative; z-index: 100; }
-        nav { display: flex; justify-content: space-between; align-items: center; }
-        .logo { display: flex; align-items: center; gap: 12px; font-size: 1.6rem; font-weight: 700; color: var(--white); letter-spacing: 0.5px; }
-        .logo-icon { display: flex; align-items: center; justify-content: center; background: white; width: 40px; height: 40px; border-radius: 8px; font-size: 1.2rem; }
-        .nav-links { display: flex; gap: 50px; align-items: center; }
-        .nav-links a { color: var(--white); font-weight: 400; font-size: 1.05rem; position: relative; }
-        .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: white; transition: width 0.3s; }
+        /* --- HEADER (FIXED / FROZEN) --- */
+        header { 
+            background-color: white;
+            padding: 15px 0; 
+            /* FIXED POSITIONING TO FREEZE NAVBAR */
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* High z-index ensures it stays on top of hero image */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+        }
+        
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+        
+        .logo-icon {
+            display: relative;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            font-size: 1.2rem;
+        }
+        
+        .logo-icon img { width: 100%; height: 100%; object-fit: contain; padding: 5px; }
+
+        .nav-links { 
+            display: flex; 
+            gap: 40px; 
+            align-items: center;
+        }
+
+        .nav-links a { 
+            color: var(--primary-orange); 
+            font-weight: 500; 
+            font-size: 1rem; 
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: rgb(251, 130, 0); transition: width 0.3s;
+        }
         .nav-links a:hover::after { width: 100%; }
 
-        /* --- PAGE HERO --- */
-        .page-hero { background-color: var(--primary-orange); padding: 60px 0 100px; color: white; text-align: center; position: relative; }
+        /* --- PAGE HERO (Fixed Padding) --- */
+        .page-hero { 
+            background-color: var(--primary-orange); 
+            /* PADDING FIX: 180px pushes content down below the 90px header */
+            padding: 180px 0 120px; 
+            color: white; 
+            text-align: center; 
+            position: relative; 
+        }
+        
         .page-hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 15px; }
         .page-hero p { font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
         .wave-bottom { position: absolute; bottom: -1px; left: 0; width: 100%; line-height: 0; }
         .wave-bottom svg { display: block; width: calc(100% + 1.3px); height: 100px; }
 
         /* --- SECTIONS LAYOUT --- */
-        .content-section { padding: 50px 0; }
+        .content-section { padding: 80px 0; }
         .split-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 100px; }
         .split-layout.reverse { direction: rtl; }
         .split-layout.reverse .text-content { direction: ltr; }
@@ -90,7 +146,7 @@
         .fac-item.large { grid-column: span 2; grid-row: span 2; height: 420px; }
         .fac-item.wide { grid-column: span 2; }
 
-        /* --- BLOG SECTION STYLES (New) --- */
+        /* --- BLOG SECTION STYLES --- */
         .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .blog-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.05); transition: transform 0.3s; }
         .blog-card:hover { transform: translateY(-10px); }
@@ -118,6 +174,8 @@
             .facilities-grid { grid-template-columns: 1fr; }
             .fac-item.large, .fac-item.wide { grid-column: span 1; height: 250px; }
             .blog-grid { grid-template-columns: 1fr; }
+            /* Adjust padding for mobile since header might be smaller or menu collapsed */
+            .page-hero { padding-top: 130px; }
         }
     </style>
 </head>
@@ -127,16 +185,17 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <div class="logo-icon"><i class="fa-solid fa-shapes"></i></div>
-                    Satyam International
+                    <div class="logo-icon">
+                        <img src="images/satyam logo-2.png" alt="Satyam Icon">
+                    </div>
                 </div>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about-us.html" style="font-weight: 600; opacity: 1;">About Us</a></li>
                     <li><a href="#">Academics</a></li>
-                    <li><a href="#">Admissions</a></li>
+                    <li><a href="about-us.html" style="font-weight: 600; opacity: 1;">About Us</a></li>
+                    <li><a href="#">Mandatory Disclosures</a></li>
                 </ul>
-                <button class="btn btn-white">Contact Us</button>
+                <button class="btn btn-white"><a href="contact-us.html">Contact Us</a></button>
             </nav>
         </div>
     </header>
@@ -352,17 +411,19 @@
     <footer>
         <div class="container">
             <div class="footer-logo">
-                <i class="fa-solid fa-shapes" style="font-size: 2rem; color: white;"></i> 
-                <h2>Skilline <span style="font-size: 0.9rem; display: block; font-weight: 400; opacity: 0.7; margin-top: 5px;">Virtual Class for Zoom</span></h2>
+                <img src="images/Satyam_Icon_1.png" alt="Satyam International Logo" style="width: 40px; height: 40px;">
+                <h2>Satyam International <span style="font-size: 0.9rem; display: block; font-weight: 400; opacity: 0.7; margin-top: 5px;">School for Holistic Development</span></h2>
             </div>
-            
+
             <div class="footer-links">
-                <a href="#">Careers</a>
+                <a href="index.html">Home</a>
+                <a href="about-us.html">About-us</a>
+                <a href="about-us.html">Academics</a>
+                <a href="about-us.html">Contact-us</a>
                 <a href="#">Privacy Policy</a>
-                <a href="#">Terms & Conditions</a>
             </div>
             
-            <p class="copyright">© 2021 Class Technologies Inc.</p>
+            <p class="copyright">© 2025 All rights reserved by Kodemapa.</p>
         </div>
     </footer>
 

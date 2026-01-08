@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandatory Disclosures - Satyam International School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- BASE STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        :root {
+            --primary-orange: #F48C06;
+            --primary-blue: #252641;
+            --accent-cyan: #29B9E7;
+            --text-grey: #696984;
+            --bg-light: #F9FAFB;
+            --white: #ffffff;
+            --radius-btn: 50px;
+        }
+
+        body { color: var(--primary-blue); overflow-x: hidden; background-color: var(--bg-light); }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .anim-up { animation: fadeInUp 0.8s ease-out forwards; }
+
+        /* --- UTILITIES --- */
+        .btn { display: inline-block; padding: 12px 35px; border-radius: var(--radius-btn); font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 1rem; }
+        .btn-white { background: var(--white); color: var(--primary-orange); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
+        
+        .section-title { font-size: 2rem; color: var(--primary-blue); font-weight: 700; margin-bottom: 30px; }
+        .section-title span { color: var(--primary-orange); }
+
+         /* --- HEADER (FIXED / FROZEN) --- */
+        header { 
+            background-color: white;
+            padding: 15px 0; 
+            /* FIXED POSITIONING TO FREEZE NAVBAR */
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* High z-index ensures it stays on top of hero image */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+        }
+        
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+        
+        .logo-icon {
+            display: relative;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            font-size: 1.2rem;
+        }
+        
+        .logo-icon img { width: 100%; height: 100%; object-fit: contain; padding: 5px; }
+
+        .nav-links { 
+            display: flex; 
+            gap: 40px; 
+            align-items: center;
+        }
+
+        .nav-links a { 
+            color: var(--primary-orange); 
+            font-weight: 500; 
+            font-size: 1rem; 
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: rgb(251, 130, 0); transition: width 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* --- PAGE HERO (Fixed Padding) --- */
+        .page-hero { 
+            background-color: var(--primary-orange); 
+            /* PADDING FIX: 180px pushes content down below the 90px header */
+            padding: 180px 0 120px; 
+            color: white; 
+            text-align: center; 
+            position: relative; 
+        }
+        
+        .page-hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 15px; }
+        .page-hero p { font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+        .wave-bottom { position: absolute; bottom: -1px; left: 0; width: 100%; line-height: 0; }
+        .wave-bottom svg { display: block; width: calc(100% + 1.3px); height: 100px; }
+
+        /* --- DISCLOSURE CONTENT STYLES --- */
+        .disclosure-section { padding: 80px 0; }
+        
+        /* Table Styles */
+        .table-container { overflow-x: auto; margin-bottom: 50px; background: white; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); padding: 20px; }
+        .disclosure-table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        .disclosure-table th, .disclosure-table td { padding: 15px 20px; text-align: left; border-bottom: 1px solid #eee; }
+        .disclosure-table th { background-color: var(--primary-blue); color: white; font-weight: 600; border-radius: 5px; }
+        .disclosure-table tr:last-child td { border-bottom: none; }
+        .disclosure-table td:first-child { font-weight: 600; color: var(--primary-blue); width: 30%; }
+        .disclosure-table td:nth-child(2) { color: var(--text-grey); }
+
+        /* Split Layout (Reused Image Section Style) */
+        .split-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 80px; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .split-layout.reverse { direction: rtl; }
+        .split-layout.reverse .text-content { direction: ltr; }
+        .split-layout.reverse .img-content { direction: ltr; }
+        .text-desc { color: var(--text-grey); font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; }
+        .img-content img { width: 100%; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); display: block; }
+        .img-content { position: relative; }
+        .img-content::before { content: ''; position: absolute; top: -20px; left: -20px; width: 80px; height: 80px; border-radius: 50%; z-index: -1; }
+        .decor-blue::before { background: var(--accent-cyan); }
+        .decor-orange::before { background: var(--primary-orange); }
+
+        /* Document Links */
+        .doc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .doc-link { display: flex; align-items: center; gap: 15px; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; border-left: 4px solid transparent; }
+        .doc-link:hover { transform: translateY(-5px); border-left-color: var(--primary-orange); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .doc-icon { color: var(--primary-orange); font-size: 1.5rem; }
+        .doc-info h4 { margin-bottom: 5px; color: var(--primary-blue); }
+        .doc-info span { font-size: 0.85rem; color: var(--text-grey); }
+
+        /* --- FOOTER (EXACT REPLICA) --- */
+        footer { background-color: #252641; color: #B2B3CF; padding: 80px 0 40px; text-align: center; }
+        .footer-logo { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 40px; }
+        .footer-logo h2 { color: white; padding-left: 15px; border-left: 1px solid #626381; font-weight: 600; letter-spacing: 1px; }
+        .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; font-size: 1rem; }
+        .copyright { font-size: 0.9rem; opacity: 0.6; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .page-hero { padding-top: 130px; }
+            .split-layout, .split-layout.reverse { grid-template-columns: 1fr; text-align: center; direction: ltr; padding: 30px; gap: 40px; }
+            .disclosure-table th, .disclosure-table td { padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+     <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <div class="logo-icon">
+                        <img src="images/satyam logo-2.png" alt="Satyam Icon">
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Academics</a></li>
+                    <li><a href="about-us.html" style="font-weight: 600; opacity: 1;">About Us</a></li>
+                    <li><a href="mandatory-disclosure.html">Mandatory Disclosures</a></li>
+                </ul>
+                <button class="btn btn-white"><a href="contact-us.html">Contact Us</a></button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container anim-up">
+            <h1>Mandatory Disclosures</h1>
+            <p>Information for stakeholders in compliance with regulatory guidelines.</p>
+        </div>
+        <div class="wave-bottom">
+            <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path fill="#F9FAFB" fill-opacity="1" d="M0,160L80,176C160,192,320,224,480,224C640,224,800,192,960,192C1120,192,1280,224,1360,240L1440,256L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section class="disclosure-section container">
+        
+        <div class="anim-up">
+            <h2 class="section-title">A. General <span>Information</span></h2>
+            <div class="table-container">
+                <table class="disclosure-table">
+                    <tr>
+                        <td>Name of the School</td>
+                        <td>Satyam International School</td>
+                    </tr>
+                    <tr>
+                        <td>Affiliation Number</td>
+                        <td>830XXX (CBSE)</td>
+                    </tr>
+                    <tr>
+                        <td>School Code</td>
+                        <td>45XXX</td>
+                    </tr>
+                    <tr>
+                        <td>Complete Address</td>
+                        <td>Opp. New Bus Stand, Ballari - 583101, Karnataka, India.</td>
+                    </tr>
+                    <tr>
+                        <td>Principal Name & Qualification</td>
+                        <td>Mr. Rajesh Sharma, M.A., B.Ed.</td>
+                    </tr>
+                    <tr>
+                        <td>School Email ID</td>
+                        <td>info@satyaminternational.com</td>
+                    </tr>
+                    <tr>
+                        <td>Contact Details</td>
+                        <td>+91 98765 43210</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="split-layout anim-up">
+            <div class="text-content">
+                <h2 class="section-title">B. Infrastructure <span>Details</span></h2>
+                <p class="text-desc">
+                    Our campus is spread over 5 acres of lush green land, providing an ideal environment for learning. We adhere to all safety and infrastructure norms mandated by the CBSE board.
+                </p>
+                <ul style="color: var(--text-grey); line-height: 2; margin-bottom: 20px;">
+                    <li><i class="fa-solid fa-check-circle" style="color: #F48C06; margin-right: 10px;"></i> Total Campus Area: 20,234 Sq. Mtrs.</li>
+                    <li><i class="fa-solid fa-check-circle" style="color: #F48C06; margin-right: 10px;"></i> Internet Facility: Yes (High-Speed Fiber)</li>
+                    <li><i class="fa-solid fa-check-circle" style="color: #F48C06; margin-right: 10px;"></i> No. of Classrooms: 45 Smart Classes</li>
+                    <li><i class="fa-solid fa-check-circle" style="color: #F48C06; margin-right: 10px;"></i> Laboratories: Physics, Chemistry, Biology, Computer, Math</li>
+                </ul>
+            </div>
+            <div class="img-content decor-blue">
+                <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80" alt="School Infrastructure">
+            </div>
+        </div>
+
+        <div class="anim-up">
+            <h2 class="section-title">C. Staff <span>Teaching & Non-Teaching</span></h2>
+            <div class="table-container">
+                <table class="disclosure-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Number of Staff</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Principal</td>
+                            <td>01</td>
+                        </tr>
+                        <tr>
+                            <td>Total No. of Teachers</td>
+                            <td>65</td>
+                        </tr>
+                        <tr>
+                            <td>PGT</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td>TGT</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>PRT</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>Teachers Section Ratio</td>
+                            <td>1:1.5</td>
+                        </tr>
+                        <tr>
+                            <td>Details of Special Educator</td>
+                            <td>Mrs. Anjali Verma (M.Ed. Special Education)</td>
+                        </tr>
+                        <tr>
+                            <td>Details of Counsellor and Wellness Teacher</td>
+                            <td>Mr. David Raj (M.Sc. Psychology)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="split-layout reverse anim-up" style="margin-top: 80px;">
+            <div class="text-content">
+                <h2 class="section-title">D. Academic <span>Information</span></h2>
+                <p class="text-desc">
+                    We follow the curriculum prescribed by the Central Board of Secondary Education (CBSE), New Delhi. Our academic year runs from April to March.
+                </p>
+                <p class="text-desc">
+                    Detailed information regarding the Fee Structure, Annual Academic Calendar, and the list of Books prescribed for various classes can be downloaded from the documents section below. We ensure complete transparency in our fee collection policies.
+                </p>
+            </div>
+            <div class="img-content decor-orange">
+                <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=800&q=80" alt="Academics">
+            </div>
+        </div>
+
+        <div class="anim-up" style="margin-top: 50px;">
+            <h2 class="section-title">E. Essential <span>Documents</span></h2>
+            <p class="text-desc" style="margin-bottom: 30px;">Click on the links below to download the respective documents.</p>
+            
+            <div class="doc-grid">
+                <a href="#" class="doc-link">
+                    <div class="doc-icon"><i class="fa-solid fa-file-pdf"></i></div>
+                    <div class="doc-info">
+                        <h4>Fee Structure</h4>
+                        <span>PDF | 2024-25 Session</span>
+                    </div>
+                </a>
+                <a href="#" class="doc-link">
+                    <div class="doc-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                    <div class="doc-info">
+                        <h4>Academic Calendar</h4>
+                        <span>PDF | Annual Plan</span>
+                    </div>
+                </a>
+                <a href="#" class="doc-link">
+                    <div class="doc-icon"><i class="fa-solid fa-book"></i></div>
+                    <div class="doc-info">
+                        <h4>List of Books Prescribed</h4>
+                        <span>PDF | Class I to X</span>
+                    </div>
+                </a>
+                <a href="#" class="doc-link">
+                    <div class="doc-icon"><i class="fa-solid fa-certificate"></i></div>
+                    <div class="doc-info">
+                        <h4>Affiliation Certificate</h4>
+                        <span>PDF | CBSE Grant Letter</span>
+                    </div>
+                </a>
+                <a href="#" class="doc-link">
+                    <div class="doc-icon"><i class="fa-solid fa-building-ngo"></i></div>
+                    <div class="doc-info">
+                        <h4>Trust/Society Registration</h4>
+                        <span>PDF | Valid Document</span>
+                    </div>
+                </a>
+                <a href="#" class="doc-link">
+                    <div class="doc-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="doc-info">
+                        <h4>Building Safety Certificate</h4>
+                        <span>PDF | Govt. Issued</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="images/Satyam_Icon_1.png" alt="Satyam International Logo" style="width: 40px; height: 40px;">
+                <h2>Satyam International <span style="font-size: 0.9rem; display: block; font-weight: 400; opacity: 0.7; margin-top: 5px;">School for Holistic Development</span></h2>
+            </div>
+
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about-us.html">About-us</a>
+                <a href="#">Academics</a>
+                <a href="contact-us.html">Contact-us</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            
+            <p class="copyright">© 2025 All rights reserved by Kodemapa.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
