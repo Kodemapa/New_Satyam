@@ -14,36 +14,33 @@
         :root {
             --primary-orange: #F48C06;
             --primary-blue: #252641;
-            --accent-purple: #5B72EE;
-            --accent-cyan: #29B9E7;
             --text-grey: #696984;
             --bg-light: #F9FAFB;
             --white: #ffffff;
-            --radius-btn: 50px;
-            --radius-card: 20px;
+            --radius-card: 25px;
         }
 
-        body { color: var(--primary-blue); overflow-x: hidden; }
+        body { 
+            color: var(--primary-blue); 
+            overflow-x: hidden; 
+            background-color: var(--white);
+            /* Global Micro-Texture */
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         ul { list-style: none; }
         .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
 
-        /* --- ANIMATIONS --- */
-        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        .anim-down { animation: fadeInDown 0.8s ease-out forwards; }
-        .anim-up { animation: fadeInUp 0.8s ease-out forwards; }
-
-        /* --- UTILITIES --- */
-        .btn { display: inline-block; padding: 12px 35px; border-radius: var(--radius-btn); font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 1rem; }
-        .btn-white { background: var(--white); color: var(--primary-orange); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
-        .btn-outline { border: 1px solid var(--primary-orange); color: var(--primary-orange); background: transparent; }
-        .btn-outline:hover { background: var(--primary-orange); color: white; }
-        
-        .section-title { font-size: 2.4rem; color: var(--primary-blue); font-weight: 700; margin-bottom: 20px; }
-        .section-title span { color: var(--primary-orange); }
-        .text-desc { color: var(--text-grey); font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; }
+        /* --- SCROLL ANIMATIONS --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         /* --- HEADER (FIXED / FROZEN) --- */
         header { 
@@ -103,85 +100,255 @@
         }
         .nav-links a:hover::after { width: 100%; }
 
-        /* --- PAGE HERO (Fixed Padding) --- */
+        /* --- HERO SECTION --- */
         .page-hero { 
             background-color: var(--primary-orange); 
-            /* PADDING FIX: 180px pushes content down below the 90px header */
-            padding: 180px 0 120px; 
+            padding: 200px 0 140px; 
             color: white; 
             text-align: center; 
             position: relative; 
+            overflow: hidden;
+            /* Abstract Pattern: Topographic lines */
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.357-.13.72-.264 1.088-.402l1.768-.661C33.64 15.347 39.647 14 50 14c10.271 0 15.362 1.222 24.629 4.928.955.374 1.949.747 2.996 1.08l-1.302-3.38c-10.555-3.23-17.011-4.28-26.323-4.28-9.255 0-16.711 1.147-26.323 4.28L21.184 20zm3.264-1.332A79.932 79.932 0 0 1 50 15c10.354 0 16.81.93 26.323 4.16l.872 2.264c-10.555-3.23-17.011-4.28-26.323-4.28-9.255 0-16.711 1.147-26.323 4.28l.899-2.756zM0 0c9.127 0 16.59 1.178 26.158 4.235l.899 2.756A79.932 79.932 0 0 1 50 4c10.354 0 16.81.93 26.323 4.16l.899-2.756C67.59 2.178 60.127 1 51 1s-16.59 1.178-26.158 4.235l-1.302-3.38C32.949 1.222 38.04 0 50 0h50v20H0V0z' fill='%23ffffff' fill-opacity='0.07' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        .page-hero h1 { font-size: 4rem; font-weight: 800; margin-bottom: 20px; animation: slideDown 1s ease-out; position: relative; z-index: 2; }
+        .page-hero p { font-size: 1.3rem; opacity: 0.95; max-width: 750px; margin: 0 auto; line-height: 1.6; animation: slideUp 1s ease-out; position: relative; z-index: 2; }
+        
+        /* Updated Button Style - Fixed */
+        .btn { 
+            display: inline-block; 
+            padding: 12px 35px; 
+            border-radius: 50px; 
+            font-weight: 600; 
+            transition: all 0.3s ease; 
+            cursor: pointer; 
+            border: none; 
+            font-size: 1rem; 
+            text-align: center;
+        }
+        .btn-white { 
+            background: var(--white); 
+            color: var(--primary-orange); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            border: 1px solid transparent;
+        }
+        .btn-white:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
+            border-color: rgba(244, 140, 6, 0.1);
         }
         
-        .page-hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 15px; }
-        .page-hero p { font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+        /* Floating Background Shapes */
+        .hero-shape { position: absolute; background: rgba(255,255,255,0.1); border-radius: 50%; animation: float 6s infinite ease-in-out; }
+        .shape-1 { width: 300px; height: 300px; top: -100px; left: -50px; }
+        .shape-2 { width: 200px; height: 200px; bottom: 50px; right: 10%; animation-delay: 1s; }
+
         .wave-bottom { position: absolute; bottom: -1px; left: 0; width: 100%; line-height: 0; }
-        .wave-bottom svg { display: block; width: calc(100% + 1.3px); height: 100px; }
+        .wave-bottom svg { display: block; width: calc(100% + 1.3px); height: 120px; }
 
-        /* --- SECTIONS LAYOUT --- */
-        .content-section { padding: 80px 0; }
-        .split-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 100px; }
-        .split-layout.reverse { direction: rtl; }
-        .split-layout.reverse .text-content { direction: ltr; }
-        .split-layout.reverse .img-content { direction: ltr; }
-        .img-content img { width: 100%; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); display: block; }
-        .img-content { position: relative; }
-        .img-content::before { content: ''; position: absolute; top: -20px; left: -20px; width: 80px; height: 80px; border-radius: 50%; z-index: -1; }
-        .decor-blue::before { background: var(--accent-cyan); }
-        .decor-orange::before { background: var(--primary-orange); }
-
-        /* --- CARDS FOR VISION/MISSION --- */
-        .vm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
-        .vm-card { background: white; padding: 40px 30px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); text-align: center; border-top: 5px solid var(--primary-orange); transition: transform 0.3s; }
-        .vm-card:hover { transform: translateY(-10px); }
-        .vm-icon { font-size: 2.5rem; color: var(--primary-orange); margin-bottom: 20px; }
-        .vm-card h3 { font-size: 1.5rem; color: var(--primary-blue); margin-bottom: 15px; }
+        /* --- WHO WE ARE (Blob Layout) --- */
+        .about-section { padding: 100px 0; }
+        .split-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
         
-        /* --- FACILITIES GRID --- */
-        .facilities-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 50px; }
-        .fac-item { height: 200px; border-radius: 15px; overflow: hidden; position: relative; }
-        .fac-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-        .fac-item:hover img { transform: scale(1.1); }
-        .fac-item span { position: absolute; bottom: 15px; left: 15px; color: white; font-weight: 600; background: rgba(0,0,0,0.6); padding: 5px 15px; border-radius: 20px; }
-        .fac-item.large { grid-column: span 2; grid-row: span 2; height: 420px; }
-        .fac-item.wide { grid-column: span 2; }
+        .blob-img-container { position: relative; }
+        .blob-img-container img { 
+            width: 100%; 
+            border-radius: 52% 48% 68% 32% / 45% 55% 45% 55%; 
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
+            transform: rotate(-2deg);
+            transition: transform 0.5s ease;
+        }
+        .blob-img-container:hover img { transform: rotate(0deg) scale(1.02); }
 
-        /* --- BLOG SECTION STYLES --- */
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .blog-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.05); transition: transform 0.3s; }
-        .blog-card:hover { transform: translateY(-10px); }
-        .blog-img { height: 200px; overflow: hidden; }
-        .blog-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-        .blog-card:hover .blog-img img { transform: scale(1.05); }
-        .blog-content { padding: 25px; }
-        .blog-date { color: var(--primary-orange); font-size: 0.9rem; font-weight: 500; display: block; margin-bottom: 10px; }
-        .blog-content h3 { font-size: 1.3rem; color: var(--primary-blue); margin-bottom: 15px; line-height: 1.4; }
-        .blog-content p { color: var(--text-grey); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
-        .read-more-btn { color: var(--primary-blue); font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; }
-        .read-more-btn:hover { color: var(--primary-orange); gap: 12px; }
+        .text-content h2 { font-size: 2.8rem; color: var(--primary-blue); font-weight: 700; margin-bottom: 25px; }
+        .text-content span { color: var(--primary-orange); }
+        .text-desc { color: var(--text-grey); font-size: 1.1rem; line-height: 1.9; margin-bottom: 30px; }
+
+        /* --- VISION & MISSION (Abstract Dot Pattern) --- */
+        .vision-section { 
+            background-color: var(--primary-blue); 
+            padding: 100px 0; 
+            color: white;
+            position: relative;
+            /* Abstract Pattern: Dots */
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        .vm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 50px; }
+        
+        .vm-card { 
+            background: rgba(255, 255, 255, 0.05); 
+            padding: 40px 30px; 
+            border-radius: var(--radius-card); 
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.4s; 
+            position: relative;
+            overflow: hidden;
+        }
+        .vm-card:hover { background: white; transform: translateY(-15px); }
+        .vm-card:hover h3 { color: var(--primary-blue); }
+        .vm-card:hover p { color: var(--text-grey); }
+        .vm-card:hover .vm-icon { background: var(--primary-orange); color: white; border-color: transparent; }
+
+        .vm-icon { 
+            width: 70px; height: 70px; 
+            border-radius: 50%; 
+            border: 2px solid var(--primary-orange);
+            color: var(--primary-orange);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; margin-bottom: 25px;
+            transition: 0.4s;
+        }
+        .vm-card h3 { font-size: 1.6rem; margin-bottom: 15px; transition: 0.4s; }
+        .vm-card p { opacity: 0.9; line-height: 1.7; transition: 0.4s; }
+
+        /* --- LEADERSHIP (Abstract Geometric Background) --- */
+        .leadership-section { 
+            padding: 100px 0; 
+            background-color: var(--bg-light); 
+            /* Abstract Pattern: Intersecting Rings */
+            background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f48c06' fill-opacity='0.05'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-2.21 0-4 1.79-4 4s1.79 4 4 4c2.21 0 4-1.79 4-4zm-4-2c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm9 0c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm17 0c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm17 0c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm-34-7c0-2.21-1.79-4-4-4-2.21 0-4 1.79-4 4s1.79 4 4 4c2.21 0 4-1.79 4-4zm-4-2c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm9 0c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm17 0c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm17 0c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm-34 14c0-2.21-1.79-4-4-4-2.21 0-4 1.79-4 4s1.79 4 4 4c2.21 0 4-1.79 4-4zm-4-2c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm9 0c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm17 0c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm17 0c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .leader-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            margin-bottom: 50px;
+            transition: transform 0.3s ease;
+        }
+        .leader-card:hover { transform: translateY(-5px); }
+        .leader-card.reverse { direction: rtl; }
+        .leader-card.reverse .leader-info { direction: ltr; }
+
+        .leader-img { height: 100%; min-height: 350px; position: relative; overflow: hidden; }
+        .leader-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .leader-card:hover .leader-img img { transform: scale(1.05); }
+        
+        .leader-info { padding: 50px; display: flex; flex-direction: column; justify-content: center; }
+        .leader-info h3 { font-size: 1.8rem; color: var(--primary-blue); margin-bottom: 5px; font-weight: 700; }
+        .leader-role { color: var(--primary-orange); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; margin-bottom: 20px; }
+        .quote-box { 
+            border-left: 4px solid var(--primary-orange); 
+            padding-left: 20px; 
+            font-style: italic;
+            color: var(--text-grey);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        /* --- STATS SECTION (Abstract Texture) --- */
+        .stats-section { 
+            background-color: var(--primary-orange); 
+            padding: 80px 0; 
+            color: white; 
+            text-align: center; 
+            /* Abstract Pattern: Circuit/Lines */
+            background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM30 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .stats-grid { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 40px; }
+        .stat-item h3 { font-size: 3.5rem; font-weight: 800; margin-bottom: 5px; }
+        .stat-item p { font-size: 1.2rem; font-weight: 500; opacity: 0.9; }
+
+        /* --- FACILITIES (Hover Grid) --- */
+        .facilities-section { padding: 100px 0; }
+        .gallery-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            grid-auto-rows: 250px;
+            gap: 20px; 
+            margin-top: 50px; 
+        }
+        .gallery-item { 
+            border-radius: 20px; 
+            overflow: hidden; 
+            position: relative; 
+            cursor: pointer;
+        }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.15); }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%;
+            background: linear-gradient(to top, rgba(37, 38, 65, 0.9), transparent);
+            padding: 30px 20px 20px;
+            color: white;
+            transform: translateY(100px); /* Hidden initially */
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover .gallery-overlay { transform: translateY(0); }
+        .gallery-overlay h4 { font-size: 1.2rem; font-weight: 600; }
+
+        .item-large { grid-column: span 2; grid-row: span 2; }
+        .item-wide { grid-column: span 2; }
+
+        /* --- NEWS SECTION --- */
+        .blog-section { padding: 100px 0; background-color: var(--bg-light); }
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        
+        .blog-card { 
+            background: white; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            transition: 0.3s; 
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        
+        .blog-img { height: 220px; overflow: hidden; }
+        .blog-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .blog-card:hover .blog-img img { transform: scale(1.1); }
+        
+        .blog-content { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
+        .blog-content h3 { font-size: 1.3rem; color: var(--primary-blue); font-weight: 700; margin-bottom: 15px; line-height: 1.4; }
+        .blog-content p { color: var(--text-grey); margin-bottom: 20px; line-height: 1.6; flex-grow: 1; }
+        
+        .read-more-btn { 
+            color: var(--primary-orange); 
+            font-weight: 600; 
+            text-decoration: none; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: auto; 
+        }
+        .read-more-btn i { transition: 0.3s; }
+        .read-more-btn:hover i { transform: translateX(5px); }
+
+        /* --- ANIMATION KEYFRAMES --- */
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
         /* --- FOOTER --- */
         footer { background-color: #252641; color: #B2B3CF; padding: 80px 0 40px; text-align: center; }
         .footer-logo { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 40px; }
         .footer-logo h2 { color: white; padding-left: 15px; border-left: 1px solid #626381; font-weight: 600; letter-spacing: 1px; }
         .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; font-size: 1rem; }
+        .footer-links a:hover { color: var(--primary-orange); }
         .copyright { font-size: 0.9rem; opacity: 0.6; }
 
         /* Responsive */
         @media (max-width: 900px) {
             .nav-links { display: none; }
-            .split-layout, .split-layout.reverse { grid-template-columns: 1fr; text-align: center; direction: ltr; }
-            .facilities-grid { grid-template-columns: 1fr; }
-            .fac-item.large, .fac-item.wide { grid-column: span 1; height: 250px; }
+            .split-layout { grid-template-columns: 1fr; text-align: center; }
+            .leader-card { grid-template-columns: 1fr; }
+            .leader-card.reverse { direction: ltr; }
+            .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 250px; }
+            .item-large, .item-wide { grid-column: span 1; grid-row: span 1; }
+            .page-hero h1 { font-size: 2.8rem; }
             .blog-grid { grid-template-columns: 1fr; }
-            /* Adjust padding for mobile since header might be smaller or menu collapsed */
-            .page-hero { padding-top: 130px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
+     <header>
         <div class="container">
             <nav>
                 <div class="logo">
@@ -193,17 +360,19 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="#">Academics</a></li>
                     <li><a href="about-us.html" style="font-weight: 600; opacity: 1;">About Us</a></li>
-                    <li><a href="#">Mandatory Disclosures</a></li>
+                    <li><a href="mandatory-disclosure.html">Mandatory Disclosures</a></li>
                 </ul>
                 <button class="btn btn-white"><a href="contact-us.html">Contact Us</a></button>
             </nav>
         </div>
-    </header>
+     </header>    
 
     <section class="page-hero">
-        <div class="container anim-up">
+        <div class="hero-shape shape-1"></div>
+        <div class="hero-shape shape-2"></div>
+        <div class="container">
             <h1>About Us</h1>
-            <p>Nurturing Minds, Building Character, and Shaping the Future of Tomorrow's Leaders.</p>
+            <p>Nurturing Minds, Building Character, and Shaping the Future of Tomorrow's Leaders through holistic education.</p>
         </div>
         <div class="wave-bottom">
             <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
@@ -212,196 +381,174 @@
         </div>
     </section>
 
-    <div class="container">
-
-        <section class="content-section">
-            <div class="split-layout">
-                <div class="text-content">
-                    <h2 class="section-title">Who <span>We Are?</span></h2>
-                    <p class="text-desc">
-                        Satyam International School is a premier educational institution committed to academic excellence and holistic development. Established with a vision to redefine education, we provide a nurturing environment where students are empowered to achieve their full potential.
-                        <br><br>
-                        We believe in a blend of modern pedagogy and traditional values, ensuring our students grow into responsible global citizens.
-                    </p>
-                </div>
-                <div class="img-content decor-blue">
-                    <img src="images/Campus.png" alt="School Building">
-                </div>
+    <section class="about-section container">
+        <div class="split-layout reveal">
+            <div class="blob-img-container">
+                <img src="images/Campus.png" alt="Satyam Campus">
             </div>
-        </section>
+            <div class="text-content">
+                <h2>Who <span>We Are?</span></h2>
+                <p class="text-desc">
+                    Satyam International School is a premier educational institution committed to academic excellence and holistic development. Established with a vision to redefine education, we provide a nurturing environment where students are empowered to achieve their full potential.
+                    <br><br>
+                    We believe in a blend of modern pedagogy and traditional values, ensuring our students grow into responsible global citizens capable of navigating the complexities of the modern world.
+                </p>
+            </div>
+        </div>
+    </section>
 
-        <section class="content-section" style="text-align: center;">
-            <h2 class="section-title">Our Vision & <span>Mission</span></h2>
-            <p class="text-desc" style="margin: 0 auto; max-width: 700px;">Guiding principles that drive our pursuit of educational excellence.</p>
+    <section class="vision-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white; text-align: center;">Our Vision & <span>Mission</span></h2>
+            <p style="text-align: center; color: #a0a0b0; max-width: 600px; margin: 0 auto;">Guiding principles that drive our pursuit of educational excellence.</p>
             
-            <div class="vm-grid">
+            <div class="vm-grid reveal">
                 <div class="vm-card">
                     <div class="vm-icon"><i class="fa-solid fa-eye"></i></div>
                     <h3>Our Vision</h3>
-                    <p class="text-desc" style="font-size: 0.95rem; margin-bottom: 0;">To be a global leader in education by creating a vibrant community of lifelong learners who contribute positively to the world.</p>
+                    <p>To be a global leader in education by creating a vibrant community of lifelong learners who contribute positively to the world.</p>
                 </div>
                 <div class="vm-card">
                     <div class="vm-icon"><i class="fa-solid fa-bullseye"></i></div>
                     <h3>Our Mission</h3>
-                    <p class="text-desc" style="font-size: 0.95rem; margin-bottom: 0;">To provide a safe, inclusive, and stimulating learning environment that fosters critical thinking, creativity, and ethical values.</p>
+                    <p>To provide a safe, inclusive, and stimulating learning environment that fosters critical thinking, creativity, and ethical values.</p>
                 </div>
                 <div class="vm-card">
                     <div class="vm-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
                     <h3>Our Values</h3>
-                    <p class="text-desc" style="font-size: 0.95rem; margin-bottom: 0;">Integrity, Excellence, Respect, and Innovation form the core pillars of our educational philosophy.</p>
+                    <p>Integrity, Excellence, Respect, and Innovation form the core pillars of our educational philosophy and daily practice.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="content-section">
-            <div class="split-layout reverse">
-                <div class="text-content">
-                    <h2 class="section-title">Our <span>Approach</span></h2>
-                    <p class="text-desc">
-                        We move beyond rote learning. Our approach is student-centric, focusing on experiential learning and practical application.
-                    </p>
-                    <ul style="color: var(--text-grey); line-height: 2;">
-                        <li><i class="fa-solid fa-check-circle" style="color: #F48C06; margin-right: 10px;"></i> Inquiry-based learning methodology.</li>
-                        <li><i class="fa-solid fa-check-circle" style="color: #F48C06; margin-right: 10px;"></i> Emphasis on emotional and social intelligence.</li>
-                        <li><i class="fa-solid fa-check-circle" style="color: #F48C06; margin-right: 10px;"></i> Integration of technology in every classroom.</li>
-                        <li><i class="fa-solid fa-check-circle" style="color: #F48C06; margin-right: 10px;"></i> Continuous comprehensive evaluation.</li>
-                    </ul>
-                </div>
-                <div class="img-content decor-orange">
-                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" alt="Students Learning">
-                </div>
-            </div>
-        </section>
-
-        <section class="content-section">
+    <section class="leadership-section">
+        <div class="container">
             <h2 class="section-title" style="text-align: center; margin-bottom: 60px;">Leadership <span>Desk</span></h2>
 
-            <div class="split-layout">
-                <div class="img-content" style="max-width: 400px; margin: 0 auto;">
-                    <img src="images/Founder.png" alt="Founder" style="border-radius: 20px;">
+            <div class="leader-card reveal">
+                <div class="leader-img">
+                    <img src="images/Founder.png" alt="Founder">
                 </div>
-                <div class="text-content">
-                    <h3 style="font-size: 1.8rem; color: #252641; font-weight: 700;">Founder's Message</h3>
-                    <p class="text-desc">
+                <div class="leader-info">
+                    <h3>Lion A Satyanarayana</h3>
+                    <div class="leader-role">Founder</div>
+                    <div class="quote-box">
                         "Education is the cornerstone of a brighter future. At Satyam International School, we dedicate ourselves to nurturing young minds, equipping them with the skills and knowledge needed to thrive in the world."
-                    </p>
-                    <h4 style="color: #F48C06; font-weight: 600;">~ Lion A Satyanarayana , Founder</h4>
+                    </div>
                 </div>
             </div>
 
-            <div class="split-layout reverse">
-                <div class="img-content" style="max-width: 400px; margin: 0 auto;">
-                    <img src="images/chairperson.png" alt="Chairperson" style="border-radius: 20px;">
+            <div class="leader-card reverse reveal">
+                <div class="leader-img">
+                    <img src="images/chairperson.png" alt="Chairperson">
                 </div>
-                <div class="text-content">
-                    <h3 style="font-size: 1.8rem; color: #252641; font-weight: 700;">Chairperson's Note</h3>
-                    <p class="text-desc">
-                        "As we navigate an ever changing world, our commitment remains steadfast to provide each student with opportunities to discover their unique strengths and passions. Our experienced faculty doesn't just teach they mentor, inspire, and guide students toward becoming confident, compassionate leaders.<br>
-                        I invite you to visit our campus and experience firsthand the warmth of our community, the dedication of our staff, and the enthusiasm of our students. Together, we are not just preparing students for exams; we are preparing them for life."
-                    </p>
-                    <h4 style="color: #F48C06; font-weight: 600;">~ Mrs. R. Surekha, Chairperson</h4>
+                <div class="leader-info">
+                    <h3>Mrs. R. Surekha</h3>
+                    <div class="leader-role">Chairperson</div>
+                    <div class="quote-box">
+                        "Our commitment remains steadfast to provide each student with opportunities to discover their unique strengths. Together, we are not just preparing students for exams; we are preparing them for life."
+                    </div>
+                </div>
+            </div>
+
+            <div class="leader-card reveal">
+                <div class="leader-img">
+                    <img src="images/director.png" alt="Director">
+                </div>
+                <div class="leader-info">
+                    <h3>R. Jagadeesh Kumar</h3>
+                    <div class="leader-role">Director</div>
+                    <div class="quote-box">
+                        "Education is not just about books and exams, it's about developing lifelong learners. Our approach integrates real-world experiences, ensuring character development and resilience."
+                    </div>
                 </div>
             </div>
 
-            <div class="split-layout">
-                <div class="img-content" style="max-width: 400px; margin: 0 auto;">
-                    <img src="images/director.png" alt="Director" style="border-radius: 20px;">
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid reveal">
+                <div class="stat-item">
+                    <h3>15+</h3>
+                    <p>Years of Excellence</p>
                 </div>
-                <div class="text-content">
-                    <h3 style="font-size: 1.8rem; color: #252641; font-weight: 700;">Director's Word</h3>
-                    <p class="text-desc">
-                        "Education is not just about books and exams, it's about developing lifelong learners and responsible global citizens. Our commitment is to holistic education that prepares students for the future.<br> Our approach integrates with real-world experiences, ensuring that every student not only excels in examinations but also develops the character, resilience, and values needed for contributions to society. We are proud to be partners in your child's educational journey."
-                    </p>
-                    <h4 style="color: #F48C06; font-weight: 600;"> ~ R. Jagadeesh Kumar, Director</h4>
+                <div class="stat-item">
+                    <h3>2k+</h3>
+                    <p>Happy Students</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Board Results</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Awards Won</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="content-section" style="background: #F9FAFB; padding: 60px; border-radius: 30px; text-align: center;">
-            <h2 class="section-title">Key <span>Achievements</span></h2>
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 60px; margin-top: 40px;">
-                <div>
-                    <h3 style="font-size: 3rem; color: #F48C06; font-weight: 800;">15+</h3>
-                    <p style="color: #696984; font-weight: 500;">Years of Excellence</p>
-                </div>
-                <div>
-                    <h3 style="font-size: 3rem; color: #F48C06; font-weight: 800;">2k+</h3>
-                    <p style="color: #696984; font-weight: 500;">Happy Students</p>
-                </div>
-                <div>
-                    <h3 style="font-size: 3rem; color: #F48C06; font-weight: 800;">100%</h3>
-                    <p style="color: #696984; font-weight: 500;">Board Results</p>
-                </div>
-                <div>
-                    <h3 style="font-size: 3rem; color: #F48C06; font-weight: 800;">50+</h3>
-                    <p style="color: #696984; font-weight: 500;">Awards Won</p>
-                </div>
+    <section class="facilities-section container">
+        <h2 class="section-title" style="text-align: center;">World-Class <span>Facilities</span></h2>
+        <p class="text-desc" style="text-align: center; margin: 0 auto; max-width: 600px;">Providing the best infrastructure for a seamless learning experience.</p>
+        
+        <div class="gallery-grid reveal">
+            <div class="gallery-item item-large">
+                <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80" alt="Campus">
+                <div class="gallery-overlay"><h4>Modern Campus</h4></div>
             </div>
-        </section>
-
-        <section class="content-section">
-            <h2 class="section-title" style="text-align: center;">World-Class <span>Facilities</span></h2>
-            <p class="text-desc" style="text-align: center; max-width: 700px; margin: 0 auto;">Providing the best infrastructure for a seamless learning experience.</p>
-            
-            <div class="facilities-grid">
-                <div class="fac-item large">
-                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=600&q=80" alt="Campus">
-                    <span>Modern Campus</span>
-                </div>
-                <div class="fac-item">
-                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=400&q=80" alt="Science Lab">
-                    <span>Science Labs</span>
-                </div>
-                <div class="fac-item">
-                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=400&q=80" alt="Library">
-                    <span>Library</span>
-                </div>
-                <div class="fac-item wide">
-                    <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=600&q=80" alt="Sports">
-                    <span>Sports Complex</span>
-                </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=400&q=80" alt="Labs">
+                <div class="gallery-overlay"><h4>Science Labs</h4></div>
             </div>
-        </section>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=400&q=80" alt="Library">
+                <div class="gallery-overlay"><h4>Library</h4></div>
+            </div>
+            <div class="gallery-item item-wide">
+                <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=600&q=80" alt="Sports">
+                <div class="gallery-overlay"><h4>Sports Complex</h4></div>
+            </div>
+        </div>
+    </section>
 
-    </div>
-
-    <section class="content-section" style="background: var(--bg-light);">
+    <section class="blog-section">
         <div class="container">
             <h2 class="section-title" style="text-align: center;">Latest <span>News & Insights</span></h2>
-            <p class="text-desc" style="text-align: center; max-width: 700px; margin: 0 auto 50px;">Stay updated with the latest happenings and educational articles from our school.</p>
+            <p class="text-desc" style="text-align: center; max-width: 700px; margin: 0 auto;">Stay updated with the latest happenings and educational articles from our school.</p>
 
-            <div class="blog-grid">
+            <div class="blog-grid reveal">
                 <div class="blog-card">
                     <div class="blog-img">
-                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=500&q=80" alt="Science Exhibition">
+                        <img src="images/Elite_school.png" alt="Academics">
                     </div>
                     <div class="blog-content">
-                        <span class="blog-date"><i class="fa-regular fa-calendar"></i> Oct 24, 2023</span>
-                        <h3>Annual Science Exhibition 2023 Highlights</h3>
-                        <p>Our students showcased innovative projects solving real-world problems. Check out the winners and gallery.</p>
-                        <a href="#" class="read-more-btn">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        <h3>Struggling with JEE/NEET Preparation? Here's Why Most Students Fall Behind</h3>
+                        <p>Every year, over 2 million students appear for JEE and NEET exams, but less than 2% make it to their dream colleges.</p>
+                        <a href="blog-1.html" class="read-more-btn">Read More <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="blog-card">
                     <div class="blog-img">
-                        <img src="https://images.unsplash.com/photo-1491309055486-24ae511c15c7?auto=format&fit=crop&w=500&q=80" alt="Sports Day">
+                        <img src="images/sports copy.png" alt="Sports Day">
                     </div>
                     <div class="blog-content">
-                        <span class="blog-date"><i class="fa-regular fa-calendar"></i> Sep 15, 2023</span>
-                        <h3>The Importance of Holistic Education</h3>
-                        <p>Why balancing academics with sports and arts is crucial for child development in the modern world.</p>
-                        <a href="#" class="read-more-btn">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        <h3>More Than Just Play: The Life Changing Benefits of Sports</h3>
+                        <p>Many parents today face the challenge of watching their children excel academically yet struggle with essential life skills.</p>
+                        <a href="blog-2.html" class="read-more-btn">Read More <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="blog-card">
                     <div class="blog-img">
-                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=500&q=80" alt="Admissions">
+                        <img src="images/ncc.jpeg" alt="Development">
                     </div>
                     <div class="blog-content">
-                        <span class="blog-date"><i class="fa-regular fa-calendar"></i> Aug 01, 2023</span>
-                        <h3>Admissions Open for Academic Year 2024-25</h3>
-                        <p>Learn about our admission process, eligibility criteria, and scholarship programs for the upcoming session.</p>
-                        <a href="#" class="read-more-btn">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        <h3>How Our School Builds Tomorrow's Leaders: A Guide to Personality Development</h3>
+                        <p>As a parent, you see beyond the report card. You notice the subtle signs that reveal your child's inner world.</p>
+                        <a href="blog-3.html" class="read-more-btn">Read More <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -411,21 +558,35 @@
     <footer>
         <div class="container">
             <div class="footer-logo">
-                <img src="images/Satyam_Icon_1.png" alt="Satyam International Logo" style="width: 40px; height: 40px;">
+                <img src="images/Satyam_Icon_1.png" alt="Logo" style="width: 40px; height: 40px;">
                 <h2>Satyam International <span style="font-size: 0.9rem; display: block; font-weight: 400; opacity: 0.7; margin-top: 5px;">School for Holistic Development</span></h2>
             </div>
-
             <div class="footer-links">
                 <a href="index.html">Home</a>
                 <a href="about-us.html">About-us</a>
-                <a href="about-us.html">Academics</a>
-                <a href="about-us.html">Contact-us</a>
+                <a href="#">Academics</a>
+                <a href="contact-us.html">Contact-us</a>
                 <a href="#">Privacy Policy</a>
             </div>
-            
             <p class="copyright">© 2025 All rights reserved by Kodemapa.</p>
         </div>
     </footer>
+
+    <script>
+        window.addEventListener('scroll', reveal);
+        function reveal(){
+            var reveals = document.querySelectorAll('.reveal');
+            for(var i = 0; i < reveals.length; i++){
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150;
+                if(revealtop < windowheight - revealpoint){
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        reveal();
+    </script>
 
 </body>
 </html>
