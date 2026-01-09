@@ -57,6 +57,40 @@
         .delay-300 { animation-delay: 0.3s; }
         .floating { animation: float 4s ease-in-out infinite; }
 
+        /* --- DECORATIVE BACKGROUND SHAPES --- */
+        .bg-shapes { position: absolute; width: 100%; height: 100%; top: 0; left: 0; overflow: hidden; z-index: 1; pointer-events: none; }
+        
+        .shape { position: absolute; opacity: 0.6; animation: float 6s ease-in-out infinite; }
+        
+        /* Triangle Shapes */
+        .triangle { width: 0; height: 0; border-left: 40px solid transparent; border-right: 40px solid transparent; border-bottom: 70px solid; }
+        .triangle-1 { top: 15%; right: 12%; border-bottom-color: #ff6b6b; animation-delay: 0s; }
+        .triangle-2 { bottom: 25%; left: 8%; border-bottom-color: rgba(255, 255, 255, 0.3); transform: rotate(180deg); animation-delay: 1.5s; }
+        .triangle-3 { top: 45%; left: 5%; border-bottom-color: #ffd93d; animation-delay: 3s; border-left: 30px solid transparent; border-right: 30px solid transparent; border-bottom-width: 50px; }
+        
+        /* Circle Shapes */
+        .circle { border-radius: 50%; }
+        .circle-1 { top: 20%; left: 15%; width: 80px; height: 80px; border: 4px solid #4ecdc4; background: transparent; animation-delay: 2s; }
+        .circle-2 { bottom: 15%; right: 20%; width: 60px; height: 60px; background: rgba(255, 255, 255, 0.2); animation-delay: 0.5s; }
+        .circle-3 { top: 60%; right: 8%; width: 50px; height: 50px; border: 3px solid #95e1d3; background: transparent; animation-delay: 2.5s; }
+        
+        /* Square/Rectangle Shapes */
+        .square { border-radius: 5px; }
+        .square-1 { top: 35%; right: 25%; width: 50px; height: 50px; background: rgba(255, 107, 107, 0.4); transform: rotate(15deg); animation-delay: 1s; }
+        .square-2 { bottom: 35%; left: 18%; width: 40px; height: 40px; background: rgba(255, 255, 255, 0.25); transform: rotate(-20deg); animation-delay: 2.8s; }
+        
+        /* Ribbon Shapes */
+        .ribbon { width: 120px; height: 25px; position: relative; animation-delay: 1.2s; }
+        .ribbon::before { content: ''; position: absolute; width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-top: 12px solid inherit; left: -15px; top: 0; }
+        .ribbon::after { content: ''; position: absolute; width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-top: 12px solid inherit; right: -15px; top: 0; }
+        .ribbon-1 { top: 25%; left: 5%; background: #ffd93d; animation-delay: 0.8s; }
+        .ribbon-2 { bottom: 20%; right: 15%; background: rgba(78, 205, 196, 0.6); animation-delay: 2.2s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
         /* --- BUTTONS --- */
         .btn { display: inline-block; padding: 12px 35px; border-radius: var(--radius-btn); font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 1rem; }
         .btn-white { background: var(--white); color: var(--primary-orange); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
@@ -101,7 +135,7 @@
             display: relative;
             align-items: center;
             justify-content: center;
-            width: 100px;
+            width: 190px;
             height: 100px;
             font-size: 1.2rem;
         }
@@ -128,7 +162,7 @@
 
         /* --- DROPDOWN NAV --- */
         .nav-links li { position: relative; }
-        .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-orange); font-weight: 600; }
+        .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-orange); font-weight: 1rem; }
         .nav-links .dropdown { position: absolute; top: 120%; left: 0; background: var(--white); min-width: 200px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 8px 0; display: none; z-index: 2000; }
         .nav-links .dropdown li { padding: 0; }
         .nav-links .dropdown a { display: block; padding: 10px 18px; color: var(--primary-blue); font-weight: 500; }
@@ -148,6 +182,8 @@
             display: flex;
             align-items: center; /* Vertically centers content */
         }
+
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%); z-index: 1; }
 
         .hero-content {
             display: grid;
@@ -411,6 +447,8 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0px 20px;
+    position: relative;
+    overflow: hidden;
 }
 
 /* 1. Header & Description */
@@ -835,7 +873,7 @@
 }
 .q-header { display: flex; justify-content: space-between; margin-bottom: 20px; }
 .q-tag { background: #E8F0FF; color: #5B72EE; padding: 5px 15px; border-radius: 20px; font-weight: 600; font-size: 0.8rem; }
-.q-img { height: 140px; background: url('https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?auto=format&fit=crop&w=500&q=80') center/cover; border-radius: 10px; margin-bottom: 20px; }
+.q-img { height: 240px; background: url('https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?auto=format&fit=crop&w=500&q=80') center/cover; border-radius: 10px; margin-bottom: 20px; }
 .q-toast {
     position: absolute; bottom: -20px; right: -30px;
     background: white; padding: 12px 25px;
@@ -931,6 +969,8 @@
 .integrations { 
     padding: 120px 0; 
     background-color: var(--white); /* White background per reference */
+    position: relative;
+    overflow: hidden;
 }
 
 .integrations-grid { 
@@ -1438,7 +1478,7 @@
             <nav>
                 <div class="logo">
                     <div class="logo-icon">
-                        <img src="images/satyam logo-2.png">
+                        <img src="images/sat.jpg">
                     </div>
                 </div>
                 <ul class="nav-links">
@@ -1447,6 +1487,7 @@
                         <a href="#" class="dropdown-toggle">Academics <i class="fa-solid fa-caret-down"></i></a>
                         <ul class="dropdown">
                             <li><a href="academics.html">Academics</a></li>
+                            <li><a href="curriculars.html">Co-Curriculars</a></li>
                             <li><a href="blog-listing.html">Blog-Listing</a></li>
                             <li><a href="faqs.html">FAQs</a></li>
                             <li><a href="testimonials.html">Testimonials</a></li>
@@ -1462,6 +1503,27 @@
     </header>
 
     <section class="hero">
+        <!-- Decorative Background Shapes -->
+        <div class="bg-shapes">
+            <!-- Triangles -->
+            <div class="shape triangle triangle-1"></div>
+            <div class="shape triangle triangle-2"></div>
+            <div class="shape triangle triangle-3"></div>
+            
+            <!-- Circles -->
+            <div class="shape circle circle-1"></div>
+            <div class="shape circle circle-2"></div>
+            <div class="shape circle circle-3"></div>
+            
+            <!-- Squares -->
+            <div class="shape square square-1"></div>
+            <div class="shape square square-2"></div>
+            
+            <!-- Ribbons -->
+            <div class="shape ribbon ribbon-1"></div>
+            <div class="shape ribbon ribbon-2"></div>
+        </div>
+
         <div class="container hero-content">
             <div class="hero-text">
                 <h1>Building <span>Leader's <br>Of Tomorrow</span></h1>
@@ -1586,6 +1648,13 @@
 </section>
 
     <section class="integrations">
+        <!-- Decorative Shapes -->
+        <div class="bg-shapes">
+            <div class="shape circle" style="top: 10%; left: 10%; width: 80px; height: 80px; border: 4px solid #4ecdc4; border-radius: 50%; animation: float 6s ease-in-out infinite; animation-delay: 0s;"></div>
+            <div class="shape square" style="top: 60%; right: 15%; width: 50px; height: 50px; background: rgba(255, 140, 6, 0.3); border-radius: 5px; transform: rotate(15deg); animation: float 6s ease-in-out infinite; animation-delay: 1.5s;"></div>
+            <div class="shape triangle" style="bottom: 20%; left: 5%; width: 0; height: 0; border-left: 40px solid transparent; border-right: 40px solid transparent; border-bottom: 70px solid #ff6b6b; animation: float 6s ease-in-out infinite; animation-delay: 2s;"></div>
+            <div class="shape circle" style="top: 50%; right: 5%; width: 60px; height: 60px; border: 3px solid #95e1d3; border-radius: 50%; animation: float 6s ease-in-out infinite; animation-delay: 2.5s;"></div>
+        </div>
     <div class="container integrations-grid">
         
         <div class="collage-wrapper">
@@ -1609,6 +1678,13 @@
 </section>
 
    <section class="about-section-container">
+        <!-- Decorative Shapes -->
+        <div class="bg-shapes">
+            <div class="shape triangle" style="top: 10%; right: 8%; width: 0; height: 0; border-left: 40px solid transparent; border-right: 40px solid transparent; border-bottom: 70px solid #ff6b6b; animation: float 6s ease-in-out infinite; animation-delay: 0s;"></div>
+            <div class="shape circle" style="bottom: 15%; right: 12%; width: 70px; height: 70px; background: rgba(78, 205, 196, 0.2); border-radius: 50%; animation: float 6s ease-in-out infinite; animation-delay: 1.5s;"></div>
+            <div class="shape square" style="top: 40%; left: 5%; width: 45px; height: 45px; background: rgba(255, 140, 6, 0.25); border-radius: 5px; transform: rotate(-20deg); animation: float 6s ease-in-out infinite; animation-delay: 2.8s;"></div>
+            <div class="shape" style="top: 70%; right: 20%; width: 120px; height: 25px; background: #ffd93d; animation: float 6s ease-in-out infinite; animation-delay: 3.5s;"></div>
+        </div>
     
     <div class="about-header">
         <h2 class="about-title">Why Choose <span>Satyam International?</span></h2>
@@ -1648,7 +1724,7 @@
                 <p style="margin-bottom: 25px; opacity: 0.9; font-size: 1rem; max-width: 80%; margin-left: auto; margin-right: auto;">
                     Government approved curriculum with standardized evaluation.
                 </p>
-                <button class="btn-choice btn-instructor">Academics</button>
+               <a href="./academics.html"> <button class="btn-choice btn-instructor">Academics</button></a>
             </div>
         </div>
 
@@ -1678,7 +1754,13 @@
     </div>
 </section>
 
-   <section class="container features-section">
+   <section class="container features-section" style="position: relative;">
+        <!-- Decorative Shapes -->
+        <div class="bg-shapes">
+            <div class="shape circle" style="top: 15%; left: 5%; width: 80px; height: 80px; border: 4px solid #4ecdc4; border-radius: 50%; animation: float 6s ease-in-out infinite; animation-delay: 0s;"></div>
+            <div class="shape square" style="bottom: 25%; left: 8%; width: 50px; height: 50px; background: rgba(255, 107, 107, 0.3); border-radius: 5px; transform: rotate(15deg); animation: float 6s ease-in-out infinite; animation-delay: 1.5s;"></div>
+            <div class="shape circle" style="bottom: 10%; right: 15%; width: 60px; height: 60px; border: 3px solid #95e1d3; border-radius: 50%; animation: float 6s ease-in-out infinite; animation-delay: 2.5s;"></div>
+        </div>
     
     <div class="features-header">
         <h2 class="features-title">Our <span>Features</span></h2>
@@ -1732,7 +1814,7 @@
                         <span class="q-tag">Science Quiz</span>
                         <i class="fa-regular fa-circle-check" style="color:#2ECC71;"></i>
                     </div>
-                    <h3 style="color: #252641; font-size: 1.1rem; margin-bottom: 10px;">Which component acts as the "brain" of a robot to process information?</h3>
+                    <h3 style="color: #252641; font-size: 1rem; margin-bottom: 10px;">Which component acts as the "brain" of a robot to process information?</h3>
                     <div class="q-img" style="background-image: url('images/Puzzles.png');"></div>
                 </div>
             </div>
@@ -1744,8 +1826,8 @@
 
         <div class="feature-row reverse">
                 <div class="feature-visual">
-                    <div class="feature-single-image">
-                        <img src="images/digital_classroom-1.png" alt="Academic Management Dashboard">
+                    <div class="img-decor-wrapper" style="width: 85%;">
+                        <img src="images/digital_classroom-1.png" alt="Academic Management Dashboard" style="box-shadow: 0 25px 50px rgba(0,0,0,0.15);">
                     </div>
                 </div>
                 <div class="feature-content">
@@ -1756,8 +1838,8 @@
 
         <div class="feature-row">
             <div class="feature-visual">
-                <div style="width: 80%; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
-                    <img src="images/Guidence.png" style="width:100%; display:block;" alt="Mentorship">
+                <div class="img-decor-wrapper" style="width: 85%;">
+                    <img src="images/Guidence.png" alt="Mentorship" style="box-shadow: 0 25px 50px rgba(0,0,0,0.15);">
                 </div>
             </div>
             <div class="feature-content">
@@ -1769,7 +1851,13 @@
     </div>
 </section>
 
-    <section class="testimonials-section container">
+    <section class="testimonials-section container" style="position: relative;">
+        <!-- Decorative Shapes -->
+        <div class="bg-shapes">
+            <div class="shape" style="top: 10%; right: 10%; width: 120px; height: 25px; background: rgba(78, 205, 196, 0.5); animation: float 6s ease-in-out infinite; animation-delay: 1.5s;"></div>
+            <div class="shape circle" style="bottom: 20%; left: 12%; width: 65px; height: 65px; background: rgba(91, 114, 238, 0.15); border-radius: 50%; animation: float 6s ease-in-out infinite; animation-delay: 2s;"></div>
+            <div class="shape square" style="bottom: 15%; right: 8%; width: 45px; height: 45px; background: rgba(255, 140, 6, 0.25); border-radius: 5px; transform: rotate(-20deg); animation: float 6s ease-in-out infinite; animation-delay: 2.8s;"></div>
+        </div>
     <div class="testimonial-grid">
         
         <div class="test-text-content">
@@ -1817,7 +1905,14 @@
     </div>
 </section>
 
-   <section class="news-section container">
+   <section class="news-section container" style="position: relative;">
+        <!-- Decorative Shapes -->
+        <div class="bg-shapes">
+            <div class="shape circle" style="top: 10%; right: 10%; width: 80px; height: 80px; border: 4px solid #4ecdc4; border-radius: 50%; animation: float 6s ease-in-out infinite; animation-delay: 0s;"></div>
+            <div class="shape triangle" style="top: 50%; left: 5%; width: 0; height: 0; border-left: 40px solid transparent; border-right: 40px solid transparent; border-bottom: 70px solid #ff6b6b; animation: float 6s ease-in-out infinite; animation-delay: 1.5s;"></div>
+            <div class="shape square" style="bottom: 20%; right: 15%; width: 50px; height: 50px; background: rgba(255, 140, 6, 0.3); border-radius: 5px; transform: rotate(15deg); animation: float 6s ease-in-out infinite; animation-delay: 2.5s;"></div>
+            <div class="shape" style="bottom: 30%; left: 8%; width: 120px; height: 25px; background: #ffd93d; animation: float 6s ease-in-out infinite; animation-delay: 3s;"></div>
+        </div>
     
     <div class="news-header">
         <h2 class="news-title">Latest News and Resources</h2>
@@ -1831,7 +1926,7 @@
             <span class="news-badge">Parent Guide</span>
             <h5 class="news-main-title">CBSE Certification: The Complete Parent's Guide to Verifying Authentic School Affiliation</h5>
             <p class="news-desc">Choosing the right school is one of the most critical decisions you'll make for your child's future. But what if the trust you place in an institution turns out to be misplaced?</p>
-            <a href="#" class="read-more-link">Read more</a>
+            <a href="./academics.html" class="read-more-link">Read more</a>
         </div>
 
         <div class="news-list">
