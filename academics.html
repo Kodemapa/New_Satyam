@@ -25,9 +25,9 @@
 
     <style>
         :root {
-            --primary-blue: #0061ff;
+            --primary-blue: #799ed9;
             --primary-yellow: #ffd166;
-            --primary-purple: #6a4fb0;
+            --primary-purple: #cb8b2b;
             --primary-orange: #f48c06;
             --primary-green: #2ec4b6;
             --text-dark: #0f1720;
@@ -167,7 +167,10 @@
             left: -5%;
             width: 70%;
             height: 120%;
-            background: linear-gradient(120deg, rgba(0, 97, 255, 0.12), rgba(106, 79, 176, 0.08));
+            background-image: url('./images/acedemics-bg-final.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             clip-path: polygon(0 0, 100% 0, 78% 100%, 0% 100%);
             z-index: 0;
         }
@@ -179,12 +182,7 @@
             margin-bottom: 20px;
             position: relative;
             z-index: 1;
-            background: linear-gradient(90deg, #ffd166, #ff6b35, #6a4fb0, #0061ff);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: gradMove 8s ease infinite;
+            color: var(--primary-blue);
         }
 
         .title-underline {
@@ -552,6 +550,190 @@
         footer .footer-links a:hover { color: white; }
         footer .copyright { font-size: 0.9rem; opacity: 0.6; margin: 0; }
 
+        /* --- NEW WHY CHOOSE SECTION STYLES --- */
+        .why-choose-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, #f0f4f8 0%, #e8eef5 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative Background Shapes for Why Choose Section */
+        .why-shapes { position: absolute; width: 100%; height: 100%; top: 0; left: 0; overflow: hidden; z-index: 0; pointer-events: none; }
+        
+        .why-shape { position: absolute; opacity: 0.5; animation: float 6s ease-in-out infinite; }
+        
+        /* Triangle Shapes */
+        .why-triangle { width: 0; height: 0; border-left: 40px solid transparent; border-right: 40px solid transparent; border-bottom: 70px solid; }
+        .why-triangle-1 { top: 10%; right: 10%; border-bottom-color: #FF6B6B; animation-delay: 0s; }
+        .why-triangle-2 { bottom: 20%; left: 5%; border-bottom-color: #4ECDC4; transform: rotate(180deg); animation-delay: 1.5s; }
+        .why-triangle-3 { top: 50%; left: 8%; border-bottom-color: #F7B731; animation-delay: 3s; border-left: 30px solid transparent; border-right: 30px solid transparent; border-bottom-width: 50px; }
+        
+        /* Circle Shapes */
+        .why-circle { border-radius: 50%; }
+        .why-circle-1 { top: 25%; left: 12%; width: 70px; height: 70px; border: 4px solid #00D2FF; background: transparent; animation-delay: 2s; }
+        .why-circle-2 { bottom: 30%; right: 15%; width: 60px; height: 60px; border: 3px solid #5F27CD; background: transparent; animation-delay: 0.5s; }
+        .why-circle-3 { top: 65%; right: 6%; width: 50px; height: 50px; border: 3px solid #F093FB; background: transparent; animation-delay: 2.5s; }
+        
+        /* Square/Rectangle Shapes */
+        .why-square { border-radius: 8px; }
+        .why-square-1 { top: 40%; right: 22%; width: 55px; height: 55px; background: rgba(255, 107, 107, 0.3); transform: rotate(15deg); animation-delay: 1s; }
+        .why-square-2 { bottom: 40%; left: 15%; width: 45px; height: 45px; background: rgba(78, 205, 196, 0.3); transform: rotate(-20deg); animation-delay: 2.8s; }
+        
+        /* Ribbon Shapes */
+        .why-ribbon { width: 110px; height: 22px; position: relative; animation-delay: 1.2s; }
+        .why-ribbon::before { content: ''; position: absolute; width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 11px solid inherit; left: -12px; top: 0; }
+        .why-ribbon::after { content: ''; position: absolute; width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 11px solid inherit; right: -12px; top: 0; }
+        .why-ribbon-1 { top: 18%; left: 4%; background: #F7B731; animation-delay: 0.8s; }
+        .why-ribbon-2 { bottom: 15%; right: 18%; background: rgba(244, 140, 6, 0.5); animation-delay: 2.2s; }
+
+        .section-tag {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+            color: white;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .section-main-title {
+            color: #2d3748;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            color: #4a5568;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .features-list {
+            max-width: 900px;
+            margin: 60px auto 0;
+        }
+
+        .feature-row {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .feature-row::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 6px;
+            transition: width 0.3s ease;
+        }
+
+        .feature-row:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-row:hover::before {
+            width: 12px;
+        }
+
+        .row-1::before { background: linear-gradient(180deg, #FF6B6B, #FF8E53); }
+        .row-2::before { background: linear-gradient(180deg, #4ECDC4, #44A08D); }
+        .row-3::before { background: linear-gradient(180deg, #F7B731, #F37335); }
+        .row-4::before { background: linear-gradient(180deg, #5F27CD, #341F97); }
+        .row-5::before { background: linear-gradient(180deg, #00D2FF, #3A7BD5); }
+        .row-6::before { background: linear-gradient(180deg, #F093FB, #F5576C); }
+
+        .feature-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #e2e8f0;
+            line-height: 1;
+            min-width: 100px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .row-1:hover .feature-number { color: #FF6B6B; }
+        .row-2:hover .feature-number { color: #4ECDC4; }
+        .row-3:hover .feature-number { color: #F7B731; }
+        .row-4:hover .feature-number { color: #5F27CD; }
+        .row-5:hover .feature-number { color: #00D2FF; }
+        .row-6:hover .feature-number { color: #F093FB; }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f7fafc, #edf2f7);
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .feature-icon i {
+            font-size: 36px;
+            color: #2d3748;
+            transition: all 0.3s;
+        }
+
+        .row-1:hover .feature-icon { background: linear-gradient(135deg, #FF6B6B, #FF8E53); }
+        .row-2:hover .feature-icon { background: linear-gradient(135deg, #4ECDC4, #44A08D); }
+        .row-3:hover .feature-icon { background: linear-gradient(135deg, #F7B731, #F37335); }
+        .row-4:hover .feature-icon { background: linear-gradient(135deg, #5F27CD, #341F97); }
+        .row-5:hover .feature-icon { background: linear-gradient(135deg, #00D2FF, #3A7BD5); }
+        .row-6:hover .feature-icon { background: linear-gradient(135deg, #F093FB, #F5576C); }
+
+        .feature-row:hover .feature-icon i {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .feature-content {
+            flex: 1;
+        }
+
+        .feature-content h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #2d3748;
+            margin-bottom: 12px;
+        }
+
+        .feature-content p {
+            color: #718096;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .feature-row {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            .feature-number {
+                font-size: 3rem;
+            }
+        
+
         /* Values styles moved to css/values.css for parity with gallery */
     </style>
 </head>
@@ -588,7 +770,8 @@
         </div>
     </header>
 
-    <main style="padding-top: 120px;">
+    <main style="padding-top: 120px; 
+    background-image: url(../images/academics-bg.png);">
         <section class="academic-hero">
             <div class="hero-bg-diag"></div>
             <div class="float-shape shape-square"></div>
@@ -601,7 +784,7 @@
                             WAY</span>
                         <h1 class="page-title">Academic <br>Excellence</h1>
                         <div class="title-underline mb-4"></div>
-                        <p class="lead" style="font-weight: 500; color: #555;">
+                        <p class="lead" style="font-weight: 500; color: #f9f3f3;">
                             We follow the CBSE curriculum, offering students access to a structured, progressive
                             learning framework recognized throughout India.
                         </p>
@@ -621,82 +804,95 @@
             </div>
         </section>
 
-        <section class="values-section">
-            <div class="decor-orange-lines">
-                <div class="line-stripe stripe-long"></div>
-                <div class="line-stripe stripe-short"></div>
+        <section class="why-choose-section">
+            <div class="why-shapes">
+                <div class="why-shape why-triangle why-triangle-1"></div>
+                <div class="why-shape why-triangle why-triangle-2"></div>
+                <div class="why-shape why-triangle why-triangle-3"></div>
+                <div class="why-shape why-circle why-circle-1"></div>
+                <div class="why-shape why-circle why-circle-2"></div>
+                <div class="why-shape why-circle why-circle-3"></div>
+                <div class="why-shape why-square why-square-1"></div>
+                <div class="why-shape why-square why-square-2"></div>
+                <div class="why-shape why-ribbon why-ribbon-1"></div>
+                <div class="why-shape why-ribbon why-ribbon-2"></div>
             </div>
 
-            <div class="container">
-                <div class="row">
-                    <div class="container">
-                        <div class="row">
-                            <div
-                                class="col-lg-5 pe-lg-5 d-flex flex-column justify-content-center yellow-panel animate-up">
-                                <div class="values-header">
-                                    <h2>
-                                        <p style="color:rgb(228, 174, 12);">Why Choose Satyam?</p>
-                                    </h2>
-                                    <p style="color:white; font-weight:400;">Dedicated to nurturing learners across all
-                                        grades with consistent academic results throughout the years.</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-7 ps-lg-5">
-                                <div class="row mt-4 justify-content-center">
-                                    <div class="col-md-4 animate-up delay-2">
-                                        <div class="value-item on-purple text-center">
-                                            <div class="value-icon-box" style="color: #67ce88;"><i
-                                                    class="fa-solid fa-certificate"></i></div>
-                                            <div class="value-bg-number" style="font-size: 6rem;">01</div>
-                                            <div class="value-label">Recognized CBSE Affiliation</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 animate-up delay-2">
-                                        <div class="value-item on-purple text-center">
-                                            <div class="value-icon-box" style="color: #fdd800;"><i
-                                                    class="fa-solid fa-computer"></i></div>
-                                            <div class="value-bg-number" style="font-size: 6rem;">02</div>
-                                            <div class="value-label">LEAD Digital Classrooms</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 animate-up delay-2">
-                                        <div class="value-item on-purple text-center">
-                                            <div class="value-icon-box" style="color: #8cc63f;"><i
-                                                    class="fa-solid fa-flask"></i></div>
-                                            <div class="value-bg-number" style="font-size: 6rem;">03</div>
-                                            <div class="value-label">Future-Ready STEM Focus</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row g-4 mt-3 justify-content-center">
-                                    <div class="col-md-4 animate-up delay-2">
-                                        <div class="value-item on-purple text-center">
-                                            <div class="value-icon-box" style="color: #2ec4b6;"><i
-                                                    class="fa-solid fa-trophy"></i></div>
-                                            <div class="value-bg-number" style="font-size: 6rem;">04</div>
-                                            <div class="value-label">Holistic Development</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 animate-up delay-2">
-                                        <div class="value-item on-purple text-center">
-                                            <div class="value-icon-box" style="color: #b27a00;"><i
-                                                    class="fa-solid fa-chalkboard-user"></i></div>
-                                            <div class="value-bg-number" style="font-size: 6rem;">05</div>
-                                            <div class="value-label">Expert Faculty Team</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 animate-up delay-2">
-                                        <div class="value-item on-purple text-center">
-                                            <div class="value-icon-box" style="color: #f05a28;"><i
-                                                    class="fa-solid fa-wallet"></i></div>
-                                            <div class="value-bg-number" style="font-size: 6rem;">06</div>
-                                            <div class="value-label">Accessible Quality</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+            <div class="container" style="position: relative; z-index: 1;">
+                <div class="text-center mb-5 animate-up">
+                    <span class="section-tag">OUR EXCELLENCE</span>
+                    <h2 class="section-main-title">Why Choose Satyam?</h2>
+                    <p class="section-subtitle">Dedicated to nurturing learners across all grades with consistent academic results</p>
+                </div>
+
+                <div class="features-list">
+                    <div class="feature-row row-1 animate-up">
+                        <div class="feature-number">01</div>
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-certificate"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Recognized CBSE Affiliation</h3>
+                            <p>Government approved curriculum providing structured learning pathways and recognition across India, ensuring your child's credentials are respected nationwide.</p>
                         </div>
                     </div>
+
+                    <div class="feature-row row-2 animate-up delay-1">
+                        <div class="feature-number">02</div>
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-computer"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>LEAD Digital Classrooms</h3>
+                            <p>Partnership with LEAD School bringing world-class digital infrastructure, interactive smart classrooms, and engaging digital textbooks.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-row row-3 animate-up delay-2">
+                        <div class="feature-number">03</div>
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-flask"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Future-Ready STEM Focus</h3>
+                            <p>Innovative Science, Technology, Engineering, and Mathematics curriculum with state-of-the-art laboratories and coding classes.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-row row-4 animate-up delay-3">
+                        <div class="feature-number">04</div>
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Holistic Development</h3>
+                            <p>Wide-ranging activities including athletics, cricket, basketball, dance, and instrumental music for complete growth.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-row row-5 animate-up delay-1">
+                        <div class="feature-number">05</div>
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Expert Faculty Team</h3>
+                            <p>Dedicated teachers with years of classroom experience, specialized subject knowledge, and modern teaching certifications.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-row row-6 animate-up delay-2">
+                        <div class="feature-number">06</div>
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-wallet"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Accessible Quality</h3>
+                            <p>Affordable fee structure without compromising educational quality, with transparent cost breakdowns.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- <section class="animated-purple-bg py-5">
