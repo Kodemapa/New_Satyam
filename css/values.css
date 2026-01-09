@@ -1,0 +1,67 @@
+/* Shared values / 15 Years section styles (sourced from gallery.html)
+   Uses explicit color values to ensure identical rendering across pages */
+.values-section {
+    position: relative;
+    background: linear-gradient(105deg,#188888 40.1%, #6ca57f 100%);
+    padding: 30px 0 120px 0; overflow: hidden; z-index: 1;
+}
+.values-header h2 {
+    color: #212529; font-weight: 800; font-size: clamp(2.5rem, 4vw, 3.8rem); line-height: 1.1; margin-bottom: 40px; word-spacing: 5px;
+}
+.values-desc {
+    font-size: 1.05rem; line-height: 1.7; color: #fff; font-weight: 500; max-width: 90%; margin-bottom: 60px;
+}
+.value-item {
+    position: relative; text-align: center; z-index: 2; padding: 20px; margin-top: 40px; transition: transform 0.3s ease;
+}
+.value-item:hover { transform: translateY(-15px); }
+.value-icon-box { font-size: 3rem; margin-bottom: 0px; position: relative; z-index: 2; transition: 0.3s; }
+.value-item:hover .value-icon-box { transform: scale(1.2) rotate(10deg); }
+.value-bg-number {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 8rem; font-weight: 900; z-index: -1; line-height: 0;
+    font-family: 'Montserrat', sans-serif; letter-spacing: -5px;
+    animation: floatNumbers 8s ease-in-out infinite alternate;
+}
+@keyframes floatNumbers {
+    0% { transform: translate(-50%, -50%); }
+    100% { transform: translate(-45%, -55%); }
+}
+.on-yellow .value-bg-number { color: rgba(0,0,0, 0.05); }
+.on-yellow .value-label { color: #212529; }
+.on-purple .value-bg-number { color: rgba(255, 255, 255, 0.124); }
+.on-purple .value-label { color: #fff; }
+.value-label { font-weight: 800; font-size: 1.3rem; margin-top: 90px; display: block; }
+
+@media (max-width: 767px) {
+    .value-bg-number { font-size: 4.5rem; }
+    .value-icon-box { font-size: 2.2rem; }
+    .value-label { margin-top: 30px; font-size: 1.05rem; }
+}
+.decor-orange-lines {
+    position: absolute;
+    bottom: 40px;
+    right: 12%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1;
+    align-items: center;
+    animation: none; /* disable animation for decorative stripes */
+}
+.line-stripe {
+    height: 12px;
+    background: #fdd800;
+    transform: none; /* horizontal bars */
+    border-radius: 10px;
+    display: block;
+}
+.stripe-long { width: 260px; background: #fdd800; }
+.stripe-short { width: 160px; background: #f05a28; }
+.btn-learn-more {
+    background-color: #009ceb; color: #fff; font-weight: 700; font-size: 0.9rem; padding: 15px 35px;
+    text-transform: uppercase; border: none; border-radius: 0; text-decoration: none; transition: background 0.3s;
+    position: relative; overflow: hidden;
+}
+.btn-learn-more:hover { background-color: #0081c2; color: #fff; }
+.yellow-dash-btn { display: block; width: 30px; height: 6px; background-color: #fdd800; margin-left: -5px; position: relative; z-index: 2; }

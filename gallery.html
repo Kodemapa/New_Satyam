@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="author" content="elite-themes24">
+	<meta name="description" content="Satyam International School - Excellence in Education for a Brighter Future">
+	<meta name="keywords"
+		content="Responsive, HTML5, elite-themes24, Landing, Software, Mobile App, SaaS, Startup, Creative, Digital Product">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- SITE TITLE -->
+	<title>Satyam International School - Excellence in Education for a Brighter Future</title>
+	<!-- FAVICON AND TOUCH ICONS -->
+	<link rel="shortcut icon" href="images/Satyam_Icon_1.png" type="image/x-icon">
+	<link rel="icon" href="images/Satyam_Icon_1.png" type="image/x-icon">
+	<link rel="apple-touch-icon" sizes="152x152" href="images/Satyam_Icon_1.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="images/Satyam_Icon_1.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="images/Satyam_Icon_1.png">
+	<link rel="apple-touch-icon" href="images/Satyam_Icon_1.png">
+	<link rel="icon" href="images/Satyam_Icon_1.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="css/values.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #009ceb;
+            --primary-yellow: #fdd800;
+            --primary-purple: #7d6caa;
+            --primary-orange: #f05a28;
+            --primary-green: #8cc63f;
+            --text-dark: #212529;
+            --footer-bg: #1f1f1f;
+            --hero-purple-deco: #b2a4d4;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        /* 1. Icon Wiggle on Hover */
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        /* 2. Card Shine Effect */
+        .program-card {
+            position: relative;
+            overflow: hidden; /* Ensure shine doesn't spill out */
+        }
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.6), transparent);
+            transform: skewX(-25deg);
+            transition: 0.5s;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .program-card:hover::before {
+            left: 125%;
+            transition: 0.7s ease-in-out;
+        }
+        .program-card:hover .program-icon {
+            animation: wiggle 0.6s ease-in-out;
+        }
+
+        /* 3. Button Pulse Ring */
+        @keyframes pulseRing {
+            0% { box-shadow: 0 0 0 0 rgba(240, 90, 40, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(240, 90, 40, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(240, 90, 40, 0); }
+        }
+        .play-btn-circle {
+            animation: pulseRing 2s infinite;
+        }
+
+        /* 4. Organic Blob Morphing */
+        @keyframes blobMorph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        }
+        .blob-shape {
+            position: absolute;
+            background: rgba(140, 198, 63, 0.15);
+            animation: blobMorph 8s linear infinite alternate, floatY 10s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        /* 5. Header Bubble Rise */
+        .header-bubbles .bubble {
+            position: absolute;
+            bottom: -20px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: riseUp 4s infinite ease-in;
+        }
+        .b1 { width: 10px; height: 10px; left: 10%; animation-delay: 0s; }
+        .b2 { width: 15px; height: 15px; left: 50%; animation-delay: 1.5s; background: var(--primary-yellow) !important; }
+        .b3 { width: 8px; height: 8px; left: 80%; animation-delay: 2.5s; background: var(--primary-purple) !important; }
+
+        @keyframes riseUp {
+            0% { transform: translateY(0) scale(1); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-60px) scale(1.2); opacity: 0; }
+        }
+
+         /* --- NAVBAR (Consistent) --- */
+        .navbar { padding: 15px 0; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .nav-link { color: #000; font-weight: 700; font-size: 14px; margin: 0 8px; transition: color 0.3s; }
+        .nav-link:hover { color: var(--primary-blue); }
+        .dropdown-menu{ border:none; box-shadow:0 10px 30px rgba(0,0,0,0.1); border-radius: 12px; padding: 15px; }
+        .dropdown-item { font-weight: 600; padding: 10px 15px; border-radius: 8px; transition: all 0.3s; }
+        .dropdown-item:hover { background-color: var(--bright-bg); color: var(--primary-purple); transform: translateX(5px); }
+        @media (min-width: 992px) { .nav-item.dropdown:hover .dropdown-menu { display: block; margin-top: 0; } }
+
+        /* =========================================
+           EXISTING STYLES (Preserved)
+           ========================================= */
+
+        .programs-section { 
+            padding: 100px 0; 
+            background: linear-gradient(180deg, #f9f9f9 0%, #ffffff 100%); 
+            position: relative; 
+            overflow: hidden;
+        }
+        
+        .prog-decor-circle {
+            position: absolute; top: 10%; left: -50px; width: 150px; height: 150px;
+            border: 15px solid rgba(253, 216, 0, 0.15); border-radius: 50%; z-index: 0;
+            animation: floatY 7s ease-in-out infinite;
+        }
+        .prog-decor-triangle {
+            position: absolute; bottom: 10%; right: -20px; width: 0; height: 0;
+            border-left: 20px solid transparent; border-right: 20px solid transparent;
+            border-bottom: 35px solid rgba(140, 198, 63, 0.2);
+            transform: rotate(15deg); z-index: 0;
+            animation: rotateSimple 15s linear infinite;
+        }
+
+        .programs-header { text-align: center; margin-bottom: 60px; position: relative; z-index: 2; }
+        .programs-header h2 { 
+            font-size: clamp(2rem, 3.5vw, 3rem); 
+            color: #212529; 
+            margin-bottom: 20px; 
+            font-weight: 800;
+        }
+        .programs-header h2::after {
+            content: ''; display: block; width: 60px; height: 6px; 
+            background: var(--primary-orange); 
+            margin: 15px auto 0; border-radius: 3px;
+        }
+
+        .programs-header p.programs-intro { 
+            font-size: 1.05rem; color: #000000; max-width: 800px; margin: 0 auto; line-height: 1.7; 
+        }
+
+        .programs-grid { position: relative; z-index: 2; }
+
+        .program-card { 
+            background: #fff; 
+            border-radius: 16px; 
+            padding: 35px 30px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05); 
+            text-align: left; 
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+            height: 100%; 
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.02);
+            overflow: hidden;
+        }
+        
+        .program-card:hover { 
+            transform: translateY(-12px); 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.1); 
+        }
+
+        .program-card-content { display: flex; flex-direction: column; height: 100%; position: relative; z-index: 2;}
+
+        .program-icon-wrapper { margin-bottom: 20px; }
+        .program-icon { 
+            font-size: 24px; width: 56px; height: 56px; 
+            border-radius: 50%; display: inline-flex; 
+            align-items: center; justify-content: center; 
+            color: #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .program-title { 
+            font-weight: 800; font-size: 1.25rem; color: #222; margin-bottom: 12px; 
+        }
+        .program-desc { 
+            color: #666; font-size: 0.95rem; line-height: 1.6; flex-grow: 1; margin-bottom: 15px;
+        }
+        .program-meta { 
+            font-size: 0.85rem; color: #999; font-weight: 600; border-top: 1px solid #eee; padding-top: 15px;
+        }
+
+        /* Specific Icon Gradients based on image */
+        .ic-kreedo { background: linear-gradient(135deg, #00c2a8, #009985); }
+        .ic-senses { background: linear-gradient(135deg, #ffd166, #ffb347); }
+        .ic-music { background: linear-gradient(135deg, #ff7aa2, #ff5e62); }
+        .ic-art { background: linear-gradient(135deg, #a18cd1, #7d6caa); }
+        .ic-outdoor { background: linear-gradient(135deg, #8cc63f, #6aa029); }
+        .ic-lang { background: linear-gradient(135deg, #fdd800, #f39200); }
+
+        @media (max-width: 991px){
+            .programs-section { padding: 60px 0; }
+        }
+        
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        @keyframes rotateSlow {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        @keyframes rotateSimple {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes slideDiag {
+            0%, 100% { transform: rotate(45deg) translate(0, 0); }
+            50% { transform: rotate(45deg) translate(-10px, 10px); }
+        }
+        @keyframes floatTriangle {
+            0%, 100% { transform: rotate(0deg) translateY(0); }
+            50% { transform: rotate(10deg) translateY(-8px); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes expandWidth {
+            from { width: 0; }
+            to { width: 35px; }
+        }
+        @keyframes mobileFloat {
+            0% { transform: rotate(45deg) translateY(0) translateX(0) scale(1); }
+            50% { transform: rotate(45deg) translateY(-8px) translateX(6px) scale(1.01); }
+            100% { transform: rotate(45deg) translateY(0) translateX(0) scale(1); }
+        }
+
+        /* Animation Utility Classes */
+        /* Note: 'in-view' class is added via JS now to trigger these */
+        .animate-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .animate-up.in-view { opacity: 1; transform: translateY(0); }
+        
+        .delay-1 { transition-delay: 0.2s; }
+        .delay-2 { transition-delay: 0.4s; }
+        .delay-3 { transition-delay: 0.6s; }
+
+        /* --- HERO SECTION --- */
+        .hero { 
+            padding-top: 80px; padding-bottom: 100px; 
+            position: relative; background: #fff; overflow: hidden;
+        }
+        .title-wrapper { position: relative; display: flex; align-items: flex-start; z-index: 2; }
+        .purple-double-dash {
+            display: flex; flex-direction: column; justify-content: space-between;
+            height: 22px; margin-top: 18px; margin-right: 20px;
+        }
+        .purple-double-dash span { display: block; width: 35px; height: 6px; background-color: var(--hero-purple-deco); animation: expandWidth 1s ease-out forwards; }
+        .hero-title { 
+            font-weight: 900; 
+            font-size: clamp(3rem, 5vw, 4.5rem); 
+            line-height: 1.1; color: #222; 
+            margin-bottom: 20px; position: relative;
+        }
+        .hero-subtitle {
+            font-size: 1.2rem; font-weight: 600; color: #555; margin-bottom: 30px;
+            border-left: 4px solid var(--primary-orange); padding-left: 15px;
+        }
+        .yellow-dash {
+            display: inline-block; width: 35px; height: 6px; 
+            background-color: var(--primary-yellow); vertical-align: middle; margin-left: 20px;
+        }
+
+        /* Social Icons */
+        .social-icons {
+            list-style: none; display: flex; gap: 14px; padding: 0; margin: 0;
+        }
+        .social-circle a {
+            width: 46px; height: 46px; border-radius: 50%; background: #ffffff;
+            display: flex; align-items: center; justify-content: center;
+            color: #000; font-size: 22px; transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .social-circle a:hover {
+            background: #ffd800; color: #000; transform: translateY(-5px) rotate(10deg);
+        }
+        .social-circle a.facebook:hover { background: #1877f2; color: #fff; }
+        .social-circle a.instagram:hover { background: #e1306c; color: #fff; }
+
+                /* =========================================
+        INFRASTRUCTURE SECTION (New)
+        ========================================= */
+        .infrastructure-section {
+            padding: 100px 0;
+            background: #ffffff;
+            position: relative;
+        }
+
+        .infra-header {
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .infra-header h2 {
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            color: #212529;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .infra-header p {
+            font-size: 1.05rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .infra-card {
+            border: none;
+            background: transparent;
+            margin-bottom: 30px;
+        }
+
+        .infra-img-wrapper {
+            height: 240px;
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .infra-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .infra-card:hover .infra-img-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .infra-title {
+            font-weight: 800;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .infra-text {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Specific text colors from the image */
+        .text-infra-pink { color: #e91e63; }
+        .text-infra-green { color: #8cc63f; }
+        .text-infra-purple { color: #7d6caa; }
+
+        /* Hero Decorations */
+        .hero-decor-triangle-orange {
+            position: absolute; width: 0; height: 0;
+            border-left: 12px solid transparent; border-right: 12px solid transparent;
+            border-bottom: 25px solid var(--primary-orange);
+            transform: rotate(-30deg); top: 10px; left: 90%;
+            animation: floatTriangle 4s ease-in-out infinite;
+        }
+        .hero-green-ring {
+            position: absolute; bottom: -60px; left: 150px; width: 90px; height: 90px;
+            border: 6px solid var(--primary-green); border-radius: 50%; z-index: 1;
+            animation: floatY 5s ease-in-out infinite alternate;
+        }
+        .hero-orange-dot {
+            position: absolute; bottom: 50px; left: 450px; width: 24px; height: 24px;
+            background-color: var(--primary-orange); border-radius: 50%;
+            animation: breathe 3s infinite;
+        }
+        .hero-decor-plus {
+            position: absolute; top: 0%; left: 10%; width: 30px; height: 30px; z-index: 1;
+            animation: rotateSimple 12s linear infinite;
+        }
+        .hero-decor-plus::before, .hero-decor-plus::after {
+            content: ''; position: absolute; background: var(--primary-purple); border-radius: 3px;
+        }
+        .hero-decor-plus::before { width: 100%; height: 6px; top: 12px; left: 0; }
+        .hero-decor-plus::after { width: 6px; height: 100%; top: 0; left: 12px; }
+        .hero-dots-pattern {
+            position: absolute; top: 45%; left: 80%; width: 50px; height: 50px;
+            background-image: radial-gradient(var(--primary-blue) 20%, transparent 20%);
+            background-size: 8px 8px; opacity: 0.3;
+            animation: floatY 6s ease-in-out infinite reverse;
+        }
+        .hero-small-blue-ring {
+            position: absolute; top: 10%; left: 60%; width: 25px; height: 25px;
+            border: 3px solid var(--primary-blue); border-radius: 50%;
+            animation: floatTriangle 7s ease-in-out infinite;
+        }
+        .hero-faint-square {
+            position: absolute; bottom: 30%; right: 10%; width: 60px; height: 60px;
+            border: 4px solid #f0f0f0; transform: rotate(15deg); z-index: 0;
+            animation: rotateSimple 20s linear infinite;
+        }
+
+        /* Right Side Composition */
+        .composition-area {
+            position: relative; height: 600px; display: flex; justify-content: center; align-items: center;
+            transition: transform 0.3s ease; --mx: 0; --my: 0;
+        }
+
+        .composition-area::before {
+            content: '';
+            position: absolute; inset: -10%; right: -5%; width: 70%; height: 110%;
+            background: radial-gradient(closest-side, rgba(240,233,150,0.12), transparent 40%);
+            z-index: 1; filter: blur(40px); pointer-events: none; animation: rotateSlow 18s linear infinite;
+        }
+
+        .purple-strip-diag {
+            position: absolute; width: 280px; height: 10px; background-color: var(--hero-purple-deco);
+            top: 52%; left: 2%; transform: rotate(45deg); z-index: 6;
+            animation: slideDiag 6s ease-in-out infinite;
+        }
+
+        .diamond-box {
+            width: 450px; height: 450px; transform: rotate(45deg); overflow: hidden;
+            border: 10px solid #fff; box-shadow: 0 24px 50px rgba(0,0,0,0.12);
+            position: relative; z-index: 8; background: #eee;
+            transition: transform 0.25s cubic-bezier(.2,.9,.2,1), box-shadow 0.25s;
+        }
+        .diamond-box::before{
+            content: '';
+            position: absolute; inset: -6px; z-index: -1; border-radius: 6px;
+            background: conic-gradient(from 200deg at 50% 50%, rgba(240,88,40,0.18), rgba(255,216,0,0.18), rgba(125,108,170,0.18));
+            filter: blur(12px);
+            animation: rotateSimple 8s linear infinite;
+        }
+
+        .diamond-box::after{
+            content: '';
+            position: absolute; right: -22%; top: 8%; width: 460px; height: 460px;
+            background: radial-gradient(circle at 70% 30%, rgba(240,88,40,0.16) 0%, rgba(255,216,0,0.10) 25%, rgba(125,108,170,0.06) 55%, transparent 75%);
+            filter: blur(60px);
+            z-index: -2; pointer-events: none; transform: translateZ(0);
+            animation: hueShift 12s linear infinite alternate;
+            transition: opacity 0.3s ease;
+            opacity: 0.98;
+        }
+
+        .diamond-box:hover { transform: rotate(45deg) scale(1.035); box-shadow: 0 30px 80px rgba(0,0,0,0.16); }
+        .diamond-box img {
+            width: 100%; height: 100%; object-fit: cover; transform: rotate(-45deg) scale(1.45);
+            transition: transform 0.5s ease;
+        }
+        .diamond-box:hover img{ transform: rotate(-45deg) scale(1.53) translateY(-6px); }
+
+        .hero::before{
+            content: '';
+            position: absolute; left: -5%; top: -25%; width: 110%; height: 140%;
+            z-index: 0; pointer-events: none; animation: hueShift 12s linear infinite alternate; filter: blur(30px); opacity: 0.95;
+        }
+
+        .hero::after{
+            content: '';
+            position: absolute; inset: 0; z-index: 1; pointer-events: none;
+            background-image: radial-gradient(circle at 10% 10%, rgba(125,108,170,0.08) 6%, transparent 6%),
+                              radial-gradient(circle at 90% 40%, rgba(140,198,63,0.06) 6%, transparent 6%),
+                              radial-gradient(circle at 60% 85%, rgba(240,90,40,0.06) 6%, transparent 6%);
+            background-size: 14% 14%, 14% 14%, 14% 14%;
+            animation: confettiFloat 9s ease-in-out infinite; opacity: 0.9;
+        }
+
+        @keyframes hueShift {
+            0% { filter: hue-rotate(0deg) saturate(1); }
+            50% { filter: hue-rotate(40deg) saturate(1.1); }
+            100% { filter: hue-rotate(80deg) saturate(1); }
+        }
+
+        .hero-title {
+            font-weight: 900;
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            line-height: 1.1; color: #222; margin-bottom: 40px; position: relative;
+            background: linear-gradient(90deg, #5c4b4b 0%, #ff8259 40%, #ffe433 70%);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+            transition: transform 0.25s ease, filter 0.25s ease;
+            animation: titleFloat 6s ease-in-out infinite;
+        }
+        @keyframes titleFloat {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0); }
+        }
+
+        .title-wrapper::after{
+            content: '';
+            position: absolute; left: -10px; top: -8px; z-index: 0; width: 360px; height: 200px;
+            background: radial-gradient(circle at 30% 30%, rgba(253,216,0,0.14), transparent 45%);
+            filter: blur(40px); pointer-events: none; opacity: 0.95;
+            transition: opacity 0.4s ease;
+        }
+
+        .composition-area::after{
+            content: '';
+            position: absolute; inset: 0; z-index: 2; pointer-events: none;
+            background-image: radial-gradient(circle at 10% 10%, rgba(125,108,170,0.18) 6%, transparent 6%),
+                              radial-gradient(circle at 90% 40%, rgba(140,198,63,0.12) 6%, transparent 6%),
+                              radial-gradient(circle at 60% 85%, rgba(240,90,40,0.12) 6%, transparent 6%);
+            background-size: 18% 18%, 18% 18%, 18% 18%;
+            animation: confettiFloat 8s ease-in-out infinite;
+        }
+        @keyframes confettiFloat{
+            0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.9; }
+            50% { transform: translateY(-12px) translateX(6px) rotate(6deg); opacity: 0.95; }
+            100% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.9; }
+        }
+
+        .hero-small-accent {
+            position: absolute; left: 18%; top: 50%; transform: translateY(-50%); z-index: 3;
+            width: 20px; height: 20px; border-radius: 4px; background: linear-gradient(180deg, var(--primary-blue), var(--primary-purple));
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+            animation: floatY 4.5s ease-in-out infinite;
+        }
+
+        .yellow-triangle-large {
+            position: absolute; top: 20px; right: 20px; width: 380px; height: 380px;
+            background-color: var(--primary-yellow); clip-path: polygon(100% 0, 0 0, 100% 100%); z-index: 4; opacity: 0.98;
+        }
+        .red-bookmark-flag {
+            position: absolute; top: 0; right: 80px; width: 50px; height: 70px;
+            background: #b71c1c; color: #fff; display: flex; align-items: center; justify-content: center;
+            font-weight: bold; font-size: 11px; z-index: 6; animation: floatY 5s ease-in-out infinite;
+            transform-origin: top center;
+        }
+        /* Added Pop animation for flag on hover */
+        .yellow-triangle-large:hover .red-bookmark-flag {
+             animation: swing 1s ease-in-out infinite alternate;
+        }
+        @keyframes swing {
+            0% { transform: rotate(5deg); }
+            100% { transform: rotate(-5deg); }
+        }
+
+        .red-bookmark-flag::after {
+            content: ''; position: absolute; bottom: -15px; left: 0; width: 0; height: 0;
+            border-left: 25px solid #b71c1c; border-right: 25px solid #b71c1c; border-bottom: 15px solid transparent;
+        }
+        .nav-arrows {
+            position: absolute; bottom: 30px; right: 60px; font-size: 13px; font-weight: 800; color: #333; z-index: 6;
+        }
+        .nav-arrows i { margin: 0 5px; color: var(--primary-orange); cursor: pointer; transition: 0.3s; }
+        .nav-arrows i:hover { transform: scale(1.4); }
+
+        @media (max-width: 991px) {
+            .composition-area { height: 520px; }
+            .diamond-box { width: 380px; height: 380px; }
+        }
+
+        @media (max-width: 767px) {
+            .title-wrapper::after { display: block; width: 220px; height: 140px; left: -4px; top: -6px; filter: blur(26px); opacity: 0.85; }
+        }
+
+        /* Values section styles moved to css/values.css */
+
+        /* -----------------------------------------
+           PROGRAMS & ACTIVITIES (Satyam Tiny Tots - Bellary)
+           ----------------------------------------- */
+        .programs-section { padding: 64px 0; background: linear-gradient(180deg,#f77d20 0%, #eed31e 100%); position: relative; }
+        /* See New & Enhanced section for card shine and wobble */
+
+        @media (max-width: 991px){
+            .programs-section{ padding:40px 0; }
+            .programs-grid .col-md-6{ margin-bottom:18px; }
+        }
+
+        @media (max-width: 767px){
+            .programs-section{ padding:28px 0; }
+            .programs-header h2{ font-size:1.2rem; }
+            .program-card{ padding:16px; }
+        }
+
+        /* =========================================
+           MISSION SECTION
+           ========================================= */
+        .mission-section {
+            padding: 100px 0; background: #fff; position: relative; overflow: hidden;
+        }
+        .mission-decor-green-ring {
+            position: absolute; top: -40px; right: -40px; width: 160px; height: 160px;
+            border: 10px solid #bed62f; border-radius: 50%; z-index: 1;
+            animation: floatY 6s ease-in-out infinite alternate;
+        }
+        .mission-decor-orange-line {
+            position: absolute; top: -20px; right: 20%; width: 6px; height: 80px;
+            background-color: #f39200; transform: rotate(45deg); z-index: 1;
+            animation: slideDiag 8s ease-in-out infinite;
+        }
+        .mission-left-col { position: relative; z-index: 5; padding-right: 20px; }
+        .mission-title-wrap { position: relative; display: inline-block; margin-bottom: 20px; }
+        .mission-title { font-weight: 800; font-size: 3rem; color: #ff6600; line-height: 1.1; margin: 0; }
+        .mission-dot-orange {
+            position: absolute; top: -5px; right: -25px; width: 20px; height: 20px;
+            background-color: #f39200; border-radius: 50%; animation: breathe 4s infinite;
+        }
+        .mission-text { color: #555; line-height: 1.7; margin-bottom: 25px; font-size: 1rem; max-width: 450px; }
+        .mission-tagline { font-weight: 800; font-size: 1.1rem; color: #e30f08bf; margin-bottom: 35px; }
+        .btn-wrapper { display: flex; align-items: center; margin-bottom: 60px; }
+        .btn-learn-more {
+            background-color: #009ceb; color: #fff; font-weight: 700; font-size: 0.9rem; padding: 15px 35px;
+            text-transform: uppercase; border: none; border-radius: 0; text-decoration: none; transition: background 0.3s;
+            position: relative; overflow: hidden;
+        }
+        .btn-learn-more:hover { background-color: #0081c2; color: #fff; animation: pulseRing 1s; }
+        
+        .yellow-dash-btn {
+            display: block; width: 30px; height: 6px; background-color: #fdd800; margin-left: -5px; position: relative; z-index: 2;
+        }
+        .decor-red-triangle {
+            position: absolute; bottom: 20px; left: 100px; width: 0; height: 0;
+            border-style: solid; border-width: 0 0 40px 40px; border-color: transparent transparent #f05a28 transparent;
+            z-index: 1; animation: floatTriangle 5s ease-in-out infinite;
+        }
+        .mission-small-img {
+            position: absolute; bottom: -50px; right: -20px; width: 240px; height: 160px;
+            object-fit: cover; border: 8px solid #fff; z-index: 10; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .mission-small-img:hover { transform: translateY(-10px); }
+
+        .mission-right-col { position: relative; padding-left: 0; }
+        .grey-canvas {
+            background-color: #dcdcdc; width: 100%; height: 420px; position: relative;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 20px;
+        }
+        .graphic-20-container { position: relative; width: 300px; height: 200px; display: flex; justify-content: center; align-items: center; }
+        .text-20 {
+            font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 14rem; line-height: 1;
+            color: #d69f00; letter-spacing: -25px; position: relative; z-index: 1; margin-right: 15px;
+            transition: 0.3s;
+            text-shadow: 5px 5px 0px rgba(255,255,255,0.2);
+            animation: textShadowPulse 3s infinite alternate;
+        }
+        @keyframes textShadowPulse {
+            from { text-shadow: 5px 5px 0px rgba(255,255,255,0.2); }
+            to { text-shadow: 10px 10px 0px rgba(255,255,255,0.5); transform: scale(1.02); }
+        }
+
+        .play-btn-circle {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 80px; height: 80px; background-color: #f05a28; border-radius: 50%; z-index: 5;
+            display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;
+            border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.3s;
+            /* Animation pulseRing added in new section */
+        }
+        .play-btn-circle:hover { transform: translate(-50%, -50%) scale(1.1); }
+        .canvas-footer-text { margin-top: 10px; text-transform: uppercase; color: #777; font-weight: 700; letter-spacing: 1px; font-size: 0.9rem; }
+
+        /* Container settings */
+        .hero-image-container {
+            position: relative;
+            padding: 4rem; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 1. MAIN IMAGE: Shape Morphing Animation */
+        /* Instead of moving position, the SHAPE itself changes */
+        .hero-main-img {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 800px; 
+            height: auto;
+            object-fit: cover;
+            background-color: #fff;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            
+            /* Starting shape */
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            
+            /* Animation: Morphs the border-radius smoothly */
+            animation: liquid-morph 8s ease-in-out infinite;
+            transition: all 0.5s;
+        }
+
+        /* 2. BACKGROUND: Constant 360-degree Rotation */
+        .blob-backdrop {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 135%;
+            height: 135%;
+            background-color: rgba(255, 165, 0, 0.12);
+            z-index: 1;
+            
+            /* Starting Shape */
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            
+            /* Animation: Spins continuously like a galaxy */
+            animation: spin-cycle 30s linear infinite;
+        }
+
+        /* 3. BADGE: Pulse Ripple Effect */
+        .floating-badge {
+            position: absolute;
+            bottom: 15%;
+            right: 5%;
+            background: #fff;
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            z-index: 3;
+            text-align: center;
+            border-left: 5px solid var(--primary-blue, #0d6efd);
+            
+            /* Animation: Scale pulse + Shadow Ripple */
+            animation: pulse-ripple 3s infinite;
+        }
+
+        /* --- ANIMATION KEYFRAMES --- */
+
+        /* Changes the curvature of the corners organically */
+        @keyframes liquid-morph {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+
+        /* Rotates the background full circle while keeping it centered */
+        @keyframes spin-cycle {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Makes the badge 'beat' like a heart with a shadow ripple */
+        @keyframes pulse-ripple {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.4);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 15px rgba(13, 110, 253, 0); /* Ripple fades out */
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(13, 110, 253, 0);
+            }
+        }
+
+        /* =========================================
+           TESTIMONIALS SECTION (New)
+           ========================================= */
+        @keyframes bgShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes floatSlow { 0% { transform: translateY(0) translateX(0); } 50% { transform: translateY(-24px) translateX(-24px); } 100% { transform: translateY(0) translateX(0); } }
+        @keyframes quotePulse { 0% { transform: rotate(-6deg) translateY(0) scale(1); } 50% { transform: rotate(-6deg) translateY(-4px) scale(1.02); } 100% { transform: rotate(-6deg) translateY(0) scale(1); } }
+                    
+            .testimonials-section {
+                padding: 80px 0;
+                /* Changed to a dark, rich purple gradient for depth and brightness */
+                background: linear-gradient(135deg, #31005f57, #56019c27);
+                background-size: 200% 200%;
+                animation: bgShift 10s ease-in-out infinite;
+                position: relative;
+                overflow: hidden;
+            }
+
+            /* The tilted background shape - Made a richer, more opaque purple */
+            .testimonials-section::before {
+                content: '';
+                position: absolute;
+                left: -6%; top: -12%; width: 64%; height: 160%;
+                background: rgba(91, 0, 160, 0.35);
+                transform: rotate(-8deg);
+            }
+
+            /* The floating blob - Made a brighter, more opaque blue-purple */
+            .testimonials-section::after {
+                content: '';
+                position: absolute;
+                right: -5%; top: 10%; width: 400px; height: 400px;
+                z-index: 0; pointer-events: none; transform-origin: center;
+                animation: floatSlow 10s ease-in-out infinite;
+            }
+
+            .testimonials-section .container { position: relative; z-index: 1; }
+
+            .testimonial-card {
+            position: relative; z-index: 2;
+            background: linear-gradient(180deg,#fff,#fbfbff);
+            padding: 40px 30px;
+            border-radius: 12px;
+            height: 100%;
+            transition: transform .55s cubic-bezier(.16,.95,.24,1), box-shadow .55s, opacity .5s;
+            border-left: 5px solid var(--primary-purple);
+            opacity: 0; transform: translateY(28px) scale(.98);
+        }
+        /* Reveal when the parent column receives .in-view (staggered by delay classes) */
+        .animate-up.in-view .testimonial-card { opacity: 1; transform: translateY(0) scale(1); }
+        .animate-up.delay-1.in-view .testimonial-card { transition-delay: 0.08s; }
+        .animate-up.delay-2.in-view .testimonial-card { transition-delay: 0.22s; }
+        .animate-up.delay-3.in-view .testimonial-card { transition-delay: 0.36s; }
+
+        .testimonial-card:hover { transform: translateY(-12px) scale(1.035);}
+        .testimonial-card.purple { border-left-color: var(--primary-purple);}
+        .testimonial-card.green { border-left-color: var(--primary-green);}
+        .testimonial-card.blue { border-left-color: var(--primary-blue);}
+        .quote-icon { color: rgba(0,0,0,0.06); font-size: 5rem; position: absolute; top: 6px; left: 16px; z-index: 0; transform: rotate(-8deg) translateY(6px) scale(0.98); opacity: 0.08; transition: transform .7s cubic-bezier(.2,.9,.2,1), opacity .7s; }
+        .animate-up.in-view .quote-icon { transform: rotate(-6deg) translateY(0) scale(1); opacity: 0.10; animation: quotePulse 6s ease-in-out infinite; }
+        .testimonial-text { position: relative; z-index: 1; font-style: italic; color: #444; margin-bottom: 18px; }
+        .testimonial-author { position: relative; z-index: 1; font-weight: 800; color: #222; margin-top: 6px; }
+        .testimonial-role { font-size: 0.85rem; color: #777; }
+
+        .infra-img-wrapper::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.04)); transition: opacity .5s; border-radius: 20px; }
+        .infra-img-wrapper { transition: transform .7s cubic-bezier(.2,.9,.2,1), box-shadow .5s; }
+        .infra-img-wrapper img { transition: transform .9s cubic-bezier(.22,.9,.24,1), filter .5s; }
+        .infra-card:hover .infra-img-wrapper { transform: translateY(-6px) rotate(-0.3deg); box-shadow: 0 30px 70px rgba(0,0,0,0.10); }
+        .infra-card:hover .infra-img-wrapper img { transform: scale(1.08); filter: saturate(1.06) contrast(1.03); }
+
+        .infra-title { position: relative; }
+        .infra-title::after { content: ''; position: absolute; left: 0; bottom: -10px; height: 4px; width: 60px; border-radius: 4px; background: var(--primary-purple); opacity: .95; transition: transform .4s; transform-origin: left center; }
+        .text-infra-pink::after { background: linear-gradient(90deg,#ff6b9a,#ff3d7a); }
+        .text-infra-green::after { background: linear-gradient(90deg,#a6e36e,#6dbb2f); }
+        .text-infra-purple::after { background: linear-gradient(90deg,#7d6caa,#5f4f9a); }
+
+        .infra-card { opacity: 0; transform: translateY(12px) scale(.995); }
+        .animate-up.in-view .infra-card { opacity: 1; transform: translateY(0) scale(1); transition: opacity .6s, transform .6s; }
+
+        /* Small author float */
+        @keyframes floatY { 0% { transform: translateY(0); } 50% { transform: translateY(-4px); } 100% { transform: translateY(0); } }
+        .testimonial-author.lazy-float { animation: floatY 4s ease-in-out infinite; }
+
+        /* =========================================
+           CTA SECTION (Modified Complex)
+           ========================================= */
+        .cta-section {
+            padding: 100px 0;
+            background: var(--primary-purple);
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+            text-align: center;
+        }
+
+        .cta-header-title {
+            font-weight: 800;
+            font-size: 3rem;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .cta-btn {
+            background-color: var(--primary-blue);
+            color: #fff; padding: 15px 40px; border-radius: 5px; font-weight: 700; text-decoration: none;
+            display: inline-block; margin-top: 20px; transition: 0.3s;
+        }
+        .cta-btn:hover { background-color: #007bb5; transform: scale(1.05); color: #fff; }
+
+        .cta-decor-line {
+            width: 100px; height: 5px; background: rgba(255,255,255,0.2); margin: 0 auto 30px;
+        }
+
+        /* --- Footer --- */
+        footer { background-color: var(--footer-bg); color: #fff; padding: 70px 0 40px 0; position: relative; font-size: 14px; }
+        .footer-decor-strip { position: absolute; top: -20px; right: 15%; width: 15px; height: 100px; background: var(--primary-purple); transform: rotate(45deg); z-index: 1; animation: floatY 4s ease-in-out infinite; }
+        .footer-top-strip { position: absolute; top: 0; right: 0; width: 40%; height: 8px; background: var(--primary-yellow); }
+        .footer-logo img { max-width: 120px; margin-bottom: 20px; }
+        .footer-col-title { color: #fff; font-weight: 700; margin-bottom: 15px; display: block; text-decoration: none; }
+        .footer-link { color: #fff; text-decoration: none; display: block; margin-bottom: 8px; transition: opacity 0.3s; }
+        .footer-link:hover { opacity: 0.8; padding-left: 5px; color: var(--primary-yellow); }
+        .social-circle { width: 30px; height: 30px; background: #fff; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: #000; margin-bottom: 10px; text-decoration: none; transition: transform 0.3s, background 0.3s, color 0.3s; }
+        .social-circle:hover { transform: translateY(-5px); background: var(--primary-blue); color: #fff; }
+        .magwai-link { color: var(--primary-blue); text-decoration: none; margin-top: 20px; display: block; }
+        .footer-triangle-btn { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 40px solid transparent; border-right: 40px solid transparent; border-bottom: 40px solid var(--primary-purple); cursor: pointer; transition: transform 0.3s; }
+        .footer-triangle-btn:hover { transform: translateX(-50%) scale(1.1); }
+        .footer-triangle-btn i { position: absolute; bottom: -35px; left: -6px; color: white; font-size: 12px; }
+
+       
+        /* Tablet (max-width: 991px) */
+        @media (max-width: 991px) {
+            .hero-title { font-size: 3.5rem; }
+            .composition-area { transform: scale(0.8); height: 500px; }
+            
+            /* Values Section Stack */
+            .values-section { 
+                background: linear-gradient(180deg, var(--primary-yellow) 0%, var(--primary-yellow) 35%, var(--primary-purple) 35.1%, var(--primary-purple) 100%);
+                padding-bottom: 60px;
+            }
+            .values-header h2 { font-size: 3rem; margin-bottom: 20px; text-align: center; }
+            .col-lg-5 { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 50px; }
+            
+            /* Hide decorative elements that break flow */
+            .decor-orange-lines, .decor-green-circle { display: none; }
+            .mission-decor-orange-line { display: none; }
+
+            /* Mission Section Stack */
+            .mission-small-img { 
+                position: relative; bottom: 0; right: 0; 
+                margin-top: 30px; margin-bottom: 30px; 
+                width: 100%; height: auto; box-shadow: none;
+            }
+            .grey-canvas { width: 100%; height: 350px; margin-left: 0; }
+            .text-20 { font-size: 10rem; }
+            .decor-red-triangle { display: none; }
+
+            /* Complex Section */
+            .orange-header-line { width: 80%; top: 160px; }
+        }
+
+        /* Mobile (max-width: 767px) */
+        @media (max-width: 767px) {
+            /* Navbar */
+            .navbar-brand img { height: 40px; }
+
+            /* Hero */
+            .hero { text-align: center; padding-top: 40px; padding-bottom: 60px; }
+            .hero-title { font-size: 2.5rem; margin-bottom: 20px; }
+            .title-wrapper { justify-content: center; }
+            .yellow-dash { display: none; }
+            .purple-double-dash { display: none; } /* Hide decorative dash on mobile */
+            
+            /* Fix the Diamond composition on Mobile */
+            .composition-area { 
+                transform: scale(0.65); 
+                margin-top: -50px; 
+                height: 400px;
+                width: 100%;
+                left: -15px; /* Slight centering adjustment */
+            }
+            
+            /* Keep simplified decorations on mobile (lightweight & non-intrusive) */
+            .hero-green-ring { bottom: -20px; left: 40px; width: 70px; height: 70px; border-width: 4px; animation: floatY 6s ease-in-out infinite alternate; opacity: 0.9; display: block; }
+            .hero-orange-dot { bottom: 40px; left: 60%; width: 16px; height: 16px; opacity: 0.95; display: block; }
+            .hero-decor-triangle-orange { top: 6px; left: 82%; transform: rotate(-30deg) scale(0.8); display: block; }
+            .hero-decor-plus { top: 4%; left: 8%; width: 22px; height: 22px; display: block; animation-duration: 12s; }
+            .hero-dots-pattern { top: 40%; left: 72%; width: 36px; height: 36px; opacity: 0.22; display: block; }
+            
+            .nav-arrows { display: none; }
+
+            /* Mobile-friendly pseudo element adjustments */
+            .hero::before { left: -2%; top: -16%; width: 105%; height: 120%; filter: blur(20px); opacity: 0.8; animation-duration: 18s; }
+            .hero::after { background-size: 20% 20%, 20% 20%, 20% 20%, 20% 20%; animation-duration: 14s; opacity: 0.75; }
+
+            .composition-area::before { display: block; inset: -6% -2% -6% -2%; width: 60%; height: 90%; filter: blur(18px); opacity: 0.75; }
+            .composition-area::after { background-size: 14% 14%, 14% 14%, 14% 14%, 14% 14%; animation-duration: 9s; opacity: 0.8; }
+
+            .diamond-box::after { right: -12%; top: 10%; width: 320px; height: 320px; filter: blur(40px); opacity: 0.75; }
+            
+            /* Values */
+            .values-section { padding-top: 60px; }
+            .values-desc { max-width: 100%; text-align: center; padding: 0 15px; }
+            .value-bg-number { font-size: 5rem; letter-spacing: -2px; }
+            .value-item { margin-top: 20px; padding: 10px; }
+            .value-label { margin-top: 30px; }
+
+            /* Mission */
+            .mission-title { font-size: 2.5rem; text-align: center; }
+            .mission-title-wrap { display: block; text-align: center; }
+            .mission-dot-orange { display: none; }
+            .mission-text { text-align: center; margin: 0 auto 25px auto; }
+            .mission-tagline { text-align: center; }
+            .btn-wrapper { justify-content: center; }
+
+            /* Mobile mission stacking */
+            .mission-right-col { order: 1; }
+            .mission-left-col { order: 2; }
+            .mission-small-img { position: relative; width: 100%; max-width: 360px; margin: 18px auto 12px auto; display: block; box-shadow:0 10px 30px rgba(0,0,0,0.08); transition: transform .45s ease, box-shadow .45s ease; }
+            .mission-small-img:hover{ transform:translateY(-6px) scale(1.01); }
+
+            /* The Big "20" on mobile */
+            .grey-canvas { height: 280px; padding: 20px 0; }
+            .text-20 { font-size: 6rem; letter-spacing: -10px; margin-right: 5px; }
+            .graphic-20-container { width: 100%; height: auto; }
+            .play-btn-circle { width: 50px; height: 50px; font-size: 16px; border-width: 2px; }
+
+            /* CTA Section */
+            .cta-header-title { font-size: 2rem; width: 100%; margin-bottom: 20px; }
+            
+            /* Footer */
+            .footer-decor-strip { display: none; }
+            .footer-top-strip { width: 100%; }
+            .d-flex.justify-content-between { flex-direction: column; text-align: center; }
+            .d-flex.flex-column.align-items-end { align-items: center !important; margin-top: 20px; flex-direction: row !important; justify-content: center; gap: 10px; }
+            
+            /* Socials in Footer */
+            .large-icon { justify-content: center; }
+            .col-lg-4 .d-flex.justify-content-end { justify-content: center !important; margin-top: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+   <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="images/Satyam_Icon_1.png" alt="Tiny-tots Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="mainNav">
+                <ul class="navbar-nav align-items-center text-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="about-us.html" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        About us
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                        <li><a class="dropdown-item" href="about-us.html#intro-section">About Us</a></li>
+                        <li><a class="dropdown-item" href="about-us.html#founder-section">Founder's Message</a></li>
+                        <li><a class="dropdown-item" href="about-us.html#stats-section">Key Achievements</a></li>
+                        <li><a class="dropdown-item" href="about-us.html#vm-section">Vision & Mission</a></li>
+                        <li><a class="dropdown-item" href="about-us.html#features-section">Our Approach</a></li>
+                        <li><a class="dropdown-item" href="about-us.html#Director-section">Director's Word</a></li>
+                        <li><a class="dropdown-item" href="about-us.html#Chairperson-section">Chairperson's Note </a></li>
+                        <li><a class="dropdown-item" href="about-us.html#campus-section">Facilities</a></li>
+                    </ul>
+                </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="schoolDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Academics</a>
+                        <ul class="dropdown-menu" aria-labelledby="schoolDropdown">
+                            <li><a class="dropdown-item" href="academics.html">Academics</a></li>
+                            <li><a class="dropdown-item" href="blog-listing.html">Blog-Listing</a></li>
+                            <li><a class="dropdown-item" href="FAQS.html">FAQs</a></li>
+                            <li><a class="dropdown-item" href="testimonials.html">Testimonials</a></li>
+                            <li><a class="dropdown-item" href="gallery.html">Gallery</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="admission.html">Admissions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mandatory_disclosure.html">Mandatory Disclosure</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 position-relative">
+                    <div class="hero-decor-triangle-orange"></div>
+                    <div class="hero-orange-dot"></div>
+                    <div class="hero-dots-pattern"></div>
+                    <div class="hero-small-blue-ring"></div>
+                    <div class="hero-faint-square"></div>
+
+                    <div class="title-wrapper animate-up">
+                        <h1 class="hero-title">
+                            Building <br> Leaders <br> Of Tomorrow
+                        </h1>
+                    </div>
+                    <div class="mb-5 animate-up delay-1">
+                        <p class="hero-subtitle">
+                           Top CBSE School in Ballari | Equipping the Next Generation.<br>
+                           <span style="font-weight:400; font-size: 1rem;">Experience the best CBSE syllabus and world-class facilities in the heart of Bellary.</span>
+                        </p>
+                        <div class="yellow-dash"></div>
+                         <a href="admission.html" class="btn-learn-more ms-3" style="background-color: var(--primary-blue);">Get Admission Today</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-7 position-relative">
+                    <div class="hero-image-container">
+                        <div class="blob-backdrop"></div>
+                        
+                        <img src="images/Elite_Block_Building.png" 
+                            alt="Satyam Student Learning" 
+                            class="img-fluid hero-main-img animate-up delay-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div class="decor-orange-lines">
+            <div class="line-stripe stripe-long"></div>
+            <div class="line-stripe stripe-short"></div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 pe-lg-5 d-flex flex-column justify-content-center yellow-panel animate-up">
+                    <div class="values-header">
+                        <h2><p style="color:rgb(228, 174, 12);">Why Choose Satyam?</p></h2>
+                        <p style="color:white; font-weight:600;">A comprehensive educational experience</p>
+                    </div>
+                </div>
+                <div class="col-lg-7 ps-lg-5">
+                    <div class="row mt-4 justify-content-center">
+                        <div class="col-md-4 animate-up delay-2">
+                            <div class="value-item on-purple text-center">
+                                <div class="value-icon-box" style="color: #67ce88;"><i class="fa-solid fa-certificate"></i></div>
+                                <div class="value-bg-number" style="font-size: 6rem;">01</div>
+                                <div class="value-label">Recognized CBSE Affiliation</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 animate-up delay-2">
+                            <div class="value-item on-purple text-center">
+                                <div class="value-icon-box" style="color: #fdd800;"><i class="fa-solid fa-computer"></i></div>
+                                <div class="value-bg-number" style="font-size: 6rem;">02</div>
+                                <div class="value-label">LEAD Digital Classrooms</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 animate-up delay-2">
+                            <div class="value-item on-purple text-center">
+                                <div class="value-icon-box" style="color: #8cc63f;"><i class="fa-solid fa-flask"></i></div>
+                                <div class="value-bg-number" style="font-size: 6rem;">03</div>
+                                <div class="value-label">Future-Ready STEM Focus</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-4 mt-3 justify-content-center">
+                        <div class="col-md-4 animate-up delay-2">
+                            <div class="value-item on-purple text-center">
+                                <div class="value-icon-box" style="color: #2ec4b6;"><i class="fa-solid fa-trophy"></i></div>
+                                <div class="value-bg-number" style="font-size: 6rem;">04</div>
+                                <div class="value-label">Holistic Development</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 animate-up delay-2">
+                            <div class="value-item on-purple text-center">
+                                <div class="value-icon-box" style="color: #b27a00;"><i class="fa-solid fa-chalkboard-user"></i></div>
+                                <div class="value-bg-number" style="font-size: 6rem;">05</div>
+                                <div class="value-label">Expert Faculty Team</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 animate-up delay-2">
+                            <div class="value-item on-purple text-center">
+                                <div class="value-icon-box" style="color: #f05a28;"><i class="fa-solid fa-wallet"></i></div>
+                                <div class="value-bg-number" style="font-size: 6rem;">06</div>
+                                <div class="value-label">Accessible Quality</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="programs-section">
+        <div class="prog-decor-circle"></div>
+        <div class="prog-decor-triangle"></div>
+
+        <div class="container">
+            <div class="programs-header animate-up">
+                <h2><p style="color:rgb(255, 255, 255);">Classroom Of Tomorrow</p></h2>
+                <p class="programs-intro">From interactive smart boards to immersive e-learning modules, we ensure students master the technology skills needed for the future.</p>
+            </div>
+
+            <div class="row g-4 programs-grid">
+                <div class="col-md-6 col-lg-4 animate-up delay-1">
+                    <div class="program-card">
+                        <div class="program-card-content">
+                            <div class="program-icon-wrapper">
+                                <div class="program-icon ic-kreedo"><i class="fa-solid fa-chalkboard-user"></i></div>
+                            </div>
+                            <div class="program-title">Smart Digital Classrooms</div>
+                            <div class="program-desc">Our digital learning ecosystem makes complex topics visual and engaging, ensuring students master the technology skills needed for the future.</div>
+                            <div class="program-meta">Interactive • Engaging</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 animate-up delay-2">
+                    <div class="program-card">
+                        <div class="program-card-content">
+                            <div class="program-icon-wrapper">
+                                <div class="program-icon ic-senses"><i class="fa-solid fa-brain"></i></div>
+                            </div>
+                            <div class="program-title">Deep Conceptual Learning</div>
+                            <div class="program-desc">We build a strong academic foundation that prepares students not just for exams, but for real world application.</div>
+                            <div class="program-meta">Foundation • Application</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 animate-up delay-3">
+                    <div class="program-card">
+                        <div class="program-card-content">
+                            <div class="program-icon-wrapper">
+                                <div class="program-icon ic-music"><i class="fa-solid fa-robot"></i></div>
+                            </div>
+                            <div class="program-title">Future Ready Robotics & STEM</div>
+                            <div class="program-desc">Our dedicated Robotics and STEM labs allow students to turn ideas into reality through coding and design thinking.</div>
+                            <div class="program-meta">Coding • Design Thinking</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 animate-up delay-1">
+                    <div class="program-card">
+                        <div class="program-card-content">
+                            <div class="program-icon-wrapper">
+                                <div class="program-icon ic-art"><i class="fa-solid fa-building"></i></div>
+                            </div>
+                            <div class="program-title">Campus Built for Future</div>
+                            <div class="program-desc">Our school building offers a bright, spacious, and safe environment where students feel inspired to learn every day.</div>
+                            <div class="program-meta">Spacious • Safe</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 animate-up delay-2">
+                    <div class="program-card">
+                        <div class="program-card-content">
+                            <div class="program-icon-wrapper">
+                                <div class="program-icon ic-outdoor"><i class="fa-solid fa-laptop-code"></i></div>
+                            </div>
+                            <div class="program-title">Empowering Students</div>
+                            <div class="program-desc">Our computer-integrated classrooms help students nurture curiosity, creativity, and a strong foundation in technology.</div>
+                            <div class="program-meta">Curiosity • Technology</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 animate-up delay-3">
+                    <div class="program-card">
+                        <div class="program-card-content">
+                            <div class="program-icon-wrapper">
+                                <div class="program-icon ic-lang"><i class="fa-solid fa-tree"></i></div>
+                            </div>
+                            <div class="program-title">Environment That Inspires</div>
+                            <div class="program-desc">Our spacious and well planned infrastructure provides students a calm, distraction free atmosphere.</div>
+                            <div class="program-meta">Calm • Focused</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mission-section">
+        <div class="mission-decor-green-ring"></div>
+        <div class="mission-decor-orange-line"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 mission-left-col animate-up">
+                    <div class="mission-title-wrap">
+                        <h2 class="mission-title">Unleash Your Inner Genius</h2>
+                        <div class="mission-dot-orange"></div>
+                    </div>
+                    <p class="mission-text">
+                       <strong>Building skills beyond class.</strong> Step into a space where passions play and learning feels joyful. From lab coats to keyboards, our students learn by doing, discovering new skills every day.
+                    </p>
+                    <div class="mission-tagline">The Foundation that brings your kid's dream to life</div>
+                    
+                    <ul class="list-unstyled mb-4" style="color:#555;">
+                        <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Fun computer lab activities that build digital confidence</li>
+                        <li><i class="fa-solid fa-check text-success me-2"></i> Environment that nurtures creativity while building confidence</li>
+                    </ul>
+
+                    <div class="btn-wrapper">
+                        <a href="about-us.html" class="btn-learn-more">Learn More</a>
+                        <span class="yellow-dash-btn"></span>
+                    </div>
+                    <div class="decor-red-triangle"></div>
+                    <img src="images/Karate.webp" alt="Students" class="mission-small-img">
+                </div>
+                <div class="col-lg-7 mission-right-col animate-up delay-1">
+                    <div class="grey-canvas position-relative overflow-hidden">
+                        
+                        <div class="background-holder position-absolute top-0 start-0 w-100 h-100">
+                            <img src="images/chariot.webp" alt="Background" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.2;"> 
+                        </div>
+                        <div class="position-relative z-1 d-flex flex-column align-items-center justify-content-center w-100 h-100">
+                            <div class="graphic-20-container">
+                                <span class="text-20">#1</span>
+                                
+                                <div class="play-btn-circle">
+                                    <a href="https://www.youtube.com/watch?v=huA4cggeCBA" class="glightbox d-flex align-items-center justify-content-center w-100 h-100 text-decoration-none text-white">
+                                        <i class="fa-solid fa-play"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="canvas-footer-text">Expert guidance to make big dreams real</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="programs-header animate-up">
+                <h2><p style="color:rgb(251, 255, 42);">The Trusted Pathway to a Brighter Future</p></h2>
+                <p class="programs-intro">Quality learning with years of expertise. See what parents have to say.</p>
+            </div>
+            
+            <div class="row g-4">
+                 <div class="col-md-4 animate-up delay-1">
+                    <div class="testimonial-card purple">
+                         <i class="fa-solid fa-quote-left quote-icon"></i>
+                         <p class="testimonial-text">"The school has created a positive and engaging learning environment. Our child feels valued, supported, and excited to learn every day."</p>
+                         <div class="testimonial-author lazy-float">Sudha Basuthkar</div>
+                         <div class="testimonial-role">Parent of Grade 5 student</div>
+                    </div>
+                </div>
+                
+                 <div class="col-md-4 animate-up delay-2">
+                    <div class="testimonial-card green">
+                         <i class="fa-solid fa-quote-left quote-icon"></i>
+                         <p class="testimonial-text">"We love how the school encourages creativity and independent thinking. The activities and projects truly bring learning to life."</p>
+                         <div class="testimonial-author lazy-float">Sachin</div>
+                         <div class="testimonial-role">Parent of Grade 9 student</div>
+                    </div>
+                </div>
+
+                 <div class="col-md-4 animate-up delay-3">
+                    <div class="testimonial-card blue">
+                         <i class="fa-solid fa-quote-left quote-icon"></i>
+                         <p class="testimonial-text">"We have seen remarkable growth in our child academically, emotionally, and socially. The teachers pay attention to every child's needs."</p>
+                         <div class="testimonial-author lazy-float">Kishore</div>
+                         <div class="testimonial-role">Parent of Grade 8 student</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="infrastructure-section">
+        <div class="container">
+            <div class="infra-header animate-up">
+                <h2>Our Infrastructure</h2>
+                <p>Advanced infrastructure that improves learning experiences across academics, sports, and creativity.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6 animate-up delay-1">
+                    <div class="infra-card">
+                        <div class="infra-img-wrapper">
+                            <img src="images/Elite_Block_Building.png" alt="Campus Building">
+                        </div>
+                        <h5 class="infra-title text-infra-pink">Campus Built For Future</h5>
+                        <p class="infra-text">
+                            Our school building offers a bright, spacious, and safe environment where students feel inspired to learn every day.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 animate-up delay-2">
+                    <div class="infra-card">
+                        <div class="infra-img-wrapper">
+                            <img src="images/satyam-3.jpeg" alt="Technology in Class">
+                        </div>
+                        <h5 class="infra-title text-infra-green">Empowering Students Through Technology</h5>
+                        <p class="infra-text">
+                            Our computer-integrated classrooms help students to nurtures curiosity, creativity, and a strong foundation in technology.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 animate-up delay-3">
+                    <div class="infra-card">
+                        <div class="infra-img-wrapper">
+                            <img src="images/Campus.png" alt="Aerial View">
+                        </div>
+                        <h5 class="infra-title text-infra-purple">Environment That Inspires Learning</h5>
+                        <p class="infra-text">
+                            Our spacious and well planned infrastruture provides students offers students a calm, distraction free atmosphere.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="blob-shape" style="top: 10%; left: -50px; width: 200px; height: 200px; opacity: 0.1;"></div>
+        <div class="blob-shape" style="bottom: 10%; right: -50px; width: 300px; height: 300px; background: rgba(0, 156, 235, 0.1); opacity: 0.1; animation-delay: 2s;"></div>
+        
+        <div class="container">
+            <div class="cta-header-title animate-up">
+                You are just a click away <br> from your child's success
+            </div>
+            <div class="cta-decor-line"></div>
+            
+            <p class="animate-up delay-1" style="font-size: 1.2rem;">
+                <i class="fa-solid fa-check me-2"></i> Your child’s future begins with one right choice. Make it today.
+            </p>
+
+            <a href="about-us.html" class="cta-btn animate-up delay-2">Know about us</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-top-strip"></div>
+        <div class="footer-decor-strip"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 text-center text-md-start">
+                    <a href="#" class="footer-logo"><img src="images/Satyam_Icon_1.png" alt="Footer Logo"></a>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="row text-center text-md-start">
+                        <div class="col-6">
+                            <a href="index.html" class="footer-link">Home</a>
+                            <a href="about-us.html" class="footer-link">About-us</a>
+                            <a href="academics.html" class="footer-link">Academics</a>
+                            <a href="gallery.html" class="footer-link">Gallery</a>
+                        </div>
+                        <div class="col-6">
+                            <a href="admission.html" class="footer-link">Admissions</a>
+                            <a href="Mandatory-disclosure.html" class="footer-link">Mandatory Disclosure</a>
+                            <a href="contact-us.html" class="footer-link">Contacts</a>
+                            <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 d-none d-lg-block"></div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <span class="footer-col-title">We are</span>
+                            <p class="mb-1 text-white-50">Kappagal Road, Bellary, Karnataka</p>
+                            <p class="mb-1 text-white-50">+91 96203 81111</p>
+                            <p class="mb-3 text-white-50">info@satyam.com</p>
+                            <a href="#" class="magwai-link">All rights reserved by Kodemapa</a>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <ul class="large-icon dark social-icons">
+                                <li class="social-circle">
+                                    <a class="facebook" href="" target="_blank">
+                                        <i class="fa-brands fa-facebook-f"></i>
+                                    </a>
+                                </li>
+                                <li class="social-circle">
+                                    <a class="instagram" href="https://www.instagram.com/satyamschoolballari/?igsh=MXMyNWtjOWgzb3V5dQ%3D%3D#" target="_blank">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-triangle-btn"><i class="fa-solid fa-arrow-down"></i></div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js" defer></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1, // Trigger when 10% of the element is visible
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        // Optional: stop observing once animate in
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll('.animate-up');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
