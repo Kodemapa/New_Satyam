@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials - Satyam International School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- BASE STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        :root {
+            --primary-orange: #F48C06;
+            --primary-blue: #252641;
+            --text-grey: #696984;
+            --bg-light: #F9FAFB;
+            --white: #ffffff;
+            --radius-card: 25px;
+        }
+
+        body { 
+            color: var(--primary-blue); 
+            overflow-x: hidden; 
+            background-color: var(--bg-light); /* Clean background, no patterns */
+        }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- ANIMATIONS --- */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- HEADER (FIXED / FROZEN) --- */
+        header { 
+            background-color: white;
+            padding: 15px 0; 
+            /* FIXED POSITIONING TO FREEZE NAVBAR */
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* High z-index ensures it stays on top of hero image */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+        }
+        
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+        
+        .logo-icon {
+            display: relative;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            font-size: 1.2rem;
+        }
+        
+        .logo-icon img { width: 100%; height: 100%; object-fit: contain; padding: 5px; }
+
+        .nav-links { 
+            display: flex; 
+            gap: 40px; 
+            align-items: center;
+        }
+
+        .nav-links a { 
+            color: var(--primary-orange); 
+            font-weight: 500; 
+            font-size: 1rem; 
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: rgb(251, 130, 0); transition: width 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        
+        .btn { display: inline-block; padding: 12px 35px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 1rem; }
+        .btn-white { background: var(--white); color: var(--primary-orange); box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid transparent; }
+        .btn-white:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); border-color: rgba(244, 140, 6, 0.2); }
+
+        .dropdown-menu {
+            position: absolute; top: 100%; left: 0; margin-top: 10px;
+            background: white; min-width: 200px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-radius: 12px; padding: 10px 0;
+            opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease;
+            z-index: 1100; border-top: 3px solid var(--primary-orange);
+        }
+        .nav-item:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-item { display: block; padding: 12px 20px; color: var(--primary-blue); font-size: 0.95rem; font-weight: 500; transition: 0.2s; white-space: nowrap; }
+        .dropdown-item:hover { color: var(--primary-orange); background-color: #FFF8F0; padding-left: 25px; }
+        .nav-item:hover .fa-chevron-down { transform: rotate(180deg); transition: transform 0.3s; }
+
+        .btn { display: inline-block; padding: 12px 35px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 1rem; }
+        .btn-white { background: var(--white); color: var(--primary-orange); box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid transparent; }
+        .btn-white:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); border-color: rgba(244, 140, 6, 0.2); }
+
+        /* Dropdown Menu Container */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px); /* Start slightly lower */
+            background: white;
+            min-width: 220px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            padding: 15px 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1100;
+            border-top: 4px solid var(--primary-orange); /* Brand accent */
+        }
+
+        /* Hover on Parent shows Dropdown */
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Dropdown Links */
+        .dropdown-menu li { display: block; margin: 0; }
+        
+        .dropdown-item {
+            display: block;
+            padding: 10px 25px;
+            color: var(--primary-blue);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: 0.3s;
+            border-radius: 0;
+        }
+
+        /* Hover Effect for Dropdown Items */
+        .dropdown-item:hover {
+            color: var(--primary-orange);
+            background-color: #FFF8F0; /* Light orange tint */
+            padding-left: 35px; /* Slide effect */
+        }
+
+        /* Chevron Rotation on Hover */
+        .nav-item:hover .fa-chevron-down {
+            transform: rotate(180deg);
+            transition: transform 0.3s;
+        }
+
+        /* --- HERO SECTION --- */
+        .page-hero { 
+            background-color: var(--primary-orange); 
+            padding: 200px 0 140px; 
+            color: white; 
+            text-align: center; 
+            position: relative; 
+            overflow: hidden;
+        }
+        .page-hero h1 { font-size: 4rem; font-weight: 800; margin-bottom: 20px; animation: slideIn 1s ease-out; position: relative; z-index: 2; }
+        .page-hero p { font-size: 1.3rem; opacity: 0.95; max-width: 750px; margin: 0 auto; line-height: 1.6; animation: slideIn 1s ease-out 0.2s backwards; position: relative; z-index: 2; }
+        
+        .wave-bottom { position: absolute; bottom: -1px; left: 0; width: 100%; line-height: 0; }
+        .wave-bottom svg { display: block; width: calc(100% + 1.3px); height: 120px; }
+
+        /* --- TESTIMONIALS GRID --- */
+        .testimonials-section { padding: 100px 0; }
+        .testi-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); 
+            gap: 40px; 
+        }
+        
+        .testi-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            position: relative;
+            /* Uniform Brand Color Border */
+            border-left: 6px solid var(--primary-orange); 
+        }
+        .testi-card:hover { transform: translateY(-10px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+
+        /* Alternate Style for Visual Variety but same palette */
+        .testi-card.alt-style {
+            border-left-color: var(--primary-blue);
+        }
+
+        /* Quote Icon */
+        .testi-card::after {
+            content: '\f10e'; /* FontAwesome Quote Right */
+            font-family: "Font Awesome 6 Free"; font-weight: 900;
+            position: absolute; top: 30px; right: 30px;
+            font-size: 40px; color: rgba(0,0,0,0.05);
+        }
+
+        .testi-text {
+            font-size: 1.1rem;
+            color: var(--text-grey);
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .testi-author h4 { font-size: 1.2rem; color: var(--primary-blue); font-weight: 700; margin-bottom: 5px; }
+        
+        .testi-author span { 
+            font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+            color: var(--primary-orange);
+        }
+        
+        /* Alternate Author Color */
+        .testi-card.alt-style .testi-author span {
+            color: var(--primary-blue);
+            opacity: 0.7;
+        }
+
+        /* --- FOOTER --- */
+        footer { background-color: #252641; color: #B2B3CF; padding: 80px 0 40px; text-align: center; }
+        .footer-logo { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 40px; }
+        .footer-logo h2 { color: white; padding-left: 15px; border-left: 1px solid #626381; font-weight: 600; letter-spacing: 1px; }
+        .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; font-size: 1rem; }
+        .footer-links a:hover { color: var(--primary-orange); }
+        .copyright { font-size: 0.9rem; opacity: 0.6; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .testi-grid { grid-template-columns: 1fr; }
+            .page-hero h1 { font-size: 2.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <div class="logo-icon">
+                        <img src="images/satyam logo-2.png" alt="Satyam Icon">
+                    </div>
+                </div>
+                
+                <ul class="nav-links">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Academics <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; margin-left: 5px;"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="blog-listing.html" class="dropdown-item">News & Insights</a></li>
+                            <li><a href="testimonials.html" class="dropdown-item">Testimonials</a></li>
+                            <li><a href="gallery.html" class="dropdown-item">Gallery</a></li>
+                            <li><a href="faqs.html" class="dropdown-item">FAQs</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a href="about-us.html" class="nav-link">About Us</a></li>
+                    <li class="nav-item"><a href="mandatory-disclosure.html" class="nav-link">Mandatory Disclosures</a></li>
+                </ul>
+                
+                <a href="contact-us.html" class="btn btn-white">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container anim-up">
+            <h1>Parent Testimonials</h1>
+            <p>Don't just take our word for it. Hear what our community of parents has to say about their experience with Satyam International School.</p>
+        </div>
+        <div class="wave-bottom">
+            <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path fill="#F9FAFB" fill-opacity="1" d="M0,160L80,176C160,192,320,224,480,224C640,224,800,192,960,192C1120,192,1280,224,1360,240L1440,256L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section class="testimonials-section container">
+        <div class="testi-grid">
+            
+            <div class="testi-card reveal">
+                <p class="testi-text">"This School's approach towards making students to learn about technology and many other skills is really incredible. A forward-thinking institution."</p>
+                <div class="testi-author">
+                    <h4>Rahul Pandey</h4>
+                    <span>PARENT</span>
+                </div>
+            </div>
+
+            <div class="testi-card alt-style reveal">
+                <p class="testi-text">"The teachers are warm, patient, and highly skilled. Their dedication is clearly visible in the way children grow and perform in both academics and extracurriculars."</p>
+                <div class="testi-author">
+                    <h4>Madhu Kumar</h4>
+                    <span>PARENT</span>
+                </div>
+            </div>
+
+            <div class="testi-card reveal">
+                <p class="testi-text">"The school has created a positive and engaging learning environment. Our child feels valued, supported, and excited to learn every single day."</p>
+                <div class="testi-author">
+                    <h4>Sudha Basuthkar</h4>
+                    <span>PARENT</span>
+                </div>
+            </div>
+
+            <div class="testi-card alt-style reveal">
+                <p class="testi-text">"We love how the school encourages creativity and independent thinking. The activities and projects truly bring learning to life for the students."</p>
+                <div class="testi-author">
+                    <h4>Sachin</h4>
+                    <span>PARENT</span>
+                </div>
+            </div>
+
+            <div class="testi-card reveal">
+                <p class="testi-text">"We have seen remarkable growth in our child academically, emotionally, and socially. The teachers pay attention to every child's needs and ensure they feel supported."</p>
+                <div class="testi-author">
+                    <h4>Kishore</h4>
+                    <span>PARENT</span>
+                </div>
+            </div>
+
+            <div class="testi-card alt-style reveal">
+                <p class="testi-text">"The teachers are really supportive and approachable. They understand the strengths of each child and help them thrive in those areas. It's been a wonderful journey so far."</p>
+                <div class="testi-author">
+                    <h4>Ram Krishna</h4>
+                    <span>PARENT</span>
+                </div>
+            </div>
+
+            <div class="testi-card reveal">
+                <p class="testi-text">"The variety of activities offered by this school has helped my child discover new interests. Whether it's sports, arts, or science, the school encourages every child to shine."</p>
+                <div class="testi-author">
+                    <h4>Kathyayini</h4>
+                    <span>PARENT</span>
+                </div>
+            </div>
+
+            <div class="testi-card alt-style reveal">
+                <p class="testi-text">"The school's communication with parents is excellent. We are always kept informed about our child's progress and school events. It truly makes us feel involved in their education."</p>
+                <div class="testi-author">
+                    <h4>Sahil Gothwaal</h4>
+                    <span>PARENT</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="images/Satyam_Icon_1.png" alt="Logo" style="width: 40px; height: 40px;">
+                <h2>Satyam International <span style="font-size: 0.9rem; display: block; font-weight: 400; opacity: 0.7; margin-top: 5px;">School for Holistic Development</span></h2>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about-us.html">About-us</a>
+                <a href="#">Academics</a>
+                <a href="contact-us.html">Contact-us</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <p class="copyright">© 2025 All rights reserved by Kodemapa.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', reveal);
+        function reveal(){
+            var reveals = document.querySelectorAll('.reveal');
+            for(var i = 0; i < reveals.length; i++){
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150;
+                if(revealtop < windowheight - revealpoint){
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        reveal();
+    </script>
+
+</body>
+</html>

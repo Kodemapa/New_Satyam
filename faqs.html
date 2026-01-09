@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - Satyam International School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- BASE STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        :root {
+            --primary-orange: #F48C06;
+            --primary-blue: #252641;
+            --text-grey: #696984;
+            --bg-light: #F9FAFB;
+            --white: #ffffff;
+        }
+
+        body { 
+            color: var(--primary-blue); 
+            overflow-x: hidden; 
+            background-color: var(--bg-light);
+            /* Subtle Pattern Background */
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- ANIMATIONS --- */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- HEADER (FIXED / FROZEN) --- */
+        header { 
+            background-color: white;
+            padding: 15px 0; 
+            /* FIXED POSITIONING TO FREEZE NAVBAR */
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* High z-index ensures it stays on top of hero image */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+        }
+        
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+        
+        .logo-icon {
+            display: relative;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            font-size: 1.2rem;
+        }
+        
+        .logo-icon img { width: 100%; height: 100%; object-fit: contain; padding: 5px; }
+
+        .nav-links { 
+            display: flex; 
+            gap: 40px; 
+            align-items: center;
+        }
+
+        .nav-links a { 
+            color: var(--primary-orange); 
+            font-weight: 500; 
+            font-size: 1rem; 
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: rgb(251, 130, 0); transition: width 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        
+        .btn { display: inline-block; padding: 12px 35px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 1rem; }
+        .btn-white { background: var(--white); color: var(--primary-orange); box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid transparent; }
+        .btn-white:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); border-color: rgba(244, 140, 6, 0.2); }
+
+        /* Dropdown Menu Container */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px); /* Start slightly lower */
+            background: white;
+            min-width: 220px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            padding: 15px 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1100;
+            border-top: 4px solid var(--primary-orange); /* Brand accent */
+        }
+
+        /* Hover on Parent shows Dropdown */
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Dropdown Links */
+        .dropdown-menu li { display: block; margin: 0; }
+        
+        .dropdown-item {
+            display: block;
+            padding: 10px 25px;
+            color: var(--primary-blue);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: 0.3s;
+            border-radius: 0;
+        }
+
+        /* Hover Effect for Dropdown Items */
+        .dropdown-item:hover {
+            color: var(--primary-orange);
+            background-color: #FFF8F0; /* Light orange tint */
+            padding-left: 35px; /* Slide effect */
+        }
+
+        /* Chevron Rotation on Hover */
+        .nav-item:hover .fa-chevron-down {
+            transform: rotate(180deg);
+            transition: transform 0.3s;
+        }
+        
+        /* --- HERO SECTION --- */
+        .page-hero { 
+            background-color: var(--primary-orange); 
+            padding: 200px 0 140px; 
+            color: white; 
+            text-align: center; 
+            position: relative; 
+            overflow: hidden;
+        }
+        .page-hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; animation: slideDown 1s ease-out; position: relative; z-index: 2; }
+        .page-hero h1 span { color: var(--primary-blue); }
+        .page-hero p { font-size: 1.2rem; opacity: 0.95; max-width: 750px; margin: 0 auto; line-height: 1.6; animation: slideUp 1s ease-out; position: relative; z-index: 2; }
+        
+        .wave-bottom { position: absolute; bottom: -1px; left: 0; width: 100%; line-height: 0; }
+        .wave-bottom svg { display: block; width: calc(100% + 1.3px); height: 120px; }
+
+        /* --- FAQ SECTION STYLES --- */
+        .faq-section { padding: 80px 0 120px; }
+        .faq-container { max-width: 900px; margin: 0 auto; }
+        
+        .category-title { 
+            text-align: center; font-size: 2rem; color: var(--primary-blue); 
+            font-weight: 700; margin: 60px 0 30px; position: relative;
+        }
+        /* Decorative line under category title */
+        .category-title::after {
+            content: ''; display: block; width: 60px; height: 4px; background: var(--primary-orange);
+            margin: 15px auto 0; border-radius: 2px;
+        }
+
+        /* Accordion Styles */
+        .acc-item { 
+            margin-bottom: 20px; 
+            background: white;
+            border-radius: 15px; 
+            overflow: hidden; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05); 
+            border: 1px solid #eee; 
+            transition: 0.3s;
+        }
+        .acc-item:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-color: rgba(244, 140, 6, 0.3); }
+
+        .acc-header {
+            width: 100%; text-align: left; padding: 20px 30px;
+            border: none; background: white;
+            color: var(--primary-blue); font-weight: 600; font-size: 1.1rem;
+            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+            transition: 0.3s;
+        }
+        .acc-header:hover { color: var(--primary-orange); }
+        
+        /* Active state styling */
+        .acc-header.active { background: var(--primary-orange); color: white; }
+        
+        .acc-header i { transition: 0.3s; font-size: 0.9rem; }
+        .acc-header.active i { transform: rotate(180deg); }
+        
+        .acc-content {
+            background: #fff; padding: 0 30px;
+            max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out;
+        }
+        .acc-inner { padding: 25px 0 30px; color: var(--text-grey); line-height: 1.7; font-size: 1rem; }
+        .acc-inner p { margin-bottom: 15px; }
+        .acc-inner p:last-child { margin-bottom: 0; }
+
+        /* --- FOOTER --- */
+        footer { background-color: #252641; color: #B2B3CF; padding: 80px 0 40px; text-align: center; }
+        .footer-logo { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 40px; }
+        .footer-logo h2 { color: white; padding-left: 15px; border-left: 1px solid #626381; font-weight: 600; letter-spacing: 1px; }
+        .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; font-size: 1rem; }
+        .footer-links a:hover { color: var(--primary-orange); }
+        .copyright { font-size: 0.9rem; opacity: 0.6; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .page-hero h1 { font-size: 2.8rem; }
+            .acc-header { padding: 15px 20px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <div class="logo-icon">
+                        <img src="images/satyam logo-2.png" alt="Satyam Icon">
+                    </div>
+                </div>
+                
+                <ul class="nav-links">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Academics <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem;"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="blog-listing.html" class="dropdown-item">News & Insights</a></li>
+                            <li><a href="testimonials.html" class="dropdown-item">Testimonials</a></li>
+                            <li><a href="gallery.html" class="dropdown-item">Gallery</a></li>
+                            <li><a href="faqs.html" class="dropdown-item">FAQs</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a href="about-us.html" class="nav-link" style="font-weight: 600; opacity: 1;">About Us</a></li>
+                    <li class="nav-item"><a href="mandatory-disclosure.html" class="nav-link">Mandatory Disclosures</a></li>
+                </ul>
+                
+                <a href="contact-us.html" class="btn btn-white">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1>Frequently Asked <span>Questions</span></h1>
+            <p>Find quick answers to common queries about admissions, academics, facilities, and campus life at Satyam International School.</p>
+        </div>
+        <div class="wave-bottom">
+            <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path fill="#F9FAFB" fill-opacity="1" d="M0,160L80,176C160,192,320,224,480,224C640,224,800,192,960,192C1120,192,1280,224,1360,240L1440,256L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container faq-container">
+
+            <h2 class="category-title reveal">Admissions Process</h2>
+
+            <div class="acc-item reveal">
+                <button class="acc-header">What is the admission procedure for new students? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content">
+                    <div class="acc-inner">
+                        <p>Our admission process follows four simple steps: 1. Online or Offline Registration inquiry. 2. Campus Visit & Counseling session with parents. 3. Application Submission along with required documents. 4. Student Interaction/Assessment (depending on the grade).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="acc-item reveal">
+                <button class="acc-header">What is the minimum age criteria for Nursery admission? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content">
+                    <div class="acc-inner">
+                        <p>As per government norms, the child must be 3+ years of age as of March 31st of the academic year for admission into Nursery.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="acc-item reveal">
+                <button class="acc-header">Are admissions open mid-session? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content">
+                    <div class="acc-inner">
+                        <p>Mid-session admissions are considered subject to vacancy in the respective grade and the student's performance in the entrance assessment, especially for transfer cases.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="category-title reveal">Academics & Curriculum</h2>
+
+            <div class="acc-item reveal">
+                <button class="acc-header">Which board is the school affiliated with? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content">
+                    <div class="acc-inner">
+                        <p>Satyam International School is affiliated with the Central Board of Secondary Education (CBSE), New Delhi, up to Senior Secondary level.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="acc-item reveal">
+                <button class="acc-header">Do you offer integrated coaching for competitive exams like JEE/NEET? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content">
+                    <div class="acc-inner">
+                        <p>Yes, we offer specialized integrated coaching for JEE (Mains & Advanced) and NEET for Grade 11 and 12 science stream students within school hours, led by experienced faculty.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="acc-item reveal">
+                <button class="acc-header">What acts do you offer in Grade 11? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content">
+                    <div class="acc-inner">
+                        <p>We offer Science (PCM/PCB with optional CS/PE) and Commerce streams. We also provide NCC as an elective option for interested students.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="category-title reveal">Facilities & Campus Life</h2>
+
+            <div class="acc-item reveal">
+                <button class="acc-header">Is school transport available covering all areas of Ballari? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content">
+                    <div class="acc-inner">
+                        <p>Yes, we have a fleet of well-maintained buses covering major routes across Ballari city and nearby surrounding areas. All buses are equipped with GPS tracking and female attendants.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="acc-item reveal">
+                <button class="acc-header">What sports facilities does the school have? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content">
+                    <div class="acc-inner">
+                        <p>Our campus boasts extensive sports facilities including a large playground for cricket and football, courts for basketball and volleyball, nets for cricket practice, and indoor facilities for table tennis, chess, and carrom.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="acc-item reveal">
+                <button class="acc-header">What safety and security measures are adopted by the school? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content">
+                    <div class="acc-inner">
+                        <p>Student safety is paramount. The entire campus is under 24/7 CCTV surveillance. We have trained security personnel at all gates, and entry for visitors is strictly regulated. Background checks are conducted for all staff.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="images/Satyam_Icon_1.png" alt="Logo" style="width: 40px; height: 40px;">
+                <h2>Satyam International <span style="font-size: 0.9rem; display: block; font-weight: 400; opacity: 0.7; margin-top: 5px;">School for Holistic Development</span></h2>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about-us.html">About-us</a>
+                <a href="#">Academics</a>
+                <a href="contact-us.html">Contact-us</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <p class="copyright">© 2025 All rights reserved by Kodemapa.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Reveal Animation
+        window.addEventListener('scroll', reveal);
+        function reveal(){
+            var reveals = document.querySelectorAll('.reveal');
+            for(var i = 0; i < reveals.length; i++){
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150;
+                if(revealtop < windowheight - revealpoint){
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        reveal(); // Trigger on load
+
+        // Accordion Functionality
+        const acc = document.getElementsByClassName("acc-header");
+        for (let i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                // Close other open accordions (optional, remove this block if you want multiple open)
+                for (let j = 0; j < acc.length; j++) {
+                    if (acc[j] !== this && acc[j].classList.contains("active")) {
+                        acc[j].classList.remove("active");
+                        acc[j].nextElementSibling.style.maxHeight = null;
+                    }
+                }
+
+                // Toggle current accordion
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                } 
+            });
+        }
+    </script>
+
+</body>
+</html>

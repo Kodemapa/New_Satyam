@@ -93,6 +93,57 @@
         .btn-white { background: var(--white); color: var(--primary-orange); box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid transparent; }
         .btn-white:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); border-color: rgba(244, 140, 6, 0.2); }
 
+        /* Dropdown Menu Container */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px); /* Start slightly lower */
+            background: white;
+            min-width: 220px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            padding: 15px 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1100;
+            border-top: 4px solid var(--primary-orange); /* Brand accent */
+        }
+
+        /* Hover on Parent shows Dropdown */
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Dropdown Links */
+        .dropdown-menu li { display: block; margin: 0; }
+        
+        .dropdown-item {
+            display: block;
+            padding: 10px 25px;
+            color: var(--primary-blue);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: 0.3s;
+            border-radius: 0;
+        }
+
+        /* Hover Effect for Dropdown Items */
+        .dropdown-item:hover {
+            color: var(--primary-orange);
+            background-color: #FFF8F0; /* Light orange tint */
+            padding-left: 35px; /* Slide effect */
+        }
+
+        /* Chevron Rotation on Hover */
+        .nav-item:hover .fa-chevron-down {
+            transform: rotate(180deg);
+            transition: transform 0.3s;
+        }
+
         /* --- BLOG HERO SECTION --- */
         .blog-hero { 
             background-color: var(--primary-blue);
@@ -271,17 +322,28 @@
                         <img src="images/satyam logo-2.png" alt="Satyam Icon">
                     </div>
                 </div>
+                
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#">Academics</a></li>
-                    <li><a href="about-us.html" style="font-weight: 600; opacity: 1;">About Us</a></li>
-                    <li><a href="mandatory-disclosure.html">Mandatory Disclosures</a></li>
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Academics <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem;"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="blog-listing.html" class="dropdown-item">News & Insights</a></li>
+                            <li><a href="testimonials.html" class="dropdown-item">Testimonials</a></li>
+                            <li><a href="gallery.html" class="dropdown-item">Gallery</a></li>
+                            <li><a href="faqs.html" class="dropdown-item">FAQs</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a href="about-us.html" class="nav-link" style="font-weight: 600; opacity: 1;">About Us</a></li>
+                    <li class="nav-item"><a href="mandatory-disclosure.html" class="nav-link">Mandatory Disclosures</a></li>
                 </ul>
-                <button class="btn btn-white"><a href="contact-us.html">Contact Us</a></button>
+                
+                <a href="contact-us.html" class="btn btn-white">Contact Us</a>
             </nav>
         </div>
-     </header>  
-
+    </header>
 
     <section class="blog-hero">
         <div class="container">
