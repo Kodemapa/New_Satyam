@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Insights - Satyam International School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- BASE STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        :root {
+            --primary-orange: #F48C06;
+            --primary-blue: #252641;
+            --text-grey: #696984;
+            --bg-light: #F9FAFB;
+            --white: #ffffff;
+            --radius-card: 25px;
+        }
+
+        body { 
+            color: var(--primary-blue); 
+            overflow-x: hidden; 
+            background-color: var(--bg-light);
+            /* Subtle Pattern Background */
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- ANIMATIONS --- */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- HEADER (FIXED / FROZEN) --- */
+        header { 
+            background-color: white;
+            padding: 15px 0; 
+            /* FIXED POSITIONING TO FREEZE NAVBAR */
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* High z-index ensures it stays on top of hero image */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+        }
+        
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+        
+        .logo-icon {
+            display: relative;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            font-size: 1.2rem;
+        }
+        
+        .logo-icon img { width: 100%; height: 100%; object-fit: contain; padding: 5px; }
+
+        .nav-links { 
+            display: flex; 
+            gap: 40px; 
+            align-items: center;
+        }
+
+        .nav-links a { 
+            color: var(--primary-orange); 
+            font-weight: 500; 
+            font-size: 1rem; 
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: rgb(251, 130, 0); transition: width 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        
+        .btn { display: inline-block; padding: 12px 35px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 1rem; }
+        .btn-white { background: var(--white); color: var(--primary-orange); box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid transparent; }
+        .btn-white:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); border-color: rgba(244, 140, 6, 0.2); }
+
+        /* Dropdown Menu Container */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px); /* Start slightly lower */
+            background: white;
+            min-width: 220px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            padding: 15px 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1100;
+            border-top: 4px solid var(--primary-orange); /* Brand accent */
+        }
+
+        /* Hover on Parent shows Dropdown */
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Dropdown Links */
+        .dropdown-menu li { display: block; margin: 0; }
+        
+        .dropdown-item {
+            display: block;
+            padding: 10px 25px;
+            color: var(--primary-blue);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: 0.3s;
+            border-radius: 0;
+        }
+
+        /* Hover Effect for Dropdown Items */
+        .dropdown-item:hover {
+            color: var(--primary-orange);
+            background-color: #FFF8F0; /* Light orange tint */
+            padding-left: 35px; /* Slide effect */
+        }
+
+        /* Chevron Rotation on Hover */
+        .nav-item:hover .fa-chevron-down {
+            transform: rotate(180deg);
+            transition: transform 0.3s;
+        }
+
+        /* --- HERO SECTION --- */
+        .page-hero { 
+            background-color: var(--primary-orange); 
+            padding: 200px 0 140px; 
+            color: white; 
+            text-align: center; 
+            position: relative; 
+            overflow: hidden;
+        }
+        .page-hero h1 { font-size: 4rem; font-weight: 800; margin-bottom: 20px; animation: slideDown 1s ease-out; position: relative; z-index: 2; }
+        .page-hero p { font-size: 1.3rem; opacity: 0.95; max-width: 750px; margin: 0 auto; line-height: 1.6; animation: slideUp 1s ease-out; position: relative; z-index: 2; }
+        
+        .wave-bottom { position: absolute; bottom: -1px; left: 0; width: 100%; line-height: 0; }
+        .wave-bottom svg { display: block; width: calc(100% + 1.3px); height: 120px; }
+
+        /* --- FILTERS & SEARCH --- */
+        .filter-section { padding: 50px 0 0; }
+        .filter-wrapper { 
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+            background: white; padding: 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-top: -60px; position: relative; z-index: 10;
+        }
+        .categories { display: flex; gap: 10px; flex-wrap: wrap; }
+        .cat-btn { 
+            padding: 8px 20px; border-radius: 30px; background: #f0f0f5; color: var(--text-grey); 
+            font-size: 0.9rem; font-weight: 500; cursor: pointer; border: none; transition: 0.3s;
+        }
+        .cat-btn.active, .cat-btn:hover { background: var(--primary-orange); color: white; }
+        
+        .search-box { position: relative; width: 300px; }
+        .search-box input { 
+            width: 100%; padding: 12px 20px; padding-right: 45px; border-radius: 30px; 
+            border: 1px solid #ddd; outline: none; transition: 0.3s;
+        }
+        .search-box input:focus { border-color: var(--primary-orange); box-shadow: 0 0 0 3px rgba(244, 140, 6, 0.1); }
+        .search-box i { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--text-grey); }
+
+        /* --- FEATURED POST --- */
+        .featured-section { padding: 60px 0 30px; }
+        .featured-card { 
+            display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 0; 
+            background: white; border-radius: 30px; overflow: hidden; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08); transition: 0.3s;
+        }
+        .featured-card:hover { transform: translateY(-5px); box-shadow: 0 25px 50px rgba(0,0,0,0.12); }
+        .feat-img { height: 100%; min-height: 400px; }
+        .feat-img img { width: 100%; height: 100%; object-fit: cover; }
+        .feat-content { padding: 50px; display: flex; flex-direction: column; justify-content: center; }
+        .badge { 
+            background: rgba(244, 140, 6, 0.1); color: var(--primary-orange); 
+            padding: 5px 15px; border-radius: 10px; font-size: 0.8rem; 
+            font-weight: 700; text-transform: uppercase; display: inline-block; margin-bottom: 15px; width: fit-content;
+        }
+        .feat-content h2 { font-size: 2.2rem; margin-bottom: 15px; line-height: 1.3; }
+        .feat-content p { color: var(--text-grey); margin-bottom: 25px; line-height: 1.7; font-size: 1.1rem; }
+
+        /* --- BLOG GRID --- */
+        .blog-list-section { padding: 30px 0 100px; }
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        
+        .blog-card { 
+            background: white; border-radius: 25px; overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.4s; 
+            display: flex; flex-direction: column; border: 1px solid #f0f0f0;
+        }
+        .blog-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: transparent; }
+        
+        .blog-img { height: 220px; overflow: hidden; position: relative; }
+        .blog-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .blog-card:hover .blog-img img { transform: scale(1.1); }
+        
+        .blog-content { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
+        .blog-date { font-size: 0.85rem; color: #999; margin-bottom: 10px; display: block; }
+        .blog-date i { color: var(--primary-orange); margin-right: 5px; }
+        
+        .blog-content h3 { font-size: 1.3rem; color: var(--primary-blue); font-weight: 700; margin-bottom: 15px; line-height: 1.4; transition: 0.3s; }
+        .blog-card:hover h3 { color: var(--primary-orange); }
+        
+        .blog-content p { color: var(--text-grey); margin-bottom: 20px; line-height: 1.6; flex-grow: 1; font-size: 0.95rem; }
+        
+        .read-more-btn { 
+            color: var(--primary-blue); font-weight: 600; text-decoration: none; 
+            display: inline-flex; align-items: center; gap: 8px; margin-top: auto; transition: 0.3s;
+        }
+        .read-more-btn:hover { color: var(--primary-orange); gap: 12px; }
+
+        /* --- PAGINATION --- */
+        .pagination { display: flex; justify-content: center; gap: 10px; margin-top: 60px; }
+        .page-link { 
+            width: 45px; height: 45px; border-radius: 50%; background: white; 
+            color: var(--primary-blue); display: flex; align-items: center; justify-content: center; 
+            font-weight: 600; box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer; transition: 0.3s;
+        }
+        .page-link.active, .page-link:hover { background: var(--primary-orange); color: white; transform: translateY(-3px); }
+
+        /* --- FOOTER --- */
+        footer { background-color: #252641; color: #B2B3CF; padding: 80px 0 40px; text-align: center; }
+        .footer-logo { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 40px; }
+        .footer-logo h2 { color: white; padding-left: 15px; border-left: 1px solid #626381; font-weight: 600; letter-spacing: 1px; }
+        .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; font-size: 1rem; }
+        .footer-links a:hover { color: var(--primary-orange); }
+        .copyright { font-size: 0.9rem; opacity: 0.6; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .page-hero h1 { font-size: 2.8rem; }
+            .featured-card { grid-template-columns: 1fr; }
+            .feat-img { height: 250px; min-height: auto; }
+            .filter-wrapper { justify-content: center; }
+            .search-box { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+     <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <div class="logo-icon">
+                        <img src="images/satyam logo-2.png" alt="Satyam Icon">
+                    </div>
+                </div>
+                
+                <ul class="nav-links">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Academics <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem;"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="blog-listing.html" class="dropdown-item">News & Insights</a></li>
+                            <li><a href="testimonials.html" class="dropdown-item">Testimonials</a></li>
+                            <li><a href="gallery.html" class="dropdown-item">Gallery</a></li>
+                            <li><a href="faqs.html" class="dropdown-item">FAQs</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a href="about-us.html" class="nav-link" style="font-weight: 600; opacity: 1;">About Us</a></li>
+                    <li class="nav-item"><a href="mandatory-disclosure.html" class="nav-link">Mandatory Disclosures</a></li>
+                </ul>
+                
+                <a href="contact-us.html" class="btn btn-white">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container anim-up">
+            <h1>News & Insights</h1>
+            <p>Stay updated with the latest happenings, academic advice, and success stories from Satyam International School.</p>
+        </div>
+        <div class="wave-bottom">
+            <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path fill="#F9FAFB" fill-opacity="1" d="M0,160L80,176C160,192,320,224,480,224C640,224,800,192,960,192C1120,192,1280,224,1360,240L1440,256L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <div class="container filter-section reveal">
+        <div class="filter-wrapper">
+            <div class="categories">
+                <button class="cat-btn active">All</button>
+                <button class="cat-btn">Academics</button>
+                <button class="cat-btn">Sports</button>
+                <button class="cat-btn">Events</button>
+                <button class="cat-btn">Parent's Guide</button>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Search articles...">
+                <i class="fa-solid fa-search"></i>
+            </div>
+        </div>
+    </div>
+
+    <section class="featured-section container reveal">
+        <a href="cbse-affliation.html" class="featured-card">
+            <div class="feat-img">
+                <img src="images/Campus.png" alt="CBSE Guide">
+            </div>
+            <div class="feat-content">
+                <span class="badge">Must Read for Parents</span>
+                <h2>CBSE Certification: The Complete Guide to Verifying Authentic Affiliation</h2>
+                <p>Don't jeopardize your child's future. Learn exactly how to check if a school is genuinely affiliated with our 4-step verification guide.</p>
+                <span class="read-more-btn">Read Article <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+        </a>
+    </section>
+
+    <section class="blog-list-section container">
+        <div class="blog-grid">
+            
+            <a href="blog-1.html" class="blog-card reveal">
+                <div class="blog-img">
+                    <img src="images/Elite_school.png" alt="JEE NEET">
+                </div>
+                <div class="blog-content">
+                    <span class="blog-date"><i class="fa-regular fa-calendar"></i> Oct 24, 2023</span>
+                    <h3>Struggling with JEE/NEET Preparation? Here's Why.</h3>
+                    <p>Discover the strategy that separates top rankers from the rest and how personalized learning can change your outcome.</p>
+                    <span class="read-more-btn">Read More <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </a>
+
+            <a href="blog-2.html" class="blog-card reveal">
+                <div class="blog-img">
+                    <img src="images/sports copy.png" alt="Sports">
+                </div>
+                <div class="blog-content">
+                    <span class="blog-date"><i class="fa-regular fa-calendar"></i> Oct 18, 2023</span>
+                    <h3>More Than Just Play: Life Changing Benefits of Sports</h3>
+                    <p>Why physical activity is just as crucial as academic rigor in shaping tomorrow's leaders and building resilience.</p>
+                    <span class="read-more-btn">Read More <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </a>
+
+            <a href="blog-3.html" class="blog-card reveal">
+                <div class="blog-img">
+                    <img src="images/ncc.jpeg" alt="Leadership">
+                </div>
+                <div class="blog-content">
+                    <span class="blog-date"><i class="fa-regular fa-calendar"></i> Sep 05, 2023</span>
+                    <h3>How Our School Builds Tomorrow's Leaders</h3>
+                    <p>A guide to our personality development program that fosters confidence, empathy, and ethical grounding.</p>
+                    <span class="read-more-btn">Read More <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="pagination reveal">
+            <div class="page-link active">1</div>
+            <div class="page-link">2</div>
+            <div class="page-link">3</div>
+            <div class="page-link"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="images/Satyam_Icon_1.png" alt="Logo" style="width: 40px; height: 40px;">
+                <h2>Satyam International <span style="font-size: 0.9rem; display: block; font-weight: 400; opacity: 0.7; margin-top: 5px;">School for Holistic Development</span></h2>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about-us.html">About-us</a>
+                <a href="#">Academics</a>
+                <a href="contact-us.html">Contact-us</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <p class="copyright">© 2025 All rights reserved by Kodemapa.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Animation
+        window.addEventListener('scroll', reveal);
+        function reveal(){
+            var reveals = document.querySelectorAll('.reveal');
+            for(var i = 0; i < reveals.length; i++){
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150;
+                if(revealtop < windowheight - revealpoint){
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        reveal();
+    </script>
+
+</body>
+</html>
