@@ -42,17 +42,37 @@
             transform: translateY(0);
         }
 
+        /* NEW: Slide Animations for Leadership Section */
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: all 1s ease-out;
+        }
+        .slide-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-right {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 1s ease-out;
+        }
+        .slide-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
         /* --- HEADER (FIXED / FROZEN) --- */
         header { 
             background-color: white;
             padding: 15px 0; 
-            /* FIXED POSITIONING TO FREEZE NAVBAR */
             position: fixed; 
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000; /* High z-index ensures it stays on top of hero image */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            z-index: 1000; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
         }
         
         nav { 
@@ -143,7 +163,7 @@
             position: absolute;
             top: 100%;
             left: 50%;
-            transform: translateX(-50%) translateY(20px); /* Start slightly lower */
+            transform: translateX(-50%) translateY(20px);
             background: white;
             min-width: 220px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.1);
@@ -153,7 +173,7 @@
             visibility: hidden;
             transition: all 0.3s ease;
             z-index: 1100;
-            border-top: 4px solid var(--primary-orange); /* Brand accent */
+            border-top: 4px solid var(--primary-orange);
         }
 
         /* Hover on Parent shows Dropdown */
@@ -176,14 +196,12 @@
             border-radius: 0;
         }
 
-        /* Hover Effect for Dropdown Items */
         .dropdown-item:hover {
             color: var(--primary-orange);
-            background-color: #FFF8F0; /* Light orange tint */
-            padding-left: 35px; /* Slide effect */
+            background-color: #FFF8F0;
+            padding-left: 35px;
         }
 
-        /* Chevron Rotation on Hover */
         .nav-item:hover .fa-chevron-down {
             transform: rotate(180deg);
             transition: transform 0.3s;
@@ -221,7 +239,6 @@
             padding: 100px 0; 
             color: white;
             position: relative;
-            /* Abstract Pattern: Dots */
             background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
         }
         .vm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 50px; }
@@ -256,7 +273,6 @@
         .leadership-section { 
             padding: 100px 0; 
             background-color: var(--bg-light); 
-            /* Abstract Pattern: Intersecting Rings */
             background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f48c06' fill-opacity='0.05'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-2.21 0-4 1.79-4 4s1.79 4 4 4c2.21 0 4-1.79 4-4zm-4-2c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm9 0c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm17 0c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm17 0c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm-34-7c0-2.21-1.79-4-4-4-2.21 0-4 1.79-4 4s1.79 4 4 4c2.21 0 4-1.79 4-4zm-4-2c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm9 0c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm17 0c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm17 0c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm-34 14c0-2.21-1.79-4-4-4-2.21 0-4 1.79-4 4s1.79 4 4 4c2.21 0 4-1.79 4-4zm-4-2c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm9 0c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm17 0c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm17 0c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
         
@@ -296,7 +312,6 @@
             padding: 80px 0; 
             color: white; 
             text-align: center; 
-            /* Abstract Pattern: Circuit/Lines */
             background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM30 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
         .stats-grid { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 40px; }
@@ -399,7 +414,7 @@
 </head>
 <body>
 
-     <header>
+    <header>
         <div class="container">
             <nav>
                 <div class="logo">
@@ -407,7 +422,6 @@
                         <img src="images/satyam logo-2.png" alt="Satyam Icon">
                     </div>
                 </div>
-                
                 <ul class="nav-links">
                     <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
                     
@@ -424,11 +438,10 @@
                     <li class="nav-item"><a href="about-us.html" class="nav-link" style="font-weight: 600; opacity: 1;">About Us</a></li>
                     <li class="nav-item"><a href="mandatory-disclosures.html" class="nav-link">Mandatory Disclosures</a></li>
                 </ul>
-                
                 <a href="contact-us.html" class="btn btn-white">Contact Us</a>
             </nav>
         </div>
-    </header> 
+    </header>
 
     <section class="page-hero">
         <div class="hero-shape shape-1"></div>
@@ -489,7 +502,7 @@
         <div class="container">
             <h2 class="section-title" style="text-align: center; margin-bottom: 60px;">Leadership <span>Desk</span></h2>
 
-            <div class="leader-card reveal">
+            <div class="leader-card slide-left">
                 <div class="leader-img">
                     <img src="images/Founder.png" alt="Founder">
                 </div>
@@ -502,7 +515,7 @@
                 </div>
             </div>
 
-            <div class="leader-card reverse reveal">
+            <div class="leader-card reverse slide-right">
                 <div class="leader-img">
                     <img src="images/chairperson.png" alt="Chairperson">
                 </div>
@@ -515,7 +528,7 @@
                 </div>
             </div>
 
-            <div class="leader-card reveal">
+            <div class="leader-card slide-left">
                 <div class="leader-img">
                     <img src="images/director.png" alt="Director">
                 </div>
@@ -638,7 +651,8 @@
     <script>
         window.addEventListener('scroll', reveal);
         function reveal(){
-            var reveals = document.querySelectorAll('.reveal');
+            // Target all animated elements
+            var reveals = document.querySelectorAll('.reveal, .slide-left, .slide-right');
             for(var i = 0; i < reveals.length; i++){
                 var windowheight = window.innerHeight;
                 var revealtop = reveals[i].getBoundingClientRect().top;
@@ -648,7 +662,7 @@
                 }
             }
         }
-        reveal();
+        reveal(); // Trigger on load
     </script>
 
 </body>
