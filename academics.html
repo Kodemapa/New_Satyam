@@ -335,7 +335,34 @@
         /* Content Images */
         .content-section {
             padding: 80px 0;
+            position: relative;
+            overflow: hidden;
         }
+
+        /* Decorative Shapes for Content Section */
+        .content-shapes { position: absolute; width: 100%; height: 100%; top: 0; left: 0; overflow: hidden; z-index: 0; pointer-events: none; }
+        
+        .content-shape { position: absolute; opacity: 0.4; animation: float 7s ease-in-out infinite; }
+        
+        .content-triangle { width: 0; height: 0; border-left: 35px solid transparent; border-right: 35px solid transparent; border-bottom: 60px solid; }
+        .content-triangle-1 { top: 8%; right: 8%; border-bottom-color: #4ecdc4; animation-delay: 0.5s; }
+        .content-triangle-2 { top: 55%; left: 4%; border-bottom-color: #ffd93d; transform: rotate(45deg); animation-delay: 2s; }
+        .content-triangle-3 { bottom: 12%; right: 12%; border-bottom-color: #ff6b6b; transform: rotate(180deg); animation-delay: 3.5s; }
+        
+        .content-circle { border-radius: 50%; }
+        .content-circle-1 { top: 18%; left: 10%; width: 65px; height: 65px; border: 3px solid #95e1d3; background: transparent; animation-delay: 1s; }
+        .content-circle-2 { top: 70%; right: 6%; width: 55px; height: 55px; border: 3px solid #ff6b6b; background: transparent; animation-delay: 2.5s; }
+        .content-circle-3 { bottom: 25%; left: 12%; width: 45px; height: 45px; background: rgba(78, 205, 196, 0.3); animation-delay: 0.8s; }
+        
+        .content-square { border-radius: 6px; }
+        .content-square-1 { top: 32%; right: 18%; width: 48px; height: 48px; background: rgba(255, 217, 61, 0.3); transform: rotate(20deg); animation-delay: 1.5s; }
+        .content-square-2 { bottom: 38%; left: 8%; width: 42px; height: 42px; background: rgba(255, 107, 107, 0.25); transform: rotate(-25deg); animation-delay: 3s; }
+        
+        .content-ribbon { width: 100px; height: 20px; position: relative; }
+        .content-ribbon::before { content: ''; position: absolute; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 10px solid inherit; left: -10px; top: 0; }
+        .content-ribbon::after { content: ''; position: absolute; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 10px solid inherit; right: -10px; top: 0; }
+        .content-ribbon-1 { top: 42%; left: 3%; background: rgba(149, 225, 211, 0.6); animation-delay: 1.8s; }
+        .content-ribbon-2 { bottom: 18%; right: 20%; background: rgba(255, 217, 61, 0.5); animation-delay: 0.3s; }
 
         .content-img {
             border-radius: 18px;
@@ -956,7 +983,20 @@
 </section> -->
 
         <section class="content-section" style="background-color: #fcfcfc;">
-            <div class="container">
+            <div class="content-shapes">
+                <div class="content-shape content-triangle content-triangle-1"></div>
+                <div class="content-shape content-triangle content-triangle-2"></div>
+                <div class="content-shape content-triangle content-triangle-3"></div>
+                <div class="content-shape content-circle content-circle-1"></div>
+                <div class="content-shape content-circle content-circle-2"></div>
+                <div class="content-shape content-circle content-circle-3"></div>
+                <div class="content-shape content-square content-square-1"></div>
+                <div class="content-shape content-square content-square-2"></div>
+                <div class="content-shape content-ribbon content-ribbon-1"></div>
+                <div class="content-shape content-ribbon content-ribbon-2"></div>
+            </div>
+            
+            <div class="container" style="position: relative; z-index: 1;">
 
                 <div class="row content-row align-items-center mb-5 animate-up">
                     <div class="col-lg-6 mb-4 mb-lg-0">
