@@ -25,7 +25,7 @@
 
     <style>
         :root {
-            --primary-blue: #799ed9;
+            --primary-blue: #9fafc9;
             --primary-yellow: #ffd166;
             --primary-purple: #cb8b2b;
             --primary-orange: #f48c06;
@@ -50,18 +50,7 @@
             box-shadow: 0 6px 30px rgba(2, 6, 23, 0.06);
         }
 
-        .nav-link {
-            color: #0b1220;
-            font-weight: 700;
-            font-size: 14px;
-            margin: 0 8px;
-            transition: color 0.25s, transform 0.25s;
-        }
-
-        .nav-link:hover {
-            color: var(--primary-blue);
-            transform: translateY(-2px);
-        }
+        /* Removed .nav-link styles - using header .nav-links a instead */
 
         /* --- ANIMATIONS --- */
         @keyframes fadeUp {
@@ -555,14 +544,21 @@
         }
 
         header .nav-links li { position: relative; }
-        header .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-orange); font-weight: 1rem; cursor: pointer; }
-        header .nav-links .dropdown-toggle::after { display: none; }
-        header .nav-links .dropdown { position: absolute; top: 120%; left: 0; background: var(--white); min-width: 200px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 8px 0; display: none; z-index: 2000; list-style: none; margin: 0; }
+        header .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-orange); font-weight: 500; cursor: pointer; text-decoration: none; position: relative; }
+        header .nav-links .dropdown-toggle::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: rgb(251, 130, 0); transition: width 0.3s; }
+        header .nav-links .dropdown-toggle:hover::after { width: 100%; }
+        
+        /* Remove underline for Academics dropdown toggle only */
+        header .nav-links .dropdown-toggle:nth-child(1)::after { display: none; }
+        header .nav-links .dropdown { position: absolute; top: 100%; left: 0; background: var(--white); min-width: 200px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 8px 0; display: none; z-index: 2000; list-style: none; margin: 0; margin-top: 10px; }
+        header .nav-links .dropdown::before { content: ''; position: absolute; top: -10px; left: 0; width: 100%; height: 10px; background: transparent; }
         header .nav-links .dropdown li { padding: 0; }
-        header .nav-links .dropdown a { display: block; padding: 10px 18px; color: black; font-weight: 500; }
+        header .nav-links .dropdown a { display: block; padding: 10px 18px; color: black; font-weight: 500; text-decoration: none; position: relative; }
+        header .nav-links .dropdown a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 8px; left: 50%; transform: translateX(-50%); background-color: rgb(251, 130, 0); transition: width 0.3s; }
         header .nav-links .dropdown a:hover { background: rgba(244,140,6,0.06); color: var(--primary-orange); }
-        header .nav-links .dropdown a::after { display: none; }
+        header .nav-links .dropdown a:hover::after { width: calc(100% - 36px); }
         header .nav-links li:hover > .dropdown { display: block; }
+        header .nav-links .dropdown:hover { display: block; }
 
         .btn { display: inline-block; padding: 12px 35px; border-radius: var(--radius-btn); font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 1rem; }
         .btn-white { background: var(--white); color: var(--primary-orange); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
