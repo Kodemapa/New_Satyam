@@ -170,62 +170,86 @@
         .nav-links li:hover > .dropdown { display: block; }
 
         /* --- HERO SECTION --- */
-        .hero { 
-            background-color: var(--primary-orange); 
-            position: relative; 
-            /* Top padding increased to 160px to clear the fixed header + breathing room */
-            padding-top: 160px; 
-            padding-bottom: 200px; /* Space for the bottom curve */
-            color: var(--white); 
-            overflow: hidden; 
-            min-height: 100vh; /* Ensures it covers full screen on load */
-            display: flex;
-            align-items: center; /* Vertically centers content */
-        }
+.hero { 
+    position: relative; 
+    /* Top padding increased to clear the fixed header */
+    padding-top: 160px; 
+    padding-bottom: 200px; /* Space for the bottom curve */
+    color: var(--white); 
+    overflow: hidden; 
+    min-height: 100vh; /* Ensures it covers full screen on load */
+    display: flex;
+    align-items: center; /* Vertically centers content */
 
-        .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%); z-index: 1; }
+    background-image: url('images/pre_school.png'); /* Replace with your large hero image */
+    background-size: cover;
+    background-position: center right; /* Adjust focus */
+    background-repeat: no-repeat;
+}
 
-        .hero-content {
-            display: grid;
-            /* 1fr 1fr splits screen 50/50. Text on Left, Image on Right */
-            grid-template-columns: 1fr 1fr; 
-            align-items: center;
-            gap: 40px;
-            width: 100%;
-        }
+.hero-container { max-width: 1240px; margin: 150px; padding: 0 20px; }
 
-        /* Hero Text (Left Side) */
-        .hero-text {
-            animation: slideInLeft 1s ease-out forwards;
-            z-index: 2; /* Ensures text is above background elements */
-        }
+/* --- COLORED OVERLAY WITH DIAGONAL --- */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(105deg, var(--primary-orange) 0%, var(--primary-orange) 42%, transparent 42%);
+    z-index: 1; 
+}
 
-        .hero-text h1 {
-            font-size: 3.5rem;
-            line-height: 1.3;
-            font-weight: 800;
-            margin-bottom: 25px;
-        }
+.hero-content {
+    position: relative;
+    z-index: 2; 
+    display: grid;
+    /* CHANGED: Adjusted columns to 4fr 6fr (40% - 60%) to keep text inside the orange part */
+    grid-template-columns: 4fr 6fr; 
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+}
 
-        .hero-text h1 span { color: var(--primary-blue); }
+.hero-text {
+    animation: slideInLeft 1s ease-out forwards;
+    
+    /* --- KEY FIXES FOR LEFT ALIGNMENT --- */
+    text-align: left;          /* Aligns text content to the left */
+    display: flex;             /* Use flexbox for better control */
+    flex-direction: column;    /* Stack elements vertically */
+    align-items: flex-start;   /* Aligns the button to the left */
+    padding-right: 10px;       /* Adds breathing room from the diagonal edge */
+}
 
-        .hero-text p {
-            font-size: 1.15rem;
-            margin-bottom: 35px;
-            max-width: 90%;
-            font-weight: 400;
-            line-height: 1.7;
-            opacity: 0.95;
-        }
+.hero-text h1 {
+    font-size: 3.0rem;
+    line-height: 1.3;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
 
-        /* Hero Image Container (Right Side) */
-        .hero-image-container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 5; 
-        }
+.hero-text h1 span { color: var(--primary-blue); }
+
+.hero-text p {
+    font-size: 1.15rem;
+    margin-bottom: 35px;
+    max-width: 90%;
+    font-weight: 400;
+    line-height: 1.7;
+    opacity: 0.95;
+}
+
+/* Hero Image Container (Hidden as image is in background) */
+.hero-image-container {
+    display: none; 
+}
+
+/* Curve Bottom - Ensure it's on top */
+.curve-bottom {
+    z-index: 3;
+}
 
         /* The Organic Shape Mask */
         .blob-mask {
@@ -1524,7 +1548,7 @@
             <div class="shape ribbon ribbon-2"></div>
         </div>
 
-        <div class="container hero-content">
+        <div class="hero-container hero-content">
             <div class="hero-text">
                 <h1>Building <span>Leader's <br>Of Tomorrow</span></h1>
                 <p>Top CBSE School in Ballari | Equipping the Next Generation. Experience the best CBSE syllabus and world-class facilities in the heart of Bellary.</p>
@@ -1559,28 +1583,8 @@
                 <i class="fa-regular fa-file-lines"></i>
             </div>
             <h3>Notice Board</h3>
-            
-            <div class="card-list">
-                <div class="card-list-item">
-                    <h4>Half-Yearly Examination</h4>
-                    <p>Exam schedule for Grades VI-X has been released. Exams commence from October 15th.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>Parent-Teacher Meeting</h4>
-                    <p>The next PTM is scheduled for Saturday, September 20th, from 9:00 AM to 1:00 PM.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>Winter Break</h4>
-                    <p>School will remain closed for winter vacation from December 24th to January 2nd.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>Fee Submission Deadline</h4>
-                    <p>Please clear all outstanding dues for the second quarter by October 10th to avoid late fees.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>New Library Books</h4>
-                    <p>Over 500 new titles have been added to the library. Students are encouraged to visit.</p>
-                </div>
+            <div class="card-list" id="notice-list">
+                <p style="padding: 20px; text-align: center;">Loading notices...</p>
             </div>
         </div>
 
@@ -1589,28 +1593,8 @@
                 <i class="fa-regular fa-calendar-days"></i>
             </div>
             <h3>Events & Activities</h3>
-            
-            <div class="card-list">
-                <div class="card-list-item">
-                    <h4>Annual Sports Meet</h4>
-                    <p>Join us for the Inter-House Sports Championship on November 12th at the main ground.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>Science Exhibition</h4>
-                    <p>Students from all grades will showcase innovative projects on 'Sustainable Future' next Friday.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>Cultural Fest Auditions</h4>
-                    <p>Auditions for dance, music, and drama for the Annual Day will be held this week.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>Debate Competition</h4>
-                    <p>Inter-school debate competition on "AI in Education" will be hosted in the auditorium.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>Art Workshop</h4>
-                    <p>A special pottery and painting workshop is organized for primary students this Saturday.</p>
-                </div>
+            <div class="card-list" id="event-list">
+                <p style="padding: 20px; text-align: center;">Loading events...</p>
             </div>
         </div>
 
@@ -1619,28 +1603,8 @@
                 <i class="fa-solid fa-user-group"></i>
             </div>
             <h3>School Regulation</h3>
-            
-            <div class="card-list">
-                <div class="card-list-item">
-                    <h4>Uniform Policy</h4>
-                    <p>Students must wear the complete school uniform with ID cards daily. Sports uniform is for PT days only.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>Attendance Mandate</h4>
-                    <p>A minimum of 75% attendance is mandatory for eligibility to appear in final examinations.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>Campus Entry</h4>
-                    <p>Visitors and parents are requested to report to the reception desk upon entry for security clearance.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>Mobile Phone Policy</h4>
-                    <p>Mobile phones and electronic gadgets are strictly prohibited within the school premises.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>Leave Application</h4>
-                    <p>Leave applications must be submitted via the school app or diary at least 2 days in advance.</p>
-                </div>
+            <div class="card-list" id="regulation-list">
+                <p style="padding: 20px; text-align: center;">Loading regulations...</p>
             </div>
         </div>
 
@@ -1810,10 +1774,6 @@
         <div class="feature-row">
             <div class="feature-visual">
                 <div class="quiz-card">
-                    <div class="q-header">
-                        <span class="q-tag">Science Quiz</span>
-                        <i class="fa-regular fa-circle-check" style="color:#2ECC71;"></i>
-                    </div>
                     <h3 style="color: #252641; font-size: 1rem; margin-bottom: 10px;">Which component acts as the "brain" of a robot to process information?</h3>
                     <div class="q-img" style="background-image: url('images/Puzzles.png');"></div>
                 </div>
@@ -1987,6 +1947,90 @@
             <p class="copyright">© 2025 All rights reserved by Kodemapa.</p>
         </div>
     </footer>
+
+  <script>
+  // YOUR SHEET ID
+  const SHEET_ID = '1-b02VMpWdkogfSyE1UrHTHhUU8Sn8vMtnVt2fPQsQcs';
+
+  async function loadNotices() {
+    // 1. FIXED: Targeting the correct ID from your HTML ('notice-list')
+    const container = document.getElementById('notice-list');
+    
+    if (!container) {
+      console.error("CRITICAL ERROR: Could not find <div id='notice-list'> on the page.");
+      return; 
+    }
+
+    // 2. Fetching the data
+    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=0`;
+
+    try {
+      const res = await fetch(url);
+      const text = await res.text();
+
+      // 3. CHECK: Is this a Login Page? (Happens if Sheet is Private)
+      if (text.includes("<!DOCTYPE html>") || !text.includes("setResponse")) {
+        throw new Error("PRIVACY_BLOCK");
+      }
+
+      // 4. CLEAN DATA: Extract the JSON object from the Google wrapper
+      const startIndex = text.indexOf('{');
+      const endIndex = text.lastIndexOf('}') + 1;
+      let jsonString = text.substring(startIndex, endIndex);
+
+      // 5. FIX DATES: Convert Google's "Date(y,m,d)" to a simple string to prevent crashes
+      jsonString = jsonString.replace(/(new\s+)?Date\((.*?)\)/g, '"Date($2)"');
+
+      const json = JSON.parse(jsonString);
+      
+      // Clear the "Loading..." message
+      container.innerHTML = '';
+
+      // Check if the sheet is empty
+      if (!json.table || !json.table.rows || json.table.rows.length === 0) {
+        container.innerHTML = '<p style="padding:20px; text-align:center; color:white;">No notices found.</p>';
+        return;
+      }
+
+      // 6. BUILD UI: Create cards using your specific CSS classes (.card-list-item)
+      json.table.rows.forEach(row => {
+        // Skip empty rows
+        if (!row.c || !row.c[0]) return;
+
+        const title = row.c[0].v;
+        // Get date if it exists
+        const dateRaw = row.c[1] ? (row.c[1].f || row.c[1].v) : ''; 
+        // Clean up "Date(...)" text if it appears
+        const displayDate = dateRaw.toString().replace(/Date\(|\)|"/g, '');
+
+        const item = document.createElement('div');
+        item.className = 'card-list-item'; // Matches your CSS
+        
+        item.innerHTML = `
+          <h4>${title}</h4>
+          <p>${displayDate}</p>
+        `;
+        container.appendChild(item);
+      });
+
+    } catch (err) {
+      console.error("Notice Board Error:", err);
+      
+      if (err.message === "PRIVACY_BLOCK") {
+        container.innerHTML = `
+          <div style="padding: 15px; text-align: center; color: white;">
+            <strong>Access Denied</strong><br>
+            <small>The Google Sheet is Private.<br>Please set sharing to "Anyone with the link".</small>
+          </div>`;
+      } else {
+        container.innerHTML = '<p style="padding:20px; text-align:center; color:white;">Unable to load data.</p>';
+      }
+    }
+  }
+
+  // Run the function when the page loads
+  document.addEventListener('DOMContentLoaded', loadNotices);
+</script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
