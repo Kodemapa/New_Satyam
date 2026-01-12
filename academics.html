@@ -154,7 +154,7 @@
             position: absolute;
             top: -10%;
             left: -5%;
-            width: 70%;
+            width: 80%;
             height: 120%;
             background-image: url('./images/acedemics-bg-final.png');
             background-size: cover;
@@ -329,29 +329,154 @@
         }
 
         /* Decorative Shapes for Content Section */
-        .content-shapes { position: absolute; width: 100%; height: 100%; top: 0; left: 0; overflow: hidden; z-index: 0; pointer-events: none; }
-        
-        .content-shape { position: absolute; opacity: 0.4; animation: float 7s ease-in-out infinite; }
-        
-        .content-triangle { width: 0; height: 0; border-left: 35px solid transparent; border-right: 35px solid transparent; border-bottom: 60px solid; }
-        .content-triangle-1 { top: 8%; right: 8%; border-bottom-color: #4ecdc4; animation-delay: 0.5s; }
-        .content-triangle-2 { top: 55%; left: 4%; border-bottom-color: #ffd93d; transform: rotate(45deg); animation-delay: 2s; }
-        .content-triangle-3 { bottom: 12%; right: 12%; border-bottom-color: #ff6b6b; transform: rotate(180deg); animation-delay: 3.5s; }
-        
-        .content-circle { border-radius: 50%; }
-        .content-circle-1 { top: 18%; left: 10%; width: 65px; height: 65px; border: 3px solid #95e1d3; background: transparent; animation-delay: 1s; }
-        .content-circle-2 { top: 70%; right: 6%; width: 55px; height: 55px; border: 3px solid #ff6b6b; background: transparent; animation-delay: 2.5s; }
-        .content-circle-3 { bottom: 25%; left: 12%; width: 45px; height: 45px; background: rgba(78, 205, 196, 0.3); animation-delay: 0.8s; }
-        
-        .content-square { border-radius: 6px; }
-        .content-square-1 { top: 32%; right: 18%; width: 48px; height: 48px; background: rgba(255, 217, 61, 0.3); transform: rotate(20deg); animation-delay: 1.5s; }
-        .content-square-2 { bottom: 38%; left: 8%; width: 42px; height: 42px; background: rgba(255, 107, 107, 0.25); transform: rotate(-25deg); animation-delay: 3s; }
-        
-        .content-ribbon { width: 100px; height: 20px; position: relative; }
-        .content-ribbon::before { content: ''; position: absolute; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 10px solid inherit; left: -10px; top: 0; }
-        .content-ribbon::after { content: ''; position: absolute; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 10px solid inherit; right: -10px; top: 0; }
-        .content-ribbon-1 { top: 42%; left: 3%; background: rgba(149, 225, 211, 0.6); animation-delay: 1.8s; }
-        .content-ribbon-2 { bottom: 18%; right: 20%; background: rgba(255, 217, 61, 0.5); animation-delay: 0.3s; }
+        .content-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .content-shape {
+            position: absolute;
+            opacity: 0.4;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        .content-triangle {
+            width: 0;
+            height: 0;
+            border-left: 35px solid transparent;
+            border-right: 35px solid transparent;
+            border-bottom: 60px solid;
+        }
+
+        .content-triangle-1 {
+            top: 8%;
+            right: 8%;
+            border-bottom-color: #4ecdc4;
+            animation-delay: 0.5s;
+        }
+
+        .content-triangle-2 {
+            top: 55%;
+            left: 4%;
+            border-bottom-color: #ffd93d;
+            transform: rotate(45deg);
+            animation-delay: 2s;
+        }
+
+        .content-triangle-3 {
+            bottom: 12%;
+            right: 12%;
+            border-bottom-color: #ff6b6b;
+            transform: rotate(180deg);
+            animation-delay: 3.5s;
+        }
+
+        .content-circle {
+            border-radius: 50%;
+        }
+
+        .content-circle-1 {
+            top: 18%;
+            left: 10%;
+            width: 65px;
+            height: 65px;
+            border: 3px solid #95e1d3;
+            background: transparent;
+            animation-delay: 1s;
+        }
+
+        .content-circle-2 {
+            top: 70%;
+            right: 6%;
+            width: 55px;
+            height: 55px;
+            border: 3px solid #ff6b6b;
+            background: transparent;
+            animation-delay: 2.5s;
+        }
+
+        .content-circle-3 {
+            bottom: 25%;
+            left: 12%;
+            width: 45px;
+            height: 45px;
+            background: rgba(78, 205, 196, 0.3);
+            animation-delay: 0.8s;
+        }
+
+        .content-square {
+            border-radius: 6px;
+        }
+
+        .content-square-1 {
+            top: 32%;
+            right: 18%;
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 217, 61, 0.3);
+            transform: rotate(20deg);
+            animation-delay: 1.5s;
+        }
+
+        .content-square-2 {
+            bottom: 38%;
+            left: 8%;
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 107, 107, 0.25);
+            transform: rotate(-25deg);
+            animation-delay: 3s;
+        }
+
+        .content-ribbon {
+            width: 100px;
+            height: 20px;
+            position: relative;
+        }
+
+        .content-ribbon::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid inherit;
+            left: -10px;
+            top: 0;
+        }
+
+        .content-ribbon::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid inherit;
+            right: -10px;
+            top: 0;
+        }
+
+        .content-ribbon-1 {
+            top: 42%;
+            left: 3%;
+            background: rgba(149, 225, 211, 0.6);
+            animation-delay: 1.8s;
+        }
+
+        .content-ribbon-2 {
+            bottom: 18%;
+            right: 20%;
+            background: rgba(255, 217, 61, 0.5);
+            animation-delay: 0.3s;
+        }
 
         .content-img {
             border-radius: 18px;
@@ -478,56 +603,61 @@
             --white: #ffffff;
             --radius-btn: 50px;
         }
-        
-        header { 
+
+        header {
             background-color: white;
-            position: fixed; 
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
-        
-        header nav { 
-            display: flex; 
-            justify-content: space-between; 
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
         }
 
-        header .logo { 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-            font-size: 1.5rem; 
+        header .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
             font-weight: 700;
             letter-spacing: 0.5px;
         }
-        
+
         header .logo-icon {
             width: 190px;
             height: 100px;
         }
-        
-        header .logo-icon img { width: 100%; height: 100%; object-fit: contain; padding: 5px; }
 
-        header .nav-links { 
-            display: flex; 
-            gap: 40px; 
+        header .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 5px;
+        }
+
+        header .nav-links {
+            display: flex;
+            gap: 40px;
             align-items: center;
             list-style: none;
             margin: 0;
             padding: 0;
         }
 
-        header .nav-links a { 
-            color: var(--primary-orange); 
-            font-weight: 500; 
-            font-size: 1rem; 
+        header .nav-links a {
+            color: var(--primary-orange);
+            font-weight: 500;
+            font-size: 1rem;
             position: relative;
             text-decoration: none;
         }
-        
+
         header .nav-links a::after {
             content: '';
             position: absolute;
@@ -538,40 +668,185 @@
             background-color: rgb(251, 130, 0);
             transition: width 0.3s;
         }
-        
+
         header .nav-links a:hover::after {
             width: 100%;
         }
 
-        header .nav-links li { position: relative; }
-        header .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-orange); font-weight: 500; cursor: pointer; text-decoration: none; position: relative; }
-        header .nav-links .dropdown-toggle::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: rgb(251, 130, 0); transition: width 0.3s; }
-        header .nav-links .dropdown-toggle:hover::after { width: 100%; }
-        
-        /* Remove underline for Academics dropdown toggle only */
-        header .nav-links .dropdown-toggle:nth-child(1)::after { display: none; }
-        header .nav-links .dropdown { position: absolute; top: 100%; left: 0; background: var(--white); min-width: 200px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 8px 0; display: none; z-index: 2000; list-style: none; margin: 0; margin-top: 10px; }
-        header .nav-links .dropdown::before { content: ''; position: absolute; top: -10px; left: 0; width: 100%; height: 10px; background: transparent; }
-        header .nav-links .dropdown li { padding: 0; }
-        header .nav-links .dropdown a { display: block; padding: 10px 18px; color: black; font-weight: 500; text-decoration: none; position: relative; }
-        header .nav-links .dropdown a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 8px; left: 50%; transform: translateX(-50%); background-color: rgb(251, 130, 0); transition: width 0.3s; }
-        header .nav-links .dropdown a:hover { background: rgba(244,140,6,0.06); color: var(--primary-orange); }
-        header .nav-links .dropdown a:hover::after { width: calc(100% - 36px); }
-        header .nav-links li:hover > .dropdown { display: block; }
-        header .nav-links .dropdown:hover { display: block; }
+        header .nav-links li {
+            position: relative;
+        }
 
-        .btn { display: inline-block; padding: 12px 35px; border-radius: var(--radius-btn); font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 1rem; }
-        .btn-white { background: var(--white); color: var(--primary-orange); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
+        header .nav-links .dropdown-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-orange);
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            position: relative;
+        }
+
+        header .nav-links .dropdown-toggle::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: rgb(251, 130, 0);
+            transition: width 0.3s;
+        }
+
+        header .nav-links .dropdown-toggle:hover::after {
+            width: 100%;
+        }
+
+        /* Remove underline for Academics dropdown toggle only */
+        header .nav-links .dropdown-toggle:nth-child(1)::after {
+            display: none;
+        }
+
+        header .nav-links .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            padding: 8px 0;
+            display: none;
+            z-index: 2000;
+            list-style: none;
+            margin: 0;
+            margin-top: 10px;
+        }
+
+        header .nav-links .dropdown::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: transparent;
+        }
+
+        header .nav-links .dropdown li {
+            padding: 0;
+        }
+
+        header .nav-links .dropdown a {
+            display: block;
+            padding: 10px 18px;
+            color: black;
+            font-weight: 500;
+            text-decoration: none;
+            position: relative;
+        }
+
+        header .nav-links .dropdown a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgb(251, 130, 0);
+            transition: width 0.3s;
+        }
+
+        header .nav-links .dropdown a:hover {
+            background: rgba(244, 140, 6, 0.06);
+            color: var(--primary-orange);
+        }
+
+        header .nav-links .dropdown a:hover::after {
+            width: calc(100% - 36px);
+        }
+
+        header .nav-links li:hover>.dropdown {
+            display: block;
+        }
+
+        header .nav-links .dropdown:hover {
+            display: block;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            border-radius: var(--radius-btn);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--primary-orange);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-white:hover {
+            color: var(--primary-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
 
         /* --- INDEX FOOTER STYLES --- */
-        footer { background-color: #252641; color: #B2B3CF; padding: 90px 0 50px; text-align: center; }
-        footer .footer-logo { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 40px; }
-        footer .footer-logo h2 { color: white; padding-left: 15px; border-left: 1px solid #626381; font-weight: 600; letter-spacing: 1px; margin: 0; }
-        footer .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; font-size: 1rem; }
-        footer .footer-links a { color: #B2B3CF; text-decoration: none; transition: color 0.3s; }
-        footer .footer-links a:hover { color: white; }
-        footer .copyright { font-size: 0.9rem; opacity: 0.6; margin: 0; }
+        footer {
+            background-color: #252641;
+            color: #B2B3CF;
+            padding: 90px 0 50px;
+            text-align: center;
+        }
+
+        footer .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        footer .footer-logo h2 {
+            color: white;
+            padding-left: 15px;
+            border-left: 1px solid #626381;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            margin-bottom: 35px;
+            font-size: 1rem;
+        }
+
+        footer .footer-links a {
+            color: #B2B3CF;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer .footer-links a:hover {
+            color: white;
+        }
+
+        footer .copyright {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            margin: 0;
+        }
 
         /* --- NEW WHY CHOOSE SECTION STYLES --- */
         .why-choose-section {
@@ -582,33 +857,162 @@
         }
 
         /* Decorative Background Shapes for Why Choose Section */
-        .why-shapes { position: absolute; width: 100%; height: 100%; top: 0; left: 0; overflow: hidden; z-index: 0; pointer-events: none; }
-        
-        .why-shape { position: absolute; opacity: 0.5; animation: float 6s ease-in-out infinite; }
-        
+        .why-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .why-shape {
+            position: absolute;
+            opacity: 0.5;
+            animation: float 6s ease-in-out infinite;
+        }
+
         /* Triangle Shapes */
-        .why-triangle { width: 0; height: 0; border-left: 40px solid transparent; border-right: 40px solid transparent; border-bottom: 70px solid; }
-        .why-triangle-1 { top: 10%; right: 10%; border-bottom-color: #FF6B6B; animation-delay: 0s; }
-        .why-triangle-2 { bottom: 20%; left: 5%; border-bottom-color: #4ECDC4; transform: rotate(180deg); animation-delay: 1.5s; }
-        .why-triangle-3 { top: 50%; left: 8%; border-bottom-color: #F7B731; animation-delay: 3s; border-left: 30px solid transparent; border-right: 30px solid transparent; border-bottom-width: 50px; }
-        
+        .why-triangle {
+            width: 0;
+            height: 0;
+            border-left: 40px solid transparent;
+            border-right: 40px solid transparent;
+            border-bottom: 70px solid;
+        }
+
+        .why-triangle-1 {
+            top: 10%;
+            right: 10%;
+            border-bottom-color: #FF6B6B;
+            animation-delay: 0s;
+        }
+
+        .why-triangle-2 {
+            bottom: 20%;
+            left: 5%;
+            border-bottom-color: #4ECDC4;
+            transform: rotate(180deg);
+            animation-delay: 1.5s;
+        }
+
+        .why-triangle-3 {
+            top: 50%;
+            left: 8%;
+            border-bottom-color: #F7B731;
+            animation-delay: 3s;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            border-bottom-width: 50px;
+        }
+
         /* Circle Shapes */
-        .why-circle { border-radius: 50%; }
-        .why-circle-1 { top: 25%; left: 12%; width: 70px; height: 70px; border: 4px solid #00D2FF; background: transparent; animation-delay: 2s; }
-        .why-circle-2 { bottom: 30%; right: 15%; width: 60px; height: 60px; border: 3px solid #5F27CD; background: transparent; animation-delay: 0.5s; }
-        .why-circle-3 { top: 65%; right: 6%; width: 50px; height: 50px; border: 3px solid #F093FB; background: transparent; animation-delay: 2.5s; }
-        
+        .why-circle {
+            border-radius: 50%;
+        }
+
+        .why-circle-1 {
+            top: 25%;
+            left: 12%;
+            width: 70px;
+            height: 70px;
+            border: 4px solid #00D2FF;
+            background: transparent;
+            animation-delay: 2s;
+        }
+
+        .why-circle-2 {
+            bottom: 30%;
+            right: 15%;
+            width: 60px;
+            height: 60px;
+            border: 3px solid #5F27CD;
+            background: transparent;
+            animation-delay: 0.5s;
+        }
+
+        .why-circle-3 {
+            top: 65%;
+            right: 6%;
+            width: 50px;
+            height: 50px;
+            border: 3px solid #F093FB;
+            background: transparent;
+            animation-delay: 2.5s;
+        }
+
         /* Square/Rectangle Shapes */
-        .why-square { border-radius: 8px; }
-        .why-square-1 { top: 40%; right: 22%; width: 55px; height: 55px; background: rgba(255, 107, 107, 0.3); transform: rotate(15deg); animation-delay: 1s; }
-        .why-square-2 { bottom: 40%; left: 15%; width: 45px; height: 45px; background: rgba(78, 205, 196, 0.3); transform: rotate(-20deg); animation-delay: 2.8s; }
-        
+        .why-square {
+            border-radius: 8px;
+        }
+
+        .why-square-1 {
+            top: 40%;
+            right: 22%;
+            width: 55px;
+            height: 55px;
+            background: rgba(255, 107, 107, 0.3);
+            transform: rotate(15deg);
+            animation-delay: 1s;
+        }
+
+        .why-square-2 {
+            bottom: 40%;
+            left: 15%;
+            width: 45px;
+            height: 45px;
+            background: rgba(78, 205, 196, 0.3);
+            transform: rotate(-20deg);
+            animation-delay: 2.8s;
+        }
+
         /* Ribbon Shapes */
-        .why-ribbon { width: 110px; height: 22px; position: relative; animation-delay: 1.2s; }
-        .why-ribbon::before { content: ''; position: absolute; width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 11px solid inherit; left: -12px; top: 0; }
-        .why-ribbon::after { content: ''; position: absolute; width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 11px solid inherit; right: -12px; top: 0; }
-        .why-ribbon-1 { top: 18%; left: 4%; background: #F7B731; animation-delay: 0.8s; }
-        .why-ribbon-2 { bottom: 15%; right: 18%; background: rgba(244, 140, 6, 0.5); animation-delay: 2.2s; }
+        .why-ribbon {
+            width: 110px;
+            height: 22px;
+            position: relative;
+            animation-delay: 1.2s;
+        }
+
+        .why-ribbon::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 11px solid inherit;
+            left: -12px;
+            top: 0;
+        }
+
+        .why-ribbon::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 11px solid inherit;
+            right: -12px;
+            top: 0;
+        }
+
+        .why-ribbon-1 {
+            top: 18%;
+            left: 4%;
+            background: #F7B731;
+            animation-delay: 0.8s;
+        }
+
+        .why-ribbon-2 {
+            bottom: 15%;
+            right: 18%;
+            background: rgba(244, 140, 6, 0.5);
+            animation-delay: 2.2s;
+        }
 
         .section-tag {
             display: inline-block;
@@ -674,12 +1078,29 @@
             width: 12px;
         }
 
-        .row-1::before { background: linear-gradient(180deg, #FF6B6B, #FF8E53); }
-        .row-2::before { background: linear-gradient(180deg, #4ECDC4, #44A08D); }
-        .row-3::before { background: linear-gradient(180deg, #F7B731, #F37335); }
-        .row-4::before { background: linear-gradient(180deg, #5F27CD, #341F97); }
-        .row-5::before { background: linear-gradient(180deg, #00D2FF, #3A7BD5); }
-        .row-6::before { background: linear-gradient(180deg, #F093FB, #F5576C); }
+        .row-1::before {
+            background: linear-gradient(180deg, #FF6B6B, #FF8E53);
+        }
+
+        .row-2::before {
+            background: linear-gradient(180deg, #4ECDC4, #44A08D);
+        }
+
+        .row-3::before {
+            background: linear-gradient(180deg, #F7B731, #F37335);
+        }
+
+        .row-4::before {
+            background: linear-gradient(180deg, #5F27CD, #341F97);
+        }
+
+        .row-5::before {
+            background: linear-gradient(180deg, #00D2FF, #3A7BD5);
+        }
+
+        .row-6::before {
+            background: linear-gradient(180deg, #F093FB, #F5576C);
+        }
 
         .feature-number {
             font-size: 4rem;
@@ -691,12 +1112,29 @@
             transition: all 0.3s;
         }
 
-        .row-1:hover .feature-number { color: #FF6B6B; }
-        .row-2:hover .feature-number { color: #4ECDC4; }
-        .row-3:hover .feature-number { color: #F7B731; }
-        .row-4:hover .feature-number { color: #5F27CD; }
-        .row-5:hover .feature-number { color: #00D2FF; }
-        .row-6:hover .feature-number { color: #F093FB; }
+        .row-1:hover .feature-number {
+            color: #FF6B6B;
+        }
+
+        .row-2:hover .feature-number {
+            color: #4ECDC4;
+        }
+
+        .row-3:hover .feature-number {
+            color: #F7B731;
+        }
+
+        .row-4:hover .feature-number {
+            color: #5F27CD;
+        }
+
+        .row-5:hover .feature-number {
+            color: #00D2FF;
+        }
+
+        .row-6:hover .feature-number {
+            color: #F093FB;
+        }
 
         .feature-icon {
             width: 80px;
@@ -716,12 +1154,29 @@
             transition: all 0.3s;
         }
 
-        .row-1:hover .feature-icon { background: linear-gradient(135deg, #FF6B6B, #FF8E53); }
-        .row-2:hover .feature-icon { background: linear-gradient(135deg, #4ECDC4, #44A08D); }
-        .row-3:hover .feature-icon { background: linear-gradient(135deg, #F7B731, #F37335); }
-        .row-4:hover .feature-icon { background: linear-gradient(135deg, #5F27CD, #341F97); }
-        .row-5:hover .feature-icon { background: linear-gradient(135deg, #00D2FF, #3A7BD5); }
-        .row-6:hover .feature-icon { background: linear-gradient(135deg, #F093FB, #F5576C); }
+        .row-1:hover .feature-icon {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+        }
+
+        .row-2:hover .feature-icon {
+            background: linear-gradient(135deg, #4ECDC4, #44A08D);
+        }
+
+        .row-3:hover .feature-icon {
+            background: linear-gradient(135deg, #F7B731, #F37335);
+        }
+
+        .row-4:hover .feature-icon {
+            background: linear-gradient(135deg, #5F27CD, #341F97);
+        }
+
+        .row-5:hover .feature-icon {
+            background: linear-gradient(135deg, #00D2FF, #3A7BD5);
+        }
+
+        .row-6:hover .feature-icon {
+            background: linear-gradient(135deg, #F093FB, #F5576C);
+        }
 
         .feature-row:hover .feature-icon i {
             color: white;
@@ -752,12 +1207,13 @@
                 text-align: center;
                 gap: 20px;
             }
+
             .feature-number {
                 font-size: 3rem;
             }
-        
 
-        /* Values styles moved to css/values.css for parity with gallery */
+
+            /* Values styles moved to css/values.css for parity with gallery */
     </style>
 </head>
 
@@ -787,12 +1243,12 @@
                     <li><a href="about-us.html">About Us</a></li>
                     <li><a href="#">Mandatory Disclosures</a></li>
                 </ul>
-                <button class="btn btn-white">Contact Us</button>
+                <a href="contact-us.html" class="btn btn-white">Contact Us</a>
             </nav>
         </div>
     </header>
 
-    <main style="padding-top: 120px; 
+    <main style="padding-top: 100px; 
     background-image: url(../images/academics-bg.png);">
         <section class="academic-hero">
             <div class="hero-bg-diag"></div>
@@ -815,11 +1271,11 @@
                         <div class="quote-box shadow-lg">
                             <div class="quote-icon">“</div>
                             <p class="position-relative" style="z-index: 2; font-size: 1.1rem; line-height: 1.8;">
-                                Our CBSE affiliation reflects our dedication to holistic education that balances
-                                academic rigor with co-curricular excellence.
+                                Education is not just about books and exams, it's about developing lifelong learners and
+                                responsible global citizens.
                             </p>
-                            <span class="chairperson-name">— Smt. R. Surekha</span>
-                            <small class="text-white-50">Chair Person</small>
+                            <span class="chairperson-name">— R. Jagadeesh Kumar</span>
+                            <small class="text-white-50">Director Person</small>
                         </div>
                     </div>
                 </div>
@@ -844,7 +1300,8 @@
                 <div class="text-center mb-5 animate-up">
                     <span class="section-tag">OUR EXCELLENCE</span>
                     <h2 class="section-main-title">Why Choose Satyam?</h2>
-                    <p class="section-subtitle">Dedicated to nurturing learners across all grades with consistent academic results</p>
+                    <p class="section-subtitle">Dedicated to nurturing learners across all grades with consistent
+                        academic results</p>
                 </div>
 
                 <div class="features-list">
@@ -855,7 +1312,8 @@
                         </div>
                         <div class="feature-content">
                             <h3>Recognized CBSE Affiliation</h3>
-                            <p>Government approved curriculum providing structured learning pathways and recognition across India, ensuring your child's credentials are respected nationwide.</p>
+                            <p>Government approved curriculum providing structured learning pathways and recognition
+                                across India, ensuring your child's credentials are respected nationwide.</p>
                         </div>
                     </div>
 
@@ -866,7 +1324,8 @@
                         </div>
                         <div class="feature-content">
                             <h3>LEAD Digital Classrooms</h3>
-                            <p>Partnership with LEAD School bringing world-class digital infrastructure, interactive smart classrooms, and engaging digital textbooks.</p>
+                            <p>Partnership with LEAD School bringing world-class digital infrastructure, interactive
+                                smart classrooms, and engaging digital textbooks.</p>
                         </div>
                     </div>
 
@@ -877,7 +1336,8 @@
                         </div>
                         <div class="feature-content">
                             <h3>Future-Ready STEM Focus</h3>
-                            <p>Innovative Science, Technology, Engineering, and Mathematics curriculum with state-of-the-art laboratories and coding classes.</p>
+                            <p>Innovative Science, Technology, Engineering, and Mathematics curriculum with
+                                state-of-the-art laboratories and coding classes.</p>
                         </div>
                     </div>
 
@@ -888,7 +1348,8 @@
                         </div>
                         <div class="feature-content">
                             <h3>Holistic Development</h3>
-                            <p>Wide-ranging activities including athletics, cricket, basketball, dance, and instrumental music for complete growth.</p>
+                            <p>Wide-ranging activities including athletics, cricket, basketball, dance, and instrumental
+                                music for complete growth.</p>
                         </div>
                     </div>
 
@@ -899,7 +1360,8 @@
                         </div>
                         <div class="feature-content">
                             <h3>Expert Faculty Team</h3>
-                            <p>Dedicated teachers with years of classroom experience, specialized subject knowledge, and modern teaching certifications.</p>
+                            <p>Dedicated teachers with years of classroom experience, specialized subject knowledge, and
+                                modern teaching certifications.</p>
                         </div>
                     </div>
 
@@ -910,7 +1372,8 @@
                         </div>
                         <div class="feature-content">
                             <h3>Accessible Quality</h3>
-                            <p>Affordable fee structure without compromising educational quality, with transparent cost breakdowns.</p>
+                            <p>Affordable fee structure without compromising educational quality, with transparent cost
+                                breakdowns.</p>
                         </div>
                     </div>
                 </div>
@@ -990,7 +1453,7 @@
                 <div class="content-shape content-ribbon content-ribbon-1"></div>
                 <div class="content-shape content-ribbon content-ribbon-2"></div>
             </div>
-            
+
             <div class="container" style="position: relative; z-index: 1;">
 
                 <div class="row content-row align-items-center mb-5 animate-up">
@@ -1073,7 +1536,9 @@
         <div class="container">
             <div class="footer-logo">
                 <img src="images/Satyam_Icon_1.png" alt="Satyam International Logo" style="width: 40px; height: 40px;">
-                <h2>Satyam International <span style="font-size: 0.9rem; display: block; font-weight: 400; opacity: 0.7; margin-top: 5px;">School for Holistic Development</span></h2>
+                <h2>Satyam International <span
+                        style="font-size: 0.9rem; display: block; font-weight: 400; opacity: 0.7; margin-top: 5px;">School
+                        for Holistic Development</span></h2>
             </div>
 
             <div class="footer-links">
@@ -1083,7 +1548,7 @@
                 <a href="contact-us.html">Contact-us</a>
                 <a href="#">Privacy Policy</a>
             </div>
-            
+
             <p class="copyright">© 2025 All rights reserved by Kodemapa.</p>
         </div>
     </footer>
