@@ -27,7 +27,13 @@
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         ul { list-style: none; }
 
-        .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+        /* --- UPDATED: CONTAINER SIZE --- */
+        /* Increased to 1440px to fit modern screens better */
+        .container { 
+            max-width: 1440px; 
+            margin: 0 auto; 
+            padding: 0 40px; /* Increased side padding for better spacing */
+        }
 
         /* --- ANIMATIONS --- */
         @keyframes fadeInDown {
@@ -93,7 +99,7 @@
 
         /* --- BUTTONS --- */
         .btn { display: inline-block; padding: 12px 35px; border-radius: var(--radius-btn); font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 1rem; }
-        .btn-white { background: var(--white); color: var(--primary-orange); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .btn-white { background: var(--white); color: var(--primary-blue); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
         .btn-primary { background: var(--primary-orange); color: var(--white); }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(244, 140, 6, 0.3); }
@@ -119,6 +125,8 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
+            /* Added min-height to ensure consistent sizing */
+            min-height: 90px;
         }
 
         .logo { 
@@ -145,11 +153,11 @@
         .nav-links { 
             display: flex; 
             gap: 40px; 
-            align-items: center;
+            align-items: center; 
         }
 
         .nav-links a { 
-            color: var(--primary-orange); 
+            color: var(--primary-blue); 
             font-weight: 500; 
             font-size: 1rem; 
             position: relative;
@@ -162,7 +170,7 @@
 
         /* --- DROPDOWN NAV --- */
         .nav-links li { position: relative; }
-        .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-orange); font-weight: 1rem; }
+        .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-blue); font-weight: 1rem; }
         .nav-links .dropdown { position: absolute; top: 120%; left: 0; background: var(--white); min-width: 200px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 8px 0; display: none; z-index: 2000; }
         .nav-links .dropdown li { padding: 0; }
         .nav-links .dropdown a { display: block; padding: 10px 18px; color: var(--primary-blue); font-weight: 500; }
@@ -172,7 +180,6 @@
         /* --- HERO SECTION --- */
 .hero { 
     position: relative; 
-    /* Top padding increased to clear the fixed header */
     padding-top: 160px; 
     padding-bottom: 200px; /* Space for the bottom curve */
     color: var(--white); 
@@ -187,7 +194,7 @@
     background-repeat: no-repeat;
 }
 
-.hero-container { max-width: 1240px; margin: 150px; padding: 0 20px; }
+.hero-container { max-width: 1440px; margin: 150px auto; padding: 0 20px; }
 
 /* --- COLORED OVERLAY WITH DIAGONAL --- */
 .hero::before {
@@ -216,11 +223,11 @@
     animation: slideInLeft 1s ease-out forwards;
     
     /* --- KEY FIXES FOR LEFT ALIGNMENT --- */
-    text-align: left;          /* Aligns text content to the left */
-    display: flex;             /* Use flexbox for better control */
-    flex-direction: column;    /* Stack elements vertically */
-    align-items: flex-start;   /* Aligns the button to the left */
-    padding-right: 10px;       /* Adds breathing room from the diagonal edge */
+    text-align: left;           /* Aligns text content to the left */
+    display: flex;              /* Use flexbox for better control */
+    flex-direction: column;     /* Stack elements vertically */
+    align-items: flex-start;    /* Aligns the button to the left */
+    padding-right: 10px;        /* Adds breathing room from the diagonal edge */
 }
 
 .hero-text h1 {
@@ -557,8 +564,8 @@
     
     /* --- KEY CHANGE HERE --- */
     justify-content: flex-end; /* Pushes content to the bottom */
-    align-items: center;       /* Centers content horizontally */
-    padding-bottom: 50px;      /* Adds space from the bottom edge */
+    align-items: center;        /* Centers content horizontally */
+    padding-bottom: 50px;       /* Adds space from the bottom edge */
     /* --------------------- */
     
     text-align: center;
@@ -1518,32 +1525,26 @@
                         </ul>
                     </li>
                     <li><a href="about-us.html">About Us</a></li>
-                    <li><a href="#">Mandatory Disclosures</a></li>
-                    <li><a href="contact-us.html">Contact Us</a></li>
+                    <li><a href="mandatory-disclosure.html">Mandatory Disclosures</a></li>
                 </ul>
-                <button class="btn btn-white">Contact Us</button>
+                <a href="contact-us.html" class="btn btn-white">Contact Us</a>
             </nav>
         </div>
     </header>
 
     <section class="hero">
-        <!-- Decorative Background Shapes -->
         <div class="bg-shapes">
-            <!-- Triangles -->
             <div class="shape triangle triangle-1"></div>
             <div class="shape triangle triangle-2"></div>
             <div class="shape triangle triangle-3"></div>
             
-            <!-- Circles -->
             <div class="shape circle circle-1"></div>
             <div class="shape circle circle-2"></div>
             <div class="shape circle circle-3"></div>
             
-            <!-- Squares -->
             <div class="shape square square-1"></div>
             <div class="shape square square-2"></div>
             
-            <!-- Ribbons -->
             <div class="shape ribbon ribbon-1"></div>
             <div class="shape ribbon ribbon-2"></div>
         </div>
@@ -1612,7 +1613,6 @@
 </section>
 
     <section class="integrations">
-        <!-- Decorative Shapes -->
         <div class="bg-shapes">
             <div class="shape circle" style="top: 10%; left: 10%; width: 80px; height: 80px; border: 4px solid #4ecdc4; border-radius: 50%; animation: float 6s ease-in-out infinite; animation-delay: 0s;"></div>
             <div class="shape square" style="top: 60%; right: 15%; width: 50px; height: 50px; background: rgba(255, 140, 6, 0.3); border-radius: 5px; transform: rotate(15deg); animation: float 6s ease-in-out infinite; animation-delay: 1.5s;"></div>
@@ -1642,7 +1642,6 @@
 </section>
 
    <section class="about-section-container">
-        <!-- Decorative Shapes -->
         <div class="bg-shapes">
             <div class="shape triangle" style="top: 10%; right: 8%; width: 0; height: 0; border-left: 40px solid transparent; border-right: 40px solid transparent; border-bottom: 70px solid #ff6b6b; animation: float 6s ease-in-out infinite; animation-delay: 0s;"></div>
             <div class="shape circle" style="bottom: 15%; right: 12%; width: 70px; height: 70px; background: rgba(78, 205, 196, 0.2); border-radius: 50%; animation: float 6s ease-in-out infinite; animation-delay: 1.5s;"></div>
@@ -1719,7 +1718,6 @@
 </section>
 
    <section class="container features-section" style="position: relative;">
-        <!-- Decorative Shapes -->
         <div class="bg-shapes">
             <div class="shape circle" style="top: 15%; left: 5%; width: 80px; height: 80px; border: 4px solid #4ecdc4; border-radius: 50%; animation: float 6s ease-in-out infinite; animation-delay: 0s;"></div>
             <div class="shape square" style="bottom: 25%; left: 8%; width: 50px; height: 50px; background: rgba(255, 107, 107, 0.3); border-radius: 5px; transform: rotate(15deg); animation: float 6s ease-in-out infinite; animation-delay: 1.5s;"></div>
@@ -1812,7 +1810,6 @@
 </section>
 
     <section class="testimonials-section container" style="position: relative;">
-        <!-- Decorative Shapes -->
         <div class="bg-shapes">
             <div class="shape" style="top: 10%; right: 10%; width: 120px; height: 25px; background: rgba(78, 205, 196, 0.5); animation: float 6s ease-in-out infinite; animation-delay: 1.5s;"></div>
             <div class="shape circle" style="bottom: 20%; left: 12%; width: 65px; height: 65px; background: rgba(91, 114, 238, 0.15); border-radius: 50%; animation: float 6s ease-in-out infinite; animation-delay: 2s;"></div>
@@ -1866,7 +1863,6 @@
 </section>
 
    <section class="news-section container" style="position: relative;">
-        <!-- Decorative Shapes -->
         <div class="bg-shapes">
             <div class="shape circle" style="top: 10%; right: 10%; width: 80px; height: 80px; border: 4px solid #4ecdc4; border-radius: 50%; animation: float 6s ease-in-out infinite; animation-delay: 0s;"></div>
             <div class="shape triangle" style="top: 50%; left: 5%; width: 0; height: 0; border-left: 40px solid transparent; border-right: 40px solid transparent; border-bottom: 70px solid #ff6b6b; animation: float 6s ease-in-out infinite; animation-delay: 1.5s;"></div>
@@ -1953,7 +1949,6 @@
   const SHEET_ID = '1-b02VMpWdkogfSyE1UrHTHhUU8Sn8vMtnVt2fPQsQcs';
 
   async function loadNotices() {
-    // 1. FIXED: Targeting the correct ID from your HTML ('notice-list')
     const container = document.getElementById('notice-list');
     
     if (!container) {
@@ -1961,50 +1956,47 @@
       return; 
     }
 
-    // 2. Fetching the data
     const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=0`;
 
     try {
       const res = await fetch(url);
       const text = await res.text();
 
-      // 3. CHECK: Is this a Login Page? (Happens if Sheet is Private)
-      if (text.includes("<!DOCTYPE html>") || !text.includes("setResponse")) {
+      // Check if sheet is private
+      if (text.includes("<!DOCTYPE html>") || text.includes("<html")) {
         throw new Error("PRIVACY_BLOCK");
       }
 
-      // 4. CLEAN DATA: Extract the JSON object from the Google wrapper
       const startIndex = text.indexOf('{');
       const endIndex = text.lastIndexOf('}') + 1;
       let jsonString = text.substring(startIndex, endIndex);
 
-      // 5. FIX DATES: Convert Google's "Date(y,m,d)" to a simple string to prevent crashes
-      jsonString = jsonString.replace(/(new\s+)?Date\((.*?)\)/g, '"Date($2)"');
+      // --- CRITICAL FIX FOR SYNTAX ERROR ---
+      // This regex handles dates regardless of whether they are already quoted or not.
+      // It turns: v:new Date(2025,0,14)  INTO  v:"Date(2025,0,14)"
+      // It leaves: v:"Date(2025,0,14)"   ALONE (so it doesn't double quote)
+      jsonString = jsonString.replace(/:\s*(?:new\s+)?Date\(([^)]+)\)/g, ':"Date($1)"');
 
       const json = JSON.parse(jsonString);
       
-      // Clear the "Loading..." message
       container.innerHTML = '';
 
-      // Check if the sheet is empty
       if (!json.table || !json.table.rows || json.table.rows.length === 0) {
         container.innerHTML = '<p style="padding:20px; text-align:center; color:white;">No notices found.</p>';
         return;
       }
 
-      // 6. BUILD UI: Create cards using your specific CSS classes (.card-list-item)
       json.table.rows.forEach(row => {
-        // Skip empty rows
         if (!row.c || !row.c[0]) return;
 
         const title = row.c[0].v;
-        // Get date if it exists
+        // Handle date safely
         const dateRaw = row.c[1] ? (row.c[1].f || row.c[1].v) : ''; 
-        // Clean up "Date(...)" text if it appears
+        // Remove "Date(...)" if it persists in the string
         const displayDate = dateRaw.toString().replace(/Date\(|\)|"/g, '');
 
         const item = document.createElement('div');
-        item.className = 'card-list-item'; // Matches your CSS
+        item.className = 'card-list-item'; // Using your CSS class
         
         item.innerHTML = `
           <h4>${title}</h4>
@@ -2028,7 +2020,6 @@
     }
   }
 
-  // Run the function when the page loads
   document.addEventListener('DOMContentLoaded', loadNotices);
 </script>
 

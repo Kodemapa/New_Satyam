@@ -1,45 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQs - Satyam International School</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FAQs & Admissions - Satyam International School</title>
+
+    <link rel="shortcut icon" href="images/Satyam_Icon_1.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
-        /* --- BASE STYLES --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        
+        /* --- GLOBAL VARIABLES --- */
         :root {
-            --primary-orange: #F48C06;
             --primary-blue: #252641;
+            --primary-yellow: #ffd166;
+            --primary-purple: #cb8b2b;
+            --primary-orange: #f48c06;
+            --primary-green: #2ec4b6;
             --text-grey: #696984;
             --bg-light: #F9FAFB;
             --white: #ffffff;
+            --radius-btn: 50px;
+            --radius-card: 20px;
         }
 
-        body { 
-            color: var(--primary-blue); 
-            overflow-x: hidden; 
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            color: var(--primary-blue);
             background-color: var(--bg-light);
-            /* Subtle Pattern Background */
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
+
         a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-
+        ul { list-style: none; padding: 0; margin: 0; }
+        
         /* --- ANIMATIONS --- */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .animate-up.in-view { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.2s; }
+        .delay-2 { transition-delay: 0.4s; }
+        @keyframes float { 0% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-15px) rotate(5deg); } 100% { transform: translateY(0px) rotate(0deg); } }
+        @keyframes expandWidth { from { width: 0; } to { width: 90px; } }
 
-        /* --- HEADER (FIXED / FROZEN) --- */
+       /* --- HEADER (FIXED / FROZEN) --- */
         header { 
             background-color: white;
-            padding: 15px 0; 
             /* FIXED POSITIONING TO FREEZE NAVBAR */
             position: fixed; 
             top: 0;
@@ -53,6 +62,8 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
+            /* Added min-height to ensure consistent sizing */
+            min-height: 90px;
         }
 
         .logo { 
@@ -69,7 +80,7 @@
             display: relative;
             align-items: center;
             justify-content: center;
-            width: 100px;
+            width: 190px;
             height: 100px;
             font-size: 1.2rem;
         }
@@ -79,11 +90,11 @@
         .nav-links { 
             display: flex; 
             gap: 40px; 
-            align-items: center;
+            align-items: center; 
         }
 
         .nav-links a { 
-            color: var(--primary-orange); 
+            color: var(--primary-blue); 
             font-weight: 500; 
             font-size: 1rem; 
             position: relative;
@@ -93,276 +104,376 @@
             content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: rgb(251, 130, 0); transition: width 0.3s;
         }
         .nav-links a:hover::after { width: 100%; }
-        
-        .btn { display: inline-block; padding: 12px 35px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 1rem; }
-        .btn-white { background: var(--white); color: var(--primary-orange); box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid transparent; }
-        .btn-white:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); border-color: rgba(244, 140, 6, 0.2); }
 
-        /* Dropdown Menu Container */
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(20px); /* Start slightly lower */
-            background: white;
-            min-width: 220px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            border-radius: 15px;
-            padding: 15px 0;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 1100;
-            border-top: 4px solid var(--primary-orange); /* Brand accent */
-        }
+        /* --- DROPDOWN NAV --- */
+        .nav-links li { position: relative; }
+        .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-blue); font-weight: 1rem; }
+        .nav-links .dropdown { position: absolute; top: 120%; left: 0; background: var(--white); min-width: 200px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 8px 0; display: none; z-index: 2000; }
+        .nav-links .dropdown li { padding: 0; }
+        .nav-links .dropdown a { display: block; padding: 10px 18px; color: var(--primary-blue); font-weight: 500; }
+        .nav-links .dropdown a:hover { background: rgba(244,140,6,0.06); color: var(--primary-orange); }
+        .nav-links li:hover > .dropdown { display: block; }
 
-        /* Hover on Parent shows Dropdown */
-        .nav-item:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        /* Dropdown Links */
-        .dropdown-menu li { display: block; margin: 0; }
-        
-        .dropdown-item {
-            display: block;
-            padding: 10px 25px;
-            color: var(--primary-blue);
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: 0.3s;
-            border-radius: 0;
-        }
-
-        /* Hover Effect for Dropdown Items */
-        .dropdown-item:hover {
-            color: var(--primary-orange);
-            background-color: #FFF8F0; /* Light orange tint */
-            padding-left: 35px; /* Slide effect */
-        }
-
-        /* Chevron Rotation on Hover */
-        .nav-item:hover .fa-chevron-down {
-            transform: rotate(180deg);
-            transition: transform 0.3s;
-        }
-        
         /* --- HERO SECTION --- */
-        .page-hero { 
-            background-color: var(--primary-orange); 
-            padding: 200px 0 140px; 
-            color: white; 
-            text-align: center; 
-            position: relative; 
+        .hero-section {
+            position: relative;
+            padding: 160px 0 100px;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
             overflow: hidden;
         }
-        .page-hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; animation: slideDown 1s ease-out; position: relative; z-index: 2; }
-        .page-hero h1 span { color: var(--primary-blue); }
-        .page-hero p { font-size: 1.2rem; opacity: 0.95; max-width: 750px; margin: 0 auto; line-height: 1.6; animation: slideUp 1s ease-out; position: relative; z-index: 2; }
-        
-        .wave-bottom { position: absolute; bottom: -1px; left: 0; width: 100%; line-height: 0; }
-        .wave-bottom svg { display: block; width: calc(100% + 1.3px); height: 120px; }
 
-        /* --- FAQ SECTION STYLES --- */
-        .faq-section { padding: 80px 0 120px; }
-        .faq-container { max-width: 900px; margin: 0 auto; }
-        
-        .category-title { 
-            text-align: center; font-size: 2rem; color: var(--primary-blue); 
-            font-weight: 700; margin: 60px 0 30px; position: relative;
-        }
-        /* Decorative line under category title */
-        .category-title::after {
-            content: ''; display: block; width: 60px; height: 4px; background: var(--primary-orange);
-            margin: 15px auto 0; border-radius: 2px;
+        .hero-bg-diag {
+            position: absolute;
+            top: 0; left: 0; width: 65%; height: 100%;
+            background-image: linear-gradient(rgba(37, 38, 65, 0.7), rgba(37, 38, 65, 0.5)), url('images/Campus.png'); 
+            background-size: cover; background-position: center;
+            /* Slanted cut to create the overlapping effect opportunity */
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+            z-index: 0;
         }
 
-        /* Accordion Styles */
+        .hero-content { position: relative; z-index: 2; width: 100%; }
+        
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1;
+            margin-bottom: 20px; color: white;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.1rem; color: #f0f0f0; max-width: 500px; line-height: 1.7; margin-bottom: 30px;
+            border-left: 4px solid var(--primary-orange); padding-left: 20px;
+        }
+
+        .title-underline {
+            height: 6px; border-radius: 6px; width: 80px;
+            background: var(--primary-orange); margin-bottom: 25px;
+            animation: expandWidth 1s ease-out forwards;
+        }
+
+        /* Floating Overlay Card */
+        .hero-card {
+            background: white; padding: 40px; border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2); 
+            max-width: 600px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Desktop Overlay Effect */
+        @media (min-width: 992px) {
+            .hero-card {
+                margin-left: 0px; /* Pulls the card over the image */
+                margin-right: 0;
+            }
+        }
+
+        .hero-card h3 { color: var(--primary-blue); font-weight: 700; margin-bottom: 15px; font-size: 1.8rem; }
+        .hero-card p { color: var(--text-grey); font-size: 1rem; line-height: 1.6; }
+        
+        .contact-row { display: flex; align-items: center; gap: 20px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #f0f0f0; }
+        .icon-circle { width: 55px; height: 55px; background: #fff4e6; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary-orange); font-size: 1.3rem; }
+        
+        .shape-box { position: absolute; width: 50px; height: 50px; border: 4px solid var(--primary-yellow); top: 15%; right: 10%; transform: rotate(15deg); animation: float 6s infinite ease-in-out; }
+
+        /* --- TIMELINE SECTION --- */
+        .timeline-section { padding: 100px 0 50px; position: relative; }
+        .section-header { text-align: center; margin-bottom: 70px; }
+        .section-tag { background: rgba(244,140,6,0.1); color: var(--primary-orange); padding: 5px 15px; border-radius: 20px; font-weight: 700; font-size: 0.85rem; display: inline-block; margin-bottom: 10px; }
+        .section-title { font-size: 2.5rem; font-weight: 700; color: var(--primary-blue); }
+
+        .timeline-container {
+            display: flex; justify-content: space-between; position: relative;
+            max-width: 800px; margin: 0 auto;
+        }
+        
+        /* Dotted Connecting Line */
+        .timeline-container::before {
+            content: ''; position: absolute; top: 40px; left: 50px; right: 50px;
+            height: 0; 
+            border-top: 3px dotted #d1d5db; /* DOTTED LINE STYLE */
+            z-index: 0;
+        }
+
+        .timeline-step {
+            position: relative; z-index: 1; text-align: center; width: 22%;
+            transition: 0.3s; cursor: pointer;
+        }
+        
+        .step-icon {
+            width: 80px; height: 80px; background: white; border: 4px solid white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 50%;
+            margin: 0 auto 25px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; color: var(--primary-orange); transition: 0.4s; position: relative;
+        }
+        
+        .step-number {
+            position: absolute; top: 0px; right: 0px; width: 28px; height: 28px;
+            background: var(--primary-blue); color: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; transition: 0.3s;
+            border: 2px solid white;
+        }
+
+        /* Hover & Active States */
+        .timeline-step:hover .step-icon,
+        .timeline-step.active .step-icon { 
+            background: var(--primary-orange); color: white; transform: translateY(-10px); 
+        }
+        .timeline-step.active .step-number { background: var(--primary-yellow); color: var(--primary-blue); }
+        .timeline-step.active .step-title { color: var(--primary-orange); }
+
+        .step-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 10px; color: var(--primary-blue); transition: 0.3s;}
+        .step-desc { font-size: 0.9rem; color: var(--text-grey); line-height: 1.5; }
+
+        /* --- FAQ SECTION --- */
+        .faq-section { padding: 30px 0 120px; background-color: white; }
+        .faq-wrapper { max-width: 900px; margin: 0 auto; }
+        
+        .cat-header { 
+            font-size: 1.5rem; font-weight: 700; color: var(--primary-blue); 
+            margin: 50px 0 25px; padding-bottom: 10px; border-bottom: 2px solid #eee;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .cat-header i { color: var(--primary-orange); }
+
         .acc-item { 
-            margin-bottom: 20px; 
-            background: white;
-            border-radius: 15px; 
-            overflow: hidden; 
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05); 
-            border: 1px solid #eee; 
-            transition: 0.3s;
+            margin-bottom: 15px; border-radius: 12px; overflow: hidden; 
+            border: 1px solid #eee; transition: 0.3s;
         }
-        .acc-item:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-color: rgba(244, 140, 6, 0.3); }
+        .acc-item:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-color: rgba(244,140,6,0.3); }
 
+        /* Filter Styles */
+        .acc-item.hidden { display: none; }
+        
         .acc-header {
-            width: 100%; text-align: left; padding: 20px 30px;
-            border: none; background: white;
-            color: var(--primary-blue); font-weight: 600; font-size: 1.1rem;
+            width: 100%; text-align: left; padding: 18px 25px; border: none; background: #fff;
+            color: var(--primary-blue); font-weight: 600; font-size: 1rem;
             cursor: pointer; display: flex; justify-content: space-between; align-items: center;
             transition: 0.3s;
         }
-        .acc-header:hover { color: var(--primary-orange); }
-        
-        /* Active state styling */
         .acc-header.active { background: var(--primary-orange); color: white; }
-        
-        .acc-header i { transition: 0.3s; font-size: 0.9rem; }
+        .acc-header i { transition: 0.3s; }
         .acc-header.active i { transform: rotate(180deg); }
-        
+
         .acc-content {
-            background: #fff; padding: 0 30px;
-            max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out;
+            background: #fff; max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out;
         }
-        .acc-inner { padding: 25px 0 30px; color: var(--text-grey); line-height: 1.7; font-size: 1rem; }
-        .acc-inner p { margin-bottom: 15px; }
-        .acc-inner p:last-child { margin-bottom: 0; }
+        .acc-inner { padding: 20px 25px; color: var(--text-grey); line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #f0f0f0; }
+
+        .reset-filter-btn {
+            display: none; margin: 30px auto; padding: 10px 30px; 
+            background: var(--primary-blue); color: white; border: none; 
+            border-radius: 30px; cursor: pointer; font-size: 0.9rem; font-weight: 600;
+            box-shadow: 0 5px 15px rgba(37, 38, 65, 0.2);
+        }
+        .reset-filter-btn.visible { display: block; }
+        .reset-filter-btn:hover { background: var(--primary-orange); transform: translateY(-3px); }
 
         /* --- FOOTER --- */
         footer { background-color: #252641; color: #B2B3CF; padding: 80px 0 40px; text-align: center; }
         .footer-logo { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 40px; }
-        .footer-logo h2 { color: white; padding-left: 15px; border-left: 1px solid #626381; font-weight: 600; letter-spacing: 1px; }
-        .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; font-size: 1rem; }
+        .footer-logo h2 { color: white; padding-left: 15px; border-left: 1px solid #626381; font-weight: 600; letter-spacing: 1px; margin: 0; }
+        .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; }
         .footer-links a:hover { color: var(--primary-orange); }
-        .copyright { font-size: 0.9rem; opacity: 0.6; }
 
-        /* Responsive */
-        @media (max-width: 900px) {
+        /* --- RESPONSIVE --- */
+        @media (max-width: 991px) {
             .nav-links { display: none; }
-            .page-hero h1 { font-size: 2.8rem; }
-            .acc-header { padding: 15px 20px; font-size: 1rem; }
+            .hero-section { flex-direction: column; padding-top: 120px; text-align: center; }
+            .hero-bg-diag { width: 100%; height: 50%; clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); }
+            .hero-content { padding-top: 40px; }
+            .hero-title { font-size: 2.5rem; color: var(--primary-blue); }
+            .hero-subtitle { color: var(--text-grey); margin: 0 auto 30px; border: none; padding: 0; }
+            .title-underline { margin: 0 auto 20px; }
+            
+            /* Remove negative margin on mobile to stack normally */
+            .hero-card { margin: 30px auto 0; width: 100%; margin-left: auto; }
+
+            .timeline-container { flex-direction: column; gap: 40px; padding-left: 30px; }
+            .timeline-container::before { width: 0; height: 100%; left: 38px; top: 0; bottom: 0; border-top: none; border-left: 3px dotted #d1d5db; }
+            .timeline-step { width: 100%; text-align: left; display: flex; gap: 20px; align-items: flex-start; }
+            .step-icon { margin: 0; width: 60px; height: 60px; font-size: 1.2rem; flex-shrink: 0; }
+            .step-number { width: 25px; height: 25px; font-size: 0.8rem; }
+            .step-content { padding-top: 10px; }
         }
     </style>
 </head>
+
 <body>
 
-    <header>
+   <header class="anim-down">
         <div class="container">
             <nav>
                 <div class="logo">
                     <div class="logo-icon">
-                        <img src="images/satyam logo-2.png" alt="Satyam Icon">
+                        <img src="images/sat.jpg">
                     </div>
                 </div>
-                
                 <ul class="nav-links">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Academics <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem;"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="blog-listing.html" class="dropdown-item">News & Insights</a></li>
-                            <li><a href="testimonials.html" class="dropdown-item">Testimonials</a></li>
-                            <li><a href="gallery.html" class="dropdown-item">Gallery</a></li>
-                            <li><a href="faqs.html" class="dropdown-item">FAQs</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li>
+                        <a href="#" class="dropdown-toggle">Academics <i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown">
+                            <li><a href="academics.html">Academics</a></li>
+                            <li><a href="curriculars.html">Co-Curriculars</a></li>
+                            <li><a href="blog-listing.html">Blog-Listing</a></li>
+                            <li><a href="faqs.html">FAQs</a></li>
+                            <li><a href="testimonials.html">Testimonials</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
                         </ul>
                     </li>
-
-                    <li class="nav-item"><a href="about-us.html" class="nav-link" style="font-weight: 600; opacity: 1;">About Us</a></li>
-                    <li class="nav-item"><a href="mandatory-disclosure.html" class="nav-link">Mandatory Disclosures</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="mandatory-disclosure.html">Mandatory Disclosures</a></li>
                 </ul>
-                
                 <a href="contact-us.html" class="btn btn-white">Contact Us</a>
             </nav>
         </div>
     </header>
 
-    <section class="page-hero">
-        <div class="container">
-            <h1>Frequently Asked <span>Questions</span></h1>
-            <p>Find quick answers to common queries about admissions, academics, facilities, and campus life at Satyam International School.</p>
-        </div>
-        <div class="wave-bottom">
-            <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
-                <path fill="#F9FAFB" fill-opacity="1" d="M0,160L80,176C160,192,320,224,480,224C640,224,800,192,960,192C1120,192,1280,224,1360,240L1440,256L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
-            </svg>
+    <section class="hero-section">
+        <div class="hero-bg-diag"></div>
+        <div class="shape-box"></div>
+
+        <div class="container hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-6 animate-up">
+                    <span style="color: var(--primary-yellow); font-weight: 700; letter-spacing: 1px;">SUPPORT & GUIDE</span>
+                    <h1 class="hero-title">Common Queries<br> & Admissions</h1>
+                    <div class="title-underline"></div>
+                    <p class="hero-subtitle">
+                        Navigating school admissions shouldn't be stressful. Find clear answers to your questions and understand our simple 4-step admission process.
+                    </p>
+                </div>
+
+                <div class="col-lg-6 animate-up delay-1">
+                    <div class="hero-card">
+                        <h3>Admissions Open for 2025-26</h3>
+                        <p>We are currently accepting applications for Nursery to Grade 9. Secure your child's future with Satyam International.</p>
+                        <div class="contact-row">
+                            <div class="icon-circle"><i class="fa-solid fa-phone"></i></div>
+                            <div>
+                                <span style="display:block; font-size: 0.85rem; color:#999;">Call for Inquiry</span>
+                                <strong style="color: var(--primary-blue);">+91 98765 43210</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="faq-section">
-        <div class="container faq-container">
-
-            <h2 class="category-title reveal">Admissions Process</h2>
-
-            <div class="acc-item reveal">
-                <button class="acc-header">What is the admission procedure for new students? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content">
-                    <div class="acc-inner">
-                        <p>Our admission process follows four simple steps: 1. Online or Offline Registration inquiry. 2. Campus Visit & Counseling session with parents. 3. Application Submission along with required documents. 4. Student Interaction/Assessment (depending on the grade).</p>
-                    </div>
-                </div>
+    <section class="timeline-section">
+        <div class="container">
+            <div class="section-header animate-up">
+                <span class="section-tag">ROADMAP</span>
+                <h2 class="section-title">Admission Process</h2>
+                <p style="color:#666; margin-top:10px;">Click on a step below to see relevant questions.</p>
             </div>
 
-            <div class="acc-item reveal">
-                <button class="acc-header">What is the minimum age criteria for Nursery admission? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content">
-                    <div class="acc-inner">
-                        <p>As per government norms, the child must be 3+ years of age as of March 31st of the academic year for admission into Nursery.</p>
+            <div class="timeline-container animate-up delay-1">
+                
+                <div class="timeline-step" onclick="filterFaq('registration', this)">
+                    <div class="step-icon">
+                        <i class="fa-solid fa-file-pen"></i>
+                        <div class="step-number">1</div>
+                    </div>
+                    <div class="step-content">
+                        <h4 class="step-title">Registration</h4>
+                        <p class="step-desc">Fill out the online inquiry form or visit our campus office.</p>
                     </div>
                 </div>
-            </div>
 
-            <div class="acc-item reveal">
-                <button class="acc-header">Are admissions open mid-session? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content">
-                    <div class="acc-inner">
-                        <p>Mid-session admissions are considered subject to vacancy in the respective grade and the student's performance in the entrance assessment, especially for transfer cases.</p>
+                <div class="timeline-step" onclick="filterFaq('visit', this)">
+                    <div class="step-icon">
+                        <i class="fa-solid fa-school"></i>
+                        <div class="step-number">2</div>
+                    </div>
+                    <div class="step-content">
+                        <h4 class="step-title">Campus Visit</h4>
+                        <p class="step-desc">Schedule a guided tour and counseling session.</p>
                     </div>
                 </div>
+
+                <div class="timeline-step" onclick="filterFaq('assessment', this)">
+                    <div class="step-icon">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                        <div class="step-number">3</div>
+                    </div>
+                    <div class="step-content">
+                        <h4 class="step-title">Assessment</h4>
+                        <p class="step-desc">Interaction for KG or proficiency test for grades.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step" onclick="filterFaq('admission', this)">
+                    <div class="step-icon">
+                        <i class="fa-solid fa-handshake"></i>
+                        <div class="step-number">4</div>
+                    </div>
+                    <div class="step-content">
+                        <h4 class="step-title">Admission</h4>
+                        <p class="step-desc">Documentation and fee payment to secure the seat.</p>
+                    </div>
+                </div>
+
+            </div>
+            
+            <button class="reset-filter-btn" id="resetBtn" onclick="resetFaq()">Show All Questions</button>
+        </div>
+    </section>
+
+    <section class="faq-section" id="faqSection">
+        <div class="container faq-wrapper">
+            
+            <div class="cat-header animate-up" id="admissionsHeader"><i class="fa-solid fa-user-plus"> Queries</i></div>
+
+            <div class="acc-item animate-up filter-item" data-step="registration">
+                <button class="acc-header">How do I register for admission? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">You can register by filling out the 'Apply Now' form on our website or by visiting the school administration office between 9:00 AM and 4:00 PM on working days.</div></div>
+            </div>
+            <div class="acc-item animate-up filter-item" data-step="registration">
+                <button class="acc-header">Is there a registration fee? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Yes, a nominal one-time registration fee is applicable at the time of submitting the application form. This covers the administrative processing costs.</div></div>
             </div>
 
-            <h2 class="category-title reveal">Academics & Curriculum</h2>
+            <div class="acc-item animate-up filter-item" data-step="visit">
+                <button class="acc-header">Can parents visit the campus before applying? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Absolutely. We encourage parents to schedule a campus tour to see our facilities, meet the faculty, and understand our teaching methodology. Please book a slot online or call us.</div></div>
+            </div>
+            <div class="acc-item animate-up filter-item" data-step="visit">
+                <button class="acc-header">What are the office timings for visits? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">The admissions office is open Monday to Saturday, from 9:00 AM to 4:00 PM. We are closed on public holidays and Sundays.</div></div>
+            </div>
 
-            <div class="acc-item reveal">
+            <div class="acc-item animate-up filter-item" data-step="assessment">
+                <button class="acc-header">Is there an entrance exam for all grades? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">For Nursery to KG, there is a simple interaction with the child and parents. For Grade 1 onwards, a basic proficiency test in English, Math, and Science is conducted to understand the child's learning level.</div></div>
+            </div>
+            <div class="acc-item animate-up filter-item" data-step="assessment">
+                <button class="acc-header">What is the syllabus for the entrance test? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">The test is based on the general curriculum of the previous grade the student has completed. No special preparation is required; it assesses conceptual understanding.</div></div>
+            </div>
+
+            <div class="acc-item animate-up filter-item" data-step="admission">
+                <button class="acc-header">What documents are required for admission? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">You will need: 1. Birth Certificate 2. Transfer Certificate (TC) from previous school 3. Report card of the last exam passed 4. Aadhar Card of student and parents 5. Passport size photos.</div></div>
+            </div>
+            <div class="acc-item animate-up filter-item" data-step="admission">
+                <button class="acc-header">Do you accept fee payments in installments? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Yes, the annual tuition fee can be paid in 2 or 3 installments as per the school's fee policy. Details will be provided by the accounts department during admission.</div></div>
+            </div>
+
+            <div class="cat-header animate-up delay-1 general-cat"><i class="fa-solid fa-user-graduate"></i> Academics & General</div>
+
+            <div class="acc-item animate-up general-item">
                 <button class="acc-header">Which board is the school affiliated with? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content">
-                    <div class="acc-inner">
-                        <p>Satyam International School is affiliated with the Central Board of Secondary Education (CBSE), New Delhi, up to Senior Secondary level.</p>
-                    </div>
-                </div>
+                <div class="acc-content"><div class="acc-inner">Satyam International School is affiliated with the Central Board of Secondary Education (CBSE), New Delhi, up to Senior Secondary level.</div></div>
             </div>
 
-            <div class="acc-item reveal">
-                <button class="acc-header">Do you offer integrated coaching for competitive exams like JEE/NEET? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content">
-                    <div class="acc-inner">
-                        <p>Yes, we offer specialized integrated coaching for JEE (Mains & Advanced) and NEET for Grade 11 and 12 science stream students within school hours, led by experienced faculty.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="acc-item reveal">
-                <button class="acc-header">What acts do you offer in Grade 11? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content">
-                    <div class="acc-inner">
-                        <p>We offer Science (PCM/PCB with optional CS/PE) and Commerce streams. We also provide NCC as an elective option for interested students.</p>
-                    </div>
-                </div>
-            </div>
-
-            <h2 class="category-title reveal">Facilities & Campus Life</h2>
-
-            <div class="acc-item reveal">
-                <button class="acc-header">Is school transport available covering all areas of Ballari? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content">
-                    <div class="acc-inner">
-                        <p>Yes, we have a fleet of well-maintained buses covering major routes across Ballari city and nearby surrounding areas. All buses are equipped with GPS tracking and female attendants.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="acc-item reveal">
-                <button class="acc-header">What sports facilities does the school have? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content">
-                    <div class="acc-inner">
-                        <p>Our campus boasts extensive sports facilities including a large playground for cricket and football, courts for basketball and volleyball, nets for cricket practice, and indoor facilities for table tennis, chess, and carrom.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="acc-item reveal">
-                <button class="acc-header">What safety and security measures are adopted by the school? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content">
-                    <div class="acc-inner">
-                        <p>Student safety is paramount. The entire campus is under 24/7 CCTV surveillance. We have trained security personnel at all gates, and entry for visitors is strictly regulated. Background checks are conducted for all staff.</p>
-                    </div>
-                </div>
+            <div class="acc-item animate-up general-item">
+                <button class="acc-header">Is school transport available? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Yes, our fleet of GPS-enabled buses covers major routes across Ballari city and surrounding areas, ensuring safe travel for all students.</div></div>
             </div>
 
         </div>
@@ -371,7 +482,7 @@
     <footer>
         <div class="container">
             <div class="footer-logo">
-                <img src="images/Satyam_Icon_1.png" alt="Logo" style="width: 40px; height: 40px;">
+                <img src="images/Satyam_Icon_1.png" alt="Logo" style="width: 40px; height: 40px;" onerror="this.style.display='none'">
                 <h2>Satyam International <span style="font-size: 0.9rem; display: block; font-weight: 400; opacity: 0.7; margin-top: 5px;">School for Holistic Development</span></h2>
             </div>
             <div class="footer-links">
@@ -385,45 +496,105 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Scroll Reveal Animation
-        window.addEventListener('scroll', reveal);
-        function reveal(){
-            var reveals = document.querySelectorAll('.reveal');
-            for(var i = 0; i < reveals.length; i++){
-                var windowheight = window.innerHeight;
-                var revealtop = reveals[i].getBoundingClientRect().top;
-                var revealpoint = 150;
-                if(revealtop < windowheight - revealpoint){
-                    reveals[i].classList.add('active');
-                }
-            }
-        }
-        reveal(); // Trigger on load
-
-        // Accordion Functionality
-        const acc = document.getElementsByClassName("acc-header");
-        for (let i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function() {
-                // Close other open accordions (optional, remove this block if you want multiple open)
-                for (let j = 0; j < acc.length; j++) {
-                    if (acc[j] !== this && acc[j].classList.contains("active")) {
-                        acc[j].classList.remove("active");
-                        acc[j].nextElementSibling.style.maxHeight = null;
+        // Scroll Animation
+        document.addEventListener('DOMContentLoaded', function () {
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        obs.unobserve(entry.target);
                     }
-                }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.animate-up').forEach(el => observer.observe(el));
+        });
 
-                // Toggle current accordion
+        // Accordion Logic
+        const accHeaders = document.querySelectorAll(".acc-header");
+        accHeaders.forEach(header => {
+            header.addEventListener("click", function() {
+                // Close others
+                accHeaders.forEach(other => {
+                    if (other !== this && other.classList.contains("active")) {
+                        other.classList.remove("active");
+                        other.nextElementSibling.style.maxHeight = null;
+                    }
+                });
+                // Toggle clicked
                 this.classList.toggle("active");
-                var panel = this.nextElementSibling;
+                const panel = this.nextElementSibling;
                 if (panel.style.maxHeight) {
                     panel.style.maxHeight = null;
                 } else {
                     panel.style.maxHeight = panel.scrollHeight + "px";
-                } 
+                }
+            });
+        });
+
+        // --- FILTER FUNCTIONALITY ---
+        function filterFaq(stepName, element) {
+            // 1. Highlight Timeline Step
+            const steps = document.querySelectorAll('.timeline-step');
+            steps.forEach(step => step.classList.remove('active'));
+            element.classList.add('active');
+
+            // 2. Scroll to FAQ section smoothly
+            document.getElementById('faqSection').scrollIntoView({ behavior: 'smooth' });
+
+            // 3. Show Reset Button
+            document.getElementById('resetBtn').classList.add('visible');
+
+            // 4. Filter Logic
+            const filters = document.querySelectorAll('.filter-item');
+            const generals = document.querySelectorAll('.general-item');
+            const genHeader = document.querySelector('.general-cat');
+
+            // Hide general section temporarily
+            genHeader.style.display = 'none';
+            generals.forEach(g => g.style.display = 'none');
+
+            filters.forEach(item => {
+                // Close all first
+                const btn = item.querySelector('.acc-header');
+                const panel = item.querySelector('.acc-content');
+                btn.classList.remove('active');
+                panel.style.maxHeight = null;
+
+                if (item.getAttribute('data-step') === stepName) {
+                    item.classList.remove('hidden');
+                    // Auto-open relevant FAQs
+                    setTimeout(() => {
+                        btn.classList.add('active');
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    }, 300);
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
+
+        function resetFaq() {
+            // Remove active from timeline
+            const steps = document.querySelectorAll('.timeline-step');
+            steps.forEach(step => step.classList.remove('active'));
+
+            // Hide reset button
+            document.getElementById('resetBtn').classList.remove('visible');
+
+            // Show all items
+            document.querySelector('.general-cat').style.display = 'flex';
+            document.querySelectorAll('.general-item').forEach(g => g.style.display = 'block');
+            
+            const filters = document.querySelectorAll('.filter-item');
+            filters.forEach(item => {
+                item.classList.remove('hidden');
+                // Close opened items
+                item.querySelector('.acc-header').classList.remove('active');
+                item.querySelector('.acc-content').style.maxHeight = null;
             });
         }
     </script>
-
 </body>
 </html>
