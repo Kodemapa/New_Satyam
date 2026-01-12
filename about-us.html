@@ -111,40 +111,161 @@
         .nav-links .dropdown a:hover { background: rgba(244,140,6,0.06); color: var(--primary-orange); }
         .nav-links li:hover > .dropdown { display: block; }
 
+        /* Reveal on scroll animations */
+        .animate-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-up.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 {
+            transition-delay: 0.12s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.24s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.36s;
+        }
+
         /* --- PAGE HERO --- */
-        .page-hero { 
+        /* HERO */
+        .page-hero {
             position: relative;
-            padding: 220px 0 180px;
-            margin-top: 100px;
-            text-align: center;
-            background-image: url('images/satyam-3.jpeg');
+            padding: 100px 0 80px 0;
+            overflow: hidden;
+            background: linear-gradient(90deg, #f8f4ff 0%, #eef7ff 40%, #fffaf0 100%);
+            background-size: 200% 200%;
+        }
+
+        .hero-bg-diag {
+            position: absolute;
+            top: -10%;
+            left: -5%;
+            width: 80%;
+            height: 120%;
+            background-image: url('./images/Campus.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            color: white;
+            clip-path: polygon(0 0, 100% 0, 78% 100%, 0% 100%);
+            z-index: 0;
         }
-        
-        .page-hero::before {
+
+        .hero-bg-diag::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
             z-index: 1;
+        }
+
+        .page-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            color: #ffffff;
+        }
+
+        .title-underline {
+            height: 8px;
+            border-radius: 6px;
+            width: 90px;
+            background: linear-gradient(90deg, var(--primary-orange), #FFD166);
+            animation: expandWidth 0.9s ease-out both;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes expandWidth {
+            from { width: 0; }
+            to { width: 90px; }
+        }
+
+        /* Floating Shapes */
+        .float-shape {
+            position: absolute;
+            opacity: 0.55;
+            z-index: 0;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape-square {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 209, 102, 0.95);
+            top: 12%;
+            right: 10%;
+            transform: rotate(12deg);
+        }
+
+        .shape-circle {
+            width: 80px;
+            height: 80px;
+            border: 4px solid rgba(124, 58, 237, 0.6);
+            border-radius: 50%;
+            bottom: 15%;
+            right: 18%;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(12deg); }
+            50% { transform: translateY(-20px) rotate(12deg); }
         }
         
         .page-hero .container {
             position: relative;
             z-index: 2;
         }
-        
-        .page-hero h1 { 
-            font-size: 4rem; 
-            font-weight: 700; 
-            margin-bottom: 20px;
-            letter-spacing: 2px;
+
+        .page-hero .lead {
+            font-weight: 500;
+            color: #ffffff;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            position: relative;
+            z-index: 2;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #0b1220 0%, #162536 100%);
+            color: #fff;
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(2, 8, 23, 0.5);
+            max-width: 520px;
+            margin-left: auto;
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: 10px;
+            left: 18px;
+            font-size: 84px;
+            color: rgba(255, 255, 255, 0.06);
+            font-family: serif;
+        }
+
+        .chairperson-name {
+            color: var(--primary-orange);
+            font-weight: 700;
+            margin-top: 15px;
+            display: block;
         }
         
         .breadcrumb {
@@ -215,16 +336,15 @@
         .content-square-2 { bottom: 38%; left: 8%; width: 42px; height: 42px; background: rgba(255, 107, 107, 0.25); transform: rotate(-25deg); animation-delay: 3s; }
 
         /* --- CARDS FOR VISION/MISSION --- */
-        .vm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
-        .vm-card { background: white; padding: 50px 40px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); text-align: center; transition: transform 0.3s; position: relative; }
-        .vm-card:hover { transform: translateY(-10px); }
-        .vm-card.day-care { background: rgba(205, 205, 235, 0.35); }
-        .vm-card.education { background: rgba(255, 192, 203, 0.3); }
-        .vm-card.international { background: rgba(200, 230, 201, 0.4); }
-        .vm-icon-circle { width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 30px; display: flex; align-items: center; justify-content: center; }
-        .vm-card.day-care .vm-icon-circle { background: #5B5FEE; }
-        .vm-card.education .vm-icon-circle { background: #FF3366; }
-        .vm-card.international .vm-icon-circle { background: #9BC34A; }
+        .vm-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 50px; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .vm-card { background: white; padding: 50px 40px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); text-align: center; transition: transform 0.3s, box-shadow 0.3s; position: relative; }
+        .vm-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,0,0,0.12); }
+        .vm-card.vision { background: rgba(205, 205, 235, 0.35); }
+        .vm-card.mission { background: rgba(255, 192, 203, 0.3); }
+        .vm-icon-circle { width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 30px; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; }
+        .vm-card:hover .vm-icon-circle { transform: scale(1.1); }
+        .vm-card.vision .vm-icon-circle { background: #5B5FEE; }
+        .vm-card.mission .vm-icon-circle { background: #FF3366; }
         .vm-icon { font-size: 2.8rem; color: white; }
         .vm-card h3 { font-size: 1.8rem; color: var(--primary-blue); margin-bottom: 20px; font-weight: 600; }
         .vm-card p { color: var(--text-grey); font-size: 1rem; line-height: 1.7; }
@@ -329,12 +449,31 @@
     </header>
 
     <section class="page-hero">
-        <div class="container">
-            <h1>About</h1>
-            <div class="breadcrumb">
-                <a href="index.html">Home</a>
-                <span class="separator">▸</span>
-                <span>About</span>
+        <div class="hero-bg-diag"></div>
+        <div class="float-shape shape-square"></div>
+        <div class="float-shape shape-circle"></div>
+
+        <div class="container position-relative">
+            <div class="row align-items-center">
+                <div class="col-lg-6 animate-up">
+                    <h1 class="page-title" style="top:90px">Commitment To <br>Excellence
+                        <div class="title-underline mb-4"></div>
+                    </h1>
+                    
+                    <p class="lead" style="font-weight: 500; color: #f9f3f3; max-width: 60%; top:100px">
+                      We deliver a comprehensive, nationally recognized educational program seamlessly blends academic rigor with holistic student development.</p>
+                </div>
+                <div class="col-lg-6 animate-up delay-1">
+                    <div class="quote-box shadow-lg">
+                        <div class="quote-icon">"</div>
+                        <p class="position-relative" style="z-index: 2; font-size: 1.1rem; line-height: 1.8;">
+                            Our CBSE affiliation reflects our dedication to holistic education that balances
+                            academic rigor with co-curricular excellence.
+                        </p>
+                        <span class="chairperson-name">— Smt. R. Surekha</span>
+                        <small class="text-white-50">Chair Person</small>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -345,29 +484,19 @@
             <h2 class="section-title">Vision & Mission</h2>
             
             <div class="vm-grid">
-                <div class="vm-card day-care">
+                <div class="vm-card vision">
                     <div class="vm-icon-circle">
-                        <span class="fa-stack vm-icon" style="font-size: 1.5rem;">
-                            <i class="fa-solid fa-book fa-stack-2x" style="margin-top: 15px;"></i>
-                            <i class="fa-solid fa-apple-whole fa-stack-1x" style="margin-top: -10px;"></i>
-                        </span>
+                        <i class="fa-solid fa-clipboard vm-icon"></i>
                     </div>
-                    <h3>Day Care</h3>
-                    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur aur ridiculus mus.</p>
+                    <h3>Our Vision</h3>
+                    <p>The Vision of Satyam International School is to be a leading educational institution that inspires students to achieve academic and personal excellence, embrace innovation, and contribute positively to society globally.</p>
                 </div>
-                <div class="vm-card education">
+                <div class="vm-card mission">
                     <div class="vm-icon-circle">
                         <i class="fa-solid fa-pen-to-square vm-icon"></i>
                     </div>
-                    <h3>Education</h3>
-                    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur aur ridiculus mus.</p>
-                </div>
-                <div class="vm-card international">
-                    <div class="vm-icon-circle">
-                        <i class="fa-solid fa-globe vm-icon"></i>
-                    </div>
-                    <h3>International</h3>
-                    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur aur ridiculus mus.</p>
+                    <h3>Our Mission</h3>
+                    <p>The mission of Satyam School is to provide a high-quality, value-driven, holistic education that fosters lifelong learning, creativity, and critical thinking in students in a safe environment.</p>
                 </div>
             </div>
         </section>
@@ -805,6 +934,23 @@
         if (counters.length > 0) {
             observer.observe(counters[0].closest('section'));
         }
+    </script>
+
+    <script>
+        // Reveal elements with .animate-up when they enter the viewport
+        document.addEventListener('DOMContentLoaded', function () {
+            const opts = { threshold: 0.12 };
+            const animateObserver = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, opts);
+
+            document.querySelectorAll('.animate-up').forEach(el => animateObserver.observe(el));
+        });
     </script>
 
 </body>
