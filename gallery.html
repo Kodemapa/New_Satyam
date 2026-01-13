@@ -339,28 +339,7 @@
         }
 
         .zoom-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #84ce5a 0%, #a0d977 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            color: white;
-            cursor: pointer;
-            transform: translateY(-50px);
-            opacity: 0;
-            transition: transform 0.4s ease, opacity 0.4s ease;
-        }
-
-        .gallery-item:hover .zoom-icon {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .zoom-icon:hover {
-            transform: translateY(0) scale(1.1);
+            display: none;
         }
 
         .gallery-caption {
@@ -472,119 +451,119 @@
             <div class="container">
                 <div class="filter-buttons">
                     <button class="filter-btn filter-all active" data-filter="all">All</button>
-                    <button class="filter-btn filter-art" data-filter="art">Art</button>
-                    <button class="filter-btn filter-craft" data-filter="craft">Craft</button>
-                    <button class="filter-btn filter-painting" data-filter="painting">Painting</button>
-                    <button class="filter-btn filter-print" data-filter="print">Print</button>
+                    <button class="filter-btn filter-art" data-filter="sports">Sports</button>
+                    <button class="filter-btn filter-craft" data-filter="academic">Academic</button>
+                    <button class="filter-btn filter-painting" data-filter="cultural">Cultural</button>
+                    <button class="filter-btn filter-print" data-filter="arts">Arts & Crafts</button>
                     <button class="filter-btn filter-science" data-filter="science">Science</button>
                 </div>
 
                 <div class="gallery-grid">
-                    <div class="gallery-item" data-category="painting">
-                        <img src="images/satyam-3.jpeg" alt="Oil Painting Training">
+                    <div class="gallery-item" data-category="sports">
+                        <img src="images/gallery-1.jpeg" alt="Oil Painting Training">
                         <div class="gallery-overlay">
                             <div class="zoom-icon">
                                 <i class="fa-solid fa-search"></i>
                             </div>
                         </div>
                         <div class="gallery-caption">
-                            <h3>Oil Painting Training</h3>
+                            <h3>Sports Activity - Racing</h3>
                         </div>
                     </div>
 
-                    <div class="gallery-item" data-category="craft">
-                        <img src="images/skating_roll.webp" alt="Craft Activity">
+                    <div class="gallery-item" data-category="academic">
+                        <img src="images/gallery-2.jpeg" alt="Craft Activity">
                         <div class="gallery-overlay">
                             <div class="zoom-icon">
                                 <i class="fa-solid fa-search"></i>
                             </div>
                         </div>
                         <div class="gallery-caption">
-                            <h3>Creative Craft Activity</h3>
+                            <h3>Parent-Teacher Meeting</h3>
                         </div>
                     </div>
 
-                    <div class="gallery-item" data-category="art">
-                        <img src="images/satyam-3.jpeg" alt="Art Class">
+                    <div class="gallery-item" data-category="academic">
+                        <img src="images/gallery-3.jpeg" alt="Art Class">
                         <div class="gallery-overlay">
                             <div class="zoom-icon">
                                 <i class="fa-solid fa-search"></i>
                             </div>
                         </div>
                         <div class="gallery-caption">
-                            <h3>Student Art Class</h3>
+                            <h3>Student Presentation</h3>
                         </div>
                     </div>
 
-                    <div class="gallery-item" data-category="science">
-                        <img src="images/skating_roll.webp" alt="Science Activity">
+                    <div class="gallery-item" data-category="sports">
+                        <img src="images/gallery-4.jpeg" alt="Science Activity">
                         <div class="gallery-overlay">
                             <div class="zoom-icon">
                                 <i class="fa-solid fa-search"></i>
                             </div>
                         </div>
                         <div class="gallery-caption">
-                            <h3>Toddler Joining Practice</h3>
-                        </div>
-                    </div>
-
-                    <div class="gallery-item" data-category="print">
-                        <img src="images/satyam-3.jpeg" alt="Print Work">
-                        <div class="gallery-overlay">
-                            <div class="zoom-icon">
-                                <i class="fa-solid fa-search"></i>
-                            </div>
-                        </div>
-                        <div class="gallery-caption">
-                            <h3>Print Making Workshop</h3>
-                        </div>
-                    </div>
-
-                    <div class="gallery-item" data-category="art">
-                        <img src="images/skating_roll.webp" alt="Art Project">
-                        <div class="gallery-overlay">
-                            <div class="zoom-icon">
-                                <i class="fa-solid fa-search"></i>
-                            </div>
-                        </div>
-                        <div class="gallery-caption">
-                            <h3>Learning Together</h3>
-                        </div>
-                    </div>
-
-                    <div class="gallery-item" data-category="craft">
-                        <img src="images/satyam-3.jpeg" alt="Craft Workshop">
-                        <div class="gallery-overlay">
-                            <div class="zoom-icon">
-                                <i class="fa-solid fa-search"></i>
-                            </div>
-                        </div>
-                        <div class="gallery-caption">
-                            <h3>Craft Workshop</h3>
-                        </div>
-                    </div>
-
-                    <div class="gallery-item" data-category="painting">
-                        <img src="images/skating_roll.webp" alt="Painting Session">
-                        <div class="gallery-overlay">
-                            <div class="zoom-icon">
-                                <i class="fa-solid fa-search"></i>
-                            </div>
-                        </div>
-                        <div class="gallery-caption">
-                            <h3>Fun Painting Session</h3>
+                            <h3>Karate Training Class</h3>
                         </div>
                     </div>
 
                     <div class="gallery-item" data-category="science">
-                        <img src="images/satyam-3.jpeg" alt="Science Lab">
+                        <img src="images/gallery-5.jpeg" alt="Print Work">
                         <div class="gallery-overlay">
                             <div class="zoom-icon">
                                 <i class="fa-solid fa-search"></i>
                             </div>
                         </div>
                         <div class="gallery-caption">
-                            <h3>Science Laboratory</h3>
+                            <h3>Science Exhibition</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="cultural">
+                        <img src="images/gallery-6.jpeg" alt="Art Project">
+                        <div class="gallery-overlay">
+                            <div class="zoom-icon">
+                                <i class="fa-solid fa-search"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>School Band Practice</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="cultural">
+                        <img src="images/gallery-7.jpeg" alt="Craft Workshop">
+                        <div class="gallery-overlay">
+                            <div class="zoom-icon">
+                                <i class="fa-solid fa-search"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Cultural Program</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="arts">
+                        <img src="images/gallery-8.jpeg" alt="Painting Session">
+                        <div class="gallery-overlay">
+                            <div class="zoom-icon">
+                                <i class="fa-solid fa-search"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Creative Art Activity</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="cultural">
+                        <img src="images/gallery-9.jpeg" alt="Science Lab">
+                        <div class="gallery-overlay">
+                            <div class="zoom-icon">
+                                <i class="fa-solid fa-search"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Annual Day Celebration</h3>
                         </div>
                     </div>
                 </div>
