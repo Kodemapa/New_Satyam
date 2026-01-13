@@ -475,7 +475,7 @@
 
         /* --- UNIFIED ABOUT SECTION --- */
 .about-section-container {
-    max-width: 1200px;
+    max-width: 80%;
     margin: 0 auto;
     padding: 0px 20px;
     position: relative;
@@ -1708,7 +1708,7 @@
         <div class="classroom-text">
             <h2>Future-Ready education with <span class="highlight-orange">STEM Focus</span></h2>
             <p>We offer an innovative Science, Technology, Engineering, and Mathematics curriculum complete with state-of-the-art laboratories, practical experiments, coding, and programming classes.</p>
-            <a href="#" class="learn-more">Explore our Labs</a>
+            <a href="gallery.html" class="learn-more">Explore our Labs</a>
         </div>
         
         <div class="classroom-visual">
@@ -1829,9 +1829,9 @@
                 Are you a parent too? Please give your assessment.
             </p>
             
-            <button class="btn-test">
+            <a href="testimonials.html"><button class="btn-test">
                Let us know more about us <i class="fa-solid fa-arrow-right-long"></i>
-            </button>
+            </button></a>
         </div>
 
         <div class="test-visual-wrapper">
@@ -1871,7 +1871,7 @@
         </div>
     
     <div class="news-header">
-        <h2 class="news-title">Latest News and Resources</h2>
+        <h2 class="news-title">Know More About Us</h2>
         <p class="news-subtitle">Insights, guides, and updates from Satyam International School</p>
     </div>
 
@@ -1945,82 +1945,96 @@
     </footer>
 
   <script>
-  // YOUR SHEET ID
-  const SHEET_ID = '1-b02VMpWdkogfSyE1UrHTHhUU8Sn8vMtnVt2fPQsQcs';
-
-  async function loadNotices() {
-    const container = document.getElementById('notice-list');
-    
-    if (!container) {
-      console.error("CRITICAL ERROR: Could not find <div id='notice-list'> on the page.");
-      return; 
-    }
-
-    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=0`;
-
-    try {
-      const res = await fetch(url);
-      const text = await res.text();
-
-      // Check if sheet is private
-      if (text.includes("<!DOCTYPE html>") || text.includes("<html")) {
-        throw new Error("PRIVACY_BLOCK");
-      }
-
-      const startIndex = text.indexOf('{');
-      const endIndex = text.lastIndexOf('}') + 1;
-      let jsonString = text.substring(startIndex, endIndex);
-
-      // --- CRITICAL FIX FOR SYNTAX ERROR ---
-      // This regex handles dates regardless of whether they are already quoted or not.
-      // It turns: v:new Date(2025,0,14)  INTO  v:"Date(2025,0,14)"
-      // It leaves: v:"Date(2025,0,14)"   ALONE (so it doesn't double quote)
-      jsonString = jsonString.replace(/:\s*(?:new\s+)?Date\(([^)]+)\)/g, ':"Date($1)"');
-
-      const json = JSON.parse(jsonString);
-      
-      container.innerHTML = '';
-
-      if (!json.table || !json.table.rows || json.table.rows.length === 0) {
-        container.innerHTML = '<p style="padding:20px; text-align:center; color:white;">No notices found.</p>';
-        return;
-      }
-
-      json.table.rows.forEach(row => {
-        if (!row.c || !row.c[0]) return;
-
-        const title = row.c[0].v;
-        // Handle date safely
-        const dateRaw = row.c[1] ? (row.c[1].f || row.c[1].v) : ''; 
-        // Remove "Date(...)" if it persists in the string
-        const displayDate = dateRaw.toString().replace(/Date\(|\)|"/g, '');
-
-        const item = document.createElement('div');
-        item.className = 'card-list-item'; // Using your CSS class
-        
-        item.innerHTML = `
-          <h4>${title}</h4>
-          <p>${displayDate}</p>
-        `;
-        container.appendChild(item);
-      });
-
-    } catch (err) {
-      console.error("Notice Board Error:", err);
-      
-      if (err.message === "PRIVACY_BLOCK") {
-        container.innerHTML = `
-          <div style="padding: 15px; text-align: center; color: white;">
-            <strong>Access Denied</strong><br>
-            <small>The Google Sheet is Private.<br>Please set sharing to "Anyone with the link".</small>
-          </div>`;
-      } else {
-        container.innerHTML = '<p style="padding:20px; text-align:center; color:white;">Unable to load data.</p>';
-      }
-    }
+/**
+ * Fetches raw 2D grid data from a specific Google Sheet tab.
+ * @param {string} sheetId - The ID from the URL.
+ * @param {string} sheetName - The EXACT name of the tab at the bottom.
+ */
+async function getSheetData(sheetId, sheetName) {
+  const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(sheetName)}`;
+  try {
+    const response = await fetch(url);
+    const text = await response.text();
+    if (text.includes("<!DOCTYPE html>")) return [];
+    const jsonText = text.substring(47).slice(0, -2);
+    const json = JSON.parse(jsonText);
+    return json.table.rows.map(row => row.c.map(cell => (cell ? (cell.v ?? null) : null)));
+  } catch (error) {
+    return [];
   }
+}
 
-  document.addEventListener('DOMContentLoaded', loadNotices);
+const mySheetId = '1Gv6BPrI-pX5-VtXXwm2zOZIte4-UMjSKEYfeXQvbDO8';
+
+async function updateNoticeBoard() {
+  const container = document.getElementById('notice-list');
+  container.innerHTML = '<p style="padding: 20px; text-align: center;">Loading notices...</p>';
+  const data = await getSheetData(mySheetId, 'Sheet1');
+  if (!data.length) {
+    container.innerHTML = '<p style="padding: 20px; text-align: center;">Unable to load data.</p>';
+    return;
+  }
+  container.innerHTML = '';
+  data.forEach(row => {
+    if (row[0]) {
+      const item = document.createElement('div');
+      item.className = 'card-list-item';
+      item.innerHTML = `<h4>${row[0]}</h4>${row[1] ? `<p>${row[1]}</p>` : ''}`;
+      container.appendChild(item);
+    }
+  });
+}
+
+async function updateEvents() {
+  const container = document.getElementById('event-list');
+  container.innerHTML = '<p style="padding: 20px; text-align: center;">Loading events...</p>';
+  const data = await getSheetData(mySheetId, 'Sheet2');
+  if (!data.length) {
+    container.innerHTML = '<p style="padding: 20px; text-align: center;">Unable to load data.</p>';
+    return;
+  }
+  container.innerHTML = '';
+  data.forEach(row => {
+    if (row[0]) {
+      const item = document.createElement('div');
+      item.className = 'card-list-item';
+      item.innerHTML = `<h4>${row[0]}</h4>${row[1] ? `<p>${row[1]}</p>` : ''}`;
+      container.appendChild(item);
+    }
+  });
+}
+
+async function updateRegulations() {
+  const container = document.getElementById('regulation-list');
+  container.innerHTML = '<p style="padding: 20px; text-align: center;">Loading regulations...</p>';
+  const data = await getSheetData(mySheetId, 'Sheet3');
+  if (!data.length) {
+    container.innerHTML = '<p style="padding: 20px; text-align: center;">Unable to load data.</p>';
+    return;
+  }
+  container.innerHTML = '';
+  data.forEach(row => {
+    if (row[0]) {
+      const item = document.createElement('div');
+      item.className = 'card-list-item';
+      item.innerHTML = `<h4>${row[0]}</h4>${row[1] ? `<p>${row[1]}</p>` : ''}`;
+      container.appendChild(item);
+    }
+  });
+}
+
+// Auto-refresh every 60 seconds (optional, for "live" updates)
+setInterval(() => {
+  updateNoticeBoard();
+  updateEvents();
+  updateRegulations();
+}, 60000);
+
+document.addEventListener('DOMContentLoaded', () => {
+  updateNoticeBoard();
+  updateEvents();
+  updateRegulations();
+});
 </script>
 
     <script>
