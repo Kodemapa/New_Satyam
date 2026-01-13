@@ -49,7 +49,7 @@
        /* --- HEADER --- */
         header { 
             background-color: white; 
-            padding: 0; 
+            padding: 15px 0; 
             position: fixed; 
             top: 0;
             left: 0;
@@ -78,16 +78,16 @@
             display: relative;
             align-items: center;
             justify-content: center;
-            width: 190px;
-            height: 100px;
+            width: 150px; /* Adjusted slightly for mobile fitting */
+            height: auto;
             font-size: 1.2rem;
         }
         
-        .logo-icon img { width: 100%; height: 100%; object-fit: contain; padding: 5px; }
+        .logo-icon img { width: 100%; height: 100%; object-fit: contain; }
 
         .nav-links { 
             display: flex; 
-            gap: 40px; 
+            gap: 30px; 
             align-items: center;
         }
 
@@ -113,11 +113,22 @@
         .nav-links li:hover > .dropdown { display: block; }
 
         /* Mobile Menu Toggle */
-        .menu-toggle { display: none; font-size: 1.5rem; color: var(--primary-blue); cursor: pointer; }
+        .menu-toggle { 
+            display: none; /* Hidden on desktop */
+            font-size: 1.8rem; 
+            color: var(--primary-orange); 
+            cursor: pointer; 
+            transition: 0.3s;
+            padding: 5px;
+        }
 
-        .btn { display: inline-block; padding: 12px 35px; border-radius: var(--radius-btn); font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 1rem; }
+        .btn { display: inline-block; padding: 10px 30px; border-radius: var(--radius-btn); font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 0.95rem; }
         .btn-white { background: var(--white); color: var(--primary-orange); border: 1px solid var(--primary-orange); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .btn-white:hover { background: var(--primary-orange); color: white; transform: translateY(-2px); }
+        
+        /* Mobile "Contact Us" Button Handling */
+        .desktop-btn { display: inline-block; }
+
 
         /* --- HERO SECTION --- */
         .hero-section {
@@ -281,21 +292,70 @@
         .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; flex-wrap: wrap;}
         .footer-links a:hover { color: var(--primary-orange); }
 
-        /* --- RESPONSIVE --- */
+        /* --- RESPONSIVE / MOBILE FIX --- */
         @media (max-width: 991px) {
+            header {
+                padding: 10px 0;
+            }
+
+            .menu-toggle { 
+                display: block; 
+                order: 3; /* Ensure toggle is on the right */
+            }
+
+            .logo {
+                order: 1;
+            }
+
+            /* Hide the desktop contact button if desired, or let it sit. 
+               We will move the contact button into the menu for mobile in HTML or keep it alongside.
+               Here we keep it separate to match "desktop-btn" class logic if we added it, 
+               but based on existing code, we handle the list. */
+            
             .nav-links { 
                 display: none; 
                 position: absolute;
-                top: 90px;
+                top: 100%; /* Align exactly below header */
                 left: 0;
                 width: 100%;
                 background: white;
                 flex-direction: column;
-                padding: 20px;
+                padding: 20px 0;
                 box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                text-align: center;
+                gap: 20px;
+                border-top: 1px solid #eee;
             }
-            .nav-links.active { display: flex; }
-            .menu-toggle { display: block; }
+
+            .nav-links.active { 
+                display: flex; 
+            }
+
+            .nav-links .dropdown {
+                position: relative;
+                top: 0;
+                box-shadow: none;
+                background: #f9f9f9;
+                text-align: center;
+                padding: 0;
+                display: none; /* Keep hidden until hover/click on mobile */
+            }
+            
+            /* Simple mobile dropdown fix: show on hover of parent li, or you might need JS click. 
+               CSS Hover on mobile can be tricky, but works for basic implementation */
+            .nav-links li:hover > .dropdown {
+                display: block;
+            }
+
+            /* Mobile styling for the external button if it overlaps */
+            .btn-white {
+                display: none; /* Hide the external button on mobile to save space */
+            }
+
+            /* Show a contact link inside the menu for mobile (Added in HTML) */
+            .mobile-contact-btn {
+                display: block !important;
+            }
 
             .hero-section { flex-direction: column; padding-top: 120px; text-align: center; }
             .hero-bg-diag { width: 100%; height: 50%; clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); }
@@ -314,6 +374,9 @@
             .step-number { width: 25px; height: 25px; font-size: 0.8rem; }
             .step-content { padding-top: 10px; }
         }
+        
+        /* Helper for the duplicated contact button in menu */
+        .mobile-contact-btn { display: none; margin-top: 10px; font-weight: 700; color: var(--primary-orange); }
     </style>
 </head>
 
@@ -324,10 +387,15 @@
             <nav>
                 <div class="logo">
                     <div class="logo-icon">
-                        <img src="images/sat.jpg">
+                        <img src="images/sat.jpg" alt="Satyam School">
                     </div>
                 </div>
-                <ul class="nav-links">
+                
+                <div class="menu-toggle" id="mobileMenuBtn">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+
+                <ul class="nav-links" id="navLinks">
                     <li><a href="index.html">Home</a></li>
                     <li>
                         <a href="#" class="dropdown-toggle">Academics <i class="fa-solid fa-caret-down"></i></a>
@@ -342,7 +410,10 @@
                     </li>
                     <li><a href="about-us.html">About Us</a></li>
                     <li><a href="mandatory-disclosure.html">Mandatory Disclosures</a></li>
+                    
+                    <li><a href="contact-us.html" class="mobile-contact-btn">Contact Us</a></li>
                 </ul>
+                
                 <a href="contact-us.html" class="btn btn-white">Contact Us</a>
             </nav>
         </div>
@@ -447,123 +518,123 @@
             
             <div class="acc-item animate-up general-item">
                 <button class="acc-header">Which board does Satyam International School, Ballari follow? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari is affiliated with CBSE[cite: 3]. We follow the prescribed curriculum with a focus on holistic education that nurtures both academic excellence and personal growth[cite: 4].</div></div>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari is affiliated with CBSE. We follow the prescribed curriculum with a focus on holistic education that nurtures both academic excellence and personal growth.</div></div>
             </div>
             <div class="acc-item animate-up general-item">
                 <button class="acc-header">What subjects are offered at Satyam International School? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari offers a comprehensive range of subjects including core subjects like Mathematics, Science, English, Social Studies, and Languages, along with elective options in Commerce, Humanities, and Science streams for senior classes[cite: 6].</div></div>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari offers a comprehensive range of subjects including core subjects like Mathematics, Science, English, Social Studies, and Languages, along with elective options in Commerce, Humanities, and Science streams for senior classes.</div></div>
             </div>
             <div class="acc-item animate-up general-item">
                 <button class="acc-header">Does the school provide additional academic support? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Yes, Satyam International School, Ballari provides remedial classes, one-on-one mentoring, and personalized attention to ensure every student receives the support they need to excel academically[cite: 8].</div></div>
+                <div class="acc-content"><div class="acc-inner">Yes, Satyam International School, Ballari provides remedial classes, one-on-one mentoring, and personalized attention to ensure every student receives the support they need to excel academically.</div></div>
             </div>
              <div class="acc-item animate-up general-item">
                 <button class="acc-header">How does the school prepare students for competitive exams? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari integrates competitive exam preparation into our curriculum with regular practice sessions, mock tests, and guidance for exams like JEE, NEET, and other entrance examinations for senior students[cite: 10].</div></div>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari integrates competitive exam preparation into our curriculum with regular practice sessions, mock tests, and guidance for exams like JEE, NEET, and other entrance examinations for senior students.</div></div>
             </div>
             <div class="acc-item animate-up general-item">
                 <button class="acc-header">What is the student-teacher ratio? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari maintains an optimal student teacher ratio to ensure personalized attention and effective learning for every child[cite: 12].</div></div>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari maintains an optimal student teacher ratio to ensure personalized attention and effective learning for every child.</div></div>
             </div>
 
             <div class="cat-header animate-up general-cat"><i class="fa-solid fa-seedling"></i> Development Activities</div>
             
             <div class="acc-item animate-up general-item">
                 <button class="acc-header">What personality development programs are offered? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari offers comprehensive personality development programs including public speaking workshops, leadership training, communication skills sessions, and confidence building activities to nurture well rounded individuals[cite: 15].</div></div>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari offers comprehensive personality development programs including public speaking workshops, leadership training, communication skills sessions, and confidence building activities to nurture well rounded individuals.</div></div>
             </div>
             <div class="acc-item animate-up general-item">
                 <button class="acc-header">Does the school focus on life skills education? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Yes, Satyam International School, Ballari emphasizes life skills education through programs that teach critical thinking, problem solving, time management, emotional intelligence, and decision-making skills essential for success in life[cite: 17].</div></div>
+                <div class="acc-content"><div class="acc-inner">Yes, Satyam International School, Ballari emphasizes life skills education through programs that teach critical thinking, problem solving, time management, emotional intelligence, and decision-making skills essential for success in life.</div></div>
             </div>
              <div class="acc-item animate-up general-item">
                 <button class="acc-header">Are there mentorship programs available? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari has a dedicated mentorship program where experienced teachers guide students in their academic journey, career choices, and personal development throughout their schooling years[cite: 19].</div></div>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari has a dedicated mentorship program where experienced teachers guide students in their academic journey, career choices, and personal development throughout their schooling years.</div></div>
             </div>
             <div class="acc-item animate-up general-item">
                 <button class="acc-header">How is social and emotional learning promoted? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari integrates social and emotional learning through counseling sessions, peer support groups, mindfulness activities, and programs that help students understand and manage their emotions effectively[cite: 21].</div></div>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari integrates social and emotional learning through counseling sessions, peer support groups, mindfulness activities, and programs that help students understand and manage their emotions effectively.</div></div>
             </div>
             <div class="acc-item animate-up general-item">
                 <button class="acc-header">Does the school organize career guidance sessions? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Yes, Satyam International School, Ballari regularly conducts career guidance workshops, aptitude tests, and counseling sessions with industry experts to help students make informed decisions about their future careers[cite: 22].</div></div>
+                <div class="acc-content"><div class="acc-inner">Yes, Satyam International School, Ballari regularly conducts career guidance workshops, aptitude tests, and counseling sessions with industry experts to help students make informed decisions about their future careers.</div></div>
             </div>
 
             <div class="cat-header animate-up general-cat"><i class="fa-solid fa-user-plus"></i> Process of Admission</div>
 
             <div class="acc-item animate-up filter-item general-item" data-step="process">
                 <button class="acc-header">What is the admission process? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">The admission process at Satyam International School, Ballari involves filling out an application form, submitting required documents, attending an interaction session (for certain grades), and completing the registration process upon selection[cite: 25].</div></div>
+                <div class="acc-content"><div class="acc-inner">The admission process at Satyam International School, Ballari involves filling out an application form, submitting required documents, attending an interaction session (for certain grades), and completing the registration process upon selection.</div></div>
             </div>
             <div class="acc-item animate-up filter-item general-item" data-step="documents">
                 <button class="acc-header">What documents are required for admission? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">For admission to Satyam International School, Ballari, you need to submit: birth certificate, previous school records/transfer certificate, report cards, Aadhar card, passport-size photographs, and medical records/immunization certificates[cite: 27].</div></div>
+                <div class="acc-content"><div class="acc-inner">For admission to Satyam International School, Ballari, you need to submit: birth certificate, previous school records/transfer certificate, report cards, Aadhar card, passport-size photographs, and medical records/immunization certificates.</div></div>
             </div>
             <div class="acc-item animate-up filter-item general-item" data-step="criteria">
                 <button class="acc-header">What age criteria does the school follow? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari follows the age criteria as per board guidelines. Typically, children should be 3+ years for Pre-Primary, 5+ years for Class 1, and so on[cite: 29, 30]. Please contact our admission office for specific requirements[cite: 31].</div></div>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari follows the age criteria as per board guidelines. Typically, children should be 3+ years for Pre-Primary, 5+ years for Class 1, and so on. Please contact our admission office for specific requirements.</div></div>
             </div>
              <div class="acc-item animate-up filter-item general-item" data-step="timing">
                 <button class="acc-header">When does the school conduct admissions? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari typically begins the admission process in January/February for the upcoming academic year starting in June/April[cite: 32]. We also consider mid-year admissions based on seat availability[cite: 33].</div></div>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari typically begins the admission process in January/February for the upcoming academic year starting in June/April. We also consider mid-year admissions based on seat availability.</div></div>
             </div>
              <div class="acc-item animate-up filter-item general-item" data-step="criteria">
                 <button class="acc-header">Is there an entrance test for admission? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">For certain grades, Satyam International School, Ballari may conduct an age-appropriate assessment or interaction to understand the child's learning level[cite: 35]. This helps us provide appropriate academic support from day one[cite: 36].</div></div>
+                <div class="acc-content"><div class="acc-inner">For certain grades, Satyam International School, Ballari may conduct an age-appropriate assessment or interaction to understand the child's learning level. This helps us provide appropriate academic support from day one.</div></div>
             </div>
 
              <div class="cat-header animate-up general-cat"><i class="fa-solid fa-masks-theater"></i> Co-Curricular Activities</div>
              
              <div class="acc-item animate-up general-item">
                 <button class="acc-header">What sports facilities are available? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari offers excellent sports facilities including basketball courts, cricket grounds, football fields, volleyball courts, indoor sports facilities, and dedicated areas for athletics, badminton, and table tennis[cite: 39].</div></div>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari offers excellent sports facilities including basketball courts, cricket grounds, football fields, volleyball courts, indoor sports facilities, and dedicated areas for athletics, badminton, and table tennis.</div></div>
             </div>
              <div class="acc-item animate-up general-item">
                 <button class="acc-header">Does the school have clubs and special interest groups? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Yes, Satyam International School, Ballari has various clubs including Science Club, Math Club, Literary Club, Eco Club, Art Club, Drama Club, Music Club, and Coding Club, allowing students to explore their interests beyond academics[cite: 41].</div></div>
+                <div class="acc-content"><div class="acc-inner">Yes, Satyam International School, Ballari has various clubs including Science Club, Math Club, Literary Club, Eco Club, Art Club, Drama Club, Music Club, and Coding Club, allowing students to explore their interests beyond academics.</div></div>
             </div>
             <div class="acc-item animate-up general-item">
                 <button class="acc-header">Are there opportunities to participate in competitions? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari actively encourages students to participate in inter-school, state-level, and national-level competitions in academics, sports, arts, and other fields, providing platforms for students to showcase their talents[cite: 43].</div></div>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari actively encourages students to participate in inter-school, state-level, and national-level competitions in academics, sports, arts, and other fields, providing platforms for students to showcase their talents.</div></div>
             </div>
             <div class="acc-item animate-up general-item">
                 <button class="acc-header">What cultural activities does the school organize? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari organizes annual day celebrations, cultural festivals, traditional day events, talent shows, dance competitions, music concerts, and various cultural programs that celebrate diversity and creativity[cite: 44].</div></div>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari organizes annual day celebrations, cultural festivals, traditional day events, talent shows, dance competitions, music concerts, and various cultural programs that celebrate diversity and creativity.</div></div>
             </div>
             <div class="acc-item animate-up general-item">
                 <button class="acc-header">Does the school offer music and art education? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Yes, Satyam International School, Ballari has dedicated music and art departments with trained instructors offering classes in vocal music, instrumental music, painting, drawing, craft work, and various forms of creative expression[cite: 46].</div></div>
+                <div class="acc-content"><div class="acc-inner">Yes, Satyam International School, Ballari has dedicated music and art departments with trained instructors offering classes in vocal music, instrumental music, painting, drawing, craft work, and various forms of creative expression.</div></div>
             </div>
             <div class="acc-item animate-up general-item">
                 <button class="acc-header">Are field trips and excursions organized? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari regularly organizes educational field trips, industrial visits, museum tours, nature camps, and excursions that provide experiential learning opportunities beyond the classroom[cite: 48].</div></div>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari regularly organizes educational field trips, industrial visits, museum tours, nature camps, and excursions that provide experiential learning opportunities beyond the classroom.</div></div>
             </div>
 
             <div class="cat-header animate-up general-cat"><i class="fa-solid fa-chalkboard-user"></i> Methods of Teaching</div>
 
             <div class="acc-item animate-up general-item">
                 <button class="acc-header">What teaching methodology does the school follow? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari follows a student-centric teaching approach that combines traditional methods with modern pedagogical techniques including experiential learning, project-based learning, collaborative learning, and technology-integrated instruction[cite: 50].</div></div>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari follows a student-centric teaching approach that combines traditional methods with modern pedagogical techniques including experiential learning, project-based learning, collaborative learning, and technology-integrated instruction.</div></div>
             </div>
             <div class="acc-item animate-up general-item">
                 <button class="acc-header">Does the school use technology in teaching? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Yes, Satyam International School, Ballari has smart classrooms equipped with interactive boards, digital learning resources, educational apps, and audio-visual aids that make learning engaging and effective for students[cite: 51].</div></div>
+                <div class="acc-content"><div class="acc-inner">Yes, Satyam International School, Ballari has smart classrooms equipped with interactive boards, digital learning resources, educational apps, and audio-visual aids that make learning engaging and effective for students.</div></div>
             </div>
             <div class="acc-item animate-up general-item">
                 <button class="acc-header">How does the school assess student learning? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari uses continuous and comprehensive evaluation (CCE) methods including formative assessments, summative assessments, projects, presentations, practical work, and regular feedback to assess student progress holistically[cite: 52].</div></div>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari uses continuous and comprehensive evaluation (CCE) methods including formative assessments, summative assessments, projects, presentations, practical work, and regular feedback to assess student progress holistically.</div></div>
             </div>
             <div class="acc-item animate-up general-item">
                 <button class="acc-header">Are there practical and hands-on learning opportunities? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Absolutely! Satyam International School, Ballari emphasizes hands on learning through well-equipped science laboratories, computer labs, activity-based learning sessions, experiments, and practical demonstrations across all subjects[cite: 53, 54].</div></div>
+                <div class="acc-content"><div class="acc-inner">Absolutely! Satyam International School, Ballari emphasizes hands on learning through well-equipped science laboratories, computer labs, activity-based learning sessions, experiments, and practical demonstrations across all subjects.</div></div>
             </div>
              <div class="acc-item animate-up general-item">
                 <button class="acc-header">Does the school encourage critical thinking and creativity? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Yes, Satyam International School, Ballari promotes critical thinking through inquiry-based learning, open-ended questions, problem-solving activities, debates, discussions, and creative projects that encourage students to think independently and innovatively[cite: 56].</div></div>
+                <div class="acc-content"><div class="acc-inner">Yes, Satyam International School, Ballari promotes critical thinking through inquiry-based learning, open-ended questions, problem-solving activities, debates, discussions, and creative projects that encourage students to think independently and innovatively.</div></div>
             </div>
             <div class="acc-item animate-up general-item">
                 <button class="acc-header">What is the homework policy? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari assigns age-appropriate homework that reinforces classroom learning without overwhelming students[cite: 58]. We believe in meaningful assignments that develop practice, research skills, and independent learning habits[cite: 59].</div></div>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari assigns age-appropriate homework that reinforces classroom learning without overwhelming students. We believe in meaningful assignments that develop practice, research skills, and independent learning habits.</div></div>
             </div>
 
         </div>
