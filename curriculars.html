@@ -4,47 +4,51 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="author" content="elite-themes24">
-    <meta name="description" content="Satyam International School - Co-Curricular Activities">
-    <meta name="keywords" content="Responsive, HTML5, elite-themes24, Learning, Co-Curricular">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Learning - Satyam International School</title>
+    <title>Co-Curricular Activities - Satyam International School</title>
 
     <link rel="shortcut icon" href="images/Satyam_Icon_1.png" type="image/x-icon">
-    <link rel="icon" href="images/Satyam_Icon_1.png" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="152x152" href="images/Satyam_Icon_1.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="images/Satyam_Icon_1.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="images/Satyam_Icon_1.png">
-    <link rel="apple-touch-icon" href="images/Satyam_Icon_1.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="css/values.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
+        /* --- GLOBAL VARIABLES --- */
         :root {
-            --primary-orange: #F48C06;
             --primary-blue: #252641;
-            --accent-purple: #545AE7;
+            --primary-yellow: #ffd166;
+            --primary-purple: #cb8b2b;
+            --primary-orange: #f48c06;
+            --primary-green: #2ec4b6;
+            --text-grey: #696984;
+            --bg-light: #F9FAFB;
             --white: #ffffff;
-            --text-grey: #5F5F7E;
-            --border-light: #E1E1E1;
             --radius-btn: 50px;
+            --radius-card: 20px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; text-decoration: none; list-style: none; }
-        
-        body { 
-            font-family: 'Poppins', sans-serif; 
-            color: var(--primary-blue); 
-            line-height: 1.6;
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            color: var(--primary-blue);
+            background-color: var(--bg-light);
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; padding: 0; margin: 0; }
 
-        /* --- HEADER STYLES --- */
+        /* --- ANIMATIONS --- */
+        .animate-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .animate-up.in-view { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.2s; }
+        @keyframes float { 0% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-15px) rotate(5deg); } 100% { transform: translateY(0px) rotate(0deg); } }
+        @keyframes expandWidth { from { width: 0; } to { width: 90px; } }
+
+        /* --- HEADER --- */
         header { 
-            background-color: white;
+            background-color: white; 
+            padding: 15px 0; 
             position: fixed; 
             top: 0;
             left: 0;
@@ -53,411 +57,244 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         
-        header nav { 
+        nav { 
             display: flex; 
             justify-content: space-between; 
-            align-items: center;
+            align-items: center; 
         }
 
-        header .logo { 
+        .logo { 
             display: flex; 
             align-items: center; 
             gap: 12px; 
             font-size: 1.5rem; 
-            font-weight: 700;
+            font-weight: 700; 
+            color: var(--white);
             letter-spacing: 0.5px;
         }
         
-        header .logo-icon {
-            width: 190px;
-            height: 100px;
+        .logo-icon {
+            display: relative;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: auto;
+            font-size: 1.2rem;
         }
         
-        header .logo-icon img { width: 100%; height: 100%; object-fit: contain; padding: 5px; }
+        .logo-icon img { width: 100%; height: 100%; object-fit: contain; }
 
-        header .nav-links { 
+        .nav-links { 
             display: flex; 
-            gap: 40px; 
+            gap: 30px; 
             align-items: center;
-            list-style: none;
-            margin: 0;
-            padding: 0;
         }
 
-        header .nav-links a { 
+        .nav-links a { 
             color: var(--primary-orange); 
             font-weight: 500; 
             font-size: 1rem; 
             position: relative;
-            text-decoration: none;
         }
         
-        header .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: rgb(251, 130, 0);
-            transition: width 0.3s;
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: rgb(251, 130, 0); transition: width 0.3s;
         }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* Dropdown */
+        .nav-links li { position: relative; }
+        .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-orange); font-weight: 1rem; }
+        .nav-links .dropdown { position: absolute; top: 120%; left: 0; background: var(--white); min-width: 200px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 8px 0; display: none; z-index: 2000; }
+        .nav-links .dropdown li { padding: 0; }
+        .nav-links .dropdown a { display: block; padding: 10px 18px; color: var(--primary-blue); font-weight: 500; }
+        .nav-links .dropdown a:hover { background: rgba(244,140,6,0.06); color: var(--primary-orange); }
+        .nav-links li:hover > .dropdown { display: block; }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle { 
+            display: none; 
+            font-size: 1.8rem; 
+            color: var(--primary-orange); 
+            cursor: pointer; 
+            transition: 0.3s;
+            padding: 5px;
+        }
+
+        .btn { display: inline-block; padding: 10px 30px; border-radius: var(--radius-btn); font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 0.95rem; }
+        .btn-white { background: var(--white); color: var(--primary-orange); border: 1px solid var(--primary-orange); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .btn-white:hover { background: var(--primary-orange); color: white; transform: translateY(-2px); }
         
-        header .nav-links a:hover::after {
-            width: 100%;
-        }
+        .mobile-contact-btn { display: none; margin-top: 10px; font-weight: 700; color: var(--primary-orange); }
 
-        header .nav-links li { position: relative; }
-        header .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-orange);cursor: pointer; text-decoration: none; }
-        header .nav-links .dropdown-toggle::after { display: none; }
-        header .nav-links .dropdown { position: absolute; top: 100%; left: 0; background: var(--white); min-width: 200px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 8px 0; display: none; z-index: 2000; list-style: none; margin: 0; margin-top: 10px; }
-        header .nav-links .dropdown::before { content: ''; position: absolute; top: -10px; left: 0; width: 100%; height: 10px; background: transparent; }
-        header .nav-links .dropdown li { padding: 0; }
-        header .nav-links .dropdown a { display: block; padding: 10px 18px; color: black; font-weight: 500; text-decoration: none; position: relative; }
-        header .nav-links .dropdown a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 8px; left: 50%; transform: translateX(-50%); background-color: rgb(251, 130, 0); transition: width 0.3s; }
-        header .nav-links .dropdown a:hover { background: rgba(244,140,6,0.06); color: var(--primary-orange); }
-        header .nav-links .dropdown a:hover::after { width: calc(100% - 36px); }
-        header .nav-links li:hover > .dropdown { display: block; }
-        header .nav-links .dropdown:hover { display: block; }
-
-        .btn { display: inline-block; padding: 12px 35px; border-radius: var(--radius-btn); font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 1rem; }
-        .btn-white { background: var(--white); color: var(--primary-orange); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
-
-        /* --- FOOTER STYLES --- */
-        footer { background-color: #252641; color: #B2B3CF; padding: 90px 0 50px; text-align: center; }
-        footer .footer-logo { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 40px; }
-        footer .footer-logo h2 { color: white; padding-left: 15px; border-left: 1px solid #626381; font-weight: 600; letter-spacing: 1px; margin: 0; }
-        footer .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; font-size: 1rem; }
-        footer .footer-links a { color: #B2B3CF; text-decoration: none; transition: color 0.3s; }
-        footer .footer-links a:hover { color: white; }
-        footer .copyright { font-size: 0.9rem; opacity: 0.6; margin: 0; }
-
-        /* --- LEARNING PAGE SPECIFIC STYLES --- */
-        main {
-            padding-top: 100px;
-            min-height: 60vh;
-        }
-
-        .learning-hero {
-            background-image: url('images/satyam-3.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            padding: 120px 0;
-            text-align: center;
-            color: white;
+        /* --- HERO SECTION --- */
+        .hero-section {
             position: relative;
-        }
-
-        .learning-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1;
-        }
-
-        .learning-hero .container {
-            position: relative;
-            z-index: 2;
-        }
-
-        .learning-hero h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-transform: capitalize;
-            letter-spacing: 1px;
-        }
-
-        .breadcrumb {
+            padding: 160px 0 100px;
+            min-height: 600px;
             display: flex;
-            justify-content: center;
             align-items: center;
-            gap: 10px;
-            font-size: 1.1rem;
-            color: white;
+            overflow: hidden;
         }
 
-        .breadcrumb a {
-            color: white;
-            text-decoration: none;
+        .hero-bg-diag {
+            position: absolute;
+            top: 0; left: 0; width: 65%; height: 100%;
+            /* Using the specific image for this page */
+            background-image: linear-gradient(rgba(37, 38, 65, 0.8), rgba(37, 38, 65, 0.7)), url('images/satyam-3.jpeg'); 
+            background-size: cover; background-position: center;
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+            z-index: 0;
         }
 
-        .breadcrumb a:hover {
-            color: var(--primary-orange);
+        .hero-content { position: relative; z-index: 2; width: 100%; }
+        
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1;
+            margin-bottom: 20px; color: white;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.1rem; color: #f0f0f0; max-width: 500px; line-height: 1.7; margin-bottom: 30px;
+            border-left: 4px solid var(--primary-orange); padding-left: 20px;
         }
 
-        .content-section {
-            padding: 80px 0;
-            background: white;
+        .title-underline {
+            height: 6px; border-radius: 6px; width: 100px;
+            background: var(--primary-orange); margin-bottom: 25px;
+            animation: expandWidth 1s ease-out forwards;
         }
 
-        .activities-section {
-            padding: 80px 0;
-            background: #f9f9f9;
+        /* Hero Quote Card (Styled to match previous page hero card but for quotes) */
+        .hero-card {
+            background: white; padding: 40px; border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2); 
+            max-width: 600px;
+            position: relative;
+            z-index: 10;
         }
+
+        @media (min-width: 992px) {
+            .hero-card { margin-left: 0; margin-right: 0; }
+        }
+
+        .quote-icon {
+            font-size: 4rem; color: var(--primary-orange); line-height: 1; opacity: 0.3;
+            position: absolute; top: 20px; left: 20px;
+        }
+        
+        .hero-card p.quote-text {
+            color: var(--primary-blue); font-size: 1.1rem; line-height: 1.8;
+            position: relative; z-index: 2; font-weight: 500; font-style: italic;
+        }
+
+        .shape-box { position: absolute; width: 50px; height: 50px; border: 4px solid var(--primary-yellow); top: 15%; right: 10%; transform: rotate(15deg); animation: float 6s infinite ease-in-out; }
+
+
+        /* --- ACTIVITIES SECTION STYLES (Preserved content) --- */
+        .activities-section { padding: 80px 0; background: #f9f9f9; }
 
         .section-title {
-            text-align: center;
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: #1a1a1a;
-            margin-bottom: 50px;
-            position: relative;
+            text-align: center; font-size: 2.8rem; font-weight: 800; color: #1a1a1a;
+            margin-bottom: 50px; position: relative;
         }
 
         .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, #ff2370, transparent);
+            content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+            width: 120px; height: 4px; background: linear-gradient(90deg, transparent, #ff2370, transparent);
         }
 
         .filter-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-bottom: 80px;
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 80px;
         }
 
         .filter-tab {
-            padding: 15px 45px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            color: white;
-            letter-spacing: 0.5px;
+            padding: 12px 35px; border: none; border-radius: 50px; font-size: 1rem;
+            font-weight: 700; cursor: pointer; transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); color: white;
         }
 
-        .filter-tab:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-        }
-
+        .filter-tab:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); }
         .tab-academy { background: linear-gradient(135deg, #ff2370 0%, #ff5370 100%); }
         .tab-curricular { background: linear-gradient(135deg, #84ce5a 0%, #a0d977 100%); }
         .tab-cocurricular { background: linear-gradient(135deg, #4f6af5 0%, #6b82ff 100%); }
         .tab-atheletics { background: linear-gradient(135deg, #ff6a00 0%, #ff8500 100%); }
 
         .activity-card {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-            margin-bottom: 100px;
-            position: relative;
+            display: flex; align-items: center; gap: 60px; margin-bottom: 100px; position: relative;
         }
+        .activity-card:nth-child(even) { flex-direction: row-reverse; }
 
-        .activity-card:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .activity-image-wrapper {
-            flex: 1;
-            position: relative;
-        }
+        .activity-image-wrapper { flex: 1; position: relative; z-index: 1; display: flex; justify-content: center; }
 
         .activity-image {
-            width: 100%;
-            max-width: 550px;
-            height: 550px;
-            border-radius: 50%;
-            object-fit: cover;
-            position: relative;
-            z-index: 2;
+            width: 100%; max-width: 450px; height: 450px; border-radius: 50%;
+            object-fit: cover; position: relative; z-index: 2;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
         }
 
-        .decorative-blob {
-            position: absolute;
-            border-radius: 50% 40% 60% 40%;
-            z-index: 1;
-            opacity: 0.6;
-        }
+        .decorative-blob { position: absolute; border-radius: 50% 40% 60% 40%; z-index: 1; opacity: 0.6; }
+        .blob-purple { width: 400px; height: 400px; background: linear-gradient(135deg, #E8D5F2 0%, #D5C6E8 100%); top: -40px; left: -40px; }
+        .blob-cyan { width: 420px; height: 420px; background: linear-gradient(135deg, #D5F3F7 0%, #B8E8F0 100%); top: -50px; right: -50px; }
+        .blob-yellow { width: 390px; height: 390px; background: linear-gradient(135deg, #FFF4D5 0%, #FFE8B8 100%); bottom: -50px; left: -50px; }
+        .blob-pink { width: 410px; height: 410px; background: linear-gradient(135deg, #FFE5F1 0%, #FFD6E8 100%); bottom: -60px; right: -60px; }
 
-        .blob-purple {
-            width: 400px;
-            height: 400px;
-            background: linear-gradient(135deg, #E8D5F2 0%, #D5C6E8 100%);
-            top: -50px;
-            left: -80px;
-        }
-
-        .blob-cyan {
-            width: 420px;
-            height: 420px;
-            background: linear-gradient(135deg, #D5F3F7 0%, #B8E8F0 100%);
-            top: -60px;
-            right: -90px;
-        }
-
-        .blob-yellow {
-            width: 390px;
-            height: 390px;
-            background: linear-gradient(135deg, #FFF4D5 0%, #FFE8B8 100%);
-            bottom: -70px;
-            left: -70px;
-        }
-
-        .blob-pink {
-            width: 410px;
-            height: 410px;
-            background: linear-gradient(135deg, #FFE5F1 0%, #FFD6E8 100%);
-            bottom: -80px;
-            right: -85px;
-        }
-
-        .activity-content {
-            flex: 1;
-        }
-
-        .activity-title {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-        }
-
+        .activity-content { flex: 1; }
+        .activity-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; line-height: 1.2; }
         .title-purple { color: #8b2aff; }
         .title-cyan { color: #00bcd4; }
         .title-yellow { color: #fdb400; }
         .title-pink { color: #ff2370; }
+        .activity-subtitle { font-size: 1.3rem; font-weight: 600; color: #2d3748; margin-bottom: 20px; }
+        .activity-description { font-size: 1rem; color: #718096; line-height: 1.8; margin-bottom: 25px; }
 
-        .activity-subtitle {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #2d3748;
-            margin-bottom: 25px;
-        }
-
-        .activity-description {
-            font-size: 1.05rem;
-            color: #718096;
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-
-        .activity-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 35px 0;
-        }
-
-        .activity-list li {
-            font-size: 1.05rem;
-            color: #4a5568;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .activity-list li i {
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
+        .activity-list li { font-size: 1rem; color: #4a5568; margin-bottom: 12px; display: flex; align-items: start; gap: 12px; }
         .check-purple { color: #8b2aff; }
         .check-cyan { color: #00bcd4; }
         .check-yellow { color: #fdb400; }
         .check-pink { color: #ff2370; }
 
-        .btn-join {
-            padding: 15px 45px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
+        /* --- FOOTER --- */
+        footer { background-color: #252641; color: #B2B3CF; padding: 80px 0 40px; text-align: center; }
+        .footer-logo { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 40px; }
+        .footer-logo h2 { color: white; padding-left: 15px; border-left: 1px solid #626381; font-weight: 600; letter-spacing: 1px; margin: 0; }
+        .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; flex-wrap: wrap;}
+        .footer-links a:hover { color: var(--primary-orange); }
 
-        .btn-join:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn-purple { background: linear-gradient(135deg, #8b2aff 0%, #a04dff 100%); }
-        .btn-cyan { background: linear-gradient(135deg, #00bcd4 0%, #26c6da 100%); }
-        .btn-yellow { background: linear-gradient(135deg, #fdb400 0%, #ffc727 100%); }
-        .btn-pink { background: linear-gradient(135deg, #ff2370 0%, #ff5370 100%); }
-
-        .pencil-icon {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            z-index: 3;
-        }
-
-        .pencil-top-right {
-            top: 20px;
-            right: 20px;
-        }
-
-        .pencil-bottom-right {
-            bottom: 20px;
-            right: 20px;
-        }
-
-        @media (max-width: 992px) {
-            .activity-card, .activity-card:nth-child(even) {
-                flex-direction: column;
-                text-align: center;
+        /* --- RESPONSIVE / MOBILE FIX --- */
+        @media (max-width: 991px) {
+            header { padding: 10px 0; }
+            .menu-toggle { display: block; order: 3; }
+            .logo { order: 1; }
+            .btn-white { display: none; } /* Hide desktop button */
+            
+            .nav-links { 
+                display: none; position: absolute; top: 100%; left: 0; width: 100%;
+                background: white; flex-direction: column; padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1); text-align: center; gap: 20px; border-top: 1px solid #eee;
             }
+            .nav-links.active { display: flex; }
+            .mobile-contact-btn { display: block !important; }
+            .nav-links li:hover > .dropdown { display: block; position: relative; box-shadow: none; background: #f9f9f9; width: 100%; }
 
-            .activity-image {
-                max-width: 400px;
-                height: 400px;
-            }
+            /* Hero Mobile */
+            .hero-section { flex-direction: column; padding-top: 120px; text-align: center; min-height: auto; padding-bottom: 60px; }
+            .hero-bg-diag { width: 100%; height: 50%; clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); }
+            .hero-content { padding-top: 20px; }
+            .hero-title { font-size: 2.5rem; }
+            .hero-subtitle { border: none; padding: 0; margin: 0 auto 30px; }
+            .title-underline { margin: 0 auto 20px; }
+            .hero-card { margin: 30px auto 0; width: 100%; text-align: center; padding: 30px; }
+            .quote-icon { left: 50%; transform: translateX(-50%); top: 10px; }
 
-            .decorative-blob {
-                width: 300px;
-                height: 300px;
-            }
-
-            .filter-tabs {
-                gap: 10px;
-            }
-
-            .filter-tab {
-                padding: 12px 30px;
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 2.5rem;
-            }
-
-            .activity-title {
-                font-size: 2rem;
-            }
-
-            .activity-image {
-                max-width: 320px;
-                height: 320px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .learning-hero h1 {
-                font-size: 2.5rem;
-            }
+            /* Activities Mobile */
+            .activity-card, .activity-card:nth-child(even) { flex-direction: column; gap: 30px; margin-bottom: 60px; text-align: center; }
+            .activity-image { width: 300px; height: 300px; }
+            .decorative-blob { width: 300px; height: 300px; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%); }
+            .activity-list li { justify-content: center; text-align: left; }
+            
+            .filter-tabs { gap: 10px; margin-bottom: 40px; }
+            .filter-tab { padding: 10px 25px; font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -469,10 +306,15 @@
             <nav>
                 <div class="logo">
                     <div class="logo-icon">
-                        <img src="images/sat.jpg">
+                        <img src="images/sat.jpg" alt="Satyam School">
                     </div>
                 </div>
-                <ul class="nav-links">
+                
+                <div class="menu-toggle" id="mobileMenuBtn">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+
+                <ul class="nav-links" id="navLinks">
                     <li><a href="index.html">Home</a></li>
                     <li>
                         <a href="#" class="dropdown-toggle">Academics <i class="fa-solid fa-caret-down"></i></a>
@@ -487,126 +329,128 @@
                     </li>
                     <li><a href="about-us.html">About Us</a></li>
                     <li><a href="mandatory-disclosure.html">Mandatory Disclosures</a></li>
+                    <li><a href="contact-us.html" class="mobile-contact-btn">Contact Us</a></li>
                 </ul>
                 <a href="contact-us.html" class="btn btn-white">Contact Us</a>
             </nav>
         </div>
     </header>
 
-    <main>
-        <section class="learning-hero">
-            <div class="container">
-                <h1>Co-Curriculum</h1>
-                <div class="breadcrumb">
-                    <a href="index.html">Home</a>
-                    <i class="fa-solid fa-chevron-right"></i>
-                    <span>Co-Curriculum</span>
+    <section class="hero-section">
+        <div class="hero-bg-diag"></div>
+        <div class="shape-box"></div>
+        
+        <div class="container hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-6 animate-up">
+                    <span style="color: var(--primary-yellow); font-weight: 700; letter-spacing: 1px;">EXPLORE & EXCEL</span>
+                    <h1 class="hero-title">Co-Curricular<br>Activities</h1>
+                    <div class="title-underline"></div>
+                    <p class="hero-subtitle">
+                      We believe in a safe, inclusive, and innovative learning environment where students are encouraged to explore their potential and excel both academically and personally.
+                    </p>
                 </div>
-            </div>
-        </section>
-
-        <section class="activities-section">
-            <div class="container">
-                <h2 class="section-title">Our Activities</h2>
-
-                <div class="filter-tabs">
-                    <button class="filter-tab tab-academy">Academy</button>
-                    <button class="filter-tab tab-curricular">Curricular</button>
-                    <button class="filter-tab tab-cocurricular">Co-Curricular</button>
-                    <button class="filter-tab tab-atheletics">Atheletics</button>
-                </div>
-
-                <!-- High School -->
-                <div class="activity-card">
-                    <div class="activity-image-wrapper">
-                        <div class="decorative-blob blob-purple"></div>
-                        <img src="images/digital_classroom.png" alt="High School Students" class="activity-image">
-
-                    </div>
-                    <div class="activity-content">
-                        <h3 class="activity-title title-purple">Empowering students</h3>
-                        <p class="activity-subtitle"> for brighter future</p>
-                        <p class="activity-description">We provide a safe, inclusive, and innovative learning environment where students are encouraged to explore their potential and excel academically and personally.
-                        </p>
-                        <ul class="activity-list">
-                            <li><i class="fa-solid fa-check check-purple"></i>  Fun computer lab activities that build digital confidence and teamwork</li>
-                            <li><i class="fa-solid fa-check check-purple"></i> Environment that nurtures creativity while building confidence</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Middle School -->
-                <div class="activity-card">
-                    <div class="activity-image-wrapper">
-                        <div class="decorative-blob blob-cyan"></div>
-                        <img src="images/skating_roll.webp" alt="Middle School Students" class="activity-image">
-                    </div>
-                    <div class="activity-content">
-                        <h3 class="activity-title title-cyan">Smart Digital Classrooms</h3>
-                        <p class="activity-description">
-                            Our digital learning ecosystem makes complex topics visual and engaging, ensuring students master the technology skills needed for the future.
-                        </p>
-                        <ul class="activity-list">
-                            <li><i class="fa-solid fa-check check-cyan"></i> Deep Conceptual Learning
-We build a strong academic foundation that prepares students not just for exams, but for real world application.
-</li>
-                            <li><i class="fa-solid fa-check check-cyan"></i> Future Ready Robotics & STEM
-Our dedicated Robotics and STEM labs allow students to turn ideas into reality through coding and design thinking.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Primary School -->
-                <div class="activity-card">
-                    <div class="activity-image-wrapper">
-                        <div class="decorative-blob blob-yellow"></div>
-                        <img src="images/cricket.jpeg" alt="Primary School Students" class="activity-image">
-
-                    </div>
-                    <div class="activity-content">
-                        <h3 class="activity-title title-yellow">Shaping Balanced</h3>
-                        <p class="activity-subtitle">and Confident Individuals</p>
-                        <p class="activity-description">
+                
+                <div class="col-lg-6 animate-up delay-1">
+                    <div class="hero-card">
+                        <div class="quote-icon">"</div>
+                        <p class="quote-text">
                             Co-curricular activities help students grow not just academically, but emotionally and socially. They leave with curiosity in their minds, confidence in their voices, and joy in their learning journey.
                         </p>
-                        <ul class="activity-list">
-                            <li><i class="fa-solid fa-check check-yellow"></i> Emotional and Social Growth</li>
-                            <li><i class="fa-solid fa-check check-yellow"></i> Holistic Development</li>
-                            <li><i class="fa-solid fa-check check-yellow"></i> Value Education and Life Skills</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Pre Primary -->
-                <div class="activity-card">
-                    <div class="activity-image-wrapper">
-                        <div class="decorative-blob blob-pink"></div>
-                        <img src="images/pre_school.png" alt="Pre Primary Students" class="activity-image">
-
-                    </div>
-                    <div class="activity-content">
-                        <h3 class="activity-title title-pink">Designed to Spark Curiosity</h3>
-                        <p class="activity-subtitle">and Encourage Participation</p>
-                        <p class="activity-description">Learning is most effective when students are interested, involved, and motivated. The curriculum is thoughtfully designed to move beyond memorization and encourage active participation, curiosity, and understanding at every stage of learning.
-</p>
-                        <ul class="activity-list">
-                            <li><i class="fa-solid fa-check check-pink"></i> By blending academics with real-world connections and interactive experiences, lessons become meaningful and enjoyable.</li>
-                            <li><i class="fa-solid fa-check check-pink"></i> Language Development and Early Literacy</li>
-                            <li><i class="fa-solid fa-check check-pink"></i> Motor Skills and Creative Expression</li>
-                        </ul>
+                         <div style="margin-top: 20px; border-top: 1px solid #f0f0f0; padding-top: 15px;">
+                             <strong style="color: var(--primary-orange); font-size: 1.1rem; display: block;">— Satyam International School</strong>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <section class="activities-section">
+        <div class="container">
+            <h2 class="section-title animate-up">Our Activities</h2>
+
+            <div class="filter-tabs animate-up">
+                <button class="filter-tab tab-academy">Academy</button>
+                <button class="filter-tab tab-curricular">Curricular</button>
+                <button class="filter-tab tab-cocurricular">Co-Curricular</button>
+                <button class="filter-tab tab-atheletics">Atheletics</button>
+            </div>
+
+            <div class="activity-card animate-up delay-1">
+                <div class="activity-image-wrapper">
+                    <div class="decorative-blob blob-purple"></div>
+                    <img src="images/reading.jpeg" alt="Empowering students" class="activity-image">
+                </div>
+                <div class="activity-content">
+                    <h3 class="activity-title title-purple">Empowering students</h3>
+                    <p class="activity-subtitle"> for brighter future</p>
+                    <p class="activity-description">We provide a safe, inclusive, and innovative learning environment where students are encouraged to explore their potential and excel academically and personally.</p>
+                    <ul class="activity-list">
+                        <li><i class="fa-solid fa-check check-purple"></i> Fun computer lab activities that build digital confidence and teamwork</li>
+                        <li><i class="fa-solid fa-check check-purple"></i> Environment that nurtures creativity while building confidence</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="activity-card animate-up">
+                <div class="activity-image-wrapper">
+                    <div class="decorative-blob blob-cyan"></div>
+                    <img src="images/skating_roll.webp" alt="Smart Digital Classrooms" class="activity-image">
+                </div>
+                <div class="activity-content">
+                    <h3 class="activity-title title-cyan">Smart Digital Classrooms</h3>
+                    <p class="activity-description">Our digital learning ecosystem makes complex topics visual and engaging, ensuring students master the technology skills needed for the future.</p>
+                    <ul class="activity-list">
+                        <li><i class="fa-solid fa-check check-cyan"></i> <strong>Deep Conceptual Learning:</strong> We build a strong academic foundation that prepares students not just for exams, but for real world application.</li>
+                        <li><i class="fa-solid fa-check check-cyan"></i> <strong>Future Ready Robotics & STEM:</strong> Our dedicated Robotics and STEM labs allow students to turn ideas into reality through coding and design thinking.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="activity-card animate-up">
+                <div class="activity-image-wrapper">
+                    <div class="decorative-blob blob-yellow"></div>
+                    <img src="images/cricket.jpeg" alt="Shaping Balanced Individuals" class="activity-image">
+                </div>
+                <div class="activity-content">
+                    <h3 class="activity-title title-yellow">Shaping Balanced</h3>
+                    <p class="activity-subtitle">and Confident Individuals</p>
+                    <p class="activity-description">Co-curricular activities help students grow not just academically, but emotionally and socially. They leave with curiosity in their minds, confidence in their voices, and joy in their learning journey.</p>
+                    <ul class="activity-list">
+                        <li><i class="fa-solid fa-check check-yellow"></i> Emotional and Social Growth</li>
+                        <li><i class="fa-solid fa-check check-yellow"></i> Holistic Development</li>
+                        <li><i class="fa-solid fa-check check-yellow"></i> Value Education and Life Skills</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="activity-card animate-up">
+                <div class="activity-image-wrapper">
+                    <div class="decorative-blob blob-pink"></div>
+                    <img src="images/pre_school.png" alt="Spark Curiosity" class="activity-image">
+                </div>
+                <div class="activity-content">
+                    <h3 class="activity-title title-pink">Designed to Spark Curiosity</h3>
+                    <p class="activity-subtitle">and Encourage Participation</p>
+                    <p class="activity-description">Learning is most effective when students are interested, involved, and motivated. The curriculum is thoughtfully designed to move beyond memorization and encourage active participation, curiosity, and understanding at every stage of learning.</p>
+                    <ul class="activity-list">
+                        <li><i class="fa-solid fa-check check-pink"></i> By blending academics with real-world connections and interactive experiences, lessons become meaningful and enjoyable.</li>
+                        <li><i class="fa-solid fa-check check-pink"></i> Language Development and Early Literacy</li>
+                        <li><i class="fa-solid fa-check check-pink"></i> Motor Skills and Creative Expression</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
 
     <footer>
         <div class="container">
             <div class="footer-logo">
-                <img src="images/Satyam_Icon_1.png" alt="Satyam International Logo" style="width: 40px; height: 40px;">
+                <img src="images/Satyam_Icon_1.png" alt="Logo" style="width: 40px; height: 40px;" onerror="this.style.display='none'">
                 <h2>Satyam International <span style="font-size: 0.9rem; display: block; font-weight: 400; opacity: 0.7; margin-top: 5px;">School for Holistic Development</span></h2>
             </div>
-
             <div class="footer-links">
                 <a href="index.html">Home</a>
                 <a href="about-us.html">About-us</a>
@@ -614,11 +458,42 @@ Our dedicated Robotics and STEM labs allow students to turn ideas into reality t
                 <a href="contact-us.html">Contact-us</a>
                 <a href="#">Privacy Policy</a>
             </div>
-            
             <p class="copyright">© 2025 All rights reserved by Kodemapa.</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Scroll Animation
+        document.addEventListener('DOMContentLoaded', function () {
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.animate-up').forEach(el => observer.observe(el));
+            
+            // Mobile Menu Toggle Logic
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            
+            if(menuBtn){
+                menuBtn.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    const icon = menuBtn.querySelector('i');
+                    if(navLinks.classList.contains('active')){
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
