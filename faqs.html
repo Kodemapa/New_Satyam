@@ -46,24 +46,22 @@
         @keyframes float { 0% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-15px) rotate(5deg); } 100% { transform: translateY(0px) rotate(0deg); } }
         @keyframes expandWidth { from { width: 0; } to { width: 90px; } }
 
-       /* --- HEADER (FIXED / FROZEN) --- */
+       /* --- HEADER --- */
         header { 
-            background-color: white;
-            /* FIXED POSITIONING TO FREEZE NAVBAR */
+            background-color: white; 
+            padding: 0; 
             position: fixed; 
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 1000; /* High z-index ensures it stays on top of hero image */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         
         nav { 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            /* Added min-height to ensure consistent sizing */
-            min-height: 90px;
         }
 
         .logo { 
@@ -90,11 +88,11 @@
         .nav-links { 
             display: flex; 
             gap: 40px; 
-            align-items: center; 
+            align-items: center;
         }
 
         .nav-links a { 
-            color: var(--primary-blue); 
+            color: var(--primary-orange); 
             font-weight: 500; 
             font-size: 1rem; 
             position: relative;
@@ -107,12 +105,19 @@
 
         /* --- DROPDOWN NAV --- */
         .nav-links li { position: relative; }
-        .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-blue); font-weight: 1rem; }
+        .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-orange); font-weight: 1rem; }
         .nav-links .dropdown { position: absolute; top: 120%; left: 0; background: var(--white); min-width: 200px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 8px 0; display: none; z-index: 2000; }
         .nav-links .dropdown li { padding: 0; }
         .nav-links .dropdown a { display: block; padding: 10px 18px; color: var(--primary-blue); font-weight: 500; }
         .nav-links .dropdown a:hover { background: rgba(244,140,6,0.06); color: var(--primary-orange); }
         .nav-links li:hover > .dropdown { display: block; }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle { display: none; font-size: 1.5rem; color: var(--primary-blue); cursor: pointer; }
+
+        .btn { display: inline-block; padding: 12px 35px; border-radius: var(--radius-btn); font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 1rem; }
+        .btn-white { background: var(--white); color: var(--primary-orange); border: 1px solid var(--primary-orange); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .btn-white:hover { background: var(--primary-orange); color: white; transform: translateY(-2px); }
 
         /* --- HERO SECTION --- */
         .hero-section {
@@ -129,7 +134,6 @@
             top: 0; left: 0; width: 65%; height: 100%;
             background-image: linear-gradient(rgba(37, 38, 65, 0.7), rgba(37, 38, 65, 0.5)), url('images/Campus.png'); 
             background-size: cover; background-position: center;
-            /* Slanted cut to create the overlapping effect opportunity */
             clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
             z-index: 0;
         }
@@ -164,7 +168,7 @@
         /* Desktop Overlay Effect */
         @media (min-width: 992px) {
             .hero-card {
-                margin-left: 0px; /* Pulls the card over the image */
+                margin-left: 0px; 
                 margin-right: 0;
             }
         }
@@ -192,7 +196,7 @@
         .timeline-container::before {
             content: ''; position: absolute; top: 40px; left: 50px; right: 50px;
             height: 0; 
-            border-top: 3px dotted #d1d5db; /* DOTTED LINE STYLE */
+            border-top: 3px dotted #d1d5db;
             z-index: 0;
         }
 
@@ -274,12 +278,25 @@
         footer { background-color: #252641; color: #B2B3CF; padding: 80px 0 40px; text-align: center; }
         .footer-logo { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 40px; }
         .footer-logo h2 { color: white; padding-left: 15px; border-left: 1px solid #626381; font-weight: 600; letter-spacing: 1px; margin: 0; }
-        .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; }
+        .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; flex-wrap: wrap;}
         .footer-links a:hover { color: var(--primary-orange); }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 991px) {
-            .nav-links { display: none; }
+            .nav-links { 
+                display: none; 
+                position: absolute;
+                top: 90px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+
             .hero-section { flex-direction: column; padding-top: 120px; text-align: center; }
             .hero-bg-diag { width: 100%; height: 50%; clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); }
             .hero-content { padding-top: 40px; }
@@ -373,47 +390,47 @@
 
             <div class="timeline-container animate-up delay-1">
                 
-                <div class="timeline-step" onclick="filterFaq('registration', this)">
+                <div class="timeline-step" onclick="filterFaq('process', this)">
                     <div class="step-icon">
                         <i class="fa-solid fa-file-pen"></i>
                         <div class="step-number">1</div>
                     </div>
                     <div class="step-content">
-                        <h4 class="step-title">Registration</h4>
-                        <p class="step-desc">Fill out the online inquiry form or visit our campus office.</p>
+                        <h4 class="step-title">Process</h4>
+                        <p class="step-desc">Application, interaction, and registration steps.</p>
                     </div>
                 </div>
 
-                <div class="timeline-step" onclick="filterFaq('visit', this)">
+                <div class="timeline-step" onclick="filterFaq('documents', this)">
                     <div class="step-icon">
-                        <i class="fa-solid fa-school"></i>
+                        <i class="fa-solid fa-folder-open"></i>
                         <div class="step-number">2</div>
                     </div>
                     <div class="step-content">
-                        <h4 class="step-title">Campus Visit</h4>
-                        <p class="step-desc">Schedule a guided tour and counseling session.</p>
+                        <h4 class="step-title">Documents</h4>
+                        <p class="step-desc">Required certificates and records.</p>
                     </div>
                 </div>
 
-                <div class="timeline-step" onclick="filterFaq('assessment', this)">
+                <div class="timeline-step" onclick="filterFaq('criteria', this)">
                     <div class="step-icon">
-                        <i class="fa-solid fa-clipboard-check"></i>
+                        <i class="fa-solid fa-users"></i>
                         <div class="step-number">3</div>
                     </div>
                     <div class="step-content">
-                        <h4 class="step-title">Assessment</h4>
-                        <p class="step-desc">Interaction for KG or proficiency test for grades.</p>
+                        <h4 class="step-title">Criteria</h4>
+                        <p class="step-desc">Age limits and entrance assessments.</p>
                     </div>
                 </div>
 
-                <div class="timeline-step" onclick="filterFaq('admission', this)">
+                <div class="timeline-step" onclick="filterFaq('timing', this)">
                     <div class="step-icon">
-                        <i class="fa-solid fa-handshake"></i>
+                        <i class="fa-solid fa-calendar-check"></i>
                         <div class="step-number">4</div>
                     </div>
                     <div class="step-content">
-                        <h4 class="step-title">Admission</h4>
-                        <p class="step-desc">Documentation and fee payment to secure the seat.</p>
+                        <h4 class="step-title">Timing</h4>
+                        <p class="step-desc">Admission dates and deadlines.</p>
                     </div>
                 </div>
 
@@ -426,54 +443,127 @@
     <section class="faq-section" id="faqSection">
         <div class="container faq-wrapper">
             
-            <div class="cat-header animate-up" id="admissionsHeader"><i class="fa-solid fa-user-plus"> Queries</i></div>
-
-            <div class="acc-item animate-up filter-item" data-step="registration">
-                <button class="acc-header">How do I register for admission? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">You can register by filling out the 'Apply Now' form on our website or by visiting the school administration office between 9:00 AM and 4:00 PM on working days.</div></div>
+            <div class="cat-header animate-up general-cat" id="academicHeader"><i class="fa-solid fa-book-open"></i> Academic Curriculum</div>
+            
+            <div class="acc-item animate-up general-item">
+                <button class="acc-header">Which board does Satyam International School, Ballari follow? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari is affiliated with CBSE[cite: 3]. We follow the prescribed curriculum with a focus on holistic education that nurtures both academic excellence and personal growth[cite: 4].</div></div>
             </div>
-            <div class="acc-item animate-up filter-item" data-step="registration">
-                <button class="acc-header">Is there a registration fee? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Yes, a nominal one-time registration fee is applicable at the time of submitting the application form. This covers the administrative processing costs.</div></div>
+            <div class="acc-item animate-up general-item">
+                <button class="acc-header">What subjects are offered at Satyam International School? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari offers a comprehensive range of subjects including core subjects like Mathematics, Science, English, Social Studies, and Languages, along with elective options in Commerce, Humanities, and Science streams for senior classes[cite: 6].</div></div>
             </div>
-
-            <div class="acc-item animate-up filter-item" data-step="visit">
-                <button class="acc-header">Can parents visit the campus before applying? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Absolutely. We encourage parents to schedule a campus tour to see our facilities, meet the faculty, and understand our teaching methodology. Please book a slot online or call us.</div></div>
+            <div class="acc-item animate-up general-item">
+                <button class="acc-header">Does the school provide additional academic support? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Yes, Satyam International School, Ballari provides remedial classes, one-on-one mentoring, and personalized attention to ensure every student receives the support they need to excel academically[cite: 8].</div></div>
             </div>
-            <div class="acc-item animate-up filter-item" data-step="visit">
-                <button class="acc-header">What are the office timings for visits? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">The admissions office is open Monday to Saturday, from 9:00 AM to 4:00 PM. We are closed on public holidays and Sundays.</div></div>
+             <div class="acc-item animate-up general-item">
+                <button class="acc-header">How does the school prepare students for competitive exams? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari integrates competitive exam preparation into our curriculum with regular practice sessions, mock tests, and guidance for exams like JEE, NEET, and other entrance examinations for senior students[cite: 10].</div></div>
             </div>
-
-            <div class="acc-item animate-up filter-item" data-step="assessment">
-                <button class="acc-header">Is there an entrance exam for all grades? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">For Nursery to KG, there is a simple interaction with the child and parents. For Grade 1 onwards, a basic proficiency test in English, Math, and Science is conducted to understand the child's learning level.</div></div>
-            </div>
-            <div class="acc-item animate-up filter-item" data-step="assessment">
-                <button class="acc-header">What is the syllabus for the entrance test? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">The test is based on the general curriculum of the previous grade the student has completed. No special preparation is required; it assesses conceptual understanding.</div></div>
+            <div class="acc-item animate-up general-item">
+                <button class="acc-header">What is the student-teacher ratio? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari maintains an optimal student teacher ratio to ensure personalized attention and effective learning for every child[cite: 12].</div></div>
             </div>
 
-            <div class="acc-item animate-up filter-item" data-step="admission">
+            <div class="cat-header animate-up general-cat"><i class="fa-solid fa-seedling"></i> Development Activities</div>
+            
+            <div class="acc-item animate-up general-item">
+                <button class="acc-header">What personality development programs are offered? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari offers comprehensive personality development programs including public speaking workshops, leadership training, communication skills sessions, and confidence building activities to nurture well rounded individuals[cite: 15].</div></div>
+            </div>
+            <div class="acc-item animate-up general-item">
+                <button class="acc-header">Does the school focus on life skills education? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Yes, Satyam International School, Ballari emphasizes life skills education through programs that teach critical thinking, problem solving, time management, emotional intelligence, and decision-making skills essential for success in life[cite: 17].</div></div>
+            </div>
+             <div class="acc-item animate-up general-item">
+                <button class="acc-header">Are there mentorship programs available? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari has a dedicated mentorship program where experienced teachers guide students in their academic journey, career choices, and personal development throughout their schooling years[cite: 19].</div></div>
+            </div>
+            <div class="acc-item animate-up general-item">
+                <button class="acc-header">How is social and emotional learning promoted? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari integrates social and emotional learning through counseling sessions, peer support groups, mindfulness activities, and programs that help students understand and manage their emotions effectively[cite: 21].</div></div>
+            </div>
+            <div class="acc-item animate-up general-item">
+                <button class="acc-header">Does the school organize career guidance sessions? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Yes, Satyam International School, Ballari regularly conducts career guidance workshops, aptitude tests, and counseling sessions with industry experts to help students make informed decisions about their future careers[cite: 22].</div></div>
+            </div>
+
+            <div class="cat-header animate-up general-cat"><i class="fa-solid fa-user-plus"></i> Process of Admission</div>
+
+            <div class="acc-item animate-up filter-item general-item" data-step="process">
+                <button class="acc-header">What is the admission process? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">The admission process at Satyam International School, Ballari involves filling out an application form, submitting required documents, attending an interaction session (for certain grades), and completing the registration process upon selection[cite: 25].</div></div>
+            </div>
+            <div class="acc-item animate-up filter-item general-item" data-step="documents">
                 <button class="acc-header">What documents are required for admission? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">You will need: 1. Birth Certificate 2. Transfer Certificate (TC) from previous school 3. Report card of the last exam passed 4. Aadhar Card of student and parents 5. Passport size photos.</div></div>
+                <div class="acc-content"><div class="acc-inner">For admission to Satyam International School, Ballari, you need to submit: birth certificate, previous school records/transfer certificate, report cards, Aadhar card, passport-size photographs, and medical records/immunization certificates[cite: 27].</div></div>
             </div>
-            <div class="acc-item animate-up filter-item" data-step="admission">
-                <button class="acc-header">Do you accept fee payments in installments? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Yes, the annual tuition fee can be paid in 2 or 3 installments as per the school's fee policy. Details will be provided by the accounts department during admission.</div></div>
+            <div class="acc-item animate-up filter-item general-item" data-step="criteria">
+                <button class="acc-header">What age criteria does the school follow? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari follows the age criteria as per board guidelines. Typically, children should be 3+ years for Pre-Primary, 5+ years for Class 1, and so on[cite: 29, 30]. Please contact our admission office for specific requirements[cite: 31].</div></div>
+            </div>
+             <div class="acc-item animate-up filter-item general-item" data-step="timing">
+                <button class="acc-header">When does the school conduct admissions? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari typically begins the admission process in January/February for the upcoming academic year starting in June/April[cite: 32]. We also consider mid-year admissions based on seat availability[cite: 33].</div></div>
+            </div>
+             <div class="acc-item animate-up filter-item general-item" data-step="criteria">
+                <button class="acc-header">Is there an entrance test for admission? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">For certain grades, Satyam International School, Ballari may conduct an age-appropriate assessment or interaction to understand the child's learning level[cite: 35]. This helps us provide appropriate academic support from day one[cite: 36].</div></div>
             </div>
 
-            <div class="cat-header animate-up delay-1 general-cat"><i class="fa-solid fa-user-graduate"></i> Academics & General</div>
+             <div class="cat-header animate-up general-cat"><i class="fa-solid fa-masks-theater"></i> Co-Curricular Activities</div>
+             
+             <div class="acc-item animate-up general-item">
+                <button class="acc-header">What sports facilities are available? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari offers excellent sports facilities including basketball courts, cricket grounds, football fields, volleyball courts, indoor sports facilities, and dedicated areas for athletics, badminton, and table tennis[cite: 39].</div></div>
+            </div>
+             <div class="acc-item animate-up general-item">
+                <button class="acc-header">Does the school have clubs and special interest groups? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Yes, Satyam International School, Ballari has various clubs including Science Club, Math Club, Literary Club, Eco Club, Art Club, Drama Club, Music Club, and Coding Club, allowing students to explore their interests beyond academics[cite: 41].</div></div>
+            </div>
+            <div class="acc-item animate-up general-item">
+                <button class="acc-header">Are there opportunities to participate in competitions? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari actively encourages students to participate in inter-school, state-level, and national-level competitions in academics, sports, arts, and other fields, providing platforms for students to showcase their talents[cite: 43].</div></div>
+            </div>
+            <div class="acc-item animate-up general-item">
+                <button class="acc-header">What cultural activities does the school organize? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari organizes annual day celebrations, cultural festivals, traditional day events, talent shows, dance competitions, music concerts, and various cultural programs that celebrate diversity and creativity[cite: 44].</div></div>
+            </div>
+            <div class="acc-item animate-up general-item">
+                <button class="acc-header">Does the school offer music and art education? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Yes, Satyam International School, Ballari has dedicated music and art departments with trained instructors offering classes in vocal music, instrumental music, painting, drawing, craft work, and various forms of creative expression[cite: 46].</div></div>
+            </div>
+            <div class="acc-item animate-up general-item">
+                <button class="acc-header">Are field trips and excursions organized? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari regularly organizes educational field trips, industrial visits, museum tours, nature camps, and excursions that provide experiential learning opportunities beyond the classroom[cite: 48].</div></div>
+            </div>
+
+            <div class="cat-header animate-up general-cat"><i class="fa-solid fa-chalkboard-user"></i> Methods of Teaching</div>
 
             <div class="acc-item animate-up general-item">
-                <button class="acc-header">Which board is the school affiliated with? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Satyam International School is affiliated with the Central Board of Secondary Education (CBSE), New Delhi, up to Senior Secondary level.</div></div>
+                <button class="acc-header">What teaching methodology does the school follow? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari follows a student-centric teaching approach that combines traditional methods with modern pedagogical techniques including experiential learning, project-based learning, collaborative learning, and technology-integrated instruction[cite: 50].</div></div>
             </div>
-
             <div class="acc-item animate-up general-item">
-                <button class="acc-header">Is school transport available? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="acc-content"><div class="acc-inner">Yes, our fleet of GPS-enabled buses covers major routes across Ballari city and surrounding areas, ensuring safe travel for all students.</div></div>
+                <button class="acc-header">Does the school use technology in teaching? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Yes, Satyam International School, Ballari has smart classrooms equipped with interactive boards, digital learning resources, educational apps, and audio-visual aids that make learning engaging and effective for students[cite: 51].</div></div>
+            </div>
+            <div class="acc-item animate-up general-item">
+                <button class="acc-header">How does the school assess student learning? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari uses continuous and comprehensive evaluation (CCE) methods including formative assessments, summative assessments, projects, presentations, practical work, and regular feedback to assess student progress holistically[cite: 52].</div></div>
+            </div>
+            <div class="acc-item animate-up general-item">
+                <button class="acc-header">Are there practical and hands-on learning opportunities? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Absolutely! Satyam International School, Ballari emphasizes hands on learning through well-equipped science laboratories, computer labs, activity-based learning sessions, experiments, and practical demonstrations across all subjects[cite: 53, 54].</div></div>
+            </div>
+             <div class="acc-item animate-up general-item">
+                <button class="acc-header">Does the school encourage critical thinking and creativity? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Yes, Satyam International School, Ballari promotes critical thinking through inquiry-based learning, open-ended questions, problem-solving activities, debates, discussions, and creative projects that encourage students to think independently and innovatively[cite: 56].</div></div>
+            </div>
+            <div class="acc-item animate-up general-item">
+                <button class="acc-header">What is the homework policy? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="acc-content"><div class="acc-inner">Satyam International School, Ballari assigns age-appropriate homework that reinforces classroom learning without overwhelming students[cite: 58]. We believe in meaningful assignments that develop practice, research skills, and independent learning habits[cite: 59].</div></div>
             </div>
 
         </div>
@@ -488,7 +578,7 @@
             <div class="footer-links">
                 <a href="index.html">Home</a>
                 <a href="about-us.html">About-us</a>
-                <a href="#">Academics</a>
+                <a href="academics.html">Academics</a>
                 <a href="contact-us.html">Contact-us</a>
                 <a href="#">Privacy Policy</a>
             </div>
@@ -508,20 +598,31 @@
                     }
                 });
             }, { threshold: 0.1 });
-            document.querySelectorAll('.animate-up').forEach(el => observer.observe(el));
+            document.querySelectorAll('.animate-up, .anim-down').forEach(el => observer.observe(el));
+            
+            // Mobile Menu Toggle
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            
+            if(menuBtn){
+                menuBtn.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    const icon = menuBtn.querySelector('i');
+                    if(navLinks.classList.contains('active')){
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
         });
 
         // Accordion Logic
         const accHeaders = document.querySelectorAll(".acc-header");
         accHeaders.forEach(header => {
             header.addEventListener("click", function() {
-                // Close others
-                accHeaders.forEach(other => {
-                    if (other !== this && other.classList.contains("active")) {
-                        other.classList.remove("active");
-                        other.nextElementSibling.style.maxHeight = null;
-                    }
-                });
                 // Toggle clicked
                 this.classList.toggle("active");
                 const panel = this.nextElementSibling;
@@ -549,28 +650,33 @@
             // 4. Filter Logic
             const filters = document.querySelectorAll('.filter-item');
             const generals = document.querySelectorAll('.general-item');
-            const genHeader = document.querySelector('.general-cat');
+            const catHeaders = document.querySelectorAll('.general-cat');
 
-            // Hide general section temporarily
-            genHeader.style.display = 'none';
+            // Hide general sections temporarily
+            catHeaders.forEach(h => h.style.display = 'none');
             generals.forEach(g => g.style.display = 'none');
 
+            // Show relevant admission process header
+            const admissionHeader = document.querySelector('.general-cat i.fa-user-plus').parentElement;
+            if(admissionHeader) admissionHeader.style.display = 'flex';
+
             filters.forEach(item => {
-                // Close all first
                 const btn = item.querySelector('.acc-header');
                 const panel = item.querySelector('.acc-content');
+                
+                // Reset state
                 btn.classList.remove('active');
                 panel.style.maxHeight = null;
 
                 if (item.getAttribute('data-step') === stepName) {
-                    item.classList.remove('hidden');
+                    item.style.display = 'block';
                     // Auto-open relevant FAQs
                     setTimeout(() => {
                         btn.classList.add('active');
                         panel.style.maxHeight = panel.scrollHeight + "px";
                     }, 300);
                 } else {
-                    item.classList.add('hidden');
+                    item.style.display = 'none';
                 }
             });
         }
@@ -583,17 +689,13 @@
             // Hide reset button
             document.getElementById('resetBtn').classList.remove('visible');
 
-            // Show all items
-            document.querySelector('.general-cat').style.display = 'flex';
+            // Show all items and headers
+            document.querySelectorAll('.general-cat').forEach(h => h.style.display = 'flex');
             document.querySelectorAll('.general-item').forEach(g => g.style.display = 'block');
             
-            const filters = document.querySelectorAll('.filter-item');
-            filters.forEach(item => {
-                item.classList.remove('hidden');
-                // Close opened items
-                item.querySelector('.acc-header').classList.remove('active');
-                item.querySelector('.acc-content').style.maxHeight = null;
-            });
+            // Reset accordion states
+            document.querySelectorAll('.acc-header').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.acc-content').forEach(panel => panel.style.maxHeight = null);
         }
     </script>
 </body>
