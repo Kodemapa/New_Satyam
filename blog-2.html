@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- BASE STYLES (Same as previous blog) --- */
+        /* --- BASE STYLES --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         
         :root {
@@ -17,7 +17,6 @@
             --text-grey: #696984;
             --bg-light: #F9FAFB;
             --white: #ffffff;
-            /* Using Orange for accent in this post instead of red */
             --accent-color: #F48C06; 
         }
 
@@ -35,21 +34,20 @@
         /* --- HEADER (FIXED / FROZEN) --- */
         header { 
             background-color: white;
-            /* FIXED POSITIONING TO FREEZE NAVBAR */
             position: fixed; 
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 1000; /* High z-index ensures it stays on top of hero image */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         
         nav { 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            /* Added min-height to ensure consistent sizing */
-            min-height: 90px;
+            min-height: 80px;
+            padding: 10px 0;
         }
 
         .logo { 
@@ -66,12 +64,11 @@
             display: relative;
             align-items: center;
             justify-content: center;
-            width: 190px;
-            height: 100px;
-            font-size: 1.2rem;
+            width: 140px;
+            height: auto;
         }
         
-        .logo-icon img { width: 100%; height: 100%; object-fit: contain; padding: 5px; }
+        .logo-icon img { width: 100%; height: 100%; object-fit: contain; }
 
         .nav-links { 
             display: flex; 
@@ -93,18 +90,38 @@
 
         /* --- DROPDOWN NAV --- */
         .nav-links li { position: relative; }
-        .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-blue); font-weight: 1rem; }
+        .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-blue); font-weight: 1rem; cursor: pointer; }
         .nav-links .dropdown { position: absolute; top: 120%; left: 0; background: var(--white); min-width: 200px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 8px 0; display: none; z-index: 2000; }
         .nav-links .dropdown li { padding: 0; }
         .nav-links .dropdown a { display: block; padding: 10px 18px; color: var(--primary-blue); font-weight: 500; }
         .nav-links .dropdown a:hover { background: rgba(244,140,6,0.06); color: var(--primary-orange); }
         .nav-links li:hover > .dropdown { display: block; }
 
+        /* Mobile Contact Button (Hidden on Desktop) */
+        .mobile-contact-btn { display: none; font-weight: 700; color: var(--primary-orange) !important; margin-top: 10px; }
+
+        /* Desktop Button */
+        .btn-white { 
+            display: inline-block; padding: 10px 30px; border-radius: 50px; 
+            font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: 1px solid var(--primary-orange); font-size: 0.95rem;
+            background: var(--white); color: var(--primary-orange); box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+        }
+        .btn-white:hover { background: var(--primary-orange); color: white; transform: translateY(-2px); }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle { 
+            display: none; 
+            font-size: 1.6rem; 
+            color: var(--primary-orange); 
+            cursor: pointer; 
+            transition: 0.3s;
+            padding: 5px;
+        }
 
         /* --- BLOG HERO SECTION --- */
         .blog-hero { 
             background-color: var(--primary-blue);
-            padding: 180px 0 100px; 
+            padding: 160px 0 100px; 
             color: white; 
             position: relative; 
             overflow: hidden;
@@ -144,7 +161,7 @@
         .wave-bottom svg { display: block; width: calc(100% + 1.3px); height: 100px; }
 
         /* --- NEWS SECTION --- */
-        .blog-section { padding: 100px 0; background-color: var(--bg-light); }
+        .blog-section { padding: 80px 0; background-color: var(--bg-light); }
         .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
         
         .blog-card { 
@@ -184,9 +201,9 @@
         .intro-text p { font-size: 1.15rem; color: var(--text-grey); line-height: 1.8; margin-bottom: 30px; }
         .intro-text b { color: var(--primary-blue); font-weight: 600; }
 
-        /* Highlight Box (Adapted color for this post) */
+        /* Highlight Box */
         .highlight-box {
-            background-color: #fff8e1; /* Light Orange Tint */
+            background-color: #fff8e1;
             border-left: 5px solid var(--accent-color);
             padding: 40px;
             border-radius: 15px;
@@ -196,7 +213,7 @@
         .highlight-box h3 { color: var(--accent-color); font-size: 1.5rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
         .highlight-box p { font-size: 1.3rem; font-family: serif; font-style: italic; color: var(--primary-blue); font-weight: 600; }
 
-        /* --- BENEFITS SECTION (Reusing Steps structure) --- */
+        /* --- BENEFITS SECTION --- */
         .steps-section { margin-top: 80px; }
         .section-header { text-align: center; margin-bottom: 60px; }
         .section-header h2 { font-size: 2.2rem; color: var(--primary-blue); }
@@ -214,7 +231,6 @@
         }
         .step-item:hover { transform: translateY(-5px); }
 
-        /* Using icons instead of numbers for this post */
         .benefit-icon { 
             background: var(--primary-orange); 
             color: white; 
@@ -254,19 +270,66 @@
         .btn-navy:hover { background: #1a1a2e; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
         /* --- FOOTER --- */
-        footer { background-color: #252641; color: #B2B3CF; padding: 80px 0 40px; text-align: center; }
+        footer { background-color: #252641; color: #B2B3CF; padding: 60px 0 30px; text-align: center; }
         .footer-logo { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 40px; }
         .footer-logo h2 { color: white; padding-left: 15px; border-left: 1px solid #626381; font-weight: 600; letter-spacing: 1px; }
-        .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; font-size: 1rem; }
+        .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; font-size: 1rem; flex-wrap: wrap;}
         .footer-links a:hover { color: var(--primary-orange); }
         .copyright { font-size: 0.9rem; opacity: 0.6; }
 
-        /* Responsive */
+        /* --- RESPONSIVE / MOBILE FIX --- */
         @media (max-width: 900px) {
-            .nav-links { display: none; }
-            .blog-hero h1 { font-size: 2.5rem; }
-            .step-item { flex-direction: column; text-align: center; align-items: center; }
-            .article-container { padding: 50px 20px; }
+            .menu-toggle { display: block; order: 3; }
+            .logo { order: 1; }
+            .btn-white { display: none; } /* Hide desktop button */
+
+            .nav-links { 
+                display: none; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                width: 100%;
+                background: white; 
+                flex-direction: column; 
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
+                text-align: center; 
+                gap: 20px; 
+                border-top: 1px solid #eee;
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+            
+            .nav-links.active { display: flex; }
+            .mobile-contact-btn { display: block; }
+
+            /* FIX: Make dropdowns relative on mobile so they push content down */
+            .nav-links .dropdown {
+                position: relative;
+                width: 100%;
+                top: 0;
+                box-shadow: none;
+                background: #f9f9f9;
+                padding: 10px 0;
+                display: none;
+            }
+
+            /* Show dropdown on hover (tap on mobile) */
+            .nav-links li:hover > .dropdown {
+                display: block;
+            }
+
+            .blog-hero { padding: 130px 0 50px; }
+            .blog-hero h1 { font-size: 2.2rem; }
+            
+            .step-item { flex-direction: column; text-align: center; align-items: center; padding: 25px; }
+            .article-container { padding: 40px 20px; }
+            
+            .highlight-box { padding: 30px; }
+            .highlight-box p { font-size: 1.1rem; }
+            
+            .cta-banner { padding: 40px 20px; }
+            .cta-banner h2 { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -277,10 +340,15 @@
             <nav>
                 <div class="logo">
                     <div class="logo-icon">
-                        <img src="images/sat.jpg">
+                        <img src="images/sat.jpg" alt="Satyam School">
                     </div>
                 </div>
-                <ul class="nav-links">
+                
+                <div class="menu-toggle" id="mobileMenuBtn">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+
+                <ul class="nav-links" id="navLinks">
                     <li><a href="index.html">Home</a></li>
                     <li>
                         <a href="#" class="dropdown-toggle">Academics <i class="fa-solid fa-caret-down"></i></a>
@@ -295,8 +363,11 @@
                     </li>
                     <li><a href="about-us.html">About Us</a></li>
                     <li><a href="mandatory-disclosure.html">Mandatory Disclosures</a></li>
+                    
+                    <li><a href="contact-us.html" class="mobile-contact-btn">Contact Us</a></li>
                 </ul>
-                <a href="contact-us.html" class="btn btn-white">Contact Us</a>
+                
+                <a href="contact-us.html" class="btn-white">Contact Us</a>
             </nav>
         </div>
     </header>
@@ -427,6 +498,7 @@
     </footer>
 
     <script>
+        // Reveal Animations
         window.addEventListener('scroll', reveal);
         function reveal(){
             var reveals = document.querySelectorAll('.reveal');
@@ -440,6 +512,24 @@
             }
         }
         reveal(); // Trigger on load
+
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        if(menuBtn){
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = menuBtn.querySelector('i');
+                if(navLinks.classList.contains('active')){
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
     </script>
 
 </body>

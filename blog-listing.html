@@ -50,41 +50,61 @@
             z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
         }
         
-        header nav { display: flex; justify-content: space-between; align-items: center; }
+        nav { 
+            display: flex; justify-content: space-between; align-items: center; 
+            min-height: 80px; padding: 10px 0;
+        }
+        
         header .logo { display: flex; align-items: center; gap: 12px; }
-        header .logo-icon { width: 190px; height: 100px; }
-        header .logo-icon img { width: 100%; height: 100%; object-fit: contain; padding: 5px; }
+        header .logo-icon { width: 150px; height: auto; }
+        header .logo-icon img { width: 100%; height: 100%; object-fit: contain; }
 
+        /* Desktop Nav Styles */
         header .nav-links { display: flex; gap: 40px; align-items: center; list-style: none; margin: 0; padding: 0; }
-        header .nav-links a { color: var(--primary-b); font-weight: 500; font-size: 1rem; position: relative; text-decoration: none; }
-        header .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: rgb(251, 130, 0); transition: width 0.3s; }
-        header .nav-links a:hover::after { width: 100%; }
+        header .nav-links a { color: var(--primary-blue); font-weight: 500; font-size: 1rem; position: relative; text-decoration: none; }
+        
+        /* Underline Effect - Applied only to standard links */
+        header .nav-links a:not(.disable-underline)::after { 
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; 
+            background-color: rgb(251, 130, 0); transition: width 0.3s; 
+        }
+        header .nav-links a:not(.disable-underline):hover::after { width: 100%; }
 
+        /* Remove underline artifacts from dropdown trigger */
+        header .nav-links a.disable-underline::after { display: none !important; content: none !important; }
+
+        /* Dropdown */
         header .nav-links li { position: relative; }
+        header .nav-links .dropdown-toggle-custom { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+        
         header .nav-links .dropdown { position: absolute; top: 100%; left: 0; background: var(--white); min-width: 200px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 8px 0; display: none; z-index: 2000; list-style: none; margin-top: 10px; }
         header .nav-links li:hover > .dropdown { display: block; }
         header .nav-links .dropdown a { display: block; padding: 10px 18px; color: black; }
         header .nav-links .dropdown a:hover { background: rgba(244,140,6,0.06); color: var(--primary-blue); }
 
-        .btn { display: inline-block; padding: 12px 35px; border-radius: var(--radius-btn); font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 1rem; }
-        .btn-white { background: var(--white); color: var(--primary-blue); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
+        .btn { display: inline-block; padding: 10px 30px; border-radius: var(--radius-btn); font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 0.95rem; }
+        .btn-white { background: var(--white); color: var(--primary-blue); box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid #eee; }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); color: var(--primary-orange); }
 
-         /* --- DROPDOWN NAV --- */
-        .nav-links li { position: relative; }
-        .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-blue); font-weight: 1rem; }
-        .nav-links .dropdown { position: absolute; top: 120%; left: 0; background: var(--white); min-width: 200px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 8px 0; display: none; z-index: 2000; }
-        .nav-links .dropdown li { padding: 0; }
-        .nav-links .dropdown a { display: block; padding: 10px 18px; color: var(--primary-blue); font-weight: 500; }
-        .nav-links .dropdown a:hover { background: rgba(244,140,6,0.06); color: var(--primary-orange); }
-        .nav-links li:hover > .dropdown { display: block; }
+        /* Mobile Contact Button */
+        .mobile-contact-btn { display: none; font-weight: 700; color: var(--primary-orange) !important; margin-top: 10px; }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle { 
+            display: none; 
+            font-size: 1.6rem; 
+            color: var(--primary-orange); 
+            cursor: pointer; 
+            transition: 0.3s;
+            padding: 5px;
+        }
 
         /* --- HERO SECTION --- */
         .academic-hero {
             position: relative;
-            padding: 180px 0 100px 0;
+            padding: 160px 0 100px 0;
             overflow: hidden;
-            min-height: 650px;
+            min-height: 600px;
             display: flex;
             align-items: center;
         }
@@ -95,9 +115,7 @@
             left: -5%;
             width: 70%;
             height: 120%;
-            /* Add a tint using a linear-gradient overlay */
-            background-image: linear-gradient(rgba(37, 38, 65, 0.6), rgba(37, 38, 65, 0.6)),
-                url('images/Elite_Block_Building.png');
+            background-image: linear-gradient(rgba(37, 38, 65, 0.75), rgba(37, 38, 65, 0.75)), url('images/Elite_Block_Building.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -179,31 +197,87 @@
         }
         .read-more:hover { gap: 12px; color: var(--primary-orange); }
 
-        /* Pagination */
-        .pagination-wrapper { margin-top: 60px; display: flex; justify-content: center; gap: 10px; }
-        .page-link-custom {
-            width: 50px; height: 50px; border-radius: 50%; background: white;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--text-dark); font-weight: 700; text-decoration: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s;
-        }
-        .page-link-custom.active, .page-link-custom:hover { background: var(--primary-orange); color: white; transform: translateY(-3px); }
-
         /* --- FOOTER --- */
         footer { background-color: #252641; color: #B2B3CF; padding: 90px 0 50px; text-align: center; }
         footer .footer-logo { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 40px; }
         footer .footer-logo h2 { color: white; padding-left: 15px; border-left: 1px solid #626381; font-weight: 600; letter-spacing: 1px; margin: 0; }
-        footer .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; font-size: 1rem; }
+        footer .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; font-size: 1rem; flex-wrap: wrap;}
         footer .footer-links a { color: #B2B3CF; text-decoration: none; transition: color 0.3s; }
         footer .footer-links a:hover { color: white; }
         footer .copyright { font-size: 0.9rem; opacity: 0.6; margin: 0; }
         
-        /* Responsive */
+        /* --- RESPONSIVE / MOBILE FIX --- */
         @media (max-width: 991px) {
-            header .nav-links { display: none; }
-            .academic-hero { flex-direction: column; padding-bottom: 60px; min-height: auto; }
-            .hero-bg-diag { width: 100%; height: 60%; clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); }
-            .filter-wrapper { flex-direction: column; align-items: stretch; border-radius: 20px; }
+            .menu-toggle { display: block; order: 3; }
+            .logo { order: 1; }
+            .btn-white { display: none; } /* Hide desktop button */
+
+            /* Strong selector to override desktop */
+            header .nav-links { 
+                display: none; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                width: 100%;
+                background: white; 
+                flex-direction: column; 
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
+                text-align: center; 
+                gap: 20px; 
+                border-top: 1px solid #eee;
+            }
+            
+            header .nav-links.active { display: flex; }
+            
+            .mobile-contact-btn { display: block !important; }
+
+            /* Fix dropdown to push content down */
+            header .nav-links .dropdown { 
+                position: relative; 
+                width: 100%; 
+                top: 0; 
+                box-shadow: none; 
+                background: #f9f9f9; 
+                padding: 10px 0;
+                display: none; 
+            }
+            
+            /* Show dropdown on hover/click */
+            header .nav-links li:hover > .dropdown { display: block; }
+
+            /* HERO FIXES FOR CONTENT VISIBILITY */
+            .academic-hero { 
+                flex-direction: column; 
+                padding-top: 120px; 
+                padding-bottom: 60px; 
+                min-height: auto; 
+                text-align: center;
+                background-color: #203659; /* Dark fallback background */
+            }
+            
+            .hero-bg-diag { 
+                width: 100%; 
+                height: 100%; /* Cover FULL height so text sits on dark image */
+                top: 0;
+                left: 0;
+                clip-path: none; /* Remove diagonal clip */
+                opacity: 0.5; /* Ensure image is visible but text is readable */
+            }
+            
+            /* Ensure text is above background */
+            .academic-hero .container { position: relative; z-index: 2; }
+            
+            .quote-box { margin-top: 40px; text-align: left; }
+            .page-title { font-size: 2.2rem; }
+            .title-underline { margin: 0 auto 20px; }
+            
+            /* Ensure description text is white on dark background */
+            .academic-hero p.lead { color: #ffffff !important; opacity: 0.9; font-size: 1rem; }
+
+            /* Filter Bar Fixes */
+            .filter-wrapper { flex-direction: column; align-items: stretch; border-radius: 20px; padding: 15px; }
+            .category-filters { justify-content: center; }
             .search-box { width: 100%; }
         }
     </style>
@@ -216,13 +290,18 @@
             <nav>
                 <div class="logo">
                     <div class="logo-icon">
-                        <img src="images/sat.jpg">
+                        <img src="images/sat.jpg" alt="Satyam School">
                     </div>
                 </div>
-                <ul class="nav-links">
+                
+                <div class="menu-toggle" id="mobileMenuBtn">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+
+                <ul class="nav-links" id="navLinks">
                     <li><a href="index.html">Home</a></li>
                     <li>
-                        <a href="#" class="dropdown-toggle">Academics <i class="fa-solid fa-caret-down"></i></a>
+                        <a href="#" class="dropdown-toggle-custom disable-underline">Academics <i class="fa-solid fa-caret-down"></i></a>
                         <ul class="dropdown">
                             <li><a href="academics.html">Academics</a></li>
                             <li><a href="curriculars.html">Co-Curriculars</a></li>
@@ -234,7 +313,10 @@
                     </li>
                     <li><a href="about-us.html">About Us</a></li>
                     <li><a href="mandatory-disclosure.html">Mandatory Disclosures</a></li>
+                    
+                    <li><a href="contact-us.html" class="mobile-contact-btn">Contact Us</a></li>
                 </ul>
+                
                 <a href="contact-us.html" class="btn btn-white">Contact Us</a>
             </nav>
         </div>
@@ -280,6 +362,11 @@
                         <button class="filter-btn" data-filter="sports">Sports & NCC</button>
                         <button class="filter-btn" data-filter="events">Events</button>
                         <button class="filter-btn" data-filter="guide">Parent Guide</button>
+                    </div>
+                    
+                    <div class="search-box">
+                        <input type="text" id="blogSearch" placeholder="Search articles...">
+                        <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                 </div>
 
@@ -378,6 +465,24 @@
                 });
             }, opts);
             document.querySelectorAll('.animate-up').forEach(el => observer.observe(el));
+            
+            // Mobile Menu Toggle
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            
+            if(menuBtn){
+                menuBtn.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    const icon = menuBtn.querySelector('i');
+                    if(navLinks.classList.contains('active')){
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
         });
 
         // --- FILTER FUNCTIONALITY ---
@@ -410,26 +515,29 @@
         });
 
         // 2. Search Logic
-        searchInput.addEventListener('input', (e) => {
-            const searchText = e.target.value.toLowerCase();
-            
-            // If user types, reset category filter to 'All' visually to avoid confusion
-            if(searchText.length > 0) {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                document.querySelector('[data-filter="all"]').classList.add('active');
-            }
-
-            blogItems.forEach(item => {
-                const title = item.querySelector('.blog-title').innerText.toLowerCase();
-                const excerpt = item.querySelector('.blog-excerpt').innerText.toLowerCase();
-
-                if (title.includes(searchText) || excerpt.includes(searchText)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
+        if(searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const searchText = e.target.value.toLowerCase();
+                
+                // If user types, reset category filter to 'All' visually to avoid confusion
+                if(searchText.length > 0) {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    const allBtn = document.querySelector('[data-filter="all"]');
+                    if(allBtn) allBtn.classList.add('active');
                 }
+
+                blogItems.forEach(item => {
+                    const title = item.querySelector('.blog-title').innerText.toLowerCase();
+                    const excerpt = item.querySelector('.blog-excerpt').innerText.toLowerCase();
+
+                    if (title.includes(searchText) || excerpt.includes(searchText)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
             });
-        });
+        }
     </script>
 
 </body>
