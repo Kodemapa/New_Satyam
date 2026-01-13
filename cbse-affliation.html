@@ -34,7 +34,6 @@
         /* --- HEADER (FIXED / FROZEN) --- */
         header { 
             background-color: white;
-            padding: 15px 0; 
             /* FIXED POSITIONING TO FREEZE NAVBAR */
             position: fixed; 
             top: 0;
@@ -48,6 +47,8 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
+            /* Added min-height to ensure consistent sizing */
+            min-height: 90px;
         }
 
         .logo { 
@@ -64,7 +65,7 @@
             display: relative;
             align-items: center;
             justify-content: center;
-            width: 100px;
+            width: 190px;
             height: 100px;
             font-size: 1.2rem;
         }
@@ -74,11 +75,11 @@
         .nav-links { 
             display: flex; 
             gap: 40px; 
-            align-items: center;
+            align-items: center; 
         }
 
         .nav-links a { 
-            color: var(--primary-orange); 
+            color: var(--primary-blue); 
             font-weight: 500; 
             font-size: 1rem; 
             position: relative;
@@ -88,61 +89,15 @@
             content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: rgb(251, 130, 0); transition: width 0.3s;
         }
         .nav-links a:hover::after { width: 100%; }
-        
-        .btn { display: inline-block; padding: 12px 35px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 1rem; }
-        .btn-white { background: var(--white); color: var(--primary-orange); box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid transparent; }
-        .btn-white:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); border-color: rgba(244, 140, 6, 0.2); }
 
-        /* Dropdown Menu Container */
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(20px); /* Start slightly lower */
-            background: white;
-            min-width: 220px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            border-radius: 15px;
-            padding: 15px 0;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 1100;
-            border-top: 4px solid var(--primary-orange); /* Brand accent */
-        }
-
-        /* Hover on Parent shows Dropdown */
-        .nav-item:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        /* Dropdown Links */
-        .dropdown-menu li { display: block; margin: 0; }
-        
-        .dropdown-item {
-            display: block;
-            padding: 10px 25px;
-            color: var(--primary-blue);
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: 0.3s;
-            border-radius: 0;
-        }
-
-        /* Hover Effect for Dropdown Items */
-        .dropdown-item:hover {
-            color: var(--primary-orange);
-            background-color: #FFF8F0; /* Light orange tint */
-            padding-left: 35px; /* Slide effect */
-        }
-
-        /* Chevron Rotation on Hover */
-        .nav-item:hover .fa-chevron-down {
-            transform: rotate(180deg);
-            transition: transform 0.3s;
-        }
+        /* --- DROPDOWN NAV --- */
+        .nav-links li { position: relative; }
+        .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-blue); font-weight: 1rem; }
+        .nav-links .dropdown { position: absolute; top: 120%; left: 0; background: var(--white); min-width: 200px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 8px 0; display: none; z-index: 2000; }
+        .nav-links .dropdown li { padding: 0; }
+        .nav-links .dropdown a { display: block; padding: 10px 18px; color: var(--primary-blue); font-weight: 500; }
+        .nav-links .dropdown a:hover { background: rgba(244,140,6,0.06); color: var(--primary-orange); }
+        .nav-links li:hover > .dropdown { display: block; }
 
         /* --- HERO SECTION --- */
         .blog-hero { 
@@ -281,32 +236,30 @@
 </head>
 <body>
 
-    <header>
+    <header class="anim-down">
         <div class="container">
             <nav>
                 <div class="logo">
                     <div class="logo-icon">
-                        <img src="images/satyam logo-2.png" alt="Satyam Icon">
+                        <img src="images/sat.jpg">
                     </div>
                 </div>
-                
                 <ul class="nav-links">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Academics <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem;"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="blog-listing.html" class="dropdown-item">News & Insights</a></li>
-                            <li><a href="testimonials.html" class="dropdown-item">Testimonials</a></li>
-                            <li><a href="gallery.html" class="dropdown-item">Gallery</a></li>
-                            <li><a href="faqs.html" class="dropdown-item">FAQs</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li>
+                        <a href="#" class="dropdown-toggle">Academics <i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown">
+                            <li><a href="academics.html">Academics</a></li>
+                            <li><a href="curriculars.html">Co-Curriculars</a></li>
+                            <li><a href="blog-listing.html">Blog-Listing</a></li>
+                            <li><a href="faqs.html">FAQs</a></li>
+                            <li><a href="testimonials.html">Testimonials</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
                         </ul>
                     </li>
-
-                    <li class="nav-item"><a href="about-us.html" class="nav-link" style="font-weight: 600; opacity: 1;">About Us</a></li>
-                    <li class="nav-item"><a href="mandatory-disclosure.html" class="nav-link">Mandatory Disclosures</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="mandatory-disclosure.html">Mandatory Disclosures</a></li>
                 </ul>
-                
                 <a href="contact-us.html" class="btn btn-white">Contact Us</a>
             </nav>
         </div>
