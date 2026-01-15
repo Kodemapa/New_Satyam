@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>News & Insights - Satyam International School</title>
     
     <link rel="shortcut icon" href="images/Satyam_Icon_1.png" type="image/x-icon">
@@ -61,7 +63,7 @@
         header .nav-links { display: flex; gap: 40px; align-items: center; list-style: none; margin: 0; padding: 0; }
         header .nav-links a { color: var(--primary-blue); font-weight: 500; font-size: 1rem; position: relative; text-decoration: none; }
         
-        /* Underline Effect - Applied only to standard links */
+        /* Underline Effect */
         header .nav-links a:not(.disable-underline)::after { 
             content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; 
             background-color: rgb(251, 130, 0); transition: width 0.3s; 
@@ -80,12 +82,14 @@
         header .nav-links .dropdown a { display: block; padding: 10px 18px; color: black; }
         header .nav-links .dropdown a:hover { background: rgba(244,140,6,0.06); color: var(--primary-blue); }
 
-        .btn { display: inline-block; padding: 10px 30px; border-radius: var(--radius-btn); font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 0.95rem; }
+        .btn { display: inline-block; padding: 10px 30px; border-radius: var(--radius-btn); font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 0.95rem; text-decoration: none; text-align: center; }
         .btn-white { background: var(--white); color: var(--primary-blue); box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid #eee; }
         .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); color: var(--primary-orange); }
+        .btn-purple { background: #7C3AED; color: white; width: 100%; } /* Mobile button style */
 
         /* Mobile Contact Button */
-        .mobile-contact-btn { display: none; font-weight: 700; color: var(--primary-orange) !important; margin-top: 10px; }
+        .mobile-btn { display: none; margin-top: 15px; width: 100%; }
+        .desktop-btn { display: block; }
 
         /* Mobile Menu Toggle */
         .menu-toggle { 
@@ -136,15 +140,17 @@
         .shape-square { width: 60px; height: 60px; border: 4px solid rgba(255, 209, 102, 0.95); top: 12%; right: 10%; transform: rotate(12deg); }
         .shape-circle { width: 48px; height: 48px; background: rgba(106, 79, 176, 0.14); border-radius: 50%; bottom: 18%; left: 8%; }
 
+        /* Updated Quote Box (White Card Style) */
         .quote-box {
-            background: linear-gradient(135deg, #0b1220 0%, #162536 100%);
-            color: #fff; border-radius: 20px; padding: 40px;
+            background: white; /* Changed to White */
+            color: var(--primary-blue); /* Dark text */
+            border-radius: 20px; padding: 40px;
             position: relative; overflow: hidden;
-            box-shadow: 0 30px 80px rgba(2, 8, 23, 0.5);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15); /* Softer shadow */
         }
 
-        .quote-icon { position: absolute; top: 10px; left: 18px; font-size: 84px; color: rgba(255, 255, 255, 0.06); font-family: serif; }
-        .chairperson-name { color: var(--primary-yellow); font-weight: 700; margin-top: 15px; display: block; }
+        .quote-icon { position: absolute; top: 20px; left: 20px; font-size: 4rem; color: rgba(244, 140, 6, 0.2); font-family: serif; line-height: 1; }
+        .chairperson-name { color: var(--primary-orange); font-weight: 700; margin-top: 15px; display: block; }
 
         /* --- BLOG LISTING STYLES --- */
         .blog-section { padding: 80px 0; background-color: #f8f9fa; }
@@ -208,9 +214,9 @@
         @media (max-width: 991px) {
             .menu-toggle { display: block; order: 3; }
             .logo { order: 1; }
-            .btn-white { display: none; } /* Hide desktop button */
+            .desktop-btn { display: none; } /* Hide desktop button */
 
-            /* Strong selector to override desktop */
+            /* Navbar Mobile Styles */
             header .nav-links { 
                 display: none; 
                 position: absolute; 
@@ -228,7 +234,7 @@
             
             header .nav-links.active { display: flex; }
             
-            .mobile-contact-btn { display: block !important; }
+            .mobile-btn { display: block !important; width: 90%; margin: 15px auto 0; } /* Show purple button on mobile */
 
             /* Fix dropdown to push content down */
             header .nav-links .dropdown { 
@@ -244,7 +250,7 @@
             /* Show dropdown on hover/click */
             header .nav-links li:hover > .dropdown { display: block; }
 
-            /* HERO FIXES FOR CONTENT VISIBILITY */
+            /* HERO FIXES */
             .academic-hero { 
                 flex-direction: column; 
                 padding-top: 120px; 
@@ -256,17 +262,17 @@
             
             .hero-bg-diag { 
                 width: 100%; 
-                height: 100%; /* Cover FULL height so text sits on dark image */
+                height: 100%; 
                 top: 0;
                 left: 0;
                 clip-path: none; /* Remove diagonal clip */
-                opacity: 0.5; /* Ensure image is visible but text is readable */
+                opacity: 0.4; /* Fade image so text is readable */
             }
             
             /* Ensure text is above background */
             .academic-hero .container { position: relative; z-index: 2; }
             
-            .quote-box { margin-top: 40px; text-align: left; }
+            .quote-box { margin-top: 40px; text-align: left; margin-bottom: 30px; }
             .page-title { font-size: 2.2rem; }
             .title-underline { margin: 0 auto 20px; }
             
@@ -312,10 +318,10 @@
                     <li><a href="about-us.html">About Us</a></li>
                     <li><a href="mandatory-disclosure.html">Mandatory Disclosures</a></li>
                     
-                    <li><a href="contact-us.html" class="mobile-contact-btn">Contact Us</a></li>
+                    <li class="mobile-btn"><a href="contact-us.html" class="btn btn-purple">Contact Us</a></li>
                 </ul>
                 
-                <a href="contact-us.html" class="btn btn-white">Contact Us</a>
+                <a href="contact-us.html" class="btn btn-white desktop-btn">Contact Us</a>
             </nav>
         </div>
     </header>
@@ -343,7 +349,7 @@
                                 Education is not just about the curriculum; it is about the stories we create, the challenges we overcome, and the community we build together. Our blog reflects the heart of our institution.
                             </p>
                             <span class="chairperson-name">— Principal's Desk</span>
-                            <small class="text-white-50">Satyam International School</small>
+                            <small style="color: #666;">Satyam International School</small>
                         </div>
                     </div>
                 </div>
@@ -361,11 +367,7 @@
                         <button class="filter-btn" data-filter="events">Events</button>
                         <button class="filter-btn" data-filter="guide">Parent Guide</button>
                     </div>
-                    
-                    <div class="search-box">
-                        <input type="text" id="blogSearch" placeholder="Search articles...">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </div>
+
                 </div>
 
                 <div class="row g-4" id="blogGrid">

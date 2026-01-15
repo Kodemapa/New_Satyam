@@ -45,72 +45,45 @@
         @keyframes float { 0% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-15px) rotate(5deg); } 100% { transform: translateY(0px) rotate(0deg); } }
         @keyframes expandWidth { from { width: 0; } to { width: 90px; } }
 
-        /* --- HEADER --- */
+        /* --- BUTTONS --- */
+        .btn { display: inline-block; padding: 12px 35px; border-radius: var(--radius-btn); font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 1rem; text-align: center; }
+        .btn-white { background: var(--white); color: var(--primary-blue); box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid #eee; }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
+        .btn-purple { background: #7C3AED; color: white; padding: 16px 50px; border-radius: 50px; font-weight: 600; font-size: 1rem; border: none; cursor: pointer; transition: 0.3s; width: 100%; }
+        .btn-purple:hover { background: #6D28D9; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3); }
+
+        /* --- HEADER (FIXED) --- */
         header { 
-            background-color: white; 
-            padding: 15px 0; 
-            position: fixed; 
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background-color: white; padding: 15px 0; 
+            position: fixed; top: 0; left: 0; width: 100%;
+            z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
         }
         
-        nav { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-        }
+        nav { display: flex; justify-content: space-between; align-items: center; position: relative; }
 
-        .logo { 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-            font-size: 1.5rem; 
-            font-weight: 700; 
-            color: var(--white);
-            letter-spacing: 0.5px;
-        }
-        
-        .logo-icon {
-            display: relative;
-            align-items: center;
-            justify-content: center;
-            width: 150px;
-            height: auto;
-            font-size: 1.2rem;
-        }
-        
-        .logo-icon img { width: 100%; height: 100%; object-fit: contain; }
+        .logo { display: flex; align-items: center; gap: 12px; }
+        .logo-icon img { width: 120px; height: auto; object-fit: contain; }
 
-        .nav-links { 
-            display: flex; 
-            gap: 30px; 
-            align-items: center;
-        }
-
-        .nav-links a { 
-            color: var(--primary-orange); 
-            font-weight: 500; 
-            font-size: 1rem; 
-            position: relative;
-        }
-        
-        .nav-links a::after {
-            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: rgb(251, 130, 0); transition: width 0.3s;
-        }
+        /* Desktop Nav */
+        .nav-links { display: flex; gap: 40px; align-items: center; }
+        .nav-links a { color: var(--primary-blue); font-weight: 500; font-size: 1rem; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: rgb(251, 130, 0); transition: width 0.3s; }
         .nav-links a:hover::after { width: 100%; }
 
         /* Dropdown */
         .nav-links li { position: relative; }
-        .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-orange); font-weight: 1rem; }
-        .nav-links .dropdown { position: absolute; top: 120%; left: 0; background: var(--white); min-width: 200px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 8px 0; display: none; z-index: 2000; }
-        .nav-links .dropdown li { padding: 0; }
-        .nav-links .dropdown a { display: block; padding: 10px 18px; color: var(--primary-blue); font-weight: 500; }
-        .nav-links .dropdown a:hover { background: rgba(244,140,6,0.06); color: var(--primary-orange); }
+        .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-blue); font-weight: 1rem; }
+        .nav-links .dropdown { 
+            position: absolute; top: 100%; left: 0; background: var(--white); min-width: 200px; 
+            border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 10px 0; 
+            display: none; z-index: 2000; margin-top: 10px;
+        }
         .nav-links li:hover > .dropdown { display: block; }
+        .nav-links .dropdown a { display: block; padding: 10px 20px; color: var(--primary-blue); }
+        .nav-links .dropdown a:hover { background: rgba(244,140,6,0.06); color: var(--primary-blue); }
 
+        /* Hamburger Menu (Mobile) */
+        .hamburger { display: none; font-size: 1.5rem; color: var(--primary-blue); cursor: pointer; }
         /* Mobile Menu Toggle */
         .menu-toggle { 
             display: none; 
@@ -122,7 +95,7 @@
         }
 
         .btn { display: inline-block; padding: 10px 30px; border-radius: var(--radius-btn); font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 0.95rem; }
-        .btn-white { background: var(--white); color: var(--primary-orange); border: 1px solid var(--primary-orange); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .btn-white { background: var(--white); color: var(--primary-blue); border: 1px solid var(--primary-orange); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .btn-white:hover { background: var(--primary-orange); color: white; transform: translateY(-2px); }
         
         .mobile-contact-btn { display: none; margin-top: 10px; font-weight: 700; color: var(--primary-orange); }
@@ -301,16 +274,16 @@
 
 <body>
 
-    <header>
+    <header class="anim-up">
         <div class="container">
             <nav>
                 <div class="logo">
                     <div class="logo-icon">
-                        <img src="images/sat.jpg" alt="Satyam School">
+                        <img src="images/sat.jpg" alt="Satyam Icon">
                     </div>
                 </div>
                 
-                <div class="menu-toggle" id="mobileMenuBtn">
+                <div class="hamburger" onclick="toggleMenu()">
                     <i class="fa-solid fa-bars"></i>
                 </div>
 
@@ -329,9 +302,13 @@
                     </li>
                     <li><a href="about-us.html">About Us</a></li>
                     <li><a href="mandatory-disclosure.html">Mandatory Disclosures</a></li>
-                    <li><a href="contact-us.html" class="mobile-contact-btn">Contact Us</a></li>
+                    
+                    <li class="mobile-btn" style="width: 100%; display: none;"> 
+                        <a href="contact-us.html" class="btn btn-purple" style="color: white; display: inline-block; width: 100%;">Contact Us</a>
+                    </li>
                 </ul>
-                <a href="contact-us.html" class="btn btn-white">Contact Us</a>
+                
+                <a href="contact-us.html" class="btn btn-white desktop-only">Contact Us</a>
             </nav>
         </div>
     </header>
