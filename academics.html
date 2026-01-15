@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="author" content="elite-themes24">
     <meta name="description" content="Satyam International School - Excellence in Education for a Brighter Future">
-    <meta name="keywords"
-        content="Responsive, HTML5, elite-themes24, Landing, Software, Mobile App, SaaS, Startup, Creative, Digital Product">
+    <meta name="keywords" content="Responsive, HTML5, elite-themes24, Landing, Software, Mobile App, SaaS, Startup, Creative, Digital Product">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Satyam International School - Excellence in Education for a Brighter Future</title>
 
@@ -19,13 +18,12 @@
     <link rel="apple-touch-icon" href="images/Satyam_Icon_1.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <link href="css/values.css" rel="stylesheet">
 
     <style>
         :root {
-            --primary-blue: #9fafc9;
+            --primary-blue: #0a172c;
             --primary-yellow: #ffd166;
             --primary-purple: #cb8b2b;
             --primary-orange: #f48c06;
@@ -33,6 +31,8 @@
             --text-dark: #0f1720;
             --footer-bg: #071129;
             --muted: #6b7280;
+            --white: #ffffff;
+            --radius-btn: 50px;
         }
 
         body {
@@ -49,8 +49,6 @@
             backdrop-filter: blur(6px);
             box-shadow: 0 6px 30px rgba(2, 6, 23, 0.06);
         }
-
-        /* Removed .nav-link styles - using header .nav-links a instead */
 
         /* --- ANIMATIONS --- */
         @keyframes fadeUp {
@@ -294,15 +292,16 @@
             color: #b27a00;
         }
 
-        /* Quote */
+        /* --- MODIFIED QUOTE BOX (REQUEST: WHITE CARD) --- */
         .quote-box {
-            background: linear-gradient(135deg, #0b1220 0%, #162536 100%);
-            color: #fff;
+            /* Changed from linear-gradient to white */
+            background: #ffffff;
+            color: var(--text-dark);
             border-radius: 20px;
             padding: 40px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 30px 80px rgba(2, 8, 23, 0.5);
+            box-shadow: 0 30px 80px rgba(2, 8, 23, 0.15);
         }
 
         .quote-icon {
@@ -310,15 +309,21 @@
             top: 10px;
             left: 18px;
             font-size: 84px;
-            color: rgba(255, 255, 255, 0.06);
+            /* Changed color for visibility on white */
+            color: rgba(0, 0, 0, 0.06);
             font-family: serif;
         }
 
         .chairperson-name {
-            color: var(--primary-yellow);
+            color: var(--primary-purple);
             font-weight: 700;
             margin-top: 15px;
             display: block;
+        }
+        
+        /* Overriding the inline class text-white-50 for this specific box since we can't remove the class */
+        .quote-box .text-white-50 {
+            color: var(--muted) !important;
         }
 
         /* Content Images */
@@ -583,27 +588,7 @@
             transform: translateY(-4px);
         }
 
-        @media (max-width: 991px) {
-            .footer-decor-strip {
-                display: none;
-            }
-
-            .footer-top-strip {
-                width: 100%;
-            }
-
-            .d-flex.justify-content-between {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
         /* --- INDEX HEADER STYLES --- */
-        :root {
-            --white: #ffffff;
-            --radius-btn: 50px;
-        }
-
         header {
             background-color: white;
             position: fixed;
@@ -651,7 +636,7 @@
         }
 
         header .nav-links a {
-            color: var(--primary-orange);
+            color: var(--primary-blue);
             font-weight: 500;
             font-size: 1rem;
             position: relative;
@@ -681,7 +666,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: var(--primary-orange);
+            color: var(--primary-blue);
             font-weight: 500;
             cursor: pointer;
             text-decoration: none;
@@ -761,7 +746,7 @@
 
         header .nav-links .dropdown a:hover {
             background: rgba(244, 140, 6, 0.06);
-            color: var(--primary-orange);
+            color: var(--primary-blue);
         }
 
         header .nav-links .dropdown a:hover::after {
@@ -789,7 +774,7 @@
 
         .btn-white {
             background: var(--white);
-            color: var(--primary-orange);
+            color: var(--primary-blue);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
@@ -1201,6 +1186,55 @@
             margin: 0;
         }
 
+        /* --- MOBILE VIEW FIXES --- */
+        @media (max-width: 991px) {
+            
+            /* Fix Footer on Mobile */
+            .footer-decor-strip {
+                display: none;
+            }
+
+            .footer-top-strip {
+                width: 100%;
+            }
+
+            .d-flex.justify-content-between {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            /* Fix Header Stacking on Mobile */
+            header {
+                position: relative !important; /* Unfix header so it scrolls */
+            }
+            header nav {
+                flex-direction: column;
+                gap: 20px;
+                padding: 15px 0;
+            }
+            header .nav-links {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                width: 100%;
+            }
+            
+            /* Fix Dropdown display on mobile */
+            header .nav-links .dropdown {
+                position: relative;
+                width: 100%;
+                box-shadow: none;
+                border: 1px solid #f0f0f0;
+                text-align: center;
+                margin-top: 5px;
+            }
+
+            /* Fix Hero Padding since header is stacked */
+            .academic-hero {
+                padding-top: 40px;
+            }
+        }
+
         @media (max-width: 768px) {
             .feature-row {
                 flex-direction: column;
@@ -1211,9 +1245,9 @@
             .feature-number {
                 font-size: 3rem;
             }
-
-
-            /* Values styles moved to css/values.css for parity with gallery */
+        }
+        
+        /* Values styles moved to css/values.css for parity with gallery */
     </style>
 </head>
 
@@ -1248,8 +1282,7 @@
         </div>
     </header>
 
-    <main style="padding-top: 100px; 
-    background-image: url(../images/academics-bg.png);">
+    <main style="padding-top: 100px; background-image: url(../images/academics-bg.png);">
         <section class="academic-hero">
             <div class="hero-bg-diag"></div>
             <div class="float-shape shape-square"></div>
@@ -1379,66 +1412,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- <section class="animated-purple-bg py-5">
-
-    <div class="container">
-        <div class="text-center mb-5 animate-up">
-            <h2 style="font-weight: 900; font-size: 2.5rem;">Why Choose Satyam?</h2>
-            <p class="text-muted">A comprehensive educational experience</p>
-        </div>
-
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-4 animate-up delay-1">
-                <div class="feature-card fc-blue">
-                    <div class="icon-box"><i class="fa-solid fa-certificate"></i></div>
-                    <h5 style="font-weight: 800;">Recognized CBSE Affiliation</h5>
-                    <p class="small text-muted mb-0">Government approved curriculum providing structured learning pathways and recognition across India, ensuring your child's credentials are respected nationwide.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 animate-up delay-2">
-                <div class="feature-card fc-purple">
-                    <div class="icon-box"><i class="fa-solid fa-computer"></i></div>
-                    <h5 style="font-weight: 800;">LEAD Digital Classrooms</h5>
-                    <p class="small text-muted mb-0">Partnership with LEAD School bringing world-class digital infrastructure, interactive smart classrooms, and engaging digital textbooks.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 animate-up delay-3">
-                <div class="feature-card fc-orange">
-                    <div class="icon-box"><i class="fa-solid fa-flask"></i></div>
-                    <h5 style="font-weight: 800;">Future-Ready STEM Focus</h5>
-                    <p class="small text-muted mb-0">Innovative Science, Technology, Engineering, and Mathematics curriculum with state-of-the-art laboratories and coding classes.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 animate-up delay-1">
-                <div class="feature-card fc-green">
-                    <div class="icon-box"><i class="fa-solid fa-trophy"></i></div>
-                    <h5 style="font-weight: 800;">Holistic Development</h5>
-                    <p class="small text-muted mb-0">Wide-ranging activities including athletics, cricket, basketball, dance, and instrumental music for complete growth.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 animate-up delay-2">
-                <div class="feature-card fc-yellow">
-                    <div class="icon-box"><i class="fa-solid fa-chalkboard-user"></i></div>
-                    <h5 style="font-weight: 800;">Expert Faculty Team</h5>
-                    <p class="small text-muted mb-0">Dedicated teachers with years of classroom experience, specialized subject knowledge, and modern teaching certifications.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 animate-up delay-3">
-                <div class="feature-card fc-blue">
-                    <div class="icon-box"><i class="fa-solid fa-wallet"></i></div>
-                    <h5 style="font-weight: 800;">Accessible Quality</h5>
-                    <p class="small text-muted mb-0">Affordable fee structure without compromising educational quality, with transparent cost breakdowns.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
 
         <section class="content-section" style="background-color: #fcfcfc;">
             <div class="content-shapes">
