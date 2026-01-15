@@ -92,7 +92,7 @@
         }
 
         .nav-links a { 
-            color: var(--primary-orange); 
+            color: var(--primary-blue); 
             font-weight: 500; 
             font-size: 1rem; 
             position: relative;
@@ -105,11 +105,11 @@
 
         /* --- DROPDOWN NAV --- */
         .nav-links li { position: relative; }
-        .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-orange); font-weight: 1rem; }
+        .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-blue); font-weight: 1rem; }
         .nav-links .dropdown { position: absolute; top: 120%; left: 0; background: var(--white); min-width: 200px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 8px 0; display: none; z-index: 2000; }
         .nav-links .dropdown li { padding: 0; }
         .nav-links .dropdown a { display: block; padding: 10px 18px; color: var(--primary-blue); font-weight: 500; }
-        .nav-links .dropdown a:hover { background: rgba(244,140,6,0.06); color: var(--primary-orange); }
+        .nav-links .dropdown a:hover { background: rgba(244,140,6,0.06); color: var(--primary-blue); }
         .nav-links li:hover > .dropdown { display: block; }
 
         /* Mobile Menu Toggle */
@@ -123,8 +123,8 @@
         }
 
         .btn { display: inline-block; padding: 10px 30px; border-radius: var(--radius-btn); font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 0.95rem; }
-        .btn-white { background: var(--white); color: var(--primary-orange); border: 1px solid var(--primary-orange); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .btn-white:hover { background: var(--primary-orange); color: white; transform: translateY(-2px); }
+        .btn-white { background: var(--white); color: var(--primary-blue); border: 1px solid var(--primary-blue); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .btn-white:hover { background: var(--primary-blue); color: white; transform: translateY(-2px); }
         
         /* Mobile "Contact Us" Button Handling */
         .desktop-btn { display: inline-block; }
@@ -142,7 +142,7 @@
 
         .hero-bg-diag {
             position: absolute;
-            top: 0; left: 0; width: 65%; height: 100%;
+            top: 0; left: 0; width: 80%; height: 100%;
             background-image: linear-gradient(rgba(37, 38, 65, 0.7), rgba(37, 38, 65, 0.5)), url('images/Campus.png'); 
             background-size: cover; background-position: center;
             clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
@@ -360,8 +360,8 @@
             .hero-section { flex-direction: column; padding-top: 120px; text-align: center; }
             .hero-bg-diag { width: 100%; height: 50%; clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); }
             .hero-content { padding-top: 40px; }
-            .hero-title { font-size: 2.5rem; color: var(--primary-blue); }
-            .hero-subtitle { color: var(--text-grey); margin: 0 auto 30px; border: none; padding: 0; }
+            .hero-title { font-size: 2.5rem; color: var(--white); }
+            .hero-subtitle { color: var(--bg-light); margin: 0 auto 30px; border: none; padding: 0; }
             .title-underline { margin: 0 auto 20px; }
             
             /* Remove negative margin on mobile to stack normally */
