@@ -154,7 +154,8 @@
             left: -5%;
             width: 80%;
             height: 120%;
-            background-image: url('./images/acedemics-bg-final.png');
+            /* Added black tint using linear-gradient overlay */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./images/satyam-3.jpeg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -169,7 +170,7 @@
             margin-bottom: 20px;
             position: relative;
             z-index: 1;
-            color: var(--primary-blue);
+            color: var(--white);
         }
 
         .title-underline {
@@ -310,7 +311,7 @@
             left: 18px;
             font-size: 84px;
             /* Changed color for visibility on white */
-            color: rgba(0, 0, 0, 0.06);
+            color: rgb(251, 199, 126);
             font-family: serif;
         }
 
@@ -1258,7 +1259,7 @@
             <nav>
                 <div class="logo">
                     <div class="logo-icon">
-                        <img src="images/sat.jpg">
+                        <a href="index.html"><img src="images/sat.jpg"></a>
                     </div>
                 </div>
                 <ul class="nav-links">
@@ -1522,7 +1523,7 @@
                 <a href="#">Privacy Policy</a>
             </div>
 
-            <p class="copyright">© 2025 All rights reserved by Kodemapa.</p>
+            <p class="copyright">© 2026 All rights reserved by Kodemapa.</p>
         </div>
     </footer>
 

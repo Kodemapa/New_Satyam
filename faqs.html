@@ -46,89 +46,214 @@
         @keyframes float { 0% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-15px) rotate(5deg); } 100% { transform: translateY(0px) rotate(0deg); } }
         @keyframes expandWidth { from { width: 0; } to { width: 90px; } }
 
-       /* --- HEADER --- */
-        header { 
-            background-color: white; 
-            padding: 15px 0; 
-            position: fixed; 
+        /* --- INDEX HEADER STYLES --- */
+        header {
+            background-color: white;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        
-        nav { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .logo { 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-            font-size: 1.5rem; 
-            font-weight: 700; 
-            color: var(--white);
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
             letter-spacing: 0.5px;
         }
-        
-        .logo-icon {
-            display: relative;
-            align-items: center;
-            justify-content: center;
-            width: 150px; /* Adjusted slightly for mobile fitting */
-            height: auto;
-            font-size: 1.2rem;
-        }
-        
-        .logo-icon img { width: 100%; height: 100%; object-fit: contain; }
 
-        .nav-links { 
-            display: flex; 
-            gap: 30px; 
-            align-items: center;
+        header .logo-icon {
+            width: 190px;
+            height: 100px;
         }
 
-        .nav-links a { 
-            color: var(--primary-blue); 
-            font-weight: 500; 
-            font-size: 1rem; 
+        header .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 5px;
+        }
+
+        header .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        header .nav-links a {
+            color: var(--primary-blue);
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            text-decoration: none;
+        }
+
+        header .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: rgb(251, 130, 0);
+            transition: width 0.3s;
+        }
+
+        header .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        header .nav-links li {
             position: relative;
         }
-        
-        .nav-links a::after {
-            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: rgb(251, 130, 0); transition: width 0.3s;
-        }
-        .nav-links a:hover::after { width: 100%; }
 
-        /* --- DROPDOWN NAV --- */
-        .nav-links li { position: relative; }
-        .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-blue); font-weight: 1rem; }
-        .nav-links .dropdown { position: absolute; top: 120%; left: 0; background: var(--white); min-width: 200px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 8px 0; display: none; z-index: 2000; }
-        .nav-links .dropdown li { padding: 0; }
-        .nav-links .dropdown a { display: block; padding: 10px 18px; color: var(--primary-blue); font-weight: 500; }
-        .nav-links .dropdown a:hover { background: rgba(244,140,6,0.06); color: var(--primary-blue); }
-        .nav-links li:hover > .dropdown { display: block; }
+        header .nav-links .dropdown-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-blue);
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            position: relative;
+        }
+
+        header .nav-links .dropdown-toggle::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: rgb(251, 130, 0);
+            transition: width 0.3s;
+        }
+
+        header .nav-links .dropdown-toggle:hover::after {
+            width: 100%;
+        }
+
+        /* Remove underline for Academics dropdown toggle only */
+        header .nav-links .dropdown-toggle:nth-child(1)::after {
+            display: none;
+        }
+
+        header .nav-links .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            padding: 8px 0;
+            display: none;
+            z-index: 2000;
+            list-style: none;
+            margin: 0;
+            margin-top: 10px;
+        }
+
+        header .nav-links .dropdown::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: transparent;
+        }
+
+        header .nav-links .dropdown li {
+            padding: 0;
+        }
+
+        header .nav-links .dropdown a {
+            display: block;
+            padding: 10px 18px;
+            color: black;
+            font-weight: 500;
+            text-decoration: none;
+            position: relative;
+        }
+
+        header .nav-links .dropdown a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgb(251, 130, 0);
+            transition: width 0.3s;
+        }
+
+        header .nav-links .dropdown a:hover {
+            background: rgba(244, 140, 6, 0.06);
+            color: var(--primary-blue);
+        }
+
+        header .nav-links .dropdown a:hover::after {
+            width: calc(100% - 36px);
+        }
+
+        header .nav-links li:hover>.dropdown {
+            display: block;
+        }
+
+        header .nav-links .dropdown:hover {
+            display: block;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            border-radius: var(--radius-btn);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--primary-blue);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-white:hover {
+            color: var(--primary-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        /* Mobile Contact Button */
+        .mobile-btn { display: none; margin-top: 15px; width: 100%; }
+        .desktop-btn { display: block; }
 
         /* Mobile Menu Toggle */
         .menu-toggle { 
-            display: none; /* Hidden on desktop */
-            font-size: 1.8rem; 
+            display: none; 
+            font-size: 1.6rem; 
             color: var(--primary-orange); 
             cursor: pointer; 
             transition: 0.3s;
             padding: 5px;
         }
-
-        .btn { display: inline-block; padding: 10px 30px; border-radius: var(--radius-btn); font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 0.95rem; }
-        .btn-white { background: var(--white); color: var(--primary-blue); border: 1px solid var(--primary-blue); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .btn-white:hover { background: var(--primary-blue); color: white; transform: translateY(-2px); }
-        
-        /* Mobile "Contact Us" Button Handling */
-        .desktop-btn { display: inline-block; }
-
 
         /* --- HERO SECTION --- */
         .hero-section {
@@ -142,8 +267,8 @@
 
         .hero-bg-diag {
             position: absolute;
-            top: 0; left: 0; width: 80%; height: 100%;
-            background-image: linear-gradient(rgba(37, 38, 65, 0.7), rgba(37, 38, 65, 0.5)), url('images/Campus.png'); 
+            top: 0; left: 0; width: 80%; height: 160%;
+            background-image: linear-gradient(rgba(37, 38, 65, 0.7), rgba(37, 38, 65, 0.5)), url('images/gallery-3.jpeg'); 
             background-size: cover; background-position: center;
             clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
             z-index: 0;
@@ -387,7 +512,7 @@
             <nav>
                 <div class="logo">
                     <div class="logo-icon">
-                        <img src="images/sat.jpg" alt="Satyam School">
+                        <a href="index.html"><img src="images/sat.jpg"></a>
                     </div>
                 </div>
                 
@@ -436,7 +561,7 @@
 
                 <div class="col-lg-6 animate-up delay-1">
                     <div class="hero-card">
-                        <h3>Admissions Open for 2025-26</h3>
+                        <h3>Admissions Open for 2026-27</h3>
                         <p>We are currently accepting applications for Nursery to Grade 9. Secure your child's future with Satyam International.</p>
                         <div class="contact-row">
                             <div class="icon-circle"><i class="fa-solid fa-phone"></i></div>
@@ -648,12 +773,12 @@
             </div>
             <div class="footer-links">
                 <a href="index.html">Home</a>
+                <a href="about-us.html">Academics</a>
                 <a href="about-us.html">About-us</a>
-                <a href="academics.html">Academics</a>
-                <a href="contact-us.html">Contact-us</a>
+                <a href="about-us.html">Contact-us</a>
                 <a href="#">Privacy Policy</a>
             </div>
-            <p class="copyright">© 2025 All rights reserved by Kodemapa.</p>
+            <p class="copyright">© 2026 All rights reserved by Kodemapa.</p>
         </div>
     </footer>
 
