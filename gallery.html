@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="elite-themes24">
+    <meta name="description" content="Satyam International School - Photo Gallery">
+    <meta name="keywords" content="Responsive, HTML5, elite-themes24, Gallery, School Photos">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gallery - Satyam International School</title>
+
+    <link rel="shortcut icon" href="images/Satyam_Icon_1.png" type="image/x-icon">
+    <link rel="icon" href="images/Satyam_Icon_1.png" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/Satyam_Icon_1.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/Satyam_Icon_1.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/Satyam_Icon_1.png">
+    <link rel="apple-touch-icon" href="images/Satyam_Icon_1.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="css/values.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-orange: #000;
+            --primary-blue: #252641;
+            --accent-purple: #545AE7;
+            --white: #ffffff;
+            --text-grey: #5F5F7E;
+            --border-light: #E1E1E1;
+            --radius-btn: 50px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; text-decoration: none; list-style: none; }
+        
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            color: var(--primary-blue); 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- HEADER STYLES --- */
+        :root {
+            --white: #ffffff;
+            --radius-btn: 50px;
+        }
+        
+        /* --- INDEX HEADER STYLES --- */
+        header {
+            background-color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        header .logo-icon {
+            width: 190px;
+            height: 100px;
+        }
+
+        header .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 5px;
+        }
+
+        header .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        header .nav-links a {
+            color: var(--primary-blue);
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            text-decoration: none;
+        }
+
+        header .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: rgb(251, 130, 0);
+            transition: width 0.3s;
+        }
+
+        header .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        header .nav-links li {
+            position: relative;
+        }
+
+        header .nav-links .dropdown-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-blue);
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            position: relative;
+        }
+
+        header .nav-links .dropdown-toggle::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: rgb(251, 130, 0);
+            transition: width 0.3s;
+        }
+
+        header .nav-links .dropdown-toggle:hover::after {
+            width: 100%;
+        }
+
+        /* Remove underline for Academics dropdown toggle only */
+        header .nav-links .dropdown-toggle:nth-child(1)::after {
+            display: none;
+        }
+
+        header .nav-links .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            padding: 8px 0;
+            display: none;
+            z-index: 2000;
+            list-style: none;
+            margin: 0;
+            margin-top: 10px;
+        }
+
+        header .nav-links .dropdown::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: transparent;
+        }
+
+        header .nav-links .dropdown li {
+            padding: 0;
+        }
+
+        header .nav-links .dropdown a {
+            display: block;
+            padding: 10px 18px;
+            color: black;
+            font-weight: 500;
+            text-decoration: none;
+            position: relative;
+        }
+
+        header .nav-links .dropdown a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgb(251, 130, 0);
+            transition: width 0.3s;
+        }
+
+        header .nav-links .dropdown a:hover {
+            background: rgba(244, 140, 6, 0.06);
+            color: var(--primary-blue);
+        }
+
+        header .nav-links .dropdown a:hover::after {
+            width: calc(100% - 36px);
+        }
+
+        header .nav-links li:hover>.dropdown {
+            display: block;
+        }
+
+        header .nav-links .dropdown:hover {
+            display: block;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            border-radius: var(--radius-btn);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--primary-blue);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-white:hover {
+            color: var(--primary-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        /* Mobile Contact Button */
+        .mobile-btn { display: none; margin-top: 15px; width: 100%; }
+        .desktop-btn { display: block; }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle { 
+            display: none; 
+            font-size: 1.6rem; 
+            color: var(--primary-orange); 
+            cursor: pointer; 
+            transition: 0.3s;
+            padding: 5px;
+        }
+
+        /* --- FOOTER STYLES --- */
+        footer { background-color: #252641; color: #B2B3CF; padding: 90px 0 50px; text-align: center; }
+        footer .footer-logo { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
+        footer .footer-logo h2 { color: white; padding-left: 15px; border-left: 1px solid #626381; font-weight: 600; letter-spacing: 1px; margin: 0; max-width: 100%; }
+        footer .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; font-size: 1rem; }
+        footer .footer-links a { color: #B2B3CF; text-decoration: none; transition: color 0.3s; }
+        footer .footer-links a:hover { color: white; }
+        footer .copyright { font-size: 0.9rem; opacity: 0.6; margin: 0; }
+
+        /* --- GALLERY SPECIFIC STYLES --- */
+        main {
+            padding-top: 100px;
+            min-height: 60vh;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            color: white;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary-orange);
+        }
+
+        /* Ensure there's visible space before footer */
+        .gallery-section { padding-bottom: 160px; }
+
+        /* Gallery section label and heading */
+        .gallery-label {
+            display: inline-block;
+            background: linear-gradient(135deg, #d74a7a 0%, #c23563 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(215, 74, 122, 0.2);
+        }
+
+        .gallery-heading {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1a2d4d;
+            margin-bottom: 40px;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+        }
+
+
+        /* Compact label-style filter chips (like the provided reference) */
+        .filter-buttons {
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+
+        .filter-btn {
+            padding: 6px 12px;
+            border: 2px solid #111;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            background: transparent;
+            color: #111;
+            letter-spacing: 0.3px;
+            box-shadow: none;
+            min-width: 56px;
+            text-align: center;
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+            transform: translateY(-2px) scale(1.02);
+        }
+        /* Ribbon Shapes */
+        .gallery-ribbon { width: 100px; height: 20px; position: relative; }
+        .gallery-ribbon::before { content: ''; position: absolute; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 10px solid inherit; left: -10px; top: 0; }
+        .gallery-ribbon::after { content: ''; position: absolute; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 10px solid inherit; right: -10px; top: 0; }
+        .gallery-ribbon-1 { top: 42%; left: 3%; background: rgba(149, 225, 211, 0.6); animation-delay: 1.8s; }
+        .gallery-ribbon-2 { bottom: 18%; right: 20%; background: rgba(255, 217, 61, 0.5); animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInRight {
+            0% { opacity: 0; transform: translateX(-40px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInScale {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-18px) rotate(8deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        /* Hero section animations */
+        .page-title {
+            animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .title-underline {
+            animation: expandWidth 0.9s ease-out both, fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+        }
+
+        .quote-box {
+            animation: slideInRight 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) 0.3s both;
+        }
+
+        .float-shape {
+            animation: float 6s ease-in-out infinite, fadeInScale 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both;
+        }
+
+        .animate-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .animate-up.delay-1 {
+            animation-delay: 0.3s;
+        }
+
+        @keyframes popupIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.6) translateY(30px);
+            }
+            60% {
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Directional entry animations: items start hidden and animate from different directions */
+        .gallery-item { opacity: 0; }
+
+        @keyframes enterFromTop {
+            0% { opacity: 0; transform: translateY(-30px) scale(0.98); }
+            60% { transform: translateY(8px) scale(1.02); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes enterFromBottom {
+            0% { opacity: 0; transform: translateY(30px) scale(0.98); }
+            60% { transform: translateY(-8px) scale(1.02); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes enterFromLeft {
+            0% { opacity: 0; transform: translateX(-30px) scale(0.98); }
+            60% { transform: translateX(8px) scale(1.02); }
+            100% { opacity: 1; transform: translateX(0) scale(1); }
+        }
+
+        @keyframes enterFromTop {
+            0% { opacity: 0; transform: translateY(-40px) scale(0.96); }
+            75% { transform: translateY(6px) scale(1.03); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes enterFromBottom {
+            0% { opacity: 0; transform: translateY(40px) scale(0.96); }
+            75% { transform: translateY(-6px) scale(1.03); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes enterFromLeft {
+            0% { opacity: 0; transform: translateX(-40px) scale(0.96); }
+            75% { transform: translateX(6px) scale(1.03); }
+            100% { opacity: 1; transform: translateX(0) scale(1); }
+        }
+
+        @keyframes enterFromRight {
+            0% { opacity: 0; transform: translateX(40px) scale(0.96); }
+            75% { transform: translateX(-6px) scale(1.03); }
+            100% { opacity: 1; transform: translateX(0) scale(1); }
+        }
+
+        /* Slower, more graceful reveal */
+        .gallery-item.enter-from-top { animation: enterFromTop 1.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; }
+        .gallery-item.enter-from-bottom { animation: enterFromBottom 1.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; }
+        .gallery-item.enter-from-left { animation: enterFromLeft 1.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; }
+        .gallery-item.enter-from-right { animation: enterFromRight 1.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; }
+
+        .filter-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .filter-btn.active {
+            transform: scale(1.05);
+        }
+
+        .filter-all { background: linear-gradient(135deg, #ff2370 0%, #ff5370 100%); }
+        .filter-art { background: linear-gradient(135deg, #ff6a00 0%, #ff8500 100%); }
+        .filter-craft { background: linear-gradient(135deg, #4f6af5 0%, #6b82ff 100%); }
+        .filter-painting { background: linear-gradient(135deg, #fdb400 0%, #ffc727 100%); }
+        .filter-print { background: linear-gradient(135deg, #84ce5a 0%, #a0d977 100%); }
+        .filter-science { background: linear-gradient(135deg, #8b2aff 0%, #a04dff 100%); }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: auto;
+            gap: 45px;
+            margin-top: 40px;
+            grid-auto-flow: dense;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: white;
+            aspect-ratio: 1 / 1;
+            min-height: 220px;
+        }
+
+        /* Organic blob shapes with rotation */
+        .gallery-item:nth-child(1) { 
+            border-radius: 60% 40% 70% 30% / 40% 50% 60% 50%;
+            transform: rotate(-5deg);
+            box-shadow: 20px 20px 0px rgba(244, 140, 6, 0.15);
+        }
+        .gallery-item:nth-child(2) { 
+            border-radius: 30% 60% 40% 70% / 50% 40% 50% 60%;
+            transform: rotate(8deg);
+            box-shadow: 20px 20px 0px rgba(91, 114, 238, 0.15);
+        }
+        .gallery-item:nth-child(3) { 
+            border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
+            transform: rotate(-8deg);
+            box-shadow: 20px 20px 0px rgba(244, 140, 6, 0.15);
+        }
+        .gallery-item:nth-child(4) { 
+            border-radius: 40% 60% 30% 70% / 60% 30% 70% 40%;
+            transform: rotate(6deg);
+            box-shadow: 20px 20px 0px rgba(91, 114, 238, 0.15);
+        }
+        .gallery-item:nth-child(5) { 
+            border-radius: 50% 50% 40% 60% / 70% 30% 50% 50%;
+            transform: rotate(-6deg);
+            box-shadow: 20px 20px 0px rgba(244, 140, 6, 0.15);
+        }
+        .gallery-item:nth-child(6) { 
+            border-radius: 60% 40% 50% 50% / 40% 60% 30% 70%;
+            transform: rotate(7deg);
+            box-shadow: 20px 20px 0px rgba(91, 114, 238, 0.15);
+        }
+        .gallery-item:nth-child(7) { 
+            border-radius: 30% 70% 60% 40% / 50% 50% 30% 70%;
+            transform: rotate(-7deg);
+            box-shadow: 20px 20px 0px rgba(244, 140, 6, 0.15);
+        }
+        .gallery-item:nth-child(8) { 
+            border-radius: 70% 30% 70% 30% / 30% 60% 40% 70%;
+            transform: rotate(5deg);
+            box-shadow: 20px 20px 0px rgba(91, 114, 238, 0.15);
+        }
+        .gallery-item:nth-child(9) { 
+            border-radius: 40% 60% 50% 50% / 60% 40% 60% 40%;
+            transform: rotate(-4deg);
+            box-shadow: 20px 20px 0px rgba(244, 140, 6, 0.15);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-12px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .gallery-item:nth-child(1):hover {
+            box-shadow: 18px 18px 0px rgba(91, 114, 238, 0.2);
+        }
+
+        .gallery-item:nth-child(2):hover {
+            box-shadow: 18px 18px 0px rgba(244, 140, 6, 0.2);
+        }
+
+        .gallery-item:nth-child(3):hover {
+            box-shadow: 18px 18px 0px rgba(91, 114, 238, 0.2);
+        }
+
+        .gallery-item:nth-child(4):hover {
+            box-shadow: 18px 18px 0px rgba(244, 140, 6, 0.2);
+        }
+
+        .gallery-item:nth-child(5):hover {
+            box-shadow: 18px 18px 0px rgba(91, 114, 238, 0.2);
+        }
+
+        .gallery-item:nth-child(6):hover {
+            box-shadow: 18px 18px 0px rgba(244, 140, 6, 0.2);
+        }
+
+        .gallery-item:nth-child(7):hover {
+            box-shadow: 18px 18px 0px rgba(91, 114, 238, 0.2);
+        }
+
+        .gallery-item:nth-child(8):hover {
+            box-shadow: 18px 18px 0px rgba(244, 140, 6, 0.2);
+        }
+
+        .gallery-item:nth-child(9):hover {
+            box-shadow: 18px 18px 0px rgba(91, 114, 238, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .zoom-icon {
+            display: none;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #84ce5a 0%, #a0d977 100%);
+            padding: 20px;
+            border-radius: 0 0 20px 20px;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            display: none;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .gallery-caption h3 {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+
+         /* --- HERO SECTION --- */
+        .academic-hero {
+            position: relative;
+            padding: 180px 0 100px 0;
+            overflow: hidden;
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-bg-diag {
+            position: absolute;
+            top: -10%;
+            left: -5%;
+            width: 85%;
+            height: 100%;
+            /* Add a tint using a linear-gradient overlay */
+            background-image: linear-gradient(rgba(37, 38, 65, 0.6), rgba(37, 38, 65, 0.6)),
+                url('images/skating_roll.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            clip-path: polygon(0 0, 100% 0, 78% 100%, 0% 100%);
+            z-index: 0;
+        }
+
+        .page-title {
+            font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; line-height: 1.05;
+            margin-bottom: 20px; position: relative; z-index: 1; color: var(--white);
+        }
+
+        @keyframes expandWidth {
+            0% { width: 0; opacity: 0; }
+            100% { width: 90px; opacity: 1; }
+        }
+
+        .title-underline {
+            height: 8px; border-radius: 6px; width: 90px;
+            background: linear-gradient(90deg, var(--primary-orange), var(--primary-yellow));
+        }
+
+        .float-shape { position: absolute; opacity: 0.55; z-index: 0; animation: float 6s ease-in-out infinite; }
+        .shape-square { width: 60px; height: 60px; border: 4px solid rgba(255, 209, 102, 0.95); top: 12%; right: 10%; transform: rotate(12deg); }
+        .shape-circle { width: 48px; height: 48px; background: rgba(106, 79, 176, 0.14); border-radius: 50%; bottom: 18%; left: 8%; }
+
+        .quote-box {
+            background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+            color: #0e0c0c; border-radius: 20px; padding: 40px;
+            position: relative; overflow: hidden;
+            box-shadow: 0 30px 80px rgba(2, 8, 23, 0.5);
+        }
+
+        .quote-icon { position: absolute; top: 10px; left: 18px; font-size: 84px; color: rgba(255, 255, 255, 0.06); font-family: serif; }
+        .chairperson-name { color: var(--primary-yellow); font-weight: 700; margin-top: 15px; display: block; }
+
+
+        @media (max-width: 992px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: auto;
+                gap: 30px;
+            }
+            
+            .gallery-item {
+                min-height: 190px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header .logo-icon {
+                width: 150px;
+                height: 80px;
+            }
+
+            header nav {
+                flex-wrap: wrap;
+            }
+
+            header .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                gap: 0;
+                padding: 20px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                margin-top: 10px;
+                border-radius: 0 0 10px 10px;
+            }
+
+            header .nav-links.active {
+                display: flex;
+            }
+
+            header .nav-links li {
+                padding: 10px 0;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            header .nav-links li:last-child {
+                border-bottom: none;
+            }
+
+            header .nav-links a {
+                display: block;
+                color: var(--primary-orange);
+            }
+
+            header .nav-links .dropdown {
+                position: static;
+                display: none;
+                box-shadow: none;
+                background: #f9f9f9;
+                margin-top: 10px;
+                border-radius: 5px;
+            }
+
+            header .nav-links .dropdown.active {
+                display: block;
+            }
+
+            header .nav-links li:hover > .dropdown {
+                display: none;
+            }
+
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .btn-white {
+                display: none;
+            }
+
+            .mobile-contact {
+                display: block !important;
+                border-top: 2px solid #f0f0f0;
+                padding-top: 15px !important;
+                margin-top: 15px !important;
+            }
+
+            .mobile-contact a {
+                color: var(--primary-orange);
+                font-weight: 600;
+            }
+
+            .academic-hero {
+                padding: 120px 0 60px 0;
+                min-height: auto;
+            }
+
+            .hero-bg-diag {
+                width: 100%;
+                height: 65%;
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+            }
+
+            .page-title {
+                font-size: clamp(2rem, 4vw, 2.5rem);
+                margin-bottom: 15px;
+            }
+
+            .title-underline {
+                width: 70px;
+            }
+
+            /* Mobile: smaller gallery heading to fit screen */
+            .gallery-heading {
+                font-size: clamp(1.7rem, 6vw, 1.9rem);
+                margin-bottom: 18px;
+            }
+
+            .quote-box {
+                padding: 25px;
+                margin-top: 30px;
+            }
+
+            .quote-icon {
+                font-size: 50px;
+                top: 5px;
+                left: 10px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-auto-rows: auto;
+                gap: 25px;
+            }
+            
+            .gallery-item {
+                min-height: 160px;
+            }
+            
+            .gallery-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
+            .gallery-item:nth-child(2) { grid-column: span 1; grid-row: span 1; }
+            .gallery-item:nth-child(3) { grid-column: span 1; grid-row: span 1; }
+            .gallery-item:nth-child(4) { grid-column: span 1; grid-row: span 1; }
+            .gallery-item:nth-child(5) { grid-column: span 1; grid-row: span 1; }
+            .gallery-item:nth-child(6) { grid-column: span 1; grid-row: span 1; }
+            .gallery-item:nth-child(7) { grid-column: span 1; grid-row: span 1; }
+            .gallery-item:nth-child(8) { grid-column: span 1; grid-row: span 1; }
+            .gallery-item:nth-child(9) { grid-column: span 1; grid-row: span 1; }
+            .filter-buttons {
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+            .filter-btn {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            footer .footer-logo {
+                flex-direction: column;
+                text-align: center;
+            }
+            footer .footer-logo h2 {
+                border-left: none;
+                border-top: 1px solid #626381;
+                padding-left: 0;
+                padding-top: 15px;
+                font-size: 1.1rem;
+            }
+            footer .footer-links {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="anim-down">
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <div class="logo-icon">
+                        <a href="index.html"><img src="images/sat.jpg"></a>
+                    </div>
+                </div>
+                
+                <div class="menu-toggle" id="mobileMenuBtn">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li>
+                        <a href="#" class="dropdown-toggle-custom disable-underline">Academics <i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown">
+                            <li><a href="academics.html">Academics</a></li>
+                            <li><a href="curriculars.html">Co-Curriculars</a></li>
+                            <li><a href="blog-listing.html">Blog-Listing</a></li>
+                            <li><a href="faqs.html">FAQs</a></li>
+                            <li><a href="testimonials.html">Testimonials</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="mandatory-disclosure.html">Mandatory Disclosures</a></li>
+                    
+                    <li class="mobile-btn"><a href="contact-us.html" class="btn btn-purple">Contact Us</a></li>
+                </ul>
+                
+                <a href="contact-us.html" class="btn btn-white desktop-btn">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+   <section class="academic-hero">
+            <div class="hero-bg-diag"></div>
+            <div class="float-shape shape-square"></div>
+            <div class="float-shape shape-circle"></div>
+
+            <div class="container position-relative">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 animate-up">
+                        <h1 class="page-title">Capturing Our Journey of<br>Excellence</h1>
+                        <div class="title-underline mb-4"></div>
+                        <p class="lead" style="font-weight: 500; color: #f9f3f3;">
+                            Stay updated with the latest happenings, academic advice, events, and success stories from the Satyam International School community.
+                        </p>
+                    </div>
+                    <div class="col-lg-6 animate-up delay-1">
+                        <div class="quote-box shadow-lg">
+                            <div class="quote-icon">“</div>
+                            <p class="position-relative" style="z-index: 2; font-size: 1.1rem; line-height: 1.8;">
+                                We love how the school encourages creativity and independent thinking. The activities and projects truly bring learning to life for the students.
+                            </p>
+                            <span class="chairperson-name">— Parent Sachin</span>
+                            <small class="text-white-50">Satyam International School</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <div class="gallery-shapes">
+                <div class="gallery-shape gallery-triangle gallery-triangle-1"></div>
+                <div class="gallery-shape gallery-triangle gallery-triangle-2"></div>
+                <div class="gallery-shape gallery-triangle gallery-triangle-3"></div>
+                <div class="gallery-shape gallery-circle gallery-circle-1"></div>
+                <div class="gallery-shape gallery-circle gallery-circle-2"></div>
+                <div class="gallery-shape gallery-circle gallery-circle-3"></div>
+                <div class="gallery-shape gallery-square gallery-square-1"></div>
+                <div class="gallery-shape gallery-square gallery-square-2"></div>
+                <div class="gallery-shape gallery-ribbon gallery-ribbon-1"></div>
+                <div class="gallery-shape gallery-ribbon gallery-ribbon-2"></div>
+            </div>
+            <div class="container">
+                <!-- Gallery section label and heading -->
+                <div style="text-align: center; margin-bottom: 50px;">
+                    <div class="gallery-label">ARTS</div>
+                    <h2 class="gallery-heading">Creative & Active</h2>
+                </div>
+                <!-- Filter buttons removed per design request -->
+
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="sports">
+                        <img src="images/gallery-1.jpeg" alt="Oil Painting Training">
+                        <div class="gallery-overlay">
+                            <div class="zoom-icon">
+                                <i class="fa-solid fa-search"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Sports Activity - Racing</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="academic">
+                        <img src="images/gallery-2.jpeg" alt="Craft Activity">
+                        <div class="gallery-overlay">
+                            <div class="zoom-icon">
+                                <i class="fa-solid fa-search"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Parent-Teacher Meeting</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="academic">
+                        <img src="images/gallery-3.jpeg" alt="Art Class">
+                        <div class="gallery-overlay">
+                            <div class="zoom-icon">
+                                <i class="fa-solid fa-search"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Student Presentation</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="sports">
+                        <img src="images/gallery-4.jpeg" alt="Science Activity">
+                        <div class="gallery-overlay">
+                            <div class="zoom-icon">
+                                <i class="fa-solid fa-search"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Karate Training Class</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="science">
+                        <img src="images/gallery-5.jpeg" alt="Print Work">
+                        <div class="gallery-overlay">
+                            <div class="zoom-icon">
+                                <i class="fa-solid fa-search"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Science Exhibition</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="cultural">
+                        <img src="images/gallery-6.jpeg" alt="Art Project">
+                        <div class="gallery-overlay">
+                            <div class="zoom-icon">
+                                <i class="fa-solid fa-search"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>School Band Practice</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="cultural">
+                        <img src="images/gallery-7.jpeg" alt="Craft Workshop">
+                        <div class="gallery-overlay">
+                            <div class="zoom-icon">
+                                <i class="fa-solid fa-search"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Cultural Program</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="arts">
+                        <img src="images/gallery-8.jpeg" alt="Painting Session">
+                        <div class="gallery-overlay">
+                            <div class="zoom-icon">
+                                <i class="fa-solid fa-search"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Creative Art Activity</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="cultural">
+                        <img src="images/gallery-9.jpeg" alt="Science Lab">
+                        <div class="gallery-overlay">
+                            <div class="zoom-icon">
+                                <i class="fa-solid fa-search"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Annual Day Celebration</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="images/Satyam_Icon_1.png" alt="Satyam International Logo" style="width: 40px; height: 40px;">
+                <h2>Satyam International <span style="font-size: 0.9rem; display: block; font-weight: 400; opacity: 0.7; margin-top: 5px;">School for Holistic Development</span></h2>
+            </div>
+
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about-us.html">Academics</a>
+                <a href="about-us.html">About-us</a>
+                <a href="about-us.html">Contact-us</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            
+            <p class="copyright">© 2026 All rights reserved by Kodemapa.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Hamburger menu toggle
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (hamburgerMenu) {
+            hamburgerMenu.addEventListener('click', function() {
+                hamburgerMenu.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                // Close all open dropdowns when menu closes
+                if (!navLinks.classList.contains('active')) {
+                    document.querySelectorAll('.nav-links .dropdown').forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
+        }
+
+        // Close menu when a regular link is clicked (not dropdown toggle)
+        const navItems = document.querySelectorAll('.nav-links a:not(.dropdown-toggle)');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                hamburgerMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+                // Also close all dropdowns
+                document.querySelectorAll('.nav-links .dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            });
+        });
+
+        // Dropdown toggle in mobile menu
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                // Only handle dropdown toggle on mobile
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Get the parent <li> element
+                    const parentLi = this.closest('li');
+                    const dropdown = parentLi.querySelector('.dropdown');
+                    
+                    if (dropdown) {
+                        // Close other open dropdowns
+                        document.querySelectorAll('.nav-links .dropdown.active').forEach(other => {
+                            if (other !== dropdown) {
+                                other.classList.remove('active');
+                            }
+                        });
+                        // Toggle current dropdown
+                        dropdown.classList.toggle('active');
+                    }
+                } else {
+                    // On desktop, prevent default to avoid navigation
+                    e.preventDefault();
+                }
+            });
+        });
+
+        // Gallery filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            // Popup animation on scroll with directional entry (left/right/top/bottom)
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Determine index and pick a direction based on it
+                        const itemsArray = Array.from(galleryItems);
+                        const idx = itemsArray.indexOf(entry.target);
+                        const mod = idx % 4;
+                        let dirClass = 'enter-from-bottom';
+                        if (mod === 0) dirClass = 'enter-from-left';
+                        else if (mod === 1) dirClass = 'enter-from-right';
+                        else if (mod === 2) dirClass = 'enter-from-top';
+
+                        // Apply class and staggered delay
+                        entry.target.classList.add(dirClass);
+                        // increase stagger spacing so items animate more slowly overall
+                        // larger stagger so items appear more slowly and don't pop together
+                        const delay = ( (idx % 9) * 0.22 ) + 0.08; // slower cascade
+                        entry.target.style.animationDelay = `${delay}s`;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            galleryItems.forEach(item => {
+                observer.observe(item);
+            });
+
+            // Filter functionality
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    const filterValue = this.getAttribute('data-filter');
+
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all') {
+                            item.style.display = 'block';
+                        } else {
+                            if (item.getAttribute('data-category') === filterValue) {
+                                item.style.display = 'block';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

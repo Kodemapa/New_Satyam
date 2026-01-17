@@ -27,7 +27,13 @@
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         ul { list-style: none; }
 
-        .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+        /* --- UPDATED: CONTAINER SIZE --- */
+        /* Increased to 1440px to fit modern screens better */
+        .container { 
+            max-width: 1440px; 
+            margin: 0 auto; 
+            padding: 0 40px; /* Increased side padding for better spacing */
+        }
 
         /* --- ANIMATIONS --- */
         @keyframes fadeInDown {
@@ -57,9 +63,43 @@
         .delay-300 { animation-delay: 0.3s; }
         .floating { animation: float 4s ease-in-out infinite; }
 
+        /* --- DECORATIVE BACKGROUND SHAPES --- */
+        .bg-shapes { position: absolute; width: 100%; height: 100%; top: 0; left: 0; overflow: hidden; z-index: 1; pointer-events: none; }
+        
+        .shape { position: absolute; opacity: 0.6; animation: float 6s ease-in-out infinite; }
+        
+        /* Triangle Shapes */
+        .triangle { width: 0; height: 0; border-left: 40px solid transparent; border-right: 40px solid transparent; border-bottom: 70px solid; }
+        .triangle-1 { top: 15%; right: 12%; border-bottom-color: #ff6b6b; animation-delay: 0s; }
+        .triangle-2 { bottom: 25%; left: 8%; border-bottom-color: rgba(255, 255, 255, 0.3); transform: rotate(180deg); animation-delay: 1.5s; }
+        .triangle-3 { top: 45%; left: 5%; border-bottom-color: #ffd93d; animation-delay: 3s; border-left: 30px solid transparent; border-right: 30px solid transparent; border-bottom-width: 50px; }
+        
+        /* Circle Shapes */
+        .circle { border-radius: 50%; }
+        .circle-1 { top: 20%; left: 15%; width: 80px; height: 80px; border: 4px solid #4ecdc4; background: transparent; animation-delay: 2s; }
+        .circle-2 { bottom: 15%; right: 20%; width: 60px; height: 60px; background: rgba(255, 255, 255, 0.2); animation-delay: 0.5s; }
+        .circle-3 { top: 60%; right: 8%; width: 50px; height: 50px; border: 3px solid #95e1d3; background: transparent; animation-delay: 2.5s; }
+        
+        /* Square/Rectangle Shapes */
+        .square { border-radius: 5px; }
+        .square-1 { top: 35%; right: 25%; width: 50px; height: 50px; background: rgba(255, 107, 107, 0.4); transform: rotate(15deg); animation-delay: 1s; }
+        .square-2 { bottom: 35%; left: 18%; width: 40px; height: 40px; background: rgba(255, 255, 255, 0.25); transform: rotate(-20deg); animation-delay: 2.8s; }
+        
+        /* Ribbon Shapes */
+        .ribbon { width: 120px; height: 25px; position: relative; animation-delay: 1.2s; }
+        .ribbon::before { content: ''; position: absolute; width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-top: 12px solid inherit; left: -15px; top: 0; }
+        .ribbon::after { content: ''; position: absolute; width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-top: 12px solid inherit; right: -15px; top: 0; }
+        .ribbon-1 { top: 25%; left: 5%; background: #ffd93d; animation-delay: 0.8s; }
+        .ribbon-2 { bottom: 20%; right: 15%; background: rgba(78, 205, 196, 0.6); animation-delay: 2.2s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
         /* --- BUTTONS --- */
         .btn { display: inline-block; padding: 12px 35px; border-radius: var(--radius-btn); font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 1rem; }
-        .btn-white { background: var(--white); color: var(--primary-orange); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .btn-white { background: var(--white); color: var(--primary-blue); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
         .btn-primary { background: var(--primary-orange); color: var(--white); }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(244, 140, 6, 0.3); }
@@ -72,7 +112,6 @@
        /* --- HEADER (FIXED / FROZEN) --- */
         header { 
             background-color: white;
-            padding: 15px 0; 
             /* FIXED POSITIONING TO FREEZE NAVBAR */
             position: fixed; 
             top: 0;
@@ -86,6 +125,8 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
+            /* Added min-height to ensure consistent sizing */
+            min-height: 90px;
         }
 
         .logo { 
@@ -102,7 +143,7 @@
             display: relative;
             align-items: center;
             justify-content: center;
-            width: 100px;
+            width: 190px;
             height: 100px;
             font-size: 1.2rem;
         }
@@ -112,11 +153,11 @@
         .nav-links { 
             display: flex; 
             gap: 40px; 
-            align-items: center;
+            align-items: center; 
         }
 
         .nav-links a { 
-            color: var(--primary-orange); 
+            color: var(--primary-blue); 
             font-weight: 500; 
             font-size: 1rem; 
             position: relative;
@@ -127,61 +168,95 @@
         }
         .nav-links a:hover::after { width: 100%; }
 
+        /* --- DROPDOWN NAV --- */
+        .nav-links li { position: relative; }
+        .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-blue); font-weight: 1rem; }
+        .nav-links .dropdown { position: absolute; top: 120%; left: 0; background: var(--white); min-width: 200px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 8px 0; display: none; z-index: 2000; }
+        .nav-links .dropdown li { padding: 0; }
+        .nav-links .dropdown a { display: block; padding: 10px 18px; color: var(--primary-blue); font-weight: 500; }
+        .nav-links .dropdown a:hover { background: rgba(244,140,6,0.06); color: var(--primary-orange); }
+        .nav-links li:hover > .dropdown { display: block; }
+
         /* --- HERO SECTION --- */
-        .hero { 
-            background-color: var(--primary-orange); 
-            position: relative; 
-            /* Top padding increased to 160px to clear the fixed header + breathing room */
-            padding-top: 160px; 
-            padding-bottom: 200px; /* Space for the bottom curve */
-            color: var(--white); 
-            overflow: hidden; 
-            min-height: 100vh; /* Ensures it covers full screen on load */
-            display: flex;
-            align-items: center; /* Vertically centers content */
-        }
+.hero { 
+    position: relative; 
+    padding-top: 160px; 
+    padding-bottom: 200px; /* Space for the bottom curve */
+    color: var(--white); 
+    overflow: hidden; 
+    min-height: 100vh; /* Ensures it covers full screen on load */
+    display: flex;
+    align-items: center; /* Vertically centers content */
 
-        .hero-content {
-            display: grid;
-            /* 1fr 1fr splits screen 50/50. Text on Left, Image on Right */
-            grid-template-columns: 1fr 1fr; 
-            align-items: center;
-            gap: 40px;
-            width: 100%;
-        }
+    background-image: url('images/pre_school.png'); /* Replace with your large hero image */
+    background-size: cover;
+    background-position: center right; /* Adjust focus */
+    background-repeat: no-repeat;
+}
 
-        /* Hero Text (Left Side) */
-        .hero-text {
-            animation: slideInLeft 1s ease-out forwards;
-            z-index: 2; /* Ensures text is above background elements */
-        }
+.hero-container { max-width: 1440px; margin: 150px auto; padding: 0 20px; }
 
-        .hero-text h1 {
-            font-size: 3.5rem;
-            line-height: 1.3;
-            font-weight: 800;
-            margin-bottom: 25px;
-        }
+/* --- COLORED OVERLAY WITH DIAGONAL --- */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(105deg, var(--primary-orange) 0%, var(--primary-orange) 42%, transparent 42%);
+    z-index: 1; 
+}
 
-        .hero-text h1 span { color: var(--primary-blue); }
+.hero-content {
+    position: relative;
+    z-index: 2; 
+    display: grid;
+    /* CHANGED: Adjusted columns to 4fr 6fr (40% - 60%) to keep text inside the orange part */
+    grid-template-columns: 4fr 6fr; 
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+}
 
-        .hero-text p {
-            font-size: 1.15rem;
-            margin-bottom: 35px;
-            max-width: 90%;
-            font-weight: 400;
-            line-height: 1.7;
-            opacity: 0.95;
-        }
+.hero-text {
+    animation: slideInLeft 1s ease-out forwards;
+    
+    /* --- KEY FIXES FOR LEFT ALIGNMENT --- */
+    text-align: left;           /* Aligns text content to the left */
+    display: flex;              /* Use flexbox for better control */
+    flex-direction: column;     /* Stack elements vertically */
+    align-items: flex-start;    /* Aligns the button to the left */
+    padding-right: 10px;        /* Adds breathing room from the diagonal edge */
+}
 
-        /* Hero Image Container (Right Side) */
-        .hero-image-container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 5; 
-        }
+.hero-text h1 {
+    font-size: 3.0rem;
+    line-height: 1.3;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.hero-text h1 span { color: var(--primary-blue); }
+
+.hero-text p {
+    font-size: 1.15rem;
+    margin-bottom: 35px;
+    max-width: 90%;
+    font-weight: 400;
+    line-height: 1.7;
+    opacity: 0.95;
+}
+
+/* Hero Image Container (Hidden as image is in background) */
+.hero-image-container {
+    display: none; 
+}
+
+/* Curve Bottom - Ensure it's on top */
+.curve-bottom {
+    z-index: 3;
+}
 
         /* The Organic Shape Mask */
         .blob-mask {
@@ -400,9 +475,11 @@
 
         /* --- UNIFIED ABOUT SECTION --- */
 .about-section-container {
-    max-width: 1200px;
+    max-width: 80%;
     margin: 0 auto;
     padding: 0px 20px;
+    position: relative;
+    overflow: hidden;
 }
 
 /* 1. Header & Description */
@@ -487,8 +564,8 @@
     
     /* --- KEY CHANGE HERE --- */
     justify-content: flex-end; /* Pushes content to the bottom */
-    align-items: center;       /* Centers content horizontally */
-    padding-bottom: 50px;      /* Adds space from the bottom edge */
+    align-items: center;        /* Centers content horizontally */
+    padding-bottom: 50px;       /* Adds space from the bottom edge */
     /* --------------------- */
     
     text-align: center;
@@ -827,7 +904,7 @@
 }
 .q-header { display: flex; justify-content: space-between; margin-bottom: 20px; }
 .q-tag { background: #E8F0FF; color: #5B72EE; padding: 5px 15px; border-radius: 20px; font-weight: 600; font-size: 0.8rem; }
-.q-img { height: 140px; background: url('https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?auto=format&fit=crop&w=500&q=80') center/cover; border-radius: 10px; margin-bottom: 20px; }
+.q-img { height: 240px; background: url('https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?auto=format&fit=crop&w=500&q=80') center/cover; border-radius: 10px; margin-bottom: 20px; }
 .q-toast {
     position: absolute; bottom: -20px; right: -30px;
     background: white; padding: 12px 25px;
@@ -923,6 +1000,8 @@
 .integrations { 
     padding: 120px 0; 
     background-color: var(--white); /* White background per reference */
+    position: relative;
+    overflow: hidden;
 }
 
 .integrations-grid { 
@@ -1309,7 +1388,6 @@
     color: #696984;
     line-height: 1.5;
     display: -webkit-box;
-    -webkit-line-clamp: 2; /* Limits text to 2 lines */
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -1430,26 +1508,52 @@
             <nav>
                 <div class="logo">
                     <div class="logo-icon">
-                        <img src="images/satyam logo-2.png">
+                        <a href="index.html"><img src="images/sat.jpg"></a>
                     </div>
                 </div>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="#">Academics</a></li>
+                    <li>
+                        <a href="#" class="dropdown-toggle">Academics <i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown">
+                            <li><a href="academics.html">Academics</a></li>
+                            <li><a href="curriculars.html">Co-Curriculars</a></li>
+                            <li><a href="blog-listing.html">Blog-Listing</a></li>
+                            <li><a href="faqs.html">FAQs</a></li>
+                            <li><a href="testimonials.html">Testimonials</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                        </ul>
+                    </li>
                     <li><a href="about-us.html">About Us</a></li>
-                    <li><a href="#">Mandatory Disclosures</a></li>
+                    <li><a href="mandatory-disclosure.html">Mandatory Disclosures</a></li>
                 </ul>
-                <button class="btn btn-white">Contact Us</button>
+                <a href="contact-us.html" class="btn btn-white">Contact Us</a>
             </nav>
         </div>
     </header>
 
     <section class="hero">
-        <div class="container hero-content">
+        <div class="bg-shapes">
+            <div class="shape triangle triangle-1"></div>
+            <div class="shape triangle triangle-2"></div>
+            <div class="shape triangle triangle-3"></div>
+            
+            <div class="shape circle circle-1"></div>
+            <div class="shape circle circle-2"></div>
+            <div class="shape circle circle-3"></div>
+            
+            <div class="shape square square-1"></div>
+            <div class="shape square square-2"></div>
+            
+            <div class="shape ribbon ribbon-1"></div>
+            <div class="shape ribbon ribbon-2"></div>
+        </div>
+
+        <div class="hero-container hero-content">
             <div class="hero-text">
                 <h1>Building <span>Leader's <br>Of Tomorrow</span></h1>
                 <p>Top CBSE School in Ballari | Equipping the Next Generation. Experience the best CBSE syllabus and world-class facilities in the heart of Bellary.</p>
-                <button class="btn btn-white">Get Your Admission Today</button>
+                <a href="contact-us.html"><button class="btn btn-white">Get Your Admission Today</button></a>
             </div>
 
             <div class="hero-image-container">
@@ -1480,28 +1584,8 @@
                 <i class="fa-regular fa-file-lines"></i>
             </div>
             <h3>Notice Board</h3>
-            
-            <div class="card-list">
-                <div class="card-list-item">
-                    <h4>Half-Yearly Examination</h4>
-                    <p>Exam schedule for Grades VI-X has been released. Exams commence from October 15th.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>Parent-Teacher Meeting</h4>
-                    <p>The next PTM is scheduled for Saturday, September 20th, from 9:00 AM to 1:00 PM.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>Winter Break</h4>
-                    <p>School will remain closed for winter vacation from December 24th to January 2nd.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>Fee Submission Deadline</h4>
-                    <p>Please clear all outstanding dues for the second quarter by October 10th to avoid late fees.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>New Library Books</h4>
-                    <p>Over 500 new titles have been added to the library. Students are encouraged to visit.</p>
-                </div>
+            <div class="card-list" id="notice-list">
+                <p style="padding: 20px; text-align: center;">Loading notices...</p>
             </div>
         </div>
 
@@ -1510,28 +1594,8 @@
                 <i class="fa-regular fa-calendar-days"></i>
             </div>
             <h3>Events & Activities</h3>
-            
-            <div class="card-list">
-                <div class="card-list-item">
-                    <h4>Annual Sports Meet</h4>
-                    <p>Join us for the Inter-House Sports Championship on November 12th at the main ground.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>Science Exhibition</h4>
-                    <p>Students from all grades will showcase innovative projects on 'Sustainable Future' next Friday.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>Cultural Fest Auditions</h4>
-                    <p>Auditions for dance, music, and drama for the Annual Day will be held this week.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>Debate Competition</h4>
-                    <p>Inter-school debate competition on "AI in Education" will be hosted in the auditorium.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>Art Workshop</h4>
-                    <p>A special pottery and painting workshop is organized for primary students this Saturday.</p>
-                </div>
+            <div class="card-list" id="event-list">
+                <p style="padding: 20px; text-align: center;">Loading events...</p>
             </div>
         </div>
 
@@ -1540,28 +1604,8 @@
                 <i class="fa-solid fa-user-group"></i>
             </div>
             <h3>School Regulation</h3>
-            
-            <div class="card-list">
-                <div class="card-list-item">
-                    <h4>Uniform Policy</h4>
-                    <p>Students must wear the complete school uniform with ID cards daily. Sports uniform is for PT days only.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>Attendance Mandate</h4>
-                    <p>A minimum of 75% attendance is mandatory for eligibility to appear in final examinations.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>Campus Entry</h4>
-                    <p>Visitors and parents are requested to report to the reception desk upon entry for security clearance.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>Mobile Phone Policy</h4>
-                    <p>Mobile phones and electronic gadgets are strictly prohibited within the school premises.</p>
-                </div>
-                <div class="card-list-item">
-                    <h4>Leave Application</h4>
-                    <p>Leave applications must be submitted via the school app or diary at least 2 days in advance.</p>
-                </div>
+            <div class="card-list" id="regulation-list">
+                <p style="padding: 20px; text-align: center;">Loading regulations...</p>
             </div>
         </div>
 
@@ -1569,6 +1613,12 @@
 </section>
 
     <section class="integrations">
+        <div class="bg-shapes">
+            <div class="shape circle" style="top: 10%; left: 10%; width: 80px; height: 80px; border: 4px solid #4ecdc4; border-radius: 50%; animation: float 6s ease-in-out infinite; animation-delay: 0s;"></div>
+            <div class="shape square" style="top: 60%; right: 15%; width: 50px; height: 50px; background: rgba(255, 140, 6, 0.3); border-radius: 5px; transform: rotate(15deg); animation: float 6s ease-in-out infinite; animation-delay: 1.5s;"></div>
+            <div class="shape triangle" style="bottom: 20%; left: 5%; width: 0; height: 0; border-left: 40px solid transparent; border-right: 40px solid transparent; border-bottom: 70px solid #ff6b6b; animation: float 6s ease-in-out infinite; animation-delay: 2s;"></div>
+            <div class="shape circle" style="top: 50%; right: 5%; width: 60px; height: 60px; border: 3px solid #95e1d3; border-radius: 50%; animation: float 6s ease-in-out infinite; animation-delay: 2.5s;"></div>
+        </div>
     <div class="container integrations-grid">
         
         <div class="collage-wrapper">
@@ -1581,17 +1631,23 @@
                 <h4>Our Facilities</h4>
             </div>
             
-            <h2>State-of-the-art infrastructure and <span>learning spaces</span></h2>
+            <h2>Modern facilities and hands-on <span>learning environments</span></h2>
             
-            <p>Satyam International School offers fully equipped science labs, smart classrooms, and expansive sports grounds to ensure a comprehensive learning experience for every student.</p>
+            <p>Our comprehensive campus supports a wide spectrum of activities including organized sports competitions, martial arts training for discipline and fitness, interactive educational games, team-building exercises, cultural programs, and hands-on learning experiences in well-equipped laboratories.</p>
     
-            <button class="btn-outline">Explore Our Campus</button>
+            <a href="gallery.html"><button class="btn-outline">Explore Our Campus</button></a>
         </div>
 
     </div>
 </section>
 
    <section class="about-section-container">
+        <div class="bg-shapes">
+            <div class="shape triangle" style="top: 10%; right: 8%; width: 0; height: 0; border-left: 40px solid transparent; border-right: 40px solid transparent; border-bottom: 70px solid #ff6b6b; animation: float 6s ease-in-out infinite; animation-delay: 0s;"></div>
+            <div class="shape circle" style="bottom: 15%; right: 12%; width: 70px; height: 70px; background: rgba(78, 205, 196, 0.2); border-radius: 50%; animation: float 6s ease-in-out infinite; animation-delay: 1.5s;"></div>
+            <div class="shape square" style="top: 40%; left: 5%; width: 45px; height: 45px; background: rgba(255, 140, 6, 0.25); border-radius: 5px; transform: rotate(-20deg); animation: float 6s ease-in-out infinite; animation-delay: 2.8s;"></div>
+            <div class="shape" style="top: 70%; right: 20%; width: 120px; height: 25px; background: #ffd93d; animation: float 6s ease-in-out infinite; animation-delay: 3.5s;"></div>
+        </div>
     
     <div class="about-header">
         <h2 class="about-title">Why Choose <span>Satyam International?</span></h2>
@@ -1631,7 +1687,7 @@
                 <p style="margin-bottom: 25px; opacity: 0.9; font-size: 1rem; max-width: 80%; margin-left: auto; margin-right: auto;">
                     Government approved curriculum with standardized evaluation.
                 </p>
-                <button class="btn-choice btn-instructor">Academics</button>
+               <a href="./academics.html"> <button class="btn-choice btn-instructor">Academics</button></a>
             </div>
         </div>
 
@@ -1643,7 +1699,7 @@
                 <p style="margin-bottom: 25px; opacity: 0.9; font-size: 1rem; max-width: 80%; margin-left: auto; margin-right: auto;">
                     Wide-ranging activities including athletics, arts, and music.
                 </p>
-                <button class="btn-choice btn-student">Co-Curriculars</button>
+                <a href="curriculars.html"><button class="btn-choice btn-student">Co-Curriculars</button></a>
             </div>
         </div>
     </div>
@@ -1652,7 +1708,7 @@
         <div class="classroom-text">
             <h2>Future-Ready education with <span class="highlight-orange">STEM Focus</span></h2>
             <p>We offer an innovative Science, Technology, Engineering, and Mathematics curriculum complete with state-of-the-art laboratories, practical experiments, coding, and programming classes.</p>
-            <a href="#" class="learn-more">Explore our Labs</a>
+            <a href="gallery.html" class="learn-more">Explore our Labs</a>
         </div>
         
         <div class="classroom-visual">
@@ -1661,10 +1717,15 @@
     </div>
 </section>
 
-   <section class="container features-section">
+   <section class="container features-section" style="position: relative;">
+        <div class="bg-shapes">
+            <div class="shape circle" style="top: 15%; left: 5%; width: 80px; height: 80px; border: 4px solid #4ecdc4; border-radius: 50%; animation: float 6s ease-in-out infinite; animation-delay: 0s;"></div>
+            <div class="shape square" style="bottom: 25%; left: 8%; width: 50px; height: 50px; background: rgba(255, 107, 107, 0.3); border-radius: 5px; transform: rotate(15deg); animation: float 6s ease-in-out infinite; animation-delay: 1.5s;"></div>
+            <div class="shape circle" style="bottom: 10%; right: 15%; width: 60px; height: 60px; border: 3px solid #95e1d3; border-radius: 50%; animation: float 6s ease-in-out infinite; animation-delay: 2.5s;"></div>
+        </div>
     
     <div class="features-header">
-        <h2 class="features-title">Our <span>Features</span></h2>
+        <h2 class="features-title">Campus <span>Excellence</span></h2>
         <p class="features-subtitle">Empowering students with state-of-the-art facilities and modern pedagogy.</p>
     </div>
 
@@ -1683,14 +1744,14 @@
                 
                 <div class="feature-list-item">
                     <div class="f-icon"><i class="fa-solid fa-chalkboard-user text-orange"></i></div>
-                    <p>Modern smart boards and audio-visual aids to make learning immersive.</p>
+                    <p>Modern smart boards, visual aids to make learning immersive.</p>
                 </div>
                 <div class="feature-list-item">
-                    <div class="f-icon"><i class="fa-solid fa-video text-blue"></i></div>
+                    <div class="f-icon"><i class="fa-solid fa-video text-orange"></i></div>
                     <p>Recorded sessions and digital resources available for revision.</p>
                 </div>
                 <div class="feature-list-item">
-                    <div class="f-icon"><i class="fa-solid fa-users-rays text-blue"></i></div>
+                    <div class="f-icon"><i class="fa-solid fa-users-rays text-orange"></i></div>
                     <p>Collaborative learning environment fostering peer interaction.</p>
                 </div>
             </div>
@@ -1711,11 +1772,7 @@
         <div class="feature-row">
             <div class="feature-visual">
                 <div class="quiz-card">
-                    <div class="q-header">
-                        <span class="q-tag">Science Quiz</span>
-                        <i class="fa-regular fa-circle-check" style="color:#2ECC71;"></i>
-                    </div>
-                    <h3 style="color: #252641; font-size: 1.1rem; margin-bottom: 10px;">Which component acts as the "brain" of a robot to process information?</h3>
+                    <h3 style="color: #252641; font-size: 1rem; margin-bottom: 10px;">Which component acts as the "brain" of a robot to process information?</h3>
                     <div class="q-img" style="background-image: url('images/Puzzles.png');"></div>
                 </div>
             </div>
@@ -1727,8 +1784,8 @@
 
         <div class="feature-row reverse">
                 <div class="feature-visual">
-                    <div class="feature-single-image">
-                        <img src="images/digital_classroom-1.png" alt="Academic Management Dashboard">
+                    <div class="img-decor-wrapper" style="width: 85%;">
+                        <img src="images/digital_classroom-1.png" alt="Academic Management Dashboard" style="box-shadow: 0 25px 50px rgba(0,0,0,0.15);">
                     </div>
                 </div>
                 <div class="feature-content">
@@ -1739,8 +1796,8 @@
 
         <div class="feature-row">
             <div class="feature-visual">
-                <div style="width: 80%; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
-                    <img src="images/Guidence.png" style="width:100%; display:block;" alt="Mentorship">
+                <div class="img-decor-wrapper" style="width: 85%;">
+                    <img src="images/Guidence.png" alt="Mentorship" style="box-shadow: 0 25px 50px rgba(0,0,0,0.15);">
                 </div>
             </div>
             <div class="feature-content">
@@ -1752,7 +1809,12 @@
     </div>
 </section>
 
-    <section class="testimonials-section container">
+    <section class="testimonials-section container" style="position: relative;">
+        <div class="bg-shapes">
+            <div class="shape" style="top: 10%; right: 10%; width: 120px; height: 25px; background: rgba(78, 205, 196, 0.5); animation: float 6s ease-in-out infinite; animation-delay: 1.5s;"></div>
+            <div class="shape circle" style="bottom: 20%; left: 12%; width: 65px; height: 65px; background: rgba(91, 114, 238, 0.15); border-radius: 50%; animation: float 6s ease-in-out infinite; animation-delay: 2s;"></div>
+            <div class="shape square" style="bottom: 15%; right: 8%; width: 45px; height: 45px; background: rgba(255, 140, 6, 0.25); border-radius: 5px; transform: rotate(-20deg); animation: float 6s ease-in-out infinite; animation-delay: 2.8s;"></div>
+        </div>
     <div class="testimonial-grid">
         
         <div class="test-text-content">
@@ -1767,9 +1829,9 @@
                 Are you a parent too? Please give your assessment.
             </p>
             
-            <button class="btn-test">
+            <a href="testimonials.html"><button class="btn-test">
                Let us know more about us <i class="fa-solid fa-arrow-right-long"></i>
-            </button>
+            </button></a>
         </div>
 
         <div class="test-visual-wrapper">
@@ -1800,10 +1862,16 @@
     </div>
 </section>
 
-   <section class="news-section container">
+   <section class="news-section container" style="position: relative;">
+        <div class="bg-shapes">
+            <div class="shape circle" style="top: 10%; right: 10%; width: 80px; height: 80px; border: 4px solid #4ecdc4; border-radius: 50%; animation: float 6s ease-in-out infinite; animation-delay: 0s;"></div>
+            <div class="shape triangle" style="top: 50%; left: 5%; width: 0; height: 0; border-left: 40px solid transparent; border-right: 40px solid transparent; border-bottom: 70px solid #ff6b6b; animation: float 6s ease-in-out infinite; animation-delay: 1.5s;"></div>
+            <div class="shape square" style="bottom: 20%; right: 15%; width: 50px; height: 50px; background: rgba(255, 140, 6, 0.3); border-radius: 5px; transform: rotate(15deg); animation: float 6s ease-in-out infinite; animation-delay: 2.5s;"></div>
+            <div class="shape" style="bottom: 30%; left: 8%; width: 120px; height: 25px; background: #ffd93d; animation: float 6s ease-in-out infinite; animation-delay: 3s;"></div>
+        </div>
     
     <div class="news-header">
-        <h2 class="news-title">Latest News and Resources</h2>
+        <h2 class="news-title">Know More About Us</h2>
         <p class="news-subtitle">Insights, guides, and updates from Satyam International School</p>
     </div>
 
@@ -1814,7 +1882,7 @@
             <span class="news-badge">Parent Guide</span>
             <h5 class="news-main-title">CBSE Certification: The Complete Parent's Guide to Verifying Authentic School Affiliation</h5>
             <p class="news-desc">Choosing the right school is one of the most critical decisions you'll make for your child's future. But what if the trust you place in an institution turns out to be misplaced?</p>
-            <a href="#" class="read-more-link">Read more</a>
+            <a href="cbse-affliation.html" class="read-more-link">Read more</a>
         </div>
 
         <div class="news-list">
@@ -1866,15 +1934,108 @@
 
             <div class="footer-links">
                 <a href="index.html">Home</a>
-                <a href="about-us.html">About-us</a>
                 <a href="about-us.html">Academics</a>
+                <a href="about-us.html">About-us</a>
                 <a href="about-us.html">Contact-us</a>
                 <a href="#">Privacy Policy</a>
             </div>
             
-            <p class="copyright">© 2025 All rights reserved by Kodemapa.</p>
+            <p class="copyright">© 2026 All rights reserved by Kodemapa.</p>
         </div>
     </footer>
+
+  <script>
+/**
+ * Fetches raw 2D grid data from a specific Google Sheet tab.
+ * @param {string} sheetId - The ID from the URL.
+ * @param {string} sheetName - The EXACT name of the tab at the bottom.
+ */
+async function getSheetData(sheetId, sheetName) {
+  const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(sheetName)}`;
+  try {
+    const response = await fetch(url);
+    const text = await response.text();
+    if (text.includes("<!DOCTYPE html>")) return [];
+    const jsonText = text.substring(47).slice(0, -2);
+    const json = JSON.parse(jsonText);
+    return json.table.rows.map(row => row.c.map(cell => (cell ? (cell.v ?? null) : null)));
+  } catch (error) {
+    return [];
+  }
+}
+
+const mySheetId = '1Gv6BPrI-pX5-VtXXwm2zOZIte4-UMjSKEYfeXQvbDO8';
+
+async function updateNoticeBoard() {
+  const container = document.getElementById('notice-list');
+  container.innerHTML = '<p style="padding: 20px; text-align: center;">Loading notices...</p>';
+  const data = await getSheetData(mySheetId, 'Sheet1');
+  if (!data.length) {
+    container.innerHTML = '<p style="padding: 20px; text-align: center;">Unable to load data.</p>';
+    return;
+  }
+  container.innerHTML = '';
+  data.forEach(row => {
+    if (row[0]) {
+      const item = document.createElement('div');
+      item.className = 'card-list-item';
+      item.innerHTML = `<h4>${row[0]}</h4>${row[1] ? `<p>${row[1]}</p>` : ''}`;
+      container.appendChild(item);
+    }
+  });
+}
+
+async function updateEvents() {
+  const container = document.getElementById('event-list');
+  container.innerHTML = '<p style="padding: 20px; text-align: center;">Loading events...</p>';
+  const data = await getSheetData(mySheetId, 'Sheet2');
+  if (!data.length) {
+    container.innerHTML = '<p style="padding: 20px; text-align: center;">Unable to load data.</p>';
+    return;
+  }
+  container.innerHTML = '';
+  data.forEach(row => {
+    if (row[0]) {
+      const item = document.createElement('div');
+      item.className = 'card-list-item';
+      item.innerHTML = `<h4>${row[0]}</h4>${row[1] ? `<p>${row[1]}</p>` : ''}`;
+      container.appendChild(item);
+    }
+  });
+}
+
+async function updateRegulations() {
+  const container = document.getElementById('regulation-list');
+  container.innerHTML = '<p style="padding: 20px; text-align: center;">Loading regulations...</p>';
+  const data = await getSheetData(mySheetId, 'Sheet3');
+  if (!data.length) {
+    container.innerHTML = '<p style="padding: 20px; text-align: center;">Unable to load data.</p>';
+    return;
+  }
+  container.innerHTML = '';
+  data.forEach(row => {
+    if (row[0]) {
+      const item = document.createElement('div');
+      item.className = 'card-list-item';
+      item.innerHTML = `<h4>${row[0]}</h4>${row[1] ? `<p>${row[1]}</p>` : ''}`;
+      container.appendChild(item);
+    }
+  });
+}
+
+// Auto-refresh every 60 seconds (optional, for "live" updates)
+setInterval(() => {
+  updateNoticeBoard();
+  updateEvents();
+  updateRegulations();
+}, 60000);
+
+document.addEventListener('DOMContentLoaded', () => {
+  updateNoticeBoard();
+  updateEvents();
+  updateRegulations();
+});
+</script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
