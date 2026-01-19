@@ -30,6 +30,11 @@
         .reveal.active { opacity: 1; transform: translateY(0); }
         
         @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .anim-down { animation: fadeInDown 0.8s ease-out forwards; opacity: 0; }
 
         /* --- HEADER (FIXED / FROZEN) --- */
         header { 
@@ -46,8 +51,8 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            min-height: 80px;
-            padding: 10px 0;
+            min-height: 90px;
+            padding: 0;
         }
 
         .logo { 
@@ -64,11 +69,11 @@
             display: relative;
             align-items: center;
             justify-content: center;
-            width: 140px;
-            height: auto;
+            width: 190px;
+            height: 100px;
         }
         
-        .logo-icon img { width: 100%; height: 100%; object-fit: contain; }
+        .logo-icon img { width: 100%; height: 100%; object-fit: contain; padding: 5px; }
 
         .nav-links { 
             display: flex; 
@@ -95,10 +100,14 @@
         .nav-links .dropdown li { padding: 0; }
         .nav-links .dropdown a { display: block; padding: 10px 18px; color: var(--primary-blue); font-weight: 500; }
         .nav-links .dropdown a:hover { background: rgba(244,140,6,0.06); color: var(--primary-orange); }
-        .nav-links li:hover > .dropdown { display: block; }
+        
+        /* Desktop Hover Behavior */
+        @media (min-width: 901px) {
+            .nav-links li:hover > .dropdown { display: block; }
+        }
 
         /* Mobile Contact Button (Hidden on Desktop) */
-        .mobile-contact-btn { display: none; font-weight: 700; color: var(--primary-orange) !important; margin-top: 10px; }
+        .mobile-contact-btn { display: none; }
 
         /* Desktop Button */
         .btn-white { 
@@ -111,8 +120,8 @@
         /* Mobile Menu Toggle */
         .menu-toggle { 
             display: none; 
-            font-size: 1.6rem; 
-            color: var(--primary-orange); 
+            font-size: 1.8rem; 
+            color: var(--primary-blue); 
             cursor: pointer; 
             transition: 0.3s;
             padding: 5px;
@@ -277,54 +286,97 @@
         .footer-links a:hover { color: var(--primary-orange); }
         .copyright { font-size: 0.9rem; opacity: 0.6; }
 
-        /* --- RESPONSIVE / MOBILE FIX --- */
+        /* --- RESPONSIVE MEDIA QUERIES (UPDATED FOR MOBILE MENU) --- */
         @media (max-width: 900px) {
-            .menu-toggle { display: block; order: 3; }
-            .logo { order: 1; }
-            .btn-white { display: none; } /* Hide desktop button */
+            /* 1. Header Changes */
+            .logo { order: 1; font-size: 1.2rem; }
+            .logo-icon { width: 140px; }
+            
+            /* Hide Desktop Contact Button outside UL */
+            .btn-white.desktop-btn { display: none; } 
 
-            .nav-links { 
-                display: none; 
-                position: absolute; 
-                top: 100%; 
-                left: 0; 
+            /* 2. Menu Toggle */
+            .menu-toggle { display: block; order: 3; }
+
+            /* 3. Slide-out Menu Style (Matches Index.html) */
+            .nav-links {
+                position: fixed;
+                top: 90px; /* Height of header */
+                right: -100%; /* Hidden off-screen */
                 width: 100%;
-                background: white; 
-                flex-direction: column; 
-                padding: 20px 0;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
-                text-align: center; 
-                gap: 20px; 
-                border-top: 1px solid #eee;
-                max-height: 80vh;
+                height: calc(100vh - 90px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 40px;
+                transition: right 0.4s ease-in-out;
+                display: flex;
+                gap: 25px;
+                box-shadow: -5px 0 10px rgba(0,0,0,0.1);
                 overflow-y: auto;
+                
+                /* Reset properties that might conflict */
+                left: auto;
+                max-height: none;
+                border-top: none;
             }
             
-            .nav-links.active { display: flex; }
-            .mobile-contact-btn { display: block; }
-
-            /* FIX: Make dropdowns relative on mobile so they push content down */
-            .nav-links .dropdown {
-                position: relative;
-                width: 100%;
-                top: 0;
-                box-shadow: none;
-                background: #f9f9f9;
-                padding: 10px 0;
-                display: none;
+            /* Class to trigger slide-in */
+            .nav-links.active {
+                right: 0;
             }
 
-            /* Show dropdown on hover (tap on mobile) */
-            .nav-links li:hover > .dropdown {
+            .nav-links li { 
+                width: 100%; 
+                text-align: center;
+            }
+
+            /* 4. Fix dropdown on mobile (Click to Open) */
+            .nav-links .dropdown {
+                position: static;
+                min-width: 100%;
+                box-shadow: none;
+                background: #f9f9f9;
+                display: none; /* Hidden by default */
+                padding: 10px 0;
+                animation: none;
+            }
+
+            /* Class to show dropdown via JS */
+            .nav-links .dropdown.show {
                 display: block;
             }
 
+            /* Disable hover effect on mobile */
+            .nav-links li:hover > .dropdown {
+                display: none; /* Only show via .show class */
+            }
+            
+            .nav-links li:hover > .dropdown.show {
+                display: block;
+            }
+
+            /* 5. Mobile Button Styling (Inside Menu) */
+            .mobile-contact-btn { 
+                display: inline-block !important; 
+                background: var(--white); 
+                color: var(--primary-orange); 
+                padding: 12px 35px; 
+                border-radius: 50px; 
+                border: 1px solid var(--primary-orange);
+                font-weight: 600; 
+                margin-top: 10px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                width: auto;
+            }
+
+            /* Content Adjustments */
             .blog-hero { padding: 130px 0 50px; }
             .blog-hero h1 { font-size: 2.2rem; }
             
             .step-item { flex-direction: column; text-align: center; align-items: center; padding: 25px; }
             .article-container { padding: 40px 20px; }
-            
             .highlight-box { padding: 30px; }
             .highlight-box p { font-size: 1.1rem; }
             
@@ -367,7 +419,7 @@
                     <li><a href="contact-us.html" class="mobile-contact-btn">Contact Us</a></li>
                 </ul>
                 
-                <a href="contact-us.html" class="btn-white">Contact Us</a>
+                <a href="contact-us.html" class="btn-white desktop-btn">Contact Us</a>
             </nav>
         </div>
     </header>
@@ -513,10 +565,14 @@
         }
         reveal(); // Trigger on load
 
-        // Mobile Menu Logic
+        // --- MOBILE MENU LOGIC (UPDATED TO MATCH INDEX.HTML) ---
+        
         const menuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.getElementById('navLinks');
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownMenu = document.querySelector('.dropdown');
         
+        // 1. Toggle Slide-out Menu
         if(menuBtn){
             menuBtn.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
@@ -527,6 +583,17 @@
                 } else {
                     icon.classList.remove('fa-times');
                     icon.classList.add('fa-bars');
+                }
+            });
+        }
+
+        // 2. Mobile Dropdown Click Logic
+        if (dropdownToggle) {
+            dropdownToggle.addEventListener('click', (e) => {
+                // Only trigger click logic on mobile (width <= 900)
+                if (window.innerWidth <= 900) {
+                    e.preventDefault(); // Stop link navigation
+                    dropdownMenu.classList.toggle('show');
                 }
             });
         }

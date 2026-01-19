@@ -106,6 +106,14 @@
         /* --- DROPDOWN NAV --- */
         .nav-links li { position: relative; }
         .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-blue); font-weight: 1rem; }
+        
+        /* --- FIX: Remove Default Bootstrap Dropdown Caret --- */
+        .dropdown-toggle::after {
+            display: none !important;
+            content: none !important;
+        }
+        /* ---------------------------------------------------- */
+
         .nav-links .dropdown { position: absolute; top: 120%; left: 0; background: var(--white); min-width: 200px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 8px 0; display: none; z-index: 2000; }
         .nav-links .dropdown li { padding: 0; }
         .nav-links .dropdown a { display: block; padding: 10px 18px; color: var(--primary-blue); font-weight: 500; }

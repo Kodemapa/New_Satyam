@@ -1401,80 +1401,6 @@
             .news-grid { grid-template-columns: 1fr; }
             .news-thumb-wrapper { width: 140px; height: 100px; }
         }
-        /* --- RIGHT COLUMN: NEWS LIST --- */
-        .news-list {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        .news-item {
-            display: flex;
-            gap: 25px;
-            align-items: flex-start;
-        }
-
-        .news-thumb-wrapper {
-            position: relative;
-            flex-shrink: 0;
-            width: 180px;
-            height: 120px;
-        }
-
-        .news-thumb {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 15px;
-        }
-
-        /* Small Badge Overlay for List Items */
-        .sm-badge {
-            position: absolute;
-            bottom: 10px;
-            right: 10px; /* Positioned inside the image as per design style often seen, or below title */
-            /* Based on image 1, badge is actually inline above title usually, let's fix relative to content */
-        }
-
-        .news-item-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        /* Specific Badge styling for list items (inline) */
-        .list-badge {
-            display: inline-block;
-            background-color: #F4C467;
-            color: #252641;
-            padding: 4px 15px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            width: fit-content;
-        }
-
-        .news-item-title {
-            font-size: 1.1rem;
-            color: #252641;
-            font-weight: 600;
-            line-height: 1.5;
-            margin-bottom: 10px;
-        }
-
-        .news-item-desc {
-            font-size: 0.9rem;
-            color: #696984;
-            line-height: 1.6;
-        }
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .news-grid { grid-template-columns: 1fr; }
-            .news-thumb-wrapper { width: 140px; height: 100px; }
-        }
 
         /* Footer */
         footer { background-color: #252641; color: #B2B3CF; padding: 80px 0 40px; text-align: center; }
@@ -1486,16 +1412,77 @@
         /* --- RESPONSIVE MEDIA QUERIES (UPDATED FOR MOBILE MENU) --- */
         @media (max-width: 900px) {
             /* General Responsive Fixes */
-            .hero-content, .choice-grid, .feature-block, .integrations-grid, .testimonial-content, .news-grid { grid-template-columns: 1fr; text-align: center; }
-            .feature-block.reverse { direction: ltr; } 
+            .hero {
+                padding-top: 120px; /* Reduced padding on mobile */
+                padding-bottom: 100px;
+            }
+            .hero-content, .choice-grid, .feature-block, .integrations-grid, .testimonial-grid, .news-grid { 
+                grid-template-columns: 1fr; 
+                text-align: center; 
+            }
+            
+            /* Center Hero Text */
+            .hero-text {
+                align-items: center;
+                text-align: center;
+                padding-right: 0;
+                /* Added padding to prevent text hitting sides */
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .hero-text h1 { font-size: 2.2rem; }
+
+            /* Ensure container has padding */
+            .container {
+                padding: 0 20px !important;
+            }
+            
+            /* Full Width Cards & Images - CHANGED TO 92% TO PREVENT TOUCHING SIDES */
+            .info-card, 
+            .classroom-mock, 
+            .img-decor-wrapper, 
+            .quiz-card, 
+            .gb-card, 
+            .feature-single-image {
+                width: 92% !important; /* Reduced from 100% */
+                min-width: unset !important; /* Remove min-width */
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 30px;
+            }
+            
+            /* About Section Width Fix */
+            .about-section-container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            
+            /* Reset Direction for Reversed Feature Rows */
+            .feature-row.reverse { direction: ltr; } 
             .feature-list-item { justify-content: center; text-align: left; }
-            .quote-card { position: relative; bottom: auto; left: auto; width: 100%; margin-top: -30px; }
-            .news-item { flex-direction: column; align-items: center; text-align: center; }
-            /* ADDED THIS LINE TO FIX BADGE ALIGNMENT */
+            
+            /* Testimonial Fixes */
+            .test-card { 
+                position: relative; 
+                bottom: auto; 
+                left: auto; 
+                right: auto;
+                width: 92%; /* Prevent touching sides */
+                max-width: 100%;
+                margin: 20px auto 0 auto;
+            }
+            .test-visual-wrapper { padding-right: 0; padding: 0 20px; }
+            
+            /* News Items Alignment */
+            .news-item { 
+                flex-direction: column; 
+                align-items: center; 
+                text-align: center; 
+            }
             .news-item-content { align-items: center; }
+            .news-thumb-wrapper { width: 100%; height: 200px; } /* Larger thumbs on mobile */
             
             .sub-form { flex-direction: column; }
-            .hero-text h1 { font-size: 2.8rem; }
             .logo { font-size: 1.2rem; }
 
             /* --- MOBILE MENU & NAV --- */

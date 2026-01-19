@@ -47,7 +47,7 @@
         .btn-white { background: var(--white); color: var(--primary-blue); box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid #eee; }
         .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
 
-        /* --- HEADER & NAV (EXACT COPY FROM INDEX) --- */
+         /* --- HEADER & NAV (EXACT COPY FROM INDEX) --- */
         header { 
             background-color: white;
             position: fixed; 
@@ -107,6 +107,14 @@
         /* --- DROPDOWN NAV --- */
         .nav-links li { position: relative; }
         .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-blue); font-weight: 1rem; }
+        
+        /* --- FIX: Remove Default Bootstrap Dropdown Caret --- */
+        .dropdown-toggle::after {
+            display: none !important;
+            content: none !important;
+        }
+        /* ---------------------------------------------------- */
+
         .nav-links .dropdown { position: absolute; top: 120%; left: 0; background: var(--white); min-width: 200px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 8px 0; display: none; z-index: 2000; }
         .nav-links .dropdown li { padding: 0; }
         .nav-links .dropdown a { display: block; padding: 10px 18px; color: var(--primary-blue); font-weight: 500; }
