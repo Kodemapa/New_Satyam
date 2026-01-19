@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mandatory Disclosures - Satyam International School</title>
+    
+    <link rel="shortcut icon" href="images/Satyam_Icon_1.png" type="image/x-icon">
+    <link rel="icon" href="images/Satyam_Icon_1.png" type="image/x-icon">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -20,11 +24,12 @@
             --white: #ffffff;
             --border-color: #e0e0e0;
             --radius-btn: 50px;
+            --accent-purple: #5B72EE;
         }
 
         body { color: var(--primary-blue); overflow-x: hidden; background-color: var(--bg-light); scroll-behavior: smooth; }
         a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
+        ul { list-style: none; margin: 0; padding: 0; }
         .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
 
         /* --- ANIMATIONS --- */
@@ -42,6 +47,7 @@
             50% { transform: translateY(-20px); }
         }
         @keyframes expandWidth { from { width: 0; } to { width: 100px; } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
 
         .anim-up { animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; opacity: 0; }
         .anim-up.in-view { opacity: 1; transform: translateY(0); }
@@ -52,216 +58,68 @@
         .delay-400 { animation-delay: 0.4s; }
         .delay-500 { animation-delay: 0.5s; }
 
-         /* --- INDEX HEADER STYLES --- */
-        header {
+        /* --- HEADER & NAV (Standardized) --- */
+        header { 
             background-color: white;
-            position: fixed;
+            position: fixed; 
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            min-height: 90px;
         }
 
-        header nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .logo { display: flex; align-items: center; gap: 12px; }
+        .logo-icon { width: 190px; height: 100px; display: flex; align-items: center; }
+        .logo-icon img { width: 100%; height: 100%; object-fit: contain; padding: 5px; }
+
+        /* Desktop Nav Links */
+        .nav-links { display: flex; gap: 40px; align-items: center; }
+        .nav-links a { color: var(--primary-blue); font-weight: 500; font-size: 1rem; position: relative; }
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: rgb(251, 130, 0); transition: width 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* Dropdown Desktop */
+        .nav-links li { position: relative; }
+        .nav-links .dropdown-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-blue); cursor: pointer; }
+        /* Remove underline for dropdown toggle */
+        .nav-links .dropdown-toggle::after { display: none; }
+
+        .nav-links .dropdown { 
+            position: absolute; top: 120%; left: 0; background: var(--white); 
+            min-width: 200px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); 
+            padding: 8px 0; display: none; z-index: 2000; 
+        }
+        .nav-links .dropdown li { padding: 0; }
+        .nav-links .dropdown a { display: block; padding: 10px 18px; color: var(--primary-blue); font-weight: 500; }
+        .nav-links .dropdown a:hover { background: rgba(244,140,6,0.06); color: var(--primary-orange); }
+        
+        @media (min-width: 901px) {
+            .nav-links li:hover > .dropdown { display: block; }
+            .mobile-btn { display: none; }
         }
 
-        header .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        header .logo-icon {
-            width: 190px;
-            height: 100px;
-        }
-
-        header .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 5px;
-        }
-
-        header .nav-links {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        header .nav-links a {
-            color: var(--primary-blue);
-            font-weight: 500;
-            font-size: 1rem;
-            position: relative;
-            text-decoration: none;
-        }
-
-        header .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: rgb(251, 130, 0);
-            transition: width 0.3s;
-        }
-
-        header .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        header .nav-links li {
-            position: relative;
-        }
-
-        header .nav-links .dropdown-toggle {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--primary-blue);
-            font-weight: 500;
-            cursor: pointer;
-            text-decoration: none;
-            position: relative;
-        }
-
-        header .nav-links .dropdown-toggle::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: rgb(251, 130, 0);
-            transition: width 0.3s;
-        }
-
-        header .nav-links .dropdown-toggle:hover::after {
-            width: 100%;
-        }
-
-        /* Remove underline for Academics dropdown toggle only */
-        header .nav-links .dropdown-toggle:nth-child(1)::after {
-            display: none;
-        }
-
-        header .nav-links .dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: var(--white);
-            min-width: 200px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-            padding: 8px 0;
-            display: none;
-            z-index: 2000;
-            list-style: none;
-            margin: 0;
-            margin-top: 10px;
-        }
-
-        header .nav-links .dropdown::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            background: transparent;
-        }
-
-        header .nav-links .dropdown li {
-            padding: 0;
-        }
-
-        header .nav-links .dropdown a {
-            display: block;
-            padding: 10px 18px;
-            color: black;
-            font-weight: 500;
-            text-decoration: none;
-            position: relative;
-        }
-
-        header .nav-links .dropdown a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgb(251, 130, 0);
-            transition: width 0.3s;
-        }
-
-        header .nav-links .dropdown a:hover {
-            background: rgba(244, 140, 6, 0.06);
-            color: var(--primary-blue);
-        }
-
-        header .nav-links .dropdown a:hover::after {
-            width: calc(100% - 36px);
-        }
-
-        header .nav-links li:hover>.dropdown {
-            display: block;
-        }
-
-        header .nav-links .dropdown:hover {
-            display: block;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 35px;
-            border-radius: var(--radius-btn);
-            font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-        }
-
-        .btn-white {
-            background: var(--white);
-            color: var(--primary-blue);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-white:hover {
-            color: var(--primary-orange);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-        }
-        /* Mobile Contact Button */
-        .mobile-btn { display: none; margin-top: 15px; width: 100%; }
-        .desktop-btn { display: block; }
+        /* Buttons */
+        .btn { display: inline-block; padding: 12px 35px; border-radius: var(--radius-btn); font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 1rem; }
+        .btn-white { background: var(--white); color: var(--primary-blue); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); color: var(--primary-orange); }
+        .btn-purple { background: var(--accent-purple); color: white; width: 100%; margin-top: 15px; text-align: center; }
 
         /* Mobile Menu Toggle */
-        .menu-toggle { 
-            display: none; 
-            font-size: 1.6rem; 
-            color: var(--primary-orange); 
-            cursor: pointer; 
-            transition: 0.3s;
-            padding: 5px;
-        }
+        .menu-toggle { display: none; font-size: 1.8rem; cursor: pointer; color: var(--primary-blue); }
 
         /* --- HERO SECTION --- */
+        main { padding-top: 100px; }
+
         .hero-section {
             position: relative; padding: 160px 0 100px;
             min-height: 500px; display: flex; align-items: center; overflow: hidden;
@@ -290,6 +148,7 @@
             background: white; padding: 40px; border-radius: 25px;
             box-shadow: 0 25px 50px rgba(0,0,0,0.2); max-width: 600px;
             position: relative; z-index: 10; margin-left: auto;
+            animation: slideInRight 0.8s ease-out forwards;
         }
         .quote-icon { font-size: 4rem; color: var(--primary-orange); line-height: 1; opacity: 0.3; position: absolute; top: 20px; left: 20px; }
         .hero-card p.quote-text { color: var(--primary-blue); font-size: 1.1rem; line-height: 1.8; position: relative; z-index: 2; font-weight: 500; font-style: italic; margin-left: 10px; }
@@ -357,26 +216,33 @@
         /* --- FOOTER --- */
         footer { background-color: #252641; color: #B2B3CF; padding: 80px 0 40px; text-align: center; }
         .footer-logo { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 40px; }
-        .footer-logo h2 { color: white; padding-left: 15px; border-left: 1px solid #626381; font-weight: 600; letter-spacing: 1px; }
-        .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; font-size: 1rem; flex-wrap: wrap; }
+        .footer-logo h2 { color: white; padding-left: 15px; border-left: 1px solid #626381; font-weight: 600; letter-spacing: 1px; margin: 0; }
+        .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; flex-wrap: wrap; }
         .footer-links a:hover { color: var(--primary-orange); }
         .copyright { font-size: 0.9rem; opacity: 0.6; }
 
         /* --- RESPONSIVE STYLES --- */
         @media (max-width: 900px) {
-            /* Navbar Mobile */
-            .hamburger { display: block; }
-            .nav-links { 
-                position: absolute; top: 100%; left: 0; width: 100%; 
-                background: white; flex-direction: column; padding: 30px; gap: 20px; 
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1); display: none; 
-                text-align: center;
+            /* Header Components */
+            .menu-toggle { display: block; }
+            .desktop-btn { display: none; }
+            .mobile-btn { display: block; }
+
+            /* Slide Out Menu */
+            .nav-links {
+                position: fixed; top: 90px; right: -100%; width: 100%; height: calc(100vh - 90px);
+                background: white; flex-direction: column; padding-top: 40px;
+                transition: right 0.4s ease-in-out; display: flex; gap: 25px;
+                box-shadow: -5px 0 10px rgba(0,0,0,0.1); overflow-y: auto;
             }
-            .nav-links.active { display: flex; }
-            .nav-links .btn-white { display: none; } /* Hide desktop button in nav list */
-            .nav-links a { width: 100%; display: block; padding: 10px 0; }
-            .nav-links .mobile-btn { display: block !important; margin-top: 15px; }
-            .btn-white.desktop-only { display: none; }
+            .nav-links.active { right: 0; }
+            .nav-links li { width: 100%; text-align: center; }
+            
+            /* Mobile Dropdown Logic */
+            .nav-links .dropdown { position: static; min-width: 100%; box-shadow: none; background: #f9f9f9; display: none; padding: 10px 0; }
+            .nav-links .dropdown.show { display: block; }
+            .nav-links li:hover > .dropdown { display: none; }
+            .nav-links li:hover > .dropdown.show { display: block; }
 
             /* Hero Mobile */
             .hero-section { padding-top: 120px; padding-bottom: 60px; text-align: center; flex-direction: column; }
@@ -391,28 +257,32 @@
             .accordion-header { padding: 15px 20px; }
             .content-inner { padding: 10px 20px 30px; }
             .header-title { font-size: 1rem; }
+            
+            /* Footer Fixes */
+            .footer-logo { flex-direction: column; }
+            .footer-logo h2 { border-left: none; padding-left: 0; margin-top: 10px; border-top: 1px solid #626381; padding-top: 10px; }
         }
     </style>
 </head>
 <body>
 
-   <header class="anim-down">
+    <header class="anim-down">
         <div class="container">
             <nav>
                 <div class="logo">
                     <div class="logo-icon">
-                        <a href="index.html"><img src="images/sat.jpg"></a>
+                        <a href="index.html"><img src="images/sat.jpg" alt="Logo"></a>
                     </div>
                 </div>
-                
-                <div class="menu-toggle" id="mobileMenuBtn">
+
+                <div class="menu-toggle">
                     <i class="fa-solid fa-bars"></i>
                 </div>
 
-                <ul class="nav-links" id="navLinks">
+                <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li>
-                        <a href="#" class="dropdown-toggle-custom disable-underline">Academics <i class="fa-solid fa-caret-down"></i></a>
+                        <a href="#" class="dropdown-toggle">Academics <i class="fa-solid fa-caret-down"></i></a>
                         <ul class="dropdown">
                             <li><a href="academics.html">Academics</a></li>
                             <li><a href="curriculars.html">Co-Curriculars</a></li>
@@ -425,7 +295,7 @@
                     <li><a href="about-us.html">About Us</a></li>
                     <li><a href="mandatory-disclosure.html">Mandatory Disclosures</a></li>
                     
-                    <li class="mobile-btn"><a href="contact-us.html" class="btn btn-purple">Contact Us</a></li>
+                    <li class="mobile-btn"><a href="contact-us.html">Contact Us</a></li>
                 </ul>
                 
                 <a href="contact-us.html" class="btn btn-white desktop-btn">Contact Us</a>
@@ -433,227 +303,229 @@
         </div>
     </header>
 
-    <section class="hero-section">
-        <div class="hero-bg-diag"></div>
-        <div class="shape-box"></div>
-        
-        <div class="container hero-content">
-            <div class="row" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;">
-                <div class="col-lg-6 anim-up" style="flex: 1 1 500px; min-width: 300px;">
-                    <span style="color: var(--primary-yellow); font-weight: 700; letter-spacing: 1px;">PUBLIC INFORMATION</span>
-                    <h1 class="hero-title">Mandatory <br>Disclosures</h1>
-                    <div class="title-underline"></div>
-                    <p class="hero-subtitle">
-                        Transparent access to our essential school details, infrastructure information, academic records, and compliance documents.
-                    </p>
-                </div>
-                
-                <div class="col-lg-6 anim-up" style="flex: 1 1 400px; margin-top: 30px;">
-                    <div class="hero-card">
-                        <div class="quote-icon">"</div>
-                        <p class="quote-text">
-                            We believe in complete transparency and adherence to educational standards. Here you will find all necessary documents and public information regarding our institution.
+    <main>
+        <section class="hero-section">
+            <div class="hero-bg-diag"></div>
+            <div class="shape-box"></div>
+            
+            <div class="container hero-content">
+                <div class="row" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+                    <div class="col-lg-6 anim-up" style="flex: 1 1 500px; min-width: 300px;">
+                        <span style="color: var(--primary-yellow); font-weight: 700; letter-spacing: 1px;">PUBLIC INFORMATION</span>
+                        <h1 class="hero-title">Mandatory <br>Disclosures</h1>
+                        <div class="title-underline"></div>
+                        <p class="hero-subtitle">
+                            Transparent access to our essential school details, infrastructure information, academic records, and compliance documents.
                         </p>
-                         <div style="margin-top: 20px; border-top: 1px solid #f0f0f0; padding-top: 15px;">
-                             <strong style="color: var(--primary-orange); font-size: 1.1rem; display: block;">— Administration</strong>
+                    </div>
+                    
+                    <div class="col-lg-6 anim-up" style="flex: 1 1 400px; margin-top: 30px;">
+                        <div class="hero-card">
+                            <div class="quote-icon">"</div>
+                            <p class="quote-text">
+                                We believe in complete transparency and adherence to educational standards. Here you will find all necessary documents and public information regarding our institution.
+                            </p>
+                             <div style="margin-top: 20px; border-top: 1px solid #f0f0f0; padding-top: 15px;">
+                                 <strong style="color: var(--primary-orange); font-size: 1.1rem; display: block;">— Administration</strong>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <div class="container disclosure-wrapper">
+        <div class="container disclosure-wrapper">
 
-        <div class="accordion-item anim-up delay-100">
-            <button class="accordion-header active">
-                <div class="header-title">
-                    <i class="fa-solid fa-circle-info"></i> General Information
-                </div>
-                <i class="fa-solid fa-chevron-down icon-toggle"></i>
-            </button>
-            <div class="accordion-content" style="max-height: 1000px;"> 
-                <div class="content-inner">
-                    <div class="table-responsive">
-                        <table class="custom-table">
-                            <thead>
-                                <tr>
-                                    <th class="col-sno">S.NO</th>
-                                    <th>INFORMATION</th>
-                                    <th>DETAILS</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="col-sno">1</td><td>Name of the School</td><td class="col-data">Satyam International School</td></tr>
-                                <tr><td class="col-sno">2</td><td>Affiliation No.</td><td class="col-data">830478</td></tr>
-                                <tr><td class="col-sno">3</td><td>School Code</td><td class="col-data">45397</td></tr>
-                                <tr><td class="col-sno">4</td><td>Complete Address</td><td class="col-data">Satyam International School, After 2nd Canal, Kappagal Village Road, Bellary – 583103</td></tr>
-                                <tr><td class="col-sno">5</td><td>Principal Name & Qualification</td><td class="col-data">Gina Grace (M.Com B.Ed)</td></tr>
-                                <tr><td class="col-sno">6</td><td>School Email ID</td><td class="col-data">info@satyam.com</td></tr>
-                                <tr><td class="col-sno">7</td><td>Contact Details</td><td class="col-data">+91 809538616</td></tr>
-                            </tbody>
-                        </table>
+            <div class="accordion-item anim-up delay-100">
+                <button class="accordion-header active">
+                    <div class="header-title">
+                        <i class="fa-solid fa-circle-info"></i> General Information
+                    </div>
+                    <i class="fa-solid fa-chevron-down icon-toggle"></i>
+                </button>
+                <div class="accordion-content" style="max-height: 1000px;"> 
+                    <div class="content-inner">
+                        <div class="table-responsive">
+                            <table class="custom-table">
+                                <thead>
+                                    <tr>
+                                        <th class="col-sno">S.NO</th>
+                                        <th>INFORMATION</th>
+                                        <th>DETAILS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td class="col-sno">1</td><td>Name of the School</td><td class="col-data">Satyam International School</td></tr>
+                                    <tr><td class="col-sno">2</td><td>Affiliation No.</td><td class="col-data">830478</td></tr>
+                                    <tr><td class="col-sno">3</td><td>School Code</td><td class="col-data">45397</td></tr>
+                                    <tr><td class="col-sno">4</td><td>Complete Address</td><td class="col-data">Satyam International School, After 2nd Canal, Kappagal Village Road, Bellary – 583103</td></tr>
+                                    <tr><td class="col-sno">5</td><td>Principal Name & Qualification</td><td class="col-data">Gina Grace (M.Com B.Ed)</td></tr>
+                                    <tr><td class="col-sno">6</td><td>School Email ID</td><td class="col-data">info@satyam.com</td></tr>
+                                    <tr><td class="col-sno">7</td><td>Contact Details</td><td class="col-data">+91 809538616</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="accordion-item anim-up delay-200">
-            <button class="accordion-header">
-                <div class="header-title">
-                    <i class="fa-solid fa-folder-open"></i> Documents & Information
-                </div>
-                <i class="fa-solid fa-chevron-down icon-toggle"></i>
-            </button>
-            <div class="accordion-content">
-                <div class="content-inner">
-                    <div class="table-responsive">
-                        <table class="custom-table">
-                            <thead>
-                                <tr>
-                                    <th class="col-sno">S.NO</th>
-                                    <th>DOCUMENTS / INFORMATION</th>
-                                    <th class="text-right">ACTION</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="col-sno">1</td><td>Copies CBSE of Affiliation/Upgradation Letter</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/School-Affiliation.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
-                                <tr><td class="col-sno">2</td><td>Copies of Societies/Trust/Company Registration/Renewal Certificate</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/Society-Members-List.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
-                                <tr><td class="col-sno">3</td><td>Copy of No Objection Certificate (NOC) Issued by State Govt.</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/NOC.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
-                                <tr><td class="col-sno">4</td><td>Copies of Recognition Certificate under RTE Act, 2009</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/Recognition-Certificate.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
-                                <tr><td class="col-sno">5</td><td>Copy of Valid Building Safety Certificate (NBC)</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/Building-Safety-Certificate.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
-                                <tr><td class="col-sno">6</td><td>Copy of Valid Fire Safety Certificate</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/Fire-Safety.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
-                                <tr><td class="col-sno">7</td><td>Copy of the DEO Certificate for Affiliation</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/DEO-Certificate.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
-                                <tr><td class="col-sno">8</td><td>Copies of Valid Water, Health, and Sanitation Certificates</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/Drinking-Water.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
-                                <tr><td class="col-sno">9</td><td>Copy of Fee Structure of School</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/Fee-Structure-for-the-year-2026-27.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
-                                <tr><td class="col-sno">10</td><td>Copy of PTA List</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/PTA-List.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
-                                <tr><td class="col-sno">11</td><td>Copy of SMC List</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/SMC-List.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
-                                <tr><td class="col-sno">12</td><td>Copy of Academic Calendar</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/PTA-List.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
-                                <tr><td class="col-sno">13</td><td>3 Year Results of Class X</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/3years_results" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
-                                <tr><td class="col-sno">14</td><td>Mandatory Public Disclosure</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/Mandatory-Disclosure-Details.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
-                            </tbody>
-                        </table>
+            <div class="accordion-item anim-up delay-200">
+                <button class="accordion-header">
+                    <div class="header-title">
+                        <i class="fa-solid fa-folder-open"></i> Documents & Information
+                    </div>
+                    <i class="fa-solid fa-chevron-down icon-toggle"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="content-inner">
+                        <div class="table-responsive">
+                            <table class="custom-table">
+                                <thead>
+                                    <tr>
+                                        <th class="col-sno">S.NO</th>
+                                        <th>DOCUMENTS / INFORMATION</th>
+                                        <th class="text-right">ACTION</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td class="col-sno">1</td><td>Copies CBSE of Affiliation/Upgradation Letter</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/School-Affiliation.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
+                                    <tr><td class="col-sno">2</td><td>Copies of Societies/Trust/Company Registration/Renewal Certificate</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/Society-Members-List.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
+                                    <tr><td class="col-sno">3</td><td>Copy of No Objection Certificate (NOC) Issued by State Govt.</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/NOC.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
+                                    <tr><td class="col-sno">4</td><td>Copies of Recognition Certificate under RTE Act, 2009</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/Recognition-Certificate.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
+                                    <tr><td class="col-sno">5</td><td>Copy of Valid Building Safety Certificate (NBC)</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/Building-Safety-Certificate.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
+                                    <tr><td class="col-sno">6</td><td>Copy of Valid Fire Safety Certificate</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/Fire-Safety.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
+                                    <tr><td class="col-sno">7</td><td>Copy of the DEO Certificate for Affiliation</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/DEO-Certificate.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
+                                    <tr><td class="col-sno">8</td><td>Copies of Valid Water, Health, and Sanitation Certificates</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/Drinking-Water.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
+                                    <tr><td class="col-sno">9</td><td>Copy of Fee Structure of School</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/Fee-Structure-for-the-year-2026-27.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
+                                    <tr><td class="col-sno">10</td><td>Copy of PTA List</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/PTA-List.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
+                                    <tr><td class="col-sno">11</td><td>Copy of SMC List</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/SMC-List.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
+                                    <tr><td class="col-sno">12</td><td>Copy of Academic Calendar</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/PTA-List.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
+                                    <tr><td class="col-sno">13</td><td>3 Year Results of Class X</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/3years_results" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
+                                    <tr><td class="col-sno">14</td><td>Mandatory Public Disclosure</td><td class="text-right"><a href="https://satyaminternationalschool.com/wp-content/uploads/2026/06/Mandatory-Disclosure-Details.pdf" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> View PDF</a></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="accordion-item anim-up delay-300">
-            <button class="accordion-header">
-                <div class="header-title">
-                    <i class="fa-solid fa-chart-simple"></i> Result and Academics
-                </div>
-                <i class="fa-solid fa-chevron-down icon-toggle"></i>
-            </button>
-            <div class="accordion-content">
-                <div class="content-inner">
-                    <h4 class="sub-heading">Result Class: X</h4>
-                    <div class="table-responsive">
-                        <table class="custom-table">
-                            <thead>
-                                <tr>
-                                    <th>YEAR</th>
-                                    <th>REGISTERED</th>
-                                    <th>PASSED</th>
-                                    <th>PASS %</th>
-                                    <th>REMARKS</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>2016</td><td>74</td><td>74</td><td>100%</td><td>Nil</td></tr>
-                                <tr><td>2017</td><td>91</td><td>91</td><td>100%</td><td>Nil</td></tr>
-                                <tr><td>2018</td><td>101</td><td>101</td><td>100%</td><td>Nil</td></tr>
-                                <tr><td>2019</td><td>105</td><td>105</td><td>100%</td><td>Nil</td></tr>
-                                <tr><td>2020</td><td>141</td><td>135</td><td>95.74%</td><td>Nil</td></tr>
-                            </tbody>
-                        </table>
+            <div class="accordion-item anim-up delay-300">
+                <button class="accordion-header">
+                    <div class="header-title">
+                        <i class="fa-solid fa-chart-simple"></i> Result and Academics
                     </div>
+                    <i class="fa-solid fa-chevron-down icon-toggle"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="content-inner">
+                        <h4 class="sub-heading">Result Class: X</h4>
+                        <div class="table-responsive">
+                            <table class="custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>YEAR</th>
+                                        <th>REGISTERED</th>
+                                        <th>PASSED</th>
+                                        <th>PASS %</th>
+                                        <th>REMARKS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>2016</td><td>74</td><td>74</td><td>100%</td><td>Nil</td></tr>
+                                    <tr><td>2017</td><td>91</td><td>91</td><td>100%</td><td>Nil</td></tr>
+                                    <tr><td>2018</td><td>101</td><td>101</td><td>100%</td><td>Nil</td></tr>
+                                    <tr><td>2019</td><td>105</td><td>105</td><td>100%</td><td>Nil</td></tr>
+                                    <tr><td>2020</td><td>141</td><td>135</td><td>95.74%</td><td>Nil</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
 
-                    <h4 class="sub-heading">Result Class: XII</h4>
-                    <div class="table-responsive">
-                        <table class="custom-table">
-                            <thead>
-                                <tr>
-                                    <th>YEAR</th>
-                                    <th>REGISTERED</th>
-                                    <th>PASSED</th>
-                                    <th>PASS %</th>
-                                    <th>REMARKS</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>2020</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="accordion-item anim-up delay-400">
-            <button class="accordion-header">
-                <div class="header-title">
-                    <i class="fa-solid fa-chalkboard-user"></i> Staff (Teaching)
-                </div>
-                <i class="fa-solid fa-chevron-down icon-toggle"></i>
-            </button>
-            <div class="accordion-content">
-                <div class="content-inner">
-                    <div class="table-responsive">
-                        <table class="custom-table">
-                            <thead>
-                                <tr>
-                                    <th class="col-sno">S.NO</th>
-                                    <th>INFORMATION</th>
-                                    <th>DETAILS</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="col-sno">1</td><td>Principal</td><td>1</td></tr>
-                                <tr><td class="col-sno">2</td><td>Total No. of Teachers</td><td>44</td></tr>
-                                <tr><td class="col-sno">3</td><td>Teachers Section Ratio</td><td>1.8</td></tr>
-                                <tr><td class="col-sno">4</td><td>Details of Special Educator</td><td>T Sunkeswarara Reddy</td></tr>
-                                <tr><td class="col-sno">5</td><td>Details of Counsellor and Wellness Teacher</td><td>Chrislene Pallavi</td></tr>
-                            </tbody>
-                        </table>
+                        <h4 class="sub-heading">Result Class: XII</h4>
+                        <div class="table-responsive">
+                            <table class="custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>YEAR</th>
+                                        <th>REGISTERED</th>
+                                        <th>PASSED</th>
+                                        <th>PASS %</th>
+                                        <th>REMARKS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>2020</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="accordion-item anim-up delay-500">
-            <button class="accordion-header">
-                <div class="header-title">
-                    <i class="fa-solid fa-school"></i> School Infrastructure
-                </div>
-                <i class="fa-solid fa-chevron-down icon-toggle"></i>
-            </button>
-            <div class="accordion-content">
-                <div class="content-inner">
-                    <div class="table-responsive">
-                        <table class="custom-table">
-                            <thead>
-                                <tr>
-                                    <th class="col-sno">S.NO</th>
-                                    <th>INFORMATION</th>
-                                    <th>DETAILS</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="col-sno">1</td><td>Total Campus Area (Sq Mtr)</td><td>8094</td></tr>
-                                <tr><td class="col-sno">2</td><td>No. and Size of Classrooms (in Sq Mtr)</td><td>20 (41.4 Sq.mts)</td></tr>
-                                <tr><td class="col-sno">3</td><td>Laboratories</td><td>4 Labs (41.4 Sq.mts) + 1 Comp (83 Sq.mts)</td></tr>
-                                <tr><td class="col-sno">4</td><td>Internet Facility</td><td>Yes</td></tr>
-                                <tr><td class="col-sno">5</td><td>No. of Girls Toilets</td><td>3</td></tr>
-                                <tr><td class="col-sno">6</td><td>No. of Boys Toilets</td><td>3</td></tr>
-                            </tbody>
-                        </table>
+            <div class="accordion-item anim-up delay-400">
+                <button class="accordion-header">
+                    <div class="header-title">
+                        <i class="fa-solid fa-chalkboard-user"></i> Staff (Teaching)
+                    </div>
+                    <i class="fa-solid fa-chevron-down icon-toggle"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="content-inner">
+                        <div class="table-responsive">
+                            <table class="custom-table">
+                                <thead>
+                                    <tr>
+                                        <th class="col-sno">S.NO</th>
+                                        <th>INFORMATION</th>
+                                        <th>DETAILS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td class="col-sno">1</td><td>Principal</td><td>1</td></tr>
+                                    <tr><td class="col-sno">2</td><td>Total No. of Teachers</td><td>44</td></tr>
+                                    <tr><td class="col-sno">3</td><td>Teachers Section Ratio</td><td>1.8</td></tr>
+                                    <tr><td class="col-sno">4</td><td>Details of Special Educator</td><td>T Sunkeswarara Reddy</td></tr>
+                                    <tr><td class="col-sno">5</td><td>Details of Counsellor and Wellness Teacher</td><td>Chrislene Pallavi</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    </div>
+            <div class="accordion-item anim-up delay-500">
+                <button class="accordion-header">
+                    <div class="header-title">
+                        <i class="fa-solid fa-school"></i> School Infrastructure
+                    </div>
+                    <i class="fa-solid fa-chevron-down icon-toggle"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="content-inner">
+                        <div class="table-responsive">
+                            <table class="custom-table">
+                                <thead>
+                                    <tr>
+                                        <th class="col-sno">S.NO</th>
+                                        <th>INFORMATION</th>
+                                        <th>DETAILS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td class="col-sno">1</td><td>Total Campus Area (Sq Mtr)</td><td>8094</td></tr>
+                                    <tr><td class="col-sno">2</td><td>No. and Size of Classrooms (in Sq Mtr)</td><td>20 (41.4 Sq.mts)</td></tr>
+                                    <tr><td class="col-sno">3</td><td>Laboratories</td><td>4 Labs (41.4 Sq.mts) + 1 Comp (83 Sq.mts)</td></tr>
+                                    <tr><td class="col-sno">4</td><td>Internet Facility</td><td>Yes</td></tr>
+                                    <tr><td class="col-sno">5</td><td>No. of Girls Toilets</td><td>3</td></tr>
+                                    <tr><td class="col-sno">6</td><td>No. of Boys Toilets</td><td>3</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
 
     <footer>
         <div class="container">
@@ -675,42 +547,56 @@
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            const deskBtn = document.querySelector('.desktop-only');
+        document.addEventListener('DOMContentLoaded', () => {
             
-            navLinks.classList.toggle('active');
-            
-            if(window.innerWidth <= 900) {
-                if(navLinks.classList.contains('active')) {
-                    if(deskBtn) deskBtn.style.display = 'none';
-                } else {
-                    if(deskBtn) deskBtn.style.display = 'block';
-                }
+            /* --- 1. MOBILE MENU LOGIC --- */
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            const dropdownToggle = document.querySelector('.dropdown-toggle');
+            const dropdownMenu = document.querySelector('.dropdown');
+
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    const icon = menuToggle.querySelector('i');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
             }
-        }
 
-        // Accordion Logic
-        const accordions = document.querySelectorAll('.accordion-header');
+            if (dropdownToggle) {
+                dropdownToggle.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 900) {
+                        e.preventDefault();
+                        dropdownMenu.classList.toggle('show');
+                    }
+                });
+            }
 
-        accordions.forEach(acc => {
-            acc.addEventListener('click', function() {
-                // Toggle active class
-                this.classList.toggle('active');
-                
-                // Toggle panel visibility
-                const panel = this.nextElementSibling;
-                if (panel.style.maxHeight) {
-                    panel.style.maxHeight = null;
-                } else {
-                    panel.style.maxHeight = panel.scrollHeight + "px";
-                }
+            /* --- 2. ACCORDION LOGIC --- */
+            const accordions = document.querySelectorAll('.accordion-header');
+
+            accordions.forEach(acc => {
+                acc.addEventListener('click', function() {
+                    // Toggle active class
+                    this.classList.toggle('active');
+                    
+                    // Toggle panel visibility
+                    const panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                    } else {
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    }
+                });
             });
-        });
 
-        // Scroll Animation
-        document.addEventListener('DOMContentLoaded', function () {
+            /* --- 3. SCROLL ANIMATION --- */
             const observer = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {

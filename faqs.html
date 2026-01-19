@@ -8,263 +8,14 @@
     <title>FAQs & Admissions - Satyam International School</title>
 
     <link rel="shortcut icon" href="images/Satyam_Icon_1.png" type="image/x-icon">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="css/sidepages.css">
     <style>
-        /* --- GLOBAL VARIABLES --- */
-        :root {
-            --primary-blue: #252641;
-            --primary-yellow: #ffd166;
-            --primary-purple: #cb8b2b;
-            --primary-orange: #f48c06;
-            --primary-green: #2ec4b6;
-            --text-grey: #696984;
-            --bg-light: #F9FAFB;
-            --white: #ffffff;
-            --radius-btn: 50px;
-            --radius-card: 20px;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
-            color: var(--primary-blue);
-            background-color: var(--bg-light);
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; padding: 0; margin: 0; }
-        
-        /* --- ANIMATIONS --- */
-        .animate-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
-        .animate-up.in-view { opacity: 1; transform: translateY(0); }
-        .delay-1 { transition-delay: 0.2s; }
-        .delay-2 { transition-delay: 0.4s; }
-        @keyframes float { 0% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-15px) rotate(5deg); } 100% { transform: translateY(0px) rotate(0deg); } }
-        @keyframes expandWidth { from { width: 0; } to { width: 90px; } }
-
-        /* --- INDEX HEADER STYLES --- */
-        header {
-            background-color: white;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        header nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        header .logo-icon {
-            width: 190px;
-            height: 100px;
-        }
-
-        header .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 5px;
-        }
-
-        header .nav-links {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        header .nav-links a {
-            color: var(--primary-blue);
-            font-weight: 500;
-            font-size: 1rem;
-            position: relative;
-            text-decoration: none;
-        }
-
-        header .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: rgb(251, 130, 0);
-            transition: width 0.3s;
-        }
-
-        header .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        header .nav-links li {
-            position: relative;
-        }
-
-        header .nav-links .dropdown-toggle {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--primary-blue);
-            font-weight: 500;
-            cursor: pointer;
-            text-decoration: none;
-            position: relative;
-        }
-
-        header .nav-links .dropdown-toggle::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: rgb(251, 130, 0);
-            transition: width 0.3s;
-        }
-
-        header .nav-links .dropdown-toggle:hover::after {
-            width: 100%;
-        }
-
-        /* Remove underline for Academics dropdown toggle only */
-        header .nav-links .dropdown-toggle:nth-child(1)::after {
-            display: none;
-        }
-
-        header .nav-links .dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: var(--white);
-            min-width: 200px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-            padding: 8px 0;
-            display: none;
-            z-index: 2000;
-            list-style: none;
-            margin: 0;
-            margin-top: 10px;
-        }
-
-        header .nav-links .dropdown::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            background: transparent;
-        }
-
-        header .nav-links .dropdown li {
-            padding: 0;
-        }
-
-        header .nav-links .dropdown a {
-            display: block;
-            padding: 10px 18px;
-            color: black;
-            font-weight: 500;
-            text-decoration: none;
-            position: relative;
-        }
-
-        header .nav-links .dropdown a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgb(251, 130, 0);
-            transition: width 0.3s;
-        }
-
-        header .nav-links .dropdown a:hover {
-            background: rgba(244, 140, 6, 0.06);
-            color: var(--primary-blue);
-        }
-
-        header .nav-links .dropdown a:hover::after {
-            width: calc(100% - 36px);
-        }
-
-        header .nav-links li:hover>.dropdown {
-            display: block;
-        }
-
-        header .nav-links .dropdown:hover {
-            display: block;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 35px;
-            border-radius: var(--radius-btn);
-            font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-        }
-
-        .btn-white {
-            background: var(--white);
-            color: var(--primary-blue);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-white:hover {
-            color: var(--primary-orange);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-        }
-        /* Mobile Contact Button */
-        .mobile-btn { display: none; margin-top: 15px; width: 100%; }
-        .desktop-btn { display: block; }
-
-        /* Mobile Menu Toggle */
-        .menu-toggle { 
-            display: none; 
-            font-size: 1.6rem; 
-            color: var(--primary-orange); 
-            cursor: pointer; 
-            transition: 0.3s;
-            padding: 5px;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero-section {
-            position: relative;
-            padding: 160px 0 100px;
-            min-height: 600px;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-
+       
         .hero-bg-diag {
             position: absolute;
             top: 0; left: 0; width: 80%; height: 160%;
@@ -274,39 +25,8 @@
             z-index: 0;
         }
 
-        .hero-content { position: relative; z-index: 2; width: 100%; }
-        
-        .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1;
-            margin-bottom: 20px; color: white;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.1rem; color: #f0f0f0; max-width: 500px; line-height: 1.7; margin-bottom: 30px;
-            border-left: 4px solid var(--primary-orange); padding-left: 20px;
-        }
-
-        .title-underline {
-            height: 6px; border-radius: 6px; width: 80px;
-            background: var(--primary-orange); margin-bottom: 25px;
-            animation: expandWidth 1s ease-out forwards;
-        }
-
-        /* Floating Overlay Card */
-        .hero-card {
-            background: white; padding: 40px; border-radius: 25px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.2); 
-            max-width: 600px;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* Desktop Overlay Effect */
         @media (min-width: 992px) {
-            .hero-card {
-                margin-left: 0px; 
-                margin-right: 0;
-            }
+            .hero-card { margin-left: 0; margin-right: 0; }
         }
 
         .hero-card h3 { color: var(--primary-blue); font-weight: 700; margin-bottom: 15px; font-size: 1.8rem; }
@@ -367,7 +87,7 @@
         .step-desc { font-size: 0.9rem; color: var(--text-grey); line-height: 1.5; }
 
         /* --- FAQ SECTION --- */
-        .faq-section { padding: 30px 0 120px; background-color: white; }
+        .faq-section { padding: 30px 0 120px; background-color: transparent; }
         .faq-wrapper { max-width: 900px; margin: 0 auto; }
         
         .cat-header { 
@@ -379,7 +99,7 @@
 
         .acc-item { 
             margin-bottom: 15px; border-radius: 12px; overflow: hidden; 
-            border: 1px solid #eee; transition: 0.3s;
+            border: 1px solid #eee; transition: 0.3s; background: white;
         }
         .acc-item:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-color: rgba(244,140,6,0.3); }
 
@@ -410,80 +130,62 @@
         .reset-filter-btn.visible { display: block; }
         .reset-filter-btn:hover { background: var(--primary-orange); transform: translateY(-3px); }
 
-        /* --- FOOTER --- */
+        /* --- FOOTER STYLES (FROM INDEX) --- */
         footer { background-color: #252641; color: #B2B3CF; padding: 80px 0 40px; text-align: center; }
         .footer-logo { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 40px; }
         .footer-logo h2 { color: white; padding-left: 15px; border-left: 1px solid #626381; font-weight: 600; letter-spacing: 1px; margin: 0; }
-        .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; flex-wrap: wrap;}
+        .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; flex-wrap: wrap; }
+        .footer-links a { color: #B2B3CF; transition: 0.3s; }
         .footer-links a:hover { color: var(--primary-orange); }
+        .copyright { color: #B2B3CF; font-size: 0.9rem; margin-top: 20px; }
 
         /* --- RESPONSIVE / MOBILE FIX --- */
-        @media (max-width: 991px) {
-            header {
-                padding: 10px 0;
-            }
+        @media (max-width: 900px) {
+            /* 1. Show the Toggle Button */
+            .menu-toggle { display: block; }
 
-            .menu-toggle { 
-                display: block; 
-                order: 3; /* Ensure toggle is on the right */
-            }
-
-            .logo {
-                order: 1;
-            }
-
-            /* Hide the desktop contact button if desired, or let it sit. 
-               We will move the contact button into the menu for mobile in HTML or keep it alongside.
-               Here we keep it separate to match "desktop-btn" class logic if we added it, 
-               but based on existing code, we handle the list. */
-            
-            .nav-links { 
-                display: none; 
-                position: absolute;
-                top: 100%; /* Align exactly below header */
-                left: 0;
+            /* 2. Slide-out Menu Style (Standardized) */
+            .nav-links {
+                position: fixed;
+                top: 90px;
+                right: -100%;
                 width: 100%;
+                height: calc(100vh - 90px);
                 background: white;
                 flex-direction: column;
-                padding: 20px 0;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-                text-align: center;
-                gap: 20px;
-                border-top: 1px solid #eee;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 40px;
+                transition: right 0.4s ease-in-out;
+                box-shadow: -5px 0 10px rgba(0,0,0,0.1);
+                overflow-y: auto;
+                z-index: 999;
+                display: flex;
+                gap: 25px;
             }
 
-            .nav-links.active { 
-                display: flex; 
-            }
+            .nav-links.active { right: 0; }
+            .nav-links li { width: 100%; text-align: center; }
 
+            /* 3. Dropdown on Mobile */
             .nav-links .dropdown {
-                position: relative;
-                top: 0;
+                position: static;
+                width: 100%;
                 box-shadow: none;
+                border: none;
                 background: #f9f9f9;
-                text-align: center;
-                padding: 0;
-                display: none; /* Keep hidden until hover/click on mobile */
-            }
-            
-            /* Simple mobile dropdown fix: show on hover of parent li, or you might need JS click. 
-               CSS Hover on mobile can be tricky, but works for basic implementation */
-            .nav-links li:hover > .dropdown {
-                display: block;
+                display: none;
+                padding: 10px 0;
+                animation: none;
             }
 
-            /* Mobile styling for the external button if it overlaps */
-            .btn-white {
-                display: none; /* Hide the external button on mobile to save space */
-            }
+            .nav-links .dropdown.show { display: block; }
+            .nav-links li:hover > .dropdown { display: none; }
+            .nav-links li:hover > .dropdown.show { display: block; }
 
-            /* Show a contact link inside the menu for mobile (Added in HTML) */
-            .mobile-contact-btn {
-                display: block !important;
-            }
-
-            .hero-section { flex-direction: column; padding-top: 120px; text-align: center; }
-            .hero-bg-diag { width: 100%; height: 50%; clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); }
+            /* Hero Mobile */
+            .hero-section { flex-direction: column; padding-top: 120px; text-align: center; min-height: auto; padding-bottom: 60px; }
+            .hero-bg-diag { width: 100%; height: 70%; clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); }
             .hero-content { padding-top: 40px; }
             .hero-title { font-size: 2.5rem; color: var(--white); }
             .hero-subtitle { color: var(--bg-light); margin: 0 auto 30px; border: none; padding: 0; }
@@ -499,15 +201,12 @@
             .step-number { width: 25px; height: 25px; font-size: 0.8rem; }
             .step-content { padding-top: 10px; }
         }
-        
-        /* Helper for the duplicated contact button in menu */
-        .mobile-contact-btn { display: none; margin-top: 10px; font-weight: 700; color: var(--primary-orange); }
     </style>
 </head>
 
 <body>
 
-   <header class="anim-down">
+    <header class="anim-down">
         <div class="container">
             <nav>
                 <div class="logo">
@@ -515,12 +214,12 @@
                         <a href="index.html"><img src="images/sat.jpg"></a>
                     </div>
                 </div>
-                
-                <div class="menu-toggle" id="mobileMenuBtn">
+
+                <div class="menu-toggle">
                     <i class="fa-solid fa-bars"></i>
                 </div>
 
-                <ul class="nav-links" id="navLinks">
+                <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li>
                         <a href="#" class="dropdown-toggle">Academics <i class="fa-solid fa-caret-down"></i></a>
@@ -535,11 +234,8 @@
                     </li>
                     <li><a href="about-us.html">About Us</a></li>
                     <li><a href="mandatory-disclosure.html">Mandatory Disclosures</a></li>
-                    
-                    <li><a href="contact-us.html" class="mobile-contact-btn">Contact Us</a></li>
+                    <li><a href="contact-us.html" class="btn btn-white" style="display:inline-block; margin-top: 10px;">Contact Us</a></li>
                 </ul>
-                
-                <a href="contact-us.html" class="btn btn-white">Contact Us</a>
             </nav>
         </div>
     </header>
@@ -768,24 +464,28 @@
     <footer>
         <div class="container">
             <div class="footer-logo">
-                <img src="images/Satyam_Icon_1.png" alt="Logo" style="width: 40px; height: 40px;" onerror="this.style.display='none'">
+                <img src="images/Satyam_Icon_1.png" alt="Satyam International Logo" style="width: 40px; height: 40px;">
                 <h2>Satyam International <span style="font-size: 0.9rem; display: block; font-weight: 400; opacity: 0.7; margin-top: 5px;">School for Holistic Development</span></h2>
             </div>
+
             <div class="footer-links">
                 <a href="index.html">Home</a>
-                <a href="about-us.html">Academics</a>
                 <a href="about-us.html">About-us</a>
-                <a href="about-us.html">Contact-us</a>
+                <a href="#">Academics</a>
+                <a href="contact-us.html">Contact-us</a>
                 <a href="#">Privacy Policy</a>
             </div>
+            
             <p class="copyright">© 2026 All rights reserved by Kodemapa.</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Scroll Animation
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("Satyam International - FAQs Loaded");
+
+            // --- SCROLL ANIMATION ---
             const observer = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -794,17 +494,22 @@
                     }
                 });
             }, { threshold: 0.1 });
-            document.querySelectorAll('.animate-up, .anim-down').forEach(el => observer.observe(el));
-            
-            // Mobile Menu Toggle
-            const menuBtn = document.getElementById('mobileMenuBtn');
-            const navLinks = document.getElementById('navLinks');
-            
-            if(menuBtn){
-                menuBtn.addEventListener('click', () => {
+            document.querySelectorAll('.animate-up').forEach(el => observer.observe(el));
+
+            // --- MOBILE MENU LOGIC (FROM INDEX) ---
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            const dropdownToggle = document.querySelector('.dropdown-toggle');
+            const dropdownMenu = document.querySelector('.dropdown');
+
+            // 1. Toggle Hamburger Menu
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
                     navLinks.classList.toggle('active');
-                    const icon = menuBtn.querySelector('i');
-                    if(navLinks.classList.contains('active')){
+                    
+                    // Toggle Icon animation (Bars <-> Times)
+                    const icon = menuToggle.querySelector('i');
+                    if (navLinks.classList.contains('active')) {
                         icon.classList.remove('fa-bars');
                         icon.classList.add('fa-times');
                     } else {
@@ -813,20 +518,30 @@
                     }
                 });
             }
-        });
 
-        // Accordion Logic
-        const accHeaders = document.querySelectorAll(".acc-header");
-        accHeaders.forEach(header => {
-            header.addEventListener("click", function() {
-                // Toggle clicked
-                this.classList.toggle("active");
-                const panel = this.nextElementSibling;
-                if (panel.style.maxHeight) {
-                    panel.style.maxHeight = null;
-                } else {
-                    panel.style.maxHeight = panel.scrollHeight + "px";
-                }
+            // 2. Toggle Dropdown on Mobile
+            if (dropdownToggle) {
+                dropdownToggle.addEventListener('click', (e) => {
+                    // Only apply toggle logic if screen is mobile size (<= 900px)
+                    if (window.innerWidth <= 900) {
+                        e.preventDefault(); // Prevent navigating to '#'
+                        dropdownMenu.classList.toggle('show');
+                    }
+                });
+            }
+
+            // --- ACCORDION LOGIC ---
+            const accHeaders = document.querySelectorAll(".acc-header");
+            accHeaders.forEach(header => {
+                header.addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    const panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                    } else {
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    }
+                });
             });
         });
 
