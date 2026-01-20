@@ -26,16 +26,19 @@
     <link href="css/sidepages.css" rel="stylesheet">
 
     <style>
+        .hero-bg-diag {
+            position: absolute;
+            top: 0; left: 0; width: 80%; height: 100%;
+            background-image: linear-gradient(rgba(37, 38, 65, 0.8), rgba(37, 38, 65, 0.7)), url('images/satyam-3.jpeg'); 
+            background-size: cover; background-position: center;
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+            z-index: 0;
+        }
 
-        /* Container Size (Matches Index) */
-        .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
-   
-        .academic-hero { position: relative; padding: 100px 0 80px 0; overflow: hidden; }
-        .hero-bg-diag { position: absolute; top: -10%; left: -5%; width: 80%; height: 120%; background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./images/satyam-3.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat; clip-path: polygon(0 0, 100% 0, 78% 100%, 0% 100%); z-index: 0; }
         .page-title { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; line-height: 1.05; margin-bottom: 20px; position: relative; z-index: 1; color: var(--white); }
         .title-underline { height: 8px; border-radius: 6px; width: 90px; background: linear-gradient(90deg, var(--primary-orange), var(--primary-yellow)); animation: expandWidth 0.9s ease-out both; }
 
-                 /* --- RESPONSIVE / MOBILE FIX --- */
+        /* --- RESPONSIVE / MOBILE FIX --- */
         @media (max-width: 900px) {
 
             /* Hero Mobile */
@@ -88,7 +91,7 @@
         </div>
     </header>
 
-    <main style="padding-top: 120px; background-image: url(../images/academics-bg.png);">
+    <main>
 
         <section class="hero-section">
         <div class="hero-bg-diag"></div>
@@ -103,7 +106,7 @@
                     <h1 class="hero-title">Academic <br>Excellence</h1>
                     <div class="title-underline"></div>
                     <p class="hero-subtitle">
-We follow the CBSE curriculum, offering students access to a structured, progressive
+                        We follow the CBSE curriculum, offering students access to a structured, progressive
                             learning framework recognized throughout India.
                     </p>
                 </div>
