@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="author" content="elite-themes24">
     <meta name="description" content="Satyam International School - Excellence in Education for a Brighter Future">
-    <meta name="keywords" content="Responsive, HTML5, elite-themes24, Landing, Software, Mobile App, SaaS, Startup, Creative, Digital Product">
+    <meta name="keywords"
+        content="Responsive, HTML5, elite-themes24, Landing, Software, Mobile App, SaaS, Startup, Creative, Digital Product">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Satyam International School - Excellence in Education for a Brighter Future</title>
 
@@ -16,41 +17,273 @@
     <link rel="apple-touch-icon" sizes="120x120" href="images/Satyam_Icon_1.png">
     <link rel="apple-touch-icon" sizes="76x76" href="images/Satyam_Icon_1.png">
     <link rel="apple-touch-icon" href="images/Satyam_Icon_1.png">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap"
+        rel="stylesheet">
     <link href="css/values.css" rel="stylesheet">
     <link href="css/sidepages.css" rel="stylesheet">
 
     <style>
         .hero-bg-diag {
             position: absolute;
-            top: 0; left: 0; width: 80%; height: 100%;
-            background-image: linear-gradient(rgba(37, 38, 65, 0.8), rgba(37, 38, 65, 0.7)), url('images/satyam-3.jpeg'); 
-            background-size: cover; background-position: center;
+            top: 0;
+            left: 0;
+            width: 80%;
+            height: 100%;
+            background-image: linear-gradient(rgba(37, 38, 65, 0.8), rgba(37, 38, 65, 0.7)), url('images/satyam-3.jpeg');
+            background-size: cover;
+            background-position: center;
             clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
             z-index: 0;
         }
 
-        .page-title { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; line-height: 1.05; margin-bottom: 20px; position: relative; z-index: 1; color: var(--white); }
-        .title-underline { height: 8px; border-radius: 6px; width: 90px; background: linear-gradient(90deg, var(--primary-orange), var(--primary-yellow)); animation: expandWidth 0.9s ease-out both; }
+        .page-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            color: var(--white);
+        }
 
+        .title-underline {
+            height: 8px;
+            border-radius: 6px;
+            width: 90px;
+            background: linear-gradient(90deg, var(--primary-orange), var(--primary-yellow));
+            animation: expandWidth 0.9s ease-out both;
+        }
+
+        /* --- RESPONSIVE / MOBILE FIX --- */
         /* --- RESPONSIVE / MOBILE FIX --- */
         @media (max-width: 900px) {
 
+            .container {
+                padding: 0 20px !important;
+            }
+
             /* Hero Mobile */
-            .hero-section { flex-direction: column; padding-top: 120px; text-align: center; min-height: auto; padding-bottom: 60px; }
-            .hero-bg-diag { width: 100%; height: 70%; clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); }
-            .hero-content { padding-top: 40px; }
-            .hero-title { font-size: 2.5rem; color: var(--white); }
-            .hero-subtitle { color: var(--bg-light); margin: 0 auto 30px; border: none; padding: 0; }
-            .title-underline { margin: 0 auto 20px; }
-            
+            .hero-section {
+                flex-direction: column;
+                padding-top: 120px;
+                text-align: center;
+                min-height: auto;
+                padding-bottom: 60px;
+            }
+
+            .hero-bg-diag {
+                width: 100%;
+                height: 70%;
+                clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+            }
+
+            .hero-content {
+                padding-top: 40px;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+                color: var(--white);
+            }
+
+            .hero-subtitle {
+                color: var(--bg-light);
+                margin: 0 auto 30px;
+                border: none;
+                padding: 0;
+            }
+
+            .title-underline {
+                margin: 0 auto 20px;
+            }
+
             /* Remove negative margin on mobile to stack normally */
-            .hero-card { margin: 30px auto 0; width: 100%; margin-left: auto; }
+            .hero-card {
+                margin: 30px auto 0;
+                width: 100%;
+                margin-left: auto;
+            }
+        }
+
+        .card-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .card-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .card-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+
+        .card-list::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        /* --- STAY UPDATED & INFORMED SECTION OVERRIDES --- */
+        .software-section {
+            padding: 0px 0;
+            text-align: center;
+        }
+
+        .soft-subtitle {
+            color: var(--text-grey);
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .soft-title {
+            font-size: 2.4rem;
+            color: var(--primary-blue);
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .soft-title span {
+            color: var(--primary-orange);
+        }
+
+        .soft-desc {
+            color: var(--text-grey);
+            max-width: 600px;
+            margin: 0 auto 80px;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .cards-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        .info-card {
+            flex: 1;
+            min-width: 320px;
+            max-width: 380px;
+            height: 500px;
+            border-radius: 30px;
+            position: relative;
+            padding: 60px 25px 30px;
+            color: white;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            margin-top: 40px;
+        }
+
+        .card-purple {
+            background-color: #5B72EE;
+        }
+
+        .card-orange {
+            background-color: #F48C06;
+        }
+
+        .card-cyan {
+            background-color: #29B9E7;
+        }
+
+        .card-icon-circle {
+            width: 80px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid white;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            z-index: 2;
+        }
+
+        .card-icon-circle i {
+            font-size: 2.2rem;
+        }
+
+        .card-purple .card-icon-circle {
+            background-color: #5B72EE;
+        }
+
+        .card-orange .card-icon-circle {
+            background-color: #F48C06;
+        }
+
+        .card-cyan .card-icon-circle {
+            background-color: #29B9E7;
+        }
+
+        .info-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .card-list {
+            width: 100%;
+            flex-grow: 1;
+            overflow-y: auto;
+            padding-right: 5px;
+            text-align: left;
+        }
+
+        .card-list-item {
+            background: rgba(255, 255, 255, 0.9);
+            color: #252641;
+            padding: 15px 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-list-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .card-list-item h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #252641;
+        }
+
+        .card-list-item p {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #5F5F7E;
+            margin: 0;
+        }
+
+        @media (max-width: 1100px) {
+            .cards-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .info-card {
+                width: 90%;
+                max-width: 450px;
+                margin-bottom: 50px;
+            }
         }
     </style>
 </head>
@@ -85,7 +318,8 @@
                     </li>
                     <li><a href="about-us.html">About Us</a></li>
                     <li><a href="mandatory-disclosure.html">Mandatory Disclosures</a></li>
-                    <li><a href="contact-us.html" class="btn btn-white" style="display:inline-block; margin-top: 10px;">Contact Us</a></li>
+                    <li><a href="contact-us.html" class="btn btn-white"
+                            style="display:inline-block; margin-top: 10px;">Contact Us</a></li>
                 </ul>
             </nav>
         </div>
@@ -94,43 +328,90 @@
     <main>
 
         <section class="hero-section">
-        <div class="hero-bg-diag"></div>
-        <div class="shape-box"></div>
-        <div class="shape-circle"></div>
+            <div class="hero-bg-diag"></div>
+            <div class="shape-box"></div>
+            <div class="shape-circle"></div>
 
-        <div class="container hero-content">
-            <div class="row align-items-center">
-                <div class="col-lg-6 animate-up">
-                    <span style="color: var(--primary-yellow); font-weight: 700; letter-spacing: 1px;">THE SATYAM
+            <div class="container hero-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 animate-up">
+                        <span style="color: var(--primary-yellow); font-weight: 700; letter-spacing: 1px;">THE SATYAM
                             WAY</span>
-                    <h1 class="hero-title">Academic <br>Excellence</h1>
-                    <div class="title-underline"></div>
-                    <p class="hero-subtitle">
-                        We follow the CBSE curriculum, offering students access to a structured, progressive
+                        <h1 class="hero-title">Academic <br>Excellence</h1>
+                        <div class="title-underline"></div>
+                        <p class="hero-subtitle">
+                            We follow the CBSE curriculum, offering students access to a structured, progressive
                             learning framework recognized throughout India.
-                    </p>
-                </div>
-
-                <div class="col-lg-6 animate-up delay-1">
-                    <div class="hero-card">
-                        <div class="quote-mark">“</div>
-                        <h3>Building a Legacy</h3>
-                        <p>
-                            "Education is not just about books and exams, it's about developing lifelong learners and
-                                responsible global citizens."
                         </p>
-                        <div style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
-                            <span style="font-weight: 700; color: var(--primary-blue);">— R. Jagadeesh Kumar</span>
-                            <div style="color: gold; font-size: 0.9rem; margin-top: 5px;">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+
+                    <div class="col-lg-6 animate-up delay-1">
+                        <div class="hero-card">
+                            <div class="quote-mark">“</div>
+                            <h3>Building a Legacy</h3>
+                            <p>
+                                "Education is not just about books and exams, it's about developing lifelong learners
+                                and
+                                responsible global citizens."
+                            </p>
+                            <div style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+                                <span style="font-weight: 700; color: var(--primary-blue);">— R. Jagadeesh Kumar</span>
+                                <div style="color: gold; font-size: 0.9rem; margin-top: 5px;">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
+        <section class="software-section container">
+            <div style="margin-top: 80px;"></div>
+            <h3 class="soft-subtitle">Excellence in Education for Over a Decade</h3>
+            <h2 class="soft-title">Stay Updated & <span>Informed.</span></h2>
+            <p class="soft-desc">
+                Keep track of the latest announcements, upcoming events, and important school guidelines all in one
+                place.
+            </p>
+
+            <div class="cards-row">
+
+                <div class="info-card card-purple">
+                    <div class="card-icon-circle">
+                        <i class="fa-regular fa-file-lines"></i>
+                    </div>
+                    <h3>Notice Board</h3>
+                    <div class="card-list" id="notice-list">
+                        <p style="padding: 20px; text-align: center;">Loading notices...</p>
+                    </div>
+                </div>
+
+                <div class="info-card card-orange">
+                    <div class="card-icon-circle">
+                        <i class="fa-regular fa-calendar-days"></i>
+                    </div>
+                    <h3>Events & Activities</h3>
+                    <div class="card-list" id="event-list">
+                        <p style="padding: 20px; text-align: center;">Loading events...</p>
+                    </div>
+                </div>
+
+                <div class="info-card card-cyan">
+                    <div class="card-icon-circle">
+                        <i class="fa-solid fa-user-group"></i>
+                    </div>
+                    <h3>School Regulation</h3>
+                    <div class="card-list" id="regulation-list">
+                        <p style="padding: 20px; text-align: center;">Loading regulations...</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <div style="margin-bottom: 80px;"></div>
         <section class="why-choose-section">
             <div class="why-shapes">
                 <div class="why-shape why-triangle why-triangle-1"></div>
@@ -292,11 +573,16 @@
                     </div>
                     <div class="col-lg-6 ps-lg-5">
                         <span class="section-badge" style="background: var(--primary-purple);">NCC & SPORTS</span>
-                        <h3 style="font-weight: 800; font-size: 2rem; margin-bottom: 15px;">Active Learning Through Sports & Fitness</h3>
-                        <p class="text-muted">Students engage in structured sports and fitness activities that enhance physical strength, teamwork, discipline, and focus, supporting overall growth alongside academics.</p>
+                        <h3 style="font-weight: 800; font-size: 2rem; margin-bottom: 15px;">Active Learning Through
+                            Sports & Fitness</h3>
+                        <p class="text-muted">Students engage in structured sports and fitness activities that enhance
+                            physical strength, teamwork, discipline, and focus, supporting overall growth alongside
+                            academics.</p>
                         <ul class="list-unstyled mt-3">
-                            <li class="mb-2"><i class="fa-solid fa-check-circle text-success me-2"></i>Enhanced Physical Fitness & Body Coordination.</li>
-                            <li class="mb-2"><i class="fa-solid fa-check-circle text-success me-2"></i> Strong Teamwork, Discipline & Sportsmanship.</li>
+                            <li class="mb-2"><i class="fa-solid fa-check-circle text-success me-2"></i>Enhanced Physical
+                                Fitness & Body Coordination.</li>
+                            <li class="mb-2"><i class="fa-solid fa-check-circle text-success me-2"></i> Strong Teamwork,
+                                Discipline & Sportsmanship.</li>
                         </ul>
                     </div>
                 </div>
@@ -310,8 +596,12 @@
                     </div>
                     <div class="col-lg-6 pe-lg-5">
                         <span class="section-badge" style="background: var(--primary-orange);">LEADERSHIP</span>
-                        <h3 style="font-weight: 800; font-size: 2rem; margin-bottom: 15px;">Nurturing Responsible, Resilient & Future-Ready Leaders</h3>
-                        <p class="text-muted">Through structured leadership activities, discipline-based training, and guided teamwork, students develop responsibility, resilience, confidence, and decision-making skills. These experiences prepare them to face challenges, lead with integrity, and succeed both academically and in real-life situations.</p>
+                        <h3 style="font-weight: 800; font-size: 2rem; margin-bottom: 15px;">Nurturing Responsible,
+                            Resilient & Future-Ready Leaders</h3>
+                        <p class="text-muted">Through structured leadership activities, discipline-based training, and
+                            guided teamwork, students develop responsibility, resilience, confidence, and
+                            decision-making skills. These experiences prepare them to face challenges, lead with
+                            integrity, and succeed both academically and in real-life situations.</p>
                         <p class="text-muted">These activities build character, instill discipline, and teach the
                             graceful handling of both victory and defeat.</p>
                     </div>
@@ -325,7 +615,9 @@
         <div class="container">
             <div class="footer-logo">
                 <img src="images/Satyam_Icon_1.png" alt="Satyam International Logo" style="width: 40px; height: 40px;">
-                <h2>Satyam International <span style="font-size: 0.9rem; display: block; font-weight: 400; opacity: 0.7; margin-top: 5px;">School for Holistic Development</span></h2>
+                <h2>Satyam International <span
+                        style="font-size: 0.9rem; display: block; font-weight: 400; opacity: 0.7; margin-top: 5px;">School
+                        for Holistic Development</span></h2>
             </div>
 
             <div class="footer-links">
@@ -335,13 +627,100 @@
                 <a href="contact-us.html">Contact-us</a>
                 <a href="#">Privacy Policy</a>
             </div>
-            
+
             <p class="copyright">© 2026 All rights reserved by Kodemapa.</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+
+        async function getSheetData(sheetId, sheetName) {
+            const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(sheetName)}`;
+            try {
+                const response = await fetch(url);
+                const text = await response.text();
+                if (text.includes("<!DOCTYPE html>")) return [];
+                const jsonText = text.substring(47).slice(0, -2);
+                const json = JSON.parse(jsonText);
+                return json.table.rows.map(row => row.c.map(cell => (cell ? (cell.v ?? null) : null)));
+            } catch (error) {
+                return [];
+            }
+        }
+
+        const mySheetId = '1Gv6BPrI-pX5-VtXXwm2zOZIte4-UMjSKEYfeXQvbDO8';
+
+        async function updateNoticeBoard() {
+            const container = document.getElementById('notice-list');
+            container.innerHTML = '<p style="padding: 20px; text-align: center;">Loading notices...</p>';
+            const data = await getSheetData(mySheetId, 'Sheet1');
+            if (!data.length) {
+                container.innerHTML = '<p style="padding: 20px; text-align: center;">Unable to load data.</p>';
+                return;
+            }
+            container.innerHTML = '';
+            data.forEach(row => {
+                if (row[0]) {
+                    const item = document.createElement('div');
+                    item.className = 'card-list-item';
+                    item.innerHTML = `<h4>${row[0]}</h4>${row[1] ? `<p>${row[1]}</p>` : ''}`;
+                    container.appendChild(item);
+                }
+            });
+        }
+
+        async function updateEvents() {
+            const container = document.getElementById('event-list');
+            container.innerHTML = '<p style="padding: 20px; text-align: center;">Loading events...</p>';
+            const data = await getSheetData(mySheetId, 'Sheet2');
+            if (!data.length) {
+                container.innerHTML = '<p style="padding: 20px; text-align: center;">Unable to load data.</p>';
+                return;
+            }
+            container.innerHTML = '';
+            data.forEach(row => {
+                if (row[0]) {
+                    const item = document.createElement('div');
+                    item.className = 'card-list-item';
+                    item.innerHTML = `<h4>${row[0]}</h4>${row[1] ? `<p>${row[1]}</p>` : ''}`;
+                    container.appendChild(item);
+                }
+            });
+        }
+
+        async function updateRegulations() {
+            const container = document.getElementById('regulation-list');
+            container.innerHTML = '<p style="padding: 20px; text-align: center;">Loading regulations...</p>';
+            const data = await getSheetData(mySheetId, 'Sheet3');
+            if (!data.length) {
+                container.innerHTML = '<p style="padding: 20px; text-align: center;">Unable to load data.</p>';
+                return;
+            }
+            container.innerHTML = '';
+            data.forEach(row => {
+                if (row[0]) {
+                    const item = document.createElement('div');
+                    item.className = 'card-list-item';
+                    item.innerHTML = `<h4>${row[0]}</h4>${row[1] ? `<p>${row[1]}</p>` : ''}`;
+                    container.appendChild(item);
+                }
+            });
+        }
+
+        // Auto-refresh every 60 seconds (optional, for "live" updates)
+        setInterval(() => {
+            updateNoticeBoard();
+            updateEvents();
+            updateRegulations();
+        }, 60000);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateNoticeBoard();
+            updateEvents();
+            updateRegulations();
+        });
+
         document.addEventListener('DOMContentLoaded', () => {
             console.log("Satyam International - Academics Loaded");
 
@@ -368,7 +747,7 @@
             if (menuToggle) {
                 menuToggle.addEventListener('click', () => {
                     navLinks.classList.toggle('active');
-                    
+
                     // Toggle Icon animation (Bars <-> Times)
                     const icon = menuToggle.querySelector('i');
                     if (navLinks.classList.contains('active')) {

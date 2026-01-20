@@ -1161,7 +1161,7 @@ nav {
 .features-container {
     display: flex;
     flex-direction: column;
-    gap: 120px;
+    gap: 50px;
     /* Large gap between features */
 }
 
@@ -1674,7 +1674,7 @@ nav {
 
 /* --- INTEGRATIONS SECTION --- */
 .integrations {
-    padding: 120px 0;
+    padding: 60px 0;
     background-color: var(--white);
     /* White background per reference */
     position: relative;
@@ -2153,6 +2153,76 @@ footer {
 
 /* add missing css here */ 
 
+/* --- TESTIMONIAL CARD MOBILE FIX --- */
+@media (max-width: 600px) {
+    .test-card-footer {
+        flex-direction: column;
+        align-items: center;
+        padding-left: 0;
+        gap: 4px;
+        text-align: center;
+    }
+    .test-author {
+        display: block;
+        font-size: 1.05rem;
+        margin-bottom: 2px;
+    }
+    .test-rating-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+    .test-rating {
+        justify-content: center;
+        margin: 0 auto;
+        font-size: 1rem;
+    }
+    .test-card {
+        padding: 18px 8px;
+    }
+}
+/* --- LATEST NEWS SECTION MOBILE FIXES --- */
+@media (max-width: 600px) {
+    .latest-news-section.container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    #latest-news-grid.blog-listing-grid {
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+        padding: 0 8px;
+    }
+    #latest-news-grid .news-card, #latest-news-grid > div {
+        border-radius: 18px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        background: #fff;
+        padding: 18px 12px;
+        margin: 0;
+        font-size: 1rem;
+        text-align: left;
+    }
+    #latest-news-grid img {
+        border-radius: 12px 12px 0 0;
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+    #latest-news-grid h4, #latest-news-grid h5 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+    }
+    #latest-news-grid p {
+        font-size: 0.98rem;
+        margin-bottom: 8px;
+    }
+    .section-header h2 {
+        font-size: 1.4rem !important;
+    }
+    .section-header p {
+        font-size: 1rem !important;
+    }
+}
 /* --- RESPONSIVE MEDIA QUERIES (UPDATED FOR MOBILE MENU) --- */
 @media (max-width: 900px) {
 
