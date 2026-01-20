@@ -20,253 +20,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="css/values.css" rel="stylesheet">
+    <link href="css/sidepages.css" rel="stylesheet">
 
     <style>
-        :root {
-            --primary-orange: #000;
-            --primary-blue: #252641;
-            --accent-purple: #545AE7;
-            --white: #ffffff;
-            --text-grey: #5F5F7E;
-            --border-light: #E1E1E1;
-            --radius-btn: 50px;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; text-decoration: none; list-style: none; }
-        
-        body { 
-            font-family: 'Poppins', sans-serif; 
-            color: var(--primary-blue); 
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-        /* --- HEADER STYLES --- */
-        :root {
-            --white: #ffffff;
-            --radius-btn: 50px;
-        }
-        
-        /* --- INDEX HEADER STYLES --- */
-        header {
-            background-color: white;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        header nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        header .logo-icon {
-            width: 190px;
-            height: 100px;
-        }
-
-        header .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 5px;
-        }
-
-        header .nav-links {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        header .nav-links a {
-            color: var(--primary-blue);
-            font-weight: 500;
-            font-size: 1rem;
-            position: relative;
-            text-decoration: none;
-        }
-
-        header .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: rgb(251, 130, 0);
-            transition: width 0.3s;
-        }
-
-        header .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        header .nav-links li {
-            position: relative;
-        }
-
-        header .nav-links .dropdown-toggle {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--primary-blue);
-            font-weight: 500;
-            cursor: pointer;
-            text-decoration: none;
-            position: relative;
-        }
-
-        header .nav-links .dropdown-toggle::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: rgb(251, 130, 0);
-            transition: width 0.3s;
-        }
-
-        header .nav-links .dropdown-toggle:hover::after {
-            width: 100%;
-        }
-
-        /* Remove underline for Academics dropdown toggle only */
-        header .nav-links .dropdown-toggle:nth-child(1)::after {
-            display: none;
-        }
-
-        header .nav-links .dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: var(--white);
-            min-width: 200px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-            padding: 8px 0;
-            display: none;
-            z-index: 2000;
-            list-style: none;
-            margin: 0;
-            margin-top: 10px;
-        }
-
-        header .nav-links .dropdown::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            background: transparent;
-        }
-
-        header .nav-links .dropdown li {
-            padding: 0;
-        }
-
-        header .nav-links .dropdown a {
-            display: block;
-            padding: 10px 18px;
-            color: black;
-            font-weight: 500;
-            text-decoration: none;
-            position: relative;
-        }
-
-        header .nav-links .dropdown a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgb(251, 130, 0);
-            transition: width 0.3s;
-        }
-
-        header .nav-links .dropdown a:hover {
-            background: rgba(244, 140, 6, 0.06);
-            color: var(--primary-blue);
-        }
-
-        header .nav-links .dropdown a:hover::after {
-            width: calc(100% - 36px);
-        }
-
-        header .nav-links li:hover>.dropdown {
-            display: block;
-        }
-
-        header .nav-links .dropdown:hover {
-            display: block;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 35px;
-            border-radius: var(--radius-btn);
-            font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-        }
-
-        .btn-white {
-            background: var(--white);
-            color: var(--primary-blue);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-white:hover {
-            color: var(--primary-orange);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-        }
-        /* Mobile Contact Button */
-        .mobile-btn { display: none; margin-top: 15px; width: 100%; }
-        .desktop-btn { display: block; }
-
-        /* Mobile Menu Toggle */
-        .menu-toggle { 
-            display: none; 
-            font-size: 1.6rem; 
-            color: var(--primary-orange); 
-            cursor: pointer; 
-            transition: 0.3s;
-            padding: 5px;
-        }
-
-        /* --- FOOTER STYLES --- */
-        footer { background-color: #252641; color: #B2B3CF; padding: 90px 0 50px; text-align: center; }
-        footer .footer-logo { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
-        footer .footer-logo h2 { color: white; padding-left: 15px; border-left: 1px solid #626381; font-weight: 600; letter-spacing: 1px; margin: 0; max-width: 100%; }
-        footer .footer-links { display: flex; justify-content: center; gap: 35px; margin-bottom: 35px; font-size: 1rem; }
-        footer .footer-links a { color: #B2B3CF; text-decoration: none; transition: color 0.3s; }
-        footer .footer-links a:hover { color: white; }
-        footer .copyright { font-size: 0.9rem; opacity: 0.6; margin: 0; }
-
         /* --- GALLERY SPECIFIC STYLES --- */
         main {
             padding-top: 100px;
@@ -316,7 +72,6 @@
             line-height: 1.1;
             letter-spacing: -0.5px;
         }
-
 
         /* Compact label-style filter chips (like the provided reference) */
         .filter-buttons {
@@ -383,45 +138,6 @@
             }
             100% {
                 transform: translateY(0) rotate(0deg);
-            }
-        }
-
-        /* Hero section animations */
-        .page-title {
-            animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        }
-
-        .title-underline {
-            animation: expandWidth 0.9s ease-out both, fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
-        }
-
-        .quote-box {
-            animation: slideInRight 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) 0.3s both;
-        }
-
-        .float-shape {
-            animation: float 6s ease-in-out infinite, fadeInScale 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both;
-        }
-
-        .animate-up {
-            animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        }
-
-        .animate-up.delay-1 {
-            animation-delay: 0.3s;
-        }
-
-        @keyframes popupIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.6) translateY(30px);
-            }
-            60% {
-                transform: scale(1.05);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
             }
         }
 
@@ -660,60 +376,13 @@
         }
 
          /* --- HERO SECTION --- */
-        .academic-hero {
-            position: relative;
-            padding: 180px 0 100px 0;
-            overflow: hidden;
-            min-height: 650px;
-            display: flex;
-            align-items: center;
-        }
-
         .hero-bg-diag {
-            position: absolute;
-            top: -10%;
-            left: -5%;
-            width: 85%;
-            height: 100%;
-            /* Add a tint using a linear-gradient overlay */
-            background-image: linear-gradient(rgba(37, 38, 65, 0.6), rgba(37, 38, 65, 0.6)),
-                url('images/skating_roll.webp');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            clip-path: polygon(0 0, 100% 0, 78% 100%, 0% 100%);
-            z-index: 0;
+            position: absolute; top: 0; left: 0; width: 80%; height: 100%;
+            background-image: linear-gradient(rgba(37, 38, 65, 0.8), rgba(37, 38, 65, 0.7)), url('images/skating_roll.webp'); 
+            background-size: cover; background-position: center;
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%); z-index: 0;
         }
-
-        .page-title {
-            font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; line-height: 1.05;
-            margin-bottom: 20px; position: relative; z-index: 1; color: var(--white);
-        }
-
-        @keyframes expandWidth {
-            0% { width: 0; opacity: 0; }
-            100% { width: 90px; opacity: 1; }
-        }
-
-        .title-underline {
-            height: 8px; border-radius: 6px; width: 90px;
-            background: linear-gradient(90deg, var(--primary-orange), var(--primary-yellow));
-        }
-
-        .float-shape { position: absolute; opacity: 0.55; z-index: 0; animation: float 6s ease-in-out infinite; }
-        .shape-square { width: 60px; height: 60px; border: 4px solid rgba(255, 209, 102, 0.95); top: 12%; right: 10%; transform: rotate(12deg); }
-        .shape-circle { width: 48px; height: 48px; background: rgba(106, 79, 176, 0.14); border-radius: 50%; bottom: 18%; left: 8%; }
-
-        .quote-box {
-            background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
-            color: #0e0c0c; border-radius: 20px; padding: 40px;
-            position: relative; overflow: hidden;
-            box-shadow: 0 30px 80px rgba(2, 8, 23, 0.5);
-        }
-
-        .quote-icon { position: absolute; top: 10px; left: 18px; font-size: 84px; color: rgba(255, 255, 255, 0.06); font-family: serif; }
         .chairperson-name { color: var(--primary-yellow); font-weight: 700; margin-top: 15px; display: block; }
-
 
         @media (max-width: 992px) {
             .gallery-grid {
@@ -727,122 +396,9 @@
             }
         }
 
-        @media (max-width: 768px) {
-            header .logo-icon {
-                width: 150px;
-                height: 80px;
-            }
-
-            header nav {
-                flex-wrap: wrap;
-            }
-
-            header .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: white;
-                flex-direction: column;
-                gap: 0;
-                padding: 20px;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-                margin-top: 10px;
-                border-radius: 0 0 10px 10px;
-            }
-
-            header .nav-links.active {
-                display: flex;
-            }
-
-            header .nav-links li {
-                padding: 10px 0;
-                border-bottom: 1px solid #f0f0f0;
-            }
-
-            header .nav-links li:last-child {
-                border-bottom: none;
-            }
-
-            header .nav-links a {
-                display: block;
-                color: var(--primary-orange);
-            }
-
-            header .nav-links .dropdown {
-                position: static;
-                display: none;
-                box-shadow: none;
-                background: #f9f9f9;
-                margin-top: 10px;
-                border-radius: 5px;
-            }
-
-            header .nav-links .dropdown.active {
-                display: block;
-            }
-
-            header .nav-links li:hover > .dropdown {
-                display: none;
-            }
-
-            .hamburger-menu {
-                display: flex;
-            }
-
-            .btn-white {
-                display: none;
-            }
-
-            .mobile-contact {
-                display: block !important;
-                border-top: 2px solid #f0f0f0;
-                padding-top: 15px !important;
-                margin-top: 15px !important;
-            }
-
-            .mobile-contact a {
-                color: var(--primary-orange);
-                font-weight: 600;
-            }
-
-            .academic-hero {
-                padding: 120px 0 60px 0;
-                min-height: auto;
-            }
-
-            .hero-bg-diag {
-                width: 100%;
-                height: 65%;
-                clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-            }
-
-            .page-title {
-                font-size: clamp(2rem, 4vw, 2.5rem);
-                margin-bottom: 15px;
-            }
-
-            .title-underline {
-                width: 70px;
-            }
-
-            /* Mobile: smaller gallery heading to fit screen */
-            .gallery-heading {
-                font-size: clamp(1.7rem, 6vw, 1.9rem);
-                margin-bottom: 18px;
-            }
-
-            .quote-box {
-                padding: 25px;
-                margin-top: 30px;
-            }
-
-            .quote-icon {
-                font-size: 50px;
-                top: 5px;
-                left: 10px;
-            }
+        @media (max-width: 600px) {
+            
+            .hero-bg-diag { width: 100%; height: 70%; clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); }
 
             .gallery-grid {
                 grid-template-columns: 1fr;
@@ -871,21 +427,6 @@
                 padding: 12px 30px;
                 font-size: 1rem;
             }
-            footer .footer-logo {
-                flex-direction: column;
-                text-align: center;
-            }
-            footer .footer-logo h2 {
-                border-left: none;
-                border-top: 1px solid #626381;
-                padding-left: 0;
-                padding-top: 15px;
-                font-size: 1.1rem;
-            }
-            footer .footer-links {
-                flex-wrap: wrap;
-                gap: 15px;
-            }
         }
     </style>
 </head>
@@ -900,15 +441,15 @@
                         <a href="index.html"><img src="images/sat.jpg"></a>
                     </div>
                 </div>
-                
-                <div class="menu-toggle" id="mobileMenuBtn">
+
+                <div class="menu-toggle">
                     <i class="fa-solid fa-bars"></i>
                 </div>
 
-                <ul class="nav-links" id="navLinks">
+                <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li>
-                        <a href="#" class="dropdown-toggle-custom disable-underline">Academics <i class="fa-solid fa-caret-down"></i></a>
+                        <a href="#" class="dropdown-toggle">Academics <i class="fa-solid fa-caret-down"></i></a>
                         <ul class="dropdown">
                             <li><a href="academics.html">Academics</a></li>
                             <li><a href="curriculars.html">Co-Curriculars</a></li>
@@ -920,44 +461,49 @@
                     </li>
                     <li><a href="about-us.html">About Us</a></li>
                     <li><a href="mandatory-disclosure.html">Mandatory Disclosures</a></li>
-                    
-                    <li class="mobile-btn"><a href="contact-us.html" class="btn btn-purple">Contact Us</a></li>
+                    <li><a href="contact-us.html" class="btn btn-white" style="display:inline-block; margin-top: 10px;">Contact Us</a></li>
                 </ul>
-                
-                <a href="contact-us.html" class="btn btn-white desktop-btn">Contact Us</a>
             </nav>
         </div>
     </header>
 
     <main>
-   <section class="academic-hero">
-            <div class="hero-bg-diag"></div>
-            <div class="float-shape shape-square"></div>
-            <div class="float-shape shape-circle"></div>
 
-            <div class="container position-relative">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 animate-up">
-                        <h1 class="page-title">Capturing Our Journey of<br>Excellence</h1>
-                        <div class="title-underline mb-4"></div>
-                        <p class="lead" style="font-weight: 500; color: #f9f3f3;">
-                            Stay updated with the latest happenings, academic advice, events, and success stories from the Satyam International School community.
+        <section class="hero-section">
+        <div class="hero-bg-diag"></div>
+        <div class="shape-box"></div>
+        <div class="shape-circle"></div>
+
+        <div class="container hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-6 animate-up">
+                    <span style="color: var(--primary-yellow); font-weight: 700; letter-spacing: 1px;">MEMORIES</span>
+                    <h1 class="hero-title">Capturing Our Journey of <br>Excellence</h1>
+                    <div class="title-underline"></div>
+                    <p class="hero-subtitle">
+                        Stay updated with the latest happenings, academic advice, events, and success stories from the Satyam International School community.
+                    </p>
+                </div>
+
+                <div class="col-lg-6 animate-up delay-1">
+                    <div class="hero-card">
+                        <div class="quote-mark">“</div>
+                        <h3>Journey of Excellence</h3>
+                        <p>
+                            "We love how the school encourages creativity and independent thinking. The activities and projects truly bring learning to life for the students."
                         </p>
-                    </div>
-                    <div class="col-lg-6 animate-up delay-1">
-                        <div class="quote-box shadow-lg">
-                            <div class="quote-icon">“</div>
-                            <p class="position-relative" style="z-index: 2; font-size: 1.1rem; line-height: 1.8;">
-                                We love how the school encourages creativity and independent thinking. The activities and projects truly bring learning to life for the students.
-                            </p>
-                            <span class="chairperson-name">— Parent Sachin</span>
-                            <small class="text-white-50">Satyam International School</small>
+                        <div style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+                            <span style="font-weight: 700; color: var(--primary-blue);">— Parent Sachin</span>
+                            <div style="color: gold; font-size: 0.9rem; margin-top: 5px;">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
+        </div>
+    </section>
+    
         <section class="gallery-section">
             <div class="gallery-shapes">
                 <div class="gallery-shape gallery-triangle gallery-triangle-1"></div>
@@ -1112,129 +658,169 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
-        // Hamburger menu toggle
-        const hamburgerMenu = document.getElementById('hamburgerMenu');
-        const navLinks = document.querySelector('.nav-links');
+document.addEventListener('DOMContentLoaded', () => {
 
-        if (hamburgerMenu) {
-            hamburgerMenu.addEventListener('click', function() {
-                hamburgerMenu.classList.toggle('active');
-                navLinks.classList.toggle('active');
-                // Close all open dropdowns when menu closes
-                if (!navLinks.classList.contains('active')) {
-                    document.querySelectorAll('.nav-links .dropdown').forEach(dropdown => {
-                        dropdown.classList.remove('active');
-                    });
-                }
-            });
-        }
+    console.log("Satyam International - Blog Listing Loaded");
 
-        // Close menu when a regular link is clicked (not dropdown toggle)
-        const navItems = document.querySelectorAll('.nav-links a:not(.dropdown-toggle)');
-        navItems.forEach(item => {
-            item.addEventListener('click', function() {
-                hamburgerMenu.classList.remove('active');
-                navLinks.classList.remove('active');
-                // Also close all dropdowns
-                document.querySelectorAll('.nav-links .dropdown').forEach(dropdown => {
-                    dropdown.classList.remove('active');
-                });
-            });
+    /* =====================================================
+       COMMON SCROLL ANIMATION (animate-up)
+    ===================================================== */
+    const commonObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                obs.unobserve(entry.target);
+            }
         });
+    }, { threshold: 0.1 });
 
-        // Dropdown toggle in mobile menu
-        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-        dropdownToggles.forEach(toggle => {
-            toggle.addEventListener('click', function(e) {
-                // Only handle dropdown toggle on mobile
-                if (window.innerWidth <= 768) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    // Get the parent <li> element
-                    const parentLi = this.closest('li');
-                    const dropdown = parentLi.querySelector('.dropdown');
-                    
-                    if (dropdown) {
-                        // Close other open dropdowns
-                        document.querySelectorAll('.nav-links .dropdown.active').forEach(other => {
-                            if (other !== dropdown) {
-                                other.classList.remove('active');
-                            }
-                        });
-                        // Toggle current dropdown
-                        dropdown.classList.toggle('active');
-                    }
-                } else {
-                    // On desktop, prevent default to avoid navigation
-                    e.preventDefault();
-                }
-            });
+    document.querySelectorAll('.animate-up').forEach(el => commonObserver.observe(el));
+
+
+    /* =====================================================
+       GALLERY SCROLL ANIMATION (Directional Entry)
+    ===================================================== */
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    const galleryObserverOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const galleryObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const itemsArray = Array.from(galleryItems);
+                const idx = itemsArray.indexOf(entry.target);
+                const mod = idx % 4;
+
+                let dirClass = 'enter-from-bottom';
+                if (mod === 0) dirClass = 'enter-from-left';
+                else if (mod === 1) dirClass = 'enter-from-right';
+                else if (mod === 2) dirClass = 'enter-from-top';
+
+                entry.target.classList.add(dirClass);
+
+                const delay = ((idx % 9) * 0.22) + 0.08;
+                entry.target.style.animationDelay = `${delay}s`;
+
+                galleryObserver.unobserve(entry.target);
+            }
         });
+    }, galleryObserverOptions);
 
-        // Gallery filter functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const galleryItems = document.querySelectorAll('.gallery-item');
+    galleryItems.forEach(item => galleryObserver.observe(item));
 
-            // Popup animation on scroll with directional entry (left/right/top/bottom)
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            };
 
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Determine index and pick a direction based on it
-                        const itemsArray = Array.from(galleryItems);
-                        const idx = itemsArray.indexOf(entry.target);
-                        const mod = idx % 4;
-                        let dirClass = 'enter-from-bottom';
-                        if (mod === 0) dirClass = 'enter-from-left';
-                        else if (mod === 1) dirClass = 'enter-from-right';
-                        else if (mod === 2) dirClass = 'enter-from-top';
+    /* =====================================================
+       MOBILE MENU LOGIC (FROM INDEX)
+    ===================================================== */
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.dropdown');
 
-                        // Apply class and staggered delay
-                        entry.target.classList.add(dirClass);
-                        // increase stagger spacing so items animate more slowly overall
-                        // larger stagger so items appear more slowly and don't pop together
-                        const delay = ( (idx % 9) * 0.22 ) + 0.08; // slower cascade
-                        entry.target.style.animationDelay = `${delay}s`;
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+
+    if (dropdownToggle) {
+        dropdownToggle.addEventListener('click', (e) => {
+            if (window.innerWidth <= 900) {
+                e.preventDefault();
+                dropdownMenu.classList.toggle('show');
+            }
+        });
+    }
+
+
+    /* =====================================================
+       GALLERY FILTER LOGIC
+    ===================================================== */
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            const filterValue = this.getAttribute('data-filter');
 
             galleryItems.forEach(item => {
-                observer.observe(item);
-            });
-
-            // Filter functionality
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    // Add active class to clicked button
-                    this.classList.add('active');
-
-                    const filterValue = this.getAttribute('data-filter');
-
-                    galleryItems.forEach(item => {
-                        if (filterValue === 'all') {
-                            item.style.display = 'block';
-                        } else {
-                            if (item.getAttribute('data-category') === filterValue) {
-                                item.style.display = 'block';
-                            } else {
-                                item.style.display = 'none';
-                            }
-                        }
-                    });
-                });
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
             });
         });
-    </script>
+    });
+
+
+    /* =====================================================
+       BLOG FILTER + SEARCH LOGIC
+    ===================================================== */
+    const blogItems = document.querySelectorAll('.blog-item');
+    const searchInput = document.getElementById('blogSearch');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            blogItems.forEach(item => {
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                    item.style.display = 'block';
+                    item.classList.remove('animate-up');
+                    void item.offsetWidth;
+                    item.classList.add('animate-up', 'in-view');
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const searchText = e.target.value.toLowerCase();
+
+            if (searchText.length > 0) {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                const allBtn = document.querySelector('[data-filter="all"]');
+                if (allBtn) allBtn.classList.add('active');
+            }
+
+            blogItems.forEach(item => {
+                const title = item.querySelector('.blog-title').innerText.toLowerCase();
+                const excerpt = item.querySelector('.blog-excerpt').innerText.toLowerCase();
+
+                if (title.includes(searchText) || excerpt.includes(searchText)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    }
+
+});
+</script>
+
 </body>
 </html>
